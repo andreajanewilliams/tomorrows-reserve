@@ -1,0 +1,321 @@
+
+added 350 packages in 42s
+npm notice
+npm notice New major version of npm available! 10.8.2 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+
+> pumpproof@0.1.0 compile
+> node scripts/compile.mjs
+
+Compiled PumpProof with 0.8.30+commit.73712a01.Emscripten.clang; 3258 byte deployment
+TAP version 13
+# Subtest: integer accounting preserves gram floor distinction and positive subgram benefits
+ok 1 - integer accounting preserves gram floor distinction and positive subgram benefits
+  ---
+  duration_ms: 3.421625
+  ...
+# bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+# Subtest: actual EVM honours litre/gram boundaries, overflow, missing commitments and duplicate settlement
+ok 2 - actual EVM honours litre/gram boundaries, overflow, missing commitments and duplicate settlement
+  ---
+  duration_ms: 9801.863921
+  ...
+# Subtest: constructor forbids one address controlling both declared roles
+ok 3 - constructor forbids one address controlling both declared roles
+  ---
+  duration_ms: 295.950709
+  ...
+# bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+# Subtest: export can be independently recomputed and altered receipts are rejected
+ok 4 - export can be independently recomputed and altered receipts are rejected
+  ---
+  duration_ms: 8250.642337
+  ...
+# Subtest: native calibration reproduces frozen model margins on historical cohort
+ok 5 - native calibration reproduces frozen model margins on historical cohort
+  ---
+  duration_ms: 1665.104793
+  ...
+# Subtest: all 50 generated traces are source/method pinned and accounting remains unaltered
+ok 6 - all 50 generated traces are source/method pinned and accounting remains unaltered
+  ---
+  duration_ms: 74.059208
+  ...
+# Subtest: report retains every policy/day and failed surplus and carbon-only cases
+ok 7 - report retains every policy/day and failed surplus and carbon-only cases
+  ---
+  duration_ms: 5.9165
+  ...
+# bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+# Subtest: contract state machine enforces source integrity, roles and accounting
+    # Subtest: valid evidence executes and matches the independent arithmetic
+    ok 1 - valid evidence executes and matches the independent arithmetic
+      ---
+      duration_ms: 2447.311168
+      ...
+    # Subtest: one asset/day cannot settle or commit twice
+    ok 2 - one asset/day cannot settle or commit twice
+      ---
+      duration_ms: 1792.926917
+      ...
+    # Subtest: overlapping non-aligned operating windows are forbidden
+    ok 3 - overlapping non-aligned operating windows are forbidden
+      ---
+      duration_ms: 217.537042
+      ...
+    # Subtest: only designated operator and auditor can make transitions
+    ok 4 - only designated operator and auditor can make transitions
+      ---
+      duration_ms: 328.100083
+      ...
+    # Subtest: unattested evidence cannot settle and attestations cannot be replaced
+    ok 5 - unattested evidence cannot settle and attestations cannot be replaced
+      ---
+      duration_ms: 362.804542
+      ...
+    # Subtest: changed evidence causes an actual status-0 transaction
+    ok 6 - changed evidence causes an actual status-0 transaction
+      ---
+      duration_ms: 687.600958
+      ...
+    # Subtest: terminal water debt is independently rejected
+    ok 7 - terminal water debt is independently rejected
+      ---
+      duration_ms: 1971.103793
+      ...
+    # Subtest: emptying the reserve is rejected
+    ok 8 - emptying the reserve is rejected
+      ---
+      duration_ms: 823.577543
+      ...
+    # Subtest: no improvement cannot earn a carbon receipt
+    ok 9 - no improvement cannot earn a carbon receipt
+      ---
+      duration_ms: 1462.917917
+      ...
+    # Subtest: terminal overfilling is rejected, keeping the comparison like-for-like
+    ok 10 - terminal overfilling is rejected, keeping the comparison like-for-like
+      ---
+      duration_ms: 2947.17671
+      ...
+    # Subtest: pump capacity cannot be bypassed by otherwise signed data
+    ok 11 - pump capacity cannot be bypassed by otherwise signed data
+      ---
+      duration_ms: 945.14375
+      ...
+    # Subtest: evidence hash is bound to the specific contract
+    ok 12 - evidence hash is bound to the specific contract
+      ---
+      duration_ms: 722.201459
+      ...
+    # Subtest: all development and replication days agree between JavaScript and actual EVM execution
+    ok 13 - all development and replication days agree between JavaScript and actual EVM execution
+      ---
+      duration_ms: 18841.1833
+      ...
+    1..13
+ok 8 - contract state machine enforces source integrity, roles and accounting
+  ---
+  duration_ms: 43329.13827
+  ...
+# Subtest: exported runtime model matches Python reference predictions on every replay hour
+ok 9 - exported runtime model matches Python reference predictions on every replay hour
+  ---
+  duration_ms: 52.275375
+  ...
+# Subtest: model and raw measurement hashes match reproducibility manifest
+ok 10 - model and raw measurement hashes match reproducibility manifest
+  ---
+  duration_ms: 10.559542
+  ...
+# Subtest: every pinned source file matches its provenance hash
+ok 11 - every pinned source file matches its provenance hash
+  ---
+  duration_ms: 10.919084
+  ...
+# Subtest: replication includes the negative 24 February result and withholds its receipt
+ok 12 - replication includes the negative 24 February result and withholds its receipt
+  ---
+  duration_ms: 1008.887958
+  ...
+# Subtest: forecaster improves over weekly persistence on chronological held-out test
+ok 13 - forecaster improves over weekly persistence on chronological held-out test
+  ---
+  duration_ms: 0.678167
+  ...
+# Subtest: default operation serves demand, restores storage and conserves every litre
+ok 14 - default operation serves demand, restores storage and conserves every litre
+  ---
+  duration_ms: 71.63825
+  ...
+# Subtest: short-sighted apparent saving is rejected for water debt
+ok 15 - short-sighted apparent saving is rejected for water debt
+  ---
+  duration_ms: 18.042375
+  ...
+# Subtest: severe demand shock cannot receive an accounting pass
+ok 16 - severe demand shock cannot receive an accounting pass
+  ---
+  duration_ms: 81.815459
+  ...
+# Subtest: causal replay never inspects future actual demand
+ok 17 - causal replay never inspects future actual demand
+  ---
+  duration_ms: 104.224958
+  ...
+# Subtest: infeasible forecast yields no schedule, not an invented feasible plan
+ok 18 - infeasible forecast yields no schedule, not an invented feasible plan
+  ---
+  duration_ms: 2.156166
+  ...
+# Subtest: linear schedule respects capacity and full-day equality
+ok 19 - linear schedule respects capacity and full-day equality
+  ---
+  duration_ms: 2.5745
+  ...
+# Subtest: invalid inputs are rejected before optimisation
+ok 20 - invalid inputs are rejected before optimisation
+  ---
+  duration_ms: 1.232
+  ...
+# Subtest: benchmark retains every eligible source date and records failures
+ok 21 - benchmark retains every eligible source date and records failures
+  ---
+  duration_ms: 636.4855
+  ...
+# bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+# Subtest: v3 accepted and refused bundles reproduce; every changed signed claim fails
+ok 22 - v3 accepted and refused bundles reproduce; every changed signed claim fails
+  ---
+  duration_ms: 14988.528757
+  ...
+# Subtest: external edits invalidate preview/proof immediately; late previews and proof cannot return
+ok 23 - external edits invalidate preview/proof immediately; late previews and proof cannot return
+  ---
+  duration_ms: 55.369084
+  ...
+# Subtest: example selection and upload start remove proof before reading the file
+ok 24 - example selection and upload start remove proof before reading the file
+  ---
+  duration_ms: 3.876166
+  ...
+# bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+# Subtest: external input rejects unknown fields, dates, units and malformed integer arrays
+ok 25 - external input rejects unknown fields, dates, units and malformed integer arrays
+  ---
+  duration_ms: 3.27375
+  ...
+# Subtest: preview retains exact integers, every violation, immutable caller input and no model claim
+ok 26 - preview retains exact integers, every violation, immutable caller input and no model claim
+  ---
+  duration_ms: 23.821583
+  ...
+# Subtest: exact imported evidence is committed and actual changed-after-attestation transaction refuses
+ok 27 - exact imported evidence is committed and actual changed-after-attestation transaction refuses
+  ---
+  duration_ms: 7010.403795
+  ...
+# Subtest: honest acceptance and WaterDebt refusal execute exact calldata in separate labelled contracts
+ok 28 - honest acceptance and WaterDebt refusal execute exact calldata in separate labelled contracts
+  ---
+  duration_ms: 2462.976168
+  ...
+# Subtest: named experiments bind the exact rule and method while uploaded traces remain unchanged
+ok 29 - named experiments bind the exact rule and method while uploaded traces remain unchanged
+  ---
+  duration_ms: 3.161709
+  ...
+# Subtest: hydraulic snapshot binds the data, network and executable replay
+ok 30 - hydraulic snapshot binds the data, network and executable replay
+  ---
+  duration_ms: 20.997542
+  ...
+# Subtest: changed results cannot be served with an unchanged evidence manifest
+ok 31 - changed results cannot be served with an unchanged evidence manifest
+  ---
+  duration_ms: 30.58475
+  ...
+# Subtest: runtime refuses changed model or source bytes under stale provenance
+ok 32 - runtime refuses changed model or source bytes under stale provenance
+  ---
+  duration_ms: 98.749917
+  ...
+# Subtest: actual UI handlers clear proof/export on mode, slider and failed date/reserve changes
+ok 33 - actual UI handlers clear proof/export on mode, slider and failed date/reserve changes
+  ---
+  duration_ms: 190.02075
+  ...
+# Subtest: late proof cannot restore an export even after returning to original inputs
+ok 34 - late proof cannot restore an export even after returning to original inputs
+  ---
+  duration_ms: 40.401
+  ...
+# Subtest: late simulation cannot authorise proving after an input change
+ok 35 - late simulation cannot authorise proving after an input change
+  ---
+  duration_ms: 14.592666
+  ...
+1..35
+# tests 48
+# suites 0
+# pass 48
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 55623.352525
+
+> pumpproof@0.1.0 check:results
+> node scripts/present-results.mjs --check
+
+
+> pumpproof@0.1.0 verify
+> node scripts/verify-bundle.mjs examples/receipt-2020-02-05.json
+
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+{
+  "valid": true,
+  "accounting": {
+    "baselineGrams": 8003176,
+    "operatedGrams": 7523125,
+    "savingGrams": 480051
+  },
+  "originalDigestMatches": true,
+  "envelopeSignaturesMatch": true,
+  "freshEvmTransaction": "0x2b1e96eb0df1649024e3343c106d52b2c47f892e320071734597f496726b8340",
+  "meaning": "Pinned replay reproduced, complete envelope signed by its declared demo addresses, and accounting accepted by a fresh local EVM. This does not authenticate real-world signer identities, a physical meter or original chain history."
+}
+
+> pumpproof@0.1.0 verify
+> node scripts/verify-bundle.mjs examples/evidence/honest-rule-2020-02-04.json
+
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+{
+  "evidenceValid": true,
+  "accountingAccepted": true,
+  "receiptIssued": true,
+  "reason": null,
+  "inputDigest": "0x8395cc3e4fa48257911481a83f6ab7e7c78bc9a45cd64f326b8d87a85891dbf7",
+  "freshEvmTransaction": "0x95fe18e866be990614074ff8d62ea420041b3a588836e1d6d446b18d66cf211e",
+  "freshEvmStatus": 1,
+  "optimiserUsed": false,
+  "meaning": "Exact supplied trace, pinned sources, signed claims and fresh local EVM outcome reproduced. Original chain history and physical measurements are not authenticated."
+}
+
+> pumpproof@0.1.0 verify
+> node scripts/verify-bundle.mjs examples/evidence/skips-evening-refill-2020-02-04.json --expect rejected
+
+bigint: Failed to load bindings, pure JS will be used (try npm run rebuild?)
+{
+  "evidenceValid": true,
+  "accountingAccepted": false,
+  "receiptIssued": false,
+  "reason": "WaterDebt",
+  "inputDigest": "0x88519e7f2ff525e2f7e2f8d8152c43045e27ba033e816ef36e2a9d827f49c75e",
+  "freshEvmTransaction": "0x42ef442d428f473db23d83f52a236b0d4c2075f5b9418bb27c2c27d80f936fb9",
+  "freshEvmStatus": 0,
+  "optimiserUsed": false,
+  "meaning": "Exact supplied trace, pinned sources, signed claims and fresh local EVM outcome reproduced. Original chain history and physical measurements are not authenticated."
+}

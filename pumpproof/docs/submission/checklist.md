@@ -15,7 +15,7 @@ Official Devpost rules checked on 23 October 2026: <https://ieee-climatechain-ha
 
 ## Timed gates and release control
 
-Tier 1 checkpoint: Saturday 24 October, 10:00 SAST. Tier 2 checkpoint: 16:00 SAST. Selected-build freeze: **18:00 SAST Saturday**. After freeze, only demonstrated defects blocking promised behaviour may be fixed, with affected checks rerun. The tested local build is the release candidate; do not restart idea search or optional Tier 3.
+Tier 1 checkpoint: Saturday 24 October, 10:00 SAST. Tier 2 checkpoint: 16:00 SAST. Selected-build freeze: **18:00 SAST Saturday**. After freeze, only demonstrated defects blocking promised behaviour may be fixed, with affected checks rerun. The reviewed local build is frozen early under tag `pumpproof-recording-candidate-2026-10-23`; see `release-note.md` for exact checks and owner gaps. Preserve it through the Saturday deadline; do not restart idea search or optional Tier 3.
 
 No automation or unattended overnight execution is assumed. At the freeze, record `git rev-parse HEAD`, retain the evidence snapshot, and use `docs/submission/recording.md`. Sunday: inspect actual video, published repository/video links and final entry text by 14:00 SAST.
 

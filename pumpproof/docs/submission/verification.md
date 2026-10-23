@@ -32,7 +32,7 @@ Both passed with optimiser imports forbidden. The latter reports evidence valid,
 
 Tests cover strict schema/date/unit/integer inputs, no repair, exact calldata, commitments, tampered signatures and metadata, source/model integrity, altered policy/date/provenance/carbon/limitations, role separation, duplicate/missing commitments, reserve/pump/overflow/terminal bounds, one-litre debt/surplus, positive subgram acceptance and independently floored gram differences. HTTP smoke includes export and separate-process verification for both outcomes.
 
-Current logs: `verification/final-macos-tests.txt`, `tier2-evidence-tests.txt`, `tier2-boundaries.txt`, `accepted-verification.json`, `refused-verification.json`, `fixture-execution.txt`, `tier2-http-experiments.json`. Final Linux and independent-review status are recorded in the release note after completion.
+Current logs: `verification/review-fix-macos-tests.txt`, `final-linux-tests.txt`, `review-fix-fixtures.txt`, `accepted-verification.json`, `refused-verification.json`, `browser-download-verification.json`, and `tier2-http-experiments.json`. Earlier gate logs remain as historical checks. Final Linux and independent-review status are recorded in `release-note.md`: 48 tests passed on macOS and fresh Linux; the bounded independent review completed cleanly.
 
 ## Browser and release gaps
 
