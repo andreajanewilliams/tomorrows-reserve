@@ -1,0 +1,53 @@
+{
+  "model": "Histogram gradient boosting \u00b7 140 trees",
+  "metrics": {
+    "train": {
+      "hours": 24192,
+      "days": 1008,
+      "maeM3": 166.10922328641686,
+      "weeklyBaselineMaeM3": 250.61795221560845,
+      "wapePercent": 7.522615933132011
+    },
+    "validation": {
+      "hours": 4224,
+      "days": 176,
+      "maeM3": 215.4712188074099,
+      "weeklyBaselineMaeM3": 276.5318418560606,
+      "wapePercent": 8.83281705389903
+    },
+    "calibration": {
+      "hours": 4296,
+      "days": 179,
+      "maeM3": 201.8884271462492,
+      "weeklyBaselineMaeM3": 305.01536312849163,
+      "wapePercent": 8.633297113967577
+    },
+    "test": {
+      "hours": 8304,
+      "days": 346,
+      "maeM3": 221.26188432115688,
+      "weeklyBaselineMaeM3": 305.87126685934487,
+      "wapePercent": 8.683388326383112,
+      "intervalCoveragePercent": 86.9340077071291
+    }
+  },
+  "intervalRadiusM3": 420.1595340472509,
+  "calibratedBufferM3": 2676.280580043891,
+  "rawRows": 46031,
+  "validDays": 1882,
+  "excludedDays": 36,
+  "modelSha256": "613b08c37f960907960d49bd35c0896b26d6a701fc9a323454dfd61eebe4414e",
+  "rawSha256": "bd621204e84c442014777353732f43bc3dd08cc5ff4413caee8507abaca004ed",
+  "limitations": [
+    "One German district; no cross-utility validation.",
+    "Hourly empirical interval, not a 24-hour safety guarantee.",
+    "No imputation: incomplete, duplicate-hour, non-positive and missing-value days are excluded.",
+    "Calendar and past consumption only; no future weather or test-set fitting."
+  ],
+  "splitDates": {
+    "train": "2016\u20132018",
+    "validation": "Jan\u2013Jun 2019 (reported; no tuning)",
+    "calibration": "Jul\u2013Dec 2019",
+    "test": "2020"
+  }
+}

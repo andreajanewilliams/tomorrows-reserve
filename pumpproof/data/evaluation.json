@@ -1,0 +1,359 @@
+{
+  "generatedAt": "2026-10-18T11:04:52.860Z",
+  "development": {
+    "days": [
+      {
+        "date": "2020-02-04",
+        "savingPercent": 13.177562365719316,
+        "savingKg": 684.0278255000003,
+        "baselineKg": 5190.8525,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 10317.875,
+        "correctionM3": 2376.9790000000003
+      },
+      {
+        "date": "2020-02-05",
+        "savingPercent": 5.998258910071538,
+        "savingKg": 480.0512475000014,
+        "baselineKg": 8003.1765,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 10504.793,
+        "correctionM3": 3177.017
+      },
+      {
+        "date": "2020-02-06",
+        "savingPercent": 9.34386955673338,
+        "savingKg": 775.4930990000012,
+        "baselineKg": 8299.4855,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 7666.601,
+        "correctionM3": 1135.9849999999997
+      },
+      {
+        "date": "2020-02-07",
+        "savingPercent": 4.973045590894025,
+        "savingKg": 294.7767055000004,
+        "baselineKg": 5927.4884999999995,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 7954.219,
+        "correctionM3": 1649.051
+      },
+      {
+        "date": "2020-02-08",
+        "savingPercent": 7.2273785224557106,
+        "savingKg": 267.28172000000086,
+        "baselineKg": 3698.1835,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 8292.68,
+        "correctionM3": 1548.5139999999997
+      },
+      {
+        "date": "2020-02-09",
+        "savingPercent": 12.677050398283482,
+        "savingKg": 540.6430489999989,
+        "baselineKg": 4264.7384999999995,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 8660.77,
+        "correctionM3": 2426.0000000000005
+      },
+      {
+        "date": "2020-02-10",
+        "savingPercent": 9.981193579509462,
+        "savingKg": 424.3175570000003,
+        "baselineKg": 4251.1705,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 7659.158,
+        "correctionM3": 3153.868
+      },
+      {
+        "date": "2020-02-11",
+        "savingPercent": 16.29933278889218,
+        "savingKg": 697.4493464999996,
+        "baselineKg": 4279.005499999999,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 9067.538,
+        "correctionM3": 2138.788
+      },
+      {
+        "date": "2020-02-12",
+        "savingPercent": 24.284686107282926,
+        "savingKg": 1296.2164915000008,
+        "baselineKg": 5337.588000000001,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 7541.908,
+        "correctionM3": 2297.7799999999997
+      },
+      {
+        "date": "2020-02-13",
+        "savingPercent": 14.472356388914037,
+        "savingKg": 931.5671285000008,
+        "baselineKg": 6436.8725,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 7329.505,
+        "correctionM3": 2827.003
+      },
+      {
+        "date": "2020-02-14",
+        "savingPercent": 0.7886439602092916,
+        "savingKg": 46.14964249999866,
+        "baselineKg": 5851.7715,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 8044.303,
+        "correctionM3": 2241.3949999999995
+      }
+    ],
+    "eligibleDays": 11,
+    "totalDays": 11,
+    "totalSavingKg": 6437.973812500004,
+    "totalBaselineKg": 61540.333,
+    "worstSavingPercent": 0.7886439602092916,
+    "medianSavingPercent": 9.981193579509462
+  },
+  "replication": {
+    "days": [
+      {
+        "date": "2020-02-15",
+        "savingPercent": 5.561801318718321,
+        "savingKg": 229.33940350000057,
+        "baselineKg": 4123.473500000001,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 10190.298,
+        "correctionM3": 3285.8340000000003
+      },
+      {
+        "date": "2020-02-16",
+        "savingPercent": 6.844544676207287,
+        "savingKg": 231.43664249999983,
+        "baselineKg": 3381.33,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 8151.716,
+        "correctionM3": 2065.3340000000003
+      },
+      {
+        "date": "2020-02-17",
+        "savingPercent": 11.830598359774083,
+        "savingKg": 479.00832799999944,
+        "baselineKg": 4048.8934999999997,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 6669.25,
+        "correctionM3": 3882.4619999999995
+      },
+      {
+        "date": "2020-02-18",
+        "savingPercent": 14.266679179440578,
+        "savingKg": 570.2746195000009,
+        "baselineKg": 3997.2485000000006,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 9577.987000000001,
+        "correctionM3": 2665.0730000000003
+      },
+      {
+        "date": "2020-02-19",
+        "savingPercent": 14.086726601542237,
+        "savingKg": 715.0749234999994,
+        "baselineKg": 5076.231999999999,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 6772.606,
+        "correctionM3": 2278.66
+      },
+      {
+        "date": "2020-02-20",
+        "savingPercent": 16.024566528931118,
+        "savingKg": 704.2823429999999,
+        "baselineKg": 4395.0165,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 8130.9439999999995,
+        "correctionM3": 1693.504
+      },
+      {
+        "date": "2020-02-21",
+        "savingPercent": 11.863417395772597,
+        "savingKg": 513.3491115000006,
+        "baselineKg": 4327.160500000001,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 9450.801,
+        "correctionM3": 3604.599
+      },
+      {
+        "date": "2020-02-22",
+        "savingPercent": 3.172030154771429,
+        "savingKg": 96.52806550000014,
+        "baselineKg": 3043.1005,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 5664.859,
+        "correctionM3": 2642.719
+      },
+      {
+        "date": "2020-02-23",
+        "savingPercent": 10.26336973427369,
+        "savingKg": 406.7225120000003,
+        "baselineKg": 3962.8555,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 5927.52,
+        "correctionM3": 3294.264
+      },
+      {
+        "date": "2020-02-24",
+        "savingPercent": -12.767531794521625,
+        "savingKg": -617.2890320000006,
+        "baselineKg": 4834.8345,
+        "eligible": false,
+        "violations": [
+          {
+            "hour": 24,
+            "code": "TERMINAL_MISMATCH"
+          },
+          {
+            "hour": 24,
+            "code": "NO_CARBON_BENEFIT"
+          }
+        ],
+        "naiveDebtM3": 6540.117,
+        "correctionM3": 2246.637
+      },
+      {
+        "date": "2020-02-25",
+        "savingPercent": 7.235931695360557,
+        "savingKg": 417.10670800000025,
+        "baselineKg": 5764.3815,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 10344.589,
+        "correctionM3": 2875.1649999999995
+      },
+      {
+        "date": "2020-02-26",
+        "savingPercent": 13.15170566432477,
+        "savingKg": 668.2338905000006,
+        "baselineKg": 5080.9675,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 5864.209,
+        "correctionM3": 2870.181
+      },
+      {
+        "date": "2020-02-27",
+        "savingPercent": 10.52444059244574,
+        "savingKg": 604.9096409999993,
+        "baselineKg": 5747.665499999999,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 8298.075,
+        "correctionM3": 1475.5369999999998
+      },
+      {
+        "date": "2020-02-28",
+        "savingPercent": 6.02052330285074,
+        "savingKg": 338.55681299999833,
+        "baselineKg": 5623.378499999999,
+        "eligible": true,
+        "violations": [],
+        "naiveDebtM3": 8284.951000000001,
+        "correctionM3": 1851.695
+      }
+    ],
+    "eligibleDays": 13,
+    "totalDays": 14,
+    "totalSavingKg": 5357.533969499998,
+    "totalBaselineKg": 63406.53800000001,
+    "worstSavingPercent": -12.767531794521625,
+    "medianSavingPercent": 10.52444059244574
+  },
+  "shockExperiments": [
+    {
+      "shockPercent": 0,
+      "eligible": true,
+      "savingKg": 684.0278255000003,
+      "violations": []
+    },
+    {
+      "shockPercent": 50,
+      "eligible": true,
+      "savingKg": 654.6490755000013,
+      "violations": []
+    },
+    {
+      "shockPercent": 100,
+      "eligible": false,
+      "savingKg": 469.5812375000023,
+      "violations": [
+        {
+          "hour": 7,
+          "code": "BASELINE_INFEASIBLE"
+        },
+        {
+          "hour": 9,
+          "code": "BASELINE_INFEASIBLE"
+        },
+        {
+          "hour": 10,
+          "code": "BASELINE_INFEASIBLE"
+        }
+      ]
+    },
+    {
+      "shockPercent": 150,
+      "eligible": false,
+      "savingKg": 141.30999150000207,
+      "violations": [
+        {
+          "hour": 6,
+          "code": "BASELINE_INFEASIBLE"
+        },
+        {
+          "hour": 7,
+          "code": "BASELINE_INFEASIBLE"
+        },
+        {
+          "hour": 8,
+          "code": "BASELINE_INFEASIBLE"
+        },
+        {
+          "hour": 9,
+          "code": "BASELINE_INFEASIBLE"
+        },
+        {
+          "hour": 10,
+          "code": "BASELINE_INFEASIBLE"
+        },
+        {
+          "hour": 10,
+          "code": "RESERVE_BREACH"
+        },
+        {
+          "hour": 11,
+          "code": "BASELINE_INFEASIBLE"
+        },
+        {
+          "hour": 11,
+          "code": "RESERVE_BREACH"
+        },
+        {
+          "hour": 12,
+          "code": "RESERVE_BREACH"
+        }
+      ]
+    }
+  ],
+  "limits": "Historical transferred-grid simulation; controller was developed on 4–14 February, then evaluated without parameter changes on later source-complete February dates. No causal avoided-emissions or field-safety claim."
+}

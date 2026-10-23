@@ -1,0 +1,46 @@
+{
+  "retrieved": "2026-10-18",
+  "sources": [
+    {
+      "file": "water-raw.csv",
+      "source": "https://zenodo.org/records/11045013",
+      "creator": "Weyrauch, Taubert, Götz, Streit, Götz, Debus and Wolter; supplied by Siemens AG",
+      "licence": "CC BY 4.0",
+      "kind": "Raw hourly German district consumption",
+      "sha256": "bd621204e84c442014777353732f43bc3dd08cc5ff4413caee8507abaca004ed"
+    },
+    {
+      "file": "carbon-2020-01.json",
+      "source": "https://carbon-intensity.github.io/api-definitions/",
+      "creator": "National Energy System Operator (NESO)",
+      "licence": "CC BY 4.0",
+      "kind": "GB half-hourly estimated actual carbon intensity",
+      "sha256": "24ef4910f3640ab4050310c097be5e5d45396d3a94ac6aec1289dda942afdac3"
+    },
+    {
+      "file": "carbon-2020-02.json",
+      "source": "https://carbon-intensity.github.io/api-definitions/",
+      "creator": "National Energy System Operator (NESO)",
+      "licence": "CC BY 4.0",
+      "kind": "GB half-hourly estimated actual carbon intensity",
+      "sha256": "e5205651b45cf9662e8f4d0473884daca87c17403b1a147dcdf549ae6cfb966c"
+    },
+    {
+      "file": "carbon-2020-02-validation.json",
+      "source": "https://carbon-intensity.github.io/api-definitions/",
+      "creator": "National Energy System Operator (NESO)",
+      "licence": "CC BY 4.0",
+      "kind": "GB half-hourly estimated actual carbon intensity",
+      "sha256": "136a2982a0bf331b5f14b8d513137f8b22919b0fa8f1349be18ca0b1784cde0a"
+    },
+    {
+      "file": "demand-days.json",
+      "source": "Derived locally by scripts/train.py",
+      "creator": "PumpProof transformation of Weyrauch et al.",
+      "licence": "CC BY 4.0",
+      "kind": "Complete-day features and measured demand; no imputation",
+      "sha256": "8588e7be4eec1228fea74c88d9c11ad28758f78e3a9a7fbb9a069e1bfeba4f89"
+    }
+  ],
+  "alignment": "German local clock hour is mapped by hour index to a GB UTC scenario. This is an intentional transfer scenario, not a co-located or timezone-aligned utility record."
+}

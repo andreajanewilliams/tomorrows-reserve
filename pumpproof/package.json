@@ -1,0 +1,24 @@
+{
+  "name": "pumpproof",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Water-first carbon-aware pumping with independently verifiable local EVM evidence",
+  "scripts": {
+    "start": "node src/server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "smoke": "node scripts/smoke-http.mjs",
+    "train": "python3 scripts/train.py",
+    "compile": "node scripts/compile.mjs",
+    "evaluate": "node scripts/evaluate.mjs",
+    "provenance": "node scripts/provenance.mjs",
+    "verify": "node scripts/verify-bundle.mjs"
+  },
+  "dependencies": {
+    "ethers": "6.15.0",
+    "ganache": "7.9.2",
+    "solc": "0.8.30",
+    "javascript-lp-solver": "0.4.24"
+  },
+  "engines": {"node": ">=20"}
+}
