@@ -1,0 +1,8 @@
+import fs from 'node:fs';
+const root=new URL('../',import.meta.url),report=JSON.parse(fs.readFileSync(new URL('data/comparison-evaluation.json',root)));
+const table=['| Policy | Gross reduction, all 25 days | Numerically eligible |','|---|---:|---:|',...Object.entries(report.summary).map(([p,s])=>`| ${p} | ${s.allDaysGross.reductionPercent.toFixed(5)}%${p==='skips-evening-refill'?' apparent':''} | ${s.eligibleDays}/25 |`)];
+const text='<!-- NATIVE-RESULTS:START -->\n'+table.join('\n')+'\n\nNative baseline: '+report.summary.model.allDaysGross.baselineKg.toFixed(3)+' kg attributed CO₂. Gross figures include refused and negative days. Eligibility is calculated; see the fixture execution report for actual EVM outcomes. Eligible-only and common-eligible denominators and dates are in `data/comparison-evaluation.json`.\n<!-- NATIVE-RESULTS:END -->';
+const file=new URL('README.md',root),old=fs.readFileSync(file,'utf8'),updated=old.includes('<!-- NATIVE-RESULTS:START -->')?old.replace(/<!-- NATIVE-RESULTS:START -->[\s\S]*?<!-- NATIVE-RESULTS:END -->/,text):old+'\n## Native four-policy comparison\n\n'+text+'\n';
+if(process.argv.includes('--check')){if(updated!==old)throw new Error('README results differ from native report');}else fs.writeFileSync(file,updated);
+
+for(const file of ['docs/submission/devpost-draft.md','docs/submission/native-results-and-limits.md']){const prose=fs.readFileSync(new URL(file,root),'utf8');for(const [policy,s] of Object.entries(report.summary)){if(!prose.includes(s.allDaysGross.reductionPercent.toFixed(5)+'%'))throw new Error(file+' does not match '+policy+' native percentage');}}

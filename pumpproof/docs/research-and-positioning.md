@@ -1,3 +1,5 @@
+> Historical 18 October document. Current positioning, results and recording instructions are in `docs/submission/`; this document is preserved as context and is not the submission script.
+
 # Research and entry strategy
 
 Research date: **18 October 2026 (Africa/Johannesburg)**. This is a reasoned entry strategy, not a prediction or guarantee of winning.

@@ -1,0 +1,11 @@
+import test from 'node:test';import assert from 'node:assert/strict';import vm from 'node:vm';import fs from 'node:fs';
+import {previewTrace} from '../src/external-trace.mjs';
+const trace=JSON.parse(fs.readFileSync(new URL('../examples/external/honest-rule-2020-02-04.json',import.meta.url))),preview=previewTrace(trace);
+function ui(){const nodes=new Map(),requests=[],node=id=>{if(!nodes.has(id))nodes.set(id,{value:id==='external-json'?JSON.stringify(trace):'uploaded-trace',innerHTML:'',textContent:'',disabled:false});return nodes.get(id);};const context=vm.createContext({structuredClone,document:{getElementById:node},fetch:()=>new Promise(resolve=>requests.push(body=>resolve({ok:true,json:async()=>body})))});vm.runInContext(fs.readFileSync(new URL('../public/external.js',import.meta.url),'utf8').split("try{samples=await api(")[0],context);return {node,requests};}
+async function ready(u){const p=u.node('external-preview-button').onclick();u.requests.shift()(preview);await p;}
+test('external edits invalidate preview/proof immediately; late previews and proof cannot return',async()=>{
+ const u=ui();await ready(u);assert.equal(u.node('external-prove').disabled,false);
+ const pending=u.node('external-prove').onclick();u.node('external-json').oninput();assert.equal(u.node('external-result').innerHTML,'');assert.equal(u.node('external-prove').disabled,true);u.requests.shift()({inputDigest:preview.inputDigest,accepted:true});await pending;assert.equal(u.node('external-result').innerHTML,'');
+ const late=u.node('external-preview-button').onclick();u.node('external-json').oninput();u.requests.shift()(preview);await late;assert.equal(u.node('external-preview').innerHTML,'');assert.equal(u.node('external-prove').disabled,true);
+});
+test('example selection and upload start remove proof before reading the file',async()=>{const u=ui();await ready(u);u.node('external-result').innerHTML='old export';u.node('external-example').onchange();assert.equal(u.node('external-result').innerHTML,'');await ready(u);let done;u.node('external-upload').files=[{size:100,text:()=>new Promise(r=>done=r)}];const upload=u.node('external-upload').onchange();assert.equal(u.node('external-prove').disabled,true);u.node('external-json').oninput();done('old file');await upload;assert.notEqual(u.node('external-json').value,'old file');});

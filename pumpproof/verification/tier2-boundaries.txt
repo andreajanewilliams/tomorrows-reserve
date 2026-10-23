@@ -1,0 +1,30 @@
+TAP version 13
+# Subtest: actual EVM honours litre/gram boundaries, overflow, missing commitments and duplicate settlement
+ok 1 - actual EVM honours litre/gram boundaries, overflow, missing commitments and duplicate settlement
+  ---
+  duration_ms: 3598.571709
+  ...
+# Subtest: constructor forbids one address controlling both declared roles
+ok 2 - constructor forbids one address controlling both declared roles
+  ---
+  duration_ms: 80.843625
+  ...
+# Subtest: external edits invalidate preview/proof immediately; late previews and proof cannot return
+ok 3 - external edits invalidate preview/proof immediately; late previews and proof cannot return
+  ---
+  duration_ms: 47.55475
+  ...
+# Subtest: example selection and upload start remove proof before reading the file
+ok 4 - example selection and upload start remove proof before reading the file
+  ---
+  duration_ms: 27.756792
+  ...
+1..4
+# tests 4
+# suites 0
+# pass 4
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4783.672291

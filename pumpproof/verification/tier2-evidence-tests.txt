@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: integer accounting preserves gram floor distinction and positive subgram benefits
+ok 1 - integer accounting preserves gram floor distinction and positive subgram benefits
+  ---
+  duration_ms: 2.55825
+  ...
+# Subtest: v3 accepted and refused bundles reproduce; every changed signed claim fails
+ok 2 - v3 accepted and refused bundles reproduce; every changed signed claim fails
+  ---
+  duration_ms: 2550.773
+  ...
+# Subtest: external input rejects unknown fields, dates, units and malformed integer arrays
+ok 3 - external input rejects unknown fields, dates, units and malformed integer arrays
+  ---
+  duration_ms: 1.455125
+  ...
+# Subtest: preview retains exact integers, every violation, immutable caller input and no model claim
+ok 4 - preview retains exact integers, every violation, immutable caller input and no model claim
+  ---
+  duration_ms: 9.097791
+  ...
+# Subtest: exact imported evidence is committed and actual changed-after-attestation transaction refuses
+ok 5 - exact imported evidence is committed and actual changed-after-attestation transaction refuses
+  ---
+  duration_ms: 1289.634583
+  ...
+# Subtest: honest acceptance and WaterDebt refusal execute exact calldata in separate labelled contracts
+ok 6 - honest acceptance and WaterDebt refusal execute exact calldata in separate labelled contracts
+  ---
+  duration_ms: 899.28425
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3183.791417

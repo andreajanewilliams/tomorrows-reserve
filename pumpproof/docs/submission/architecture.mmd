@@ -1,0 +1,12 @@
+flowchart TD
+  Sources[Hash-checked demand and grid snapshots] --> Accounting[Exact BigInt water and carbon accounting]
+  Model[Frozen forecast + optimiser / supporting replay] --> Trace[Completed pumping trace]
+  Rule[Executable clock/tank rule] --> Trace
+  Upload[External JSON / strict litres and date schema] --> Trace
+  Trace --> Accounting
+  Accounting --> Commitment[Operator: descriptor and exact-trace commitment]
+  Commitment --> Attestation[Auditor: pinned input and trace evidence attestation]
+  Attestation --> Solidity[Solidity: hourly limits, terminal equality, carbon gate]
+  Solidity --> Bundle[Signed v3 accepted or refused bundle]
+  Bundle --> Verify[Independent process: exact trace + fresh EVM, no optimiser]
+  Trust[TRUST BOUNDARY: attested data are trusted; local roles are not independent organisations] -.-> Attestation

@@ -1,85 +1,93 @@
 # PumpProof
 
-**Every litre. Less carbon.** A local ClimateChain prototype for water-first demand flexibility.
+**PumpProof checks pumping plans against whole-day water and carbon accounting, and refuses a saving claim that leaves tomorrow short of water.**
 
-PumpProof forecasts water demand, schedules pumping into cleaner grid periods and makes a complete operating day earn its accounting receipt. A schedule cannot claim a benefit by draining the reservoir and leaving tomorrow to catch up.
+For a water-utility energy/operations analyst and an auditor, the question is whether an externally supplied 24-hour trace reduces attributed operational CO₂ while meeting declared hourly tank/pump limits and restoring starting storage. This historical demonstration treats uploads as simulated operating traces; an uploaded plan does not prove a pump actually ran.
 
-## Run locally
+## One-minute local setup
 
-Requires Node.js 20 or later. From this directory:
+Node.js 20 or later; verified with Node 20.20.1 and npm 10.8.2 on macOS and a clean Linux container.
 
 ```sh
 npm ci
 npm start
 ```
 
-Open **http://127.0.0.1:4317** in your preferred personal browser. Dependencies are already installed in this delivered copy, so `npm start` is sufficient here. The server binds only to loopback. No API keys, wallets, accounts or internet connection are needed after installation. `Ctrl-C` stops it. The local chain is intentionally ephemeral: restart clears receipts; downloaded evidence bundles remain verifiable.
+Open **http://127.0.0.1:4317/** in the My Hero personal browser/profile. The server binds to loopback. No wallet, account or API key is required. Stop with Ctrl-C. The local EVM and keys are ephemeral; exported bundles remain verifiable against this source snapshot. The Mac launcher is `Launch PumpProof.command`.
 
-On this Mac, you can also double-click `Launch PumpProof.command`. It starts the server and prints the address; it does not choose a browser profile.
+## Demonstrate the external trust boundary
 
-## What works
+1. Select **Skips evening refill**, then **Preview exact trace**. It ends at 5,000 m³, leaving 7,000 m³ debt.
+2. Select **Run contract check**. Inspect the real status-0 WaterDebt transaction.
+3. Choose **Honest clock/tank rule**. The previous preview/proof/export immediately disappears. Preview and run its separate labelled experiment; it restores 12,000 m³ and accepts.
+4. Download a signed v3 bundle. Independently verify the actual downloaded file, or use these supplied examples:
 
-- Real local inference with 140 gradient-boosted trees trained on public supplier-measured water demand.
-- Chronological model evaluation, empirical uncertainty, comparison with weekly persistence and explicit undercoverage.
-- Linear optimisation with reservoir, pump and terminal-volume constraints; idealised within-hour feedback replans with current measured demand and forecasts of later hours.
-- Interactive historical days, reserve settings and demand shocks; comparison with an intentionally short-sighted plan.
-- Executable Solidity on a local EVM: separate demo operator/auditor roles, plan commitment, evidence attestation, recomputed hourly balances and emissions, and one receipt per asset/day within a contract.
-- Real reverted transactions for water debt, reserve breach, evidence tampering and duplicate settlement.
-- Exported v2 evidence bundles with pinned source provenance, model hash, assumptions and transaction traces. Both demo addresses sign the entire bundle. A standalone verifier reproduces the scenario and executes the accounting on a fresh EVM.
-- A separate **Hydraulic lab**: published Net3 network, pressure-dependent WNTR simulation, 40 alternative source-pump windows versus native controls, per-tank restoration, surprise demand and carbon/cost trade-offs. Downloadable results can be re-solved independently. This benchmark does not use the German demand forecaster or issue the single-tank Solidity receipt.
+```sh
+npm run verify -- examples/evidence/honest-rule-2020-02-04.json
+npm run verify -- examples/evidence/skips-evening-refill-2020-02-04.json --expect rejected
+```
 
-## Start with this demo
+The second command reports evidenceValid true, accountingAccepted false and receiptIssued false. Default verification requires acceptance. Both commands use the exact trace and pinned inputs, without running the optimiser. A fresh EVM reproduces the outcome; it does not authenticate original chain history.
 
-1. Select **4 February 2020**, 0% demand shock, 4,000 m³ reserve.
-2. Switch to **Short-sighted plan**. Its apparently attractive carbon difference leaves a water debt.
-3. Switch to **PumpProof**. The simulated operation restores 12,000 m³ and shows approximately **684 kg / 13.2% lower attributed operational CO₂** than demand-following pumping, under the stated scenario.
-4. Click **Verify on local chain**, then download the evidence bundle.
-5. Open **Attack lab** and try all four experiments. Inspect the reverted transaction traces.
-6. Open **Model & evidence**, or select **24 February 2020**, to see a failed replication day. Its receipt is withheld.
+Each experiment label/date binds one trace in the running session. Identical requests reuse the result; changed inputs cannot replace its commitment, including after refusal. Different labels use separate contracts. This demonstrates per-contract duplicate protection, not a shared production registry.
 
-The full presentation is in [docs/demo-script.md](docs/demo-script.md). Research, competitor distinctions and submission considerations are in [docs/research-and-positioning.md](docs/research-and-positioning.md).
+## Input and API
 
-The new [implementation audit](docs/implementation-audit.md) inspects actual competitor source and public workflows. Open **Hydraulic lab** to inspect the stronger engineering comparator; its [method and reproduction instructions](docs/hydraulic-benchmark.md) state the exact physical, economic and evidence boundaries. Carbon-first and bill-protected policies may recommend different actions. A positive carbon difference can cost more money.
+JSON accepts only `schema`, `date` and `pumpedLitres`: schema `pumpproof-external-trace-v1`, a source-complete February date, and exactly 24 non-negative safe integers in litres. See `examples/external/`. No unknown fields, inferred units, paths, URLs, policy overrides or altered measured inputs. A well-formed trace outside the accounting limits is retained unchanged for a legitimate negative experiment.
 
-## Evidence and results
+- `POST /api/external/preview`: the trace object; returns inputDigest and exact accounting.
+- `POST /api/external/prove`: `{trace, inputDigest, experiment}`; labels are `honest-rule`, `skips-evening-refill`, `uploaded-trace`.
+- `GET /api/export/:id`: signed evidence from this session.
+- `GET /api/comparison`: the native report, including actual EVM annotations where executed.
 
-The frozen water forecaster is trained on 2016–2018, reports Jan–Jun 2019 validation, calibrates on Jul–Dec 2019 and is evaluated on 346 complete days in 2020. Test MAE is **221.26 m³**, against **305.87 m³** for the same hour last week (27.7% lower). The empirical interval has **86.93% test coverage**, below its 90% calibration target. No observed future weather is used.
+The descriptor commits trace, date, fixed policy, source identities, baseline, units and contract source. External evidence declares modelUsed false and uses a documented no-model hash sentinel. Authoritative accounting uses BigInt litres/scores and decimal-string JSON integers. Display kilograms derive from unrounded scores. Solidity separately floors baseline, operated and positive difference grams; a positive score difference can accept with zero saving grams.
 
-The controller was developed on the 11 source-complete days from 1–14 February, then evaluated unchanged on 14 later days. **13/14 replication days pass all accounting gates.** The 24 February replay has an adverse carbon difference and terminal mismatch. It remains visible and is rejected. These are development and replication simulations, not a field trial. Full machine-readable results: [data/evaluation.json](data/evaluation.json).
+## Native results
 
-## Checks and reproduction
+<!-- NATIVE-RESULTS:START -->
+| Policy | Gross reduction, all 25 days | Numerically eligible |
+|---|---:|---:|
+| model | 9.44042% | 24/25 |
+| persistence | 8.67546% | 23/25 |
+| honest-rule | 4.92450% | 22/25 |
+| skips-evening-refill | 19.36190% apparent | 0/25 |
+
+Native baseline: 124946.871 kg attributed CO₂. Gross figures include refused and negative days. Eligibility is calculated; see the fixture execution report for actual EVM outcomes. Eligible-only and common-eligible denominators and dates are in `data/comparison-evaluation.json`.
+<!-- NATIVE-RESULTS:END -->
+
+
+The forecaster and optimiser remain supporting components. Original model MAE is 221.26 m³ versus 305.87 m³ for weekly persistence over 346 chronological test days. Calibrated model buffer/headroom are 2,676.28 m³ / 420.16 m³ per hour; persistence uses 4,649 / 683. Both margins change; equal operational safety is not established. Full-year daily cumulative error coverage is 71.39% versus 82.08%, and hourly absolute coverage 86.93% versus 89.98%.
+
+The model's 24 February failure is terminal surplus (761.294 m³) plus adverse carbon benefit. Persistence 14 February is water-balanced and fails only carbon benefit. Honest-rule refusals are 14, 22 and 24 February. Every debt rule ends 7,000 m³ short. All failures remain in gross results.
+
+See [native results and limits](docs/submission/native-results-and-limits.md) for eligible/common denominators, forecast coverage and quantified Python/native differences. Grid rounding explains the rule discrepancy; the remaining optimised-policy difference has not been fully isolated. The February comparison is exploratory retrospective evidence, repeatedly inspected during development.
+
+## Reproduce and check
 
 ```sh
 npm run compile
 npm test
-npm run evaluate
-npm run verify -- /absolute/path/to/downloaded-evidence.json
+npm run compare
+npm run fixtures:evm
+npm run check:results
+npm run verify -- examples/receipt-2020-02-05.json
 ```
 
-With the server running, `npm run smoke` checks the HTTP routes, receipt reuse, changed-input rejection and evidence export. A verified example is included in `examples/receipt-2020-02-05.json`.
+With the server running: `npm run smoke` and `npm run smoke:external`. The latter exports and verifies accepted/refused evidence in separate processes with optimiser imports forbidden. Comparison regeneration clears EVM annotations, so execute fixtures afterwards. Original v2 verification is preserved; v2 rejected attacks are not accepted receipts. Source/model data were not retrained or rewritten.
 
-Startup and verification hash the actual model and every listed source before consuming those exact bytes. A changed file with stale provenance stops execution. The verifier checks the evidence digest, full reproduced simulation and both complete-envelope signatures, then runs the Solidity contract on a new local EVM. Signatures establish integrity under the declared demo addresses; they do **not** establish real-world identities, the old chain's consensus or a physical meter. Transaction traces are signed claims, not independently authenticated historical receipts. Rejected attack bundles intentionally fail accepted-receipt verification. The verifier accepts the v2 format; earlier unsigned v1 development exports must be regenerated.
+## Limits and practical use
 
-Python is needed only to retrain. With Python 3.12:
+Measured German demand is paired by hour index with estimated average GB intensity. Tank/pump and constant 0.5 kWh/m³ are hypothetical. Generated policies use idealised within-hour feedback. Hourly model constraints are not hydraulic service, pressure or water-quality guarantees. Equal-volume pumping uses equal energy; reported differences are timing-based attributed CO₂, not electricity savings or causal avoided emissions. There is no utility pilot, customer validation or measured field saving.
 
-```sh
-python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
-.venv/bin/python scripts/train.py
-npm run provenance
-npm run evaluate
-npm test
-```
+The contract trusts attested inputs. Local demo roles are controlled on one machine, commitments are retrospective, and duplicate protection is per deployment. A shared contract can make agreed accounting and outcomes inspectable; a signed database could also support this single-operator demo. Production requires calibrated co-located metering, independent organisational identities, a shared registry, corrections/disputes and hydraulic validation. No device control, payment, tokens or carbon credits are issued.
 
-`scripts/train.py` exports plain numerical trees and reference predictions; JavaScript inference is checked against those Python predictions. Retraining and regenerating provenance changes the pinned evidence version if any inputs change. Keep old evidence with its original source/model snapshot.
+The existing Hydraulic lab and its sources are preserved as a separate historical experiment. Its network results do not validate the external single-tank receipt. No new hydraulic work was added.
 
-## Model and accounting boundary
+## Submission and recording
 
-This is **not an autonomous water-network controller**. German local-clock demand is mapped by hour index to a GB UTC grid scenario. The reservoir and pump are hypothetical. Demand is measured; pumping, feedback and storage are simulated. The model assumes one perfectly mixed tank, constant 0.5 kWh/m³, no hydraulic head changes, no pump switching costs, no travel time and ideal within-hour metering/actuation. The optimiser uses previous-day grid intensity persistence, not future actual values or an unverifiable archived forecast vintage.
+[Devpost draft](docs/submission/devpost-draft.md) · [Architecture](docs/submission/architecture.svg) · [Trust note](docs/submission/trust-note.md) · [Verification report](docs/submission/verification.md) · [Recording script and shot list](docs/submission/recording.md) · [Owner checklist](docs/submission/checklist.md).
 
-The baseline pumps the same demand as it occurs; it is feasible only when demand is within pump capacity. Both operations must have identical starting and ending water volumes. NESO intensity is an **average generation-related CO₂ estimate**, not marginal emissions or a carbon-credit methodology. Reported differences are attributed operational CO₂ scenarios, not proven emissions avoided.
-
-The contract checks integer litres and fixed 24-hour UTC slots. It trusts the auditor's input attestation. The local server controls both demonstration signers. A ledger cannot establish sensor truth, real water safety, truthful source inventory or uniqueness across unrelated deployments. A production pilot requires calibrated metering, hydraulic validation, independent organisational identities, a shared asset registry, corrections/disputes and agreed settlement governance. The frozen prototype has no money, escrow, tokens, credit issuance or device-control integration.
+Selected track: Carbon Markets & Emissions Transparency. Public repository, video and submission are **pending owner action**. No public demo/testnet deployment exists. Eligibility wording remains inconsistent. Code freeze is Saturday 24 October at 18:00 SAST; readiness target Sunday 25 October at 14:00; official deadline 16:00. No publication, remote push, contact, account creation, spending or submission is authorised by the local build task.
 
 ## Data attribution
 

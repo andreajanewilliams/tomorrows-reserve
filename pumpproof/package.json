@@ -12,7 +12,11 @@
     "compile": "node scripts/compile.mjs",
     "evaluate": "node scripts/evaluate.mjs",
     "provenance": "node scripts/provenance.mjs",
-    "verify": "node scripts/verify-bundle.mjs"
+    "verify": "node scripts/verify-bundle.mjs",
+    "compare": "node scripts/evaluate-comparisons.mjs && node scripts/present-results.mjs",
+    "check:results": "node scripts/present-results.mjs --check",
+    "smoke:external": "node scripts/smoke-external.mjs",
+    "fixtures:evm": "node scripts/execute-fixtures.mjs"
   },
   "dependencies": {
     "ethers": "6.15.0",
@@ -20,5 +24,7 @@
     "solc": "0.8.30",
     "javascript-lp-solver": "0.4.24"
   },
-  "engines": {"node": ">=20"}
+  "engines": {
+    "node": ">=20"
+  }
 }

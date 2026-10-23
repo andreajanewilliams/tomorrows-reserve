@@ -1,0 +1,54 @@
+
+> pumpproof@0.1.0 fixtures:evm
+> node scripts/execute-fixtures.mjs
+
+honest-rule 2020-02-04: accepted status 1
+skips-evening-refill 2020-02-04: WaterDebt status 0
+honest-rule 2020-02-05: accepted status 1
+skips-evening-refill 2020-02-05: WaterDebt status 0
+honest-rule 2020-02-06: accepted status 1
+skips-evening-refill 2020-02-06: WaterDebt status 0
+honest-rule 2020-02-07: accepted status 1
+skips-evening-refill 2020-02-07: WaterDebt status 0
+honest-rule 2020-02-08: accepted status 1
+skips-evening-refill 2020-02-08: WaterDebt status 0
+honest-rule 2020-02-09: accepted status 1
+skips-evening-refill 2020-02-09: WaterDebt status 0
+honest-rule 2020-02-10: accepted status 1
+skips-evening-refill 2020-02-10: WaterDebt status 0
+honest-rule 2020-02-11: accepted status 1
+skips-evening-refill 2020-02-11: WaterDebt status 0
+honest-rule 2020-02-12: accepted status 1
+skips-evening-refill 2020-02-12: WaterDebt status 0
+honest-rule 2020-02-13: accepted status 1
+skips-evening-refill 2020-02-13: WaterDebt status 0
+honest-rule 2020-02-14: NoCarbonBenefit status 0
+skips-evening-refill 2020-02-14: WaterDebt status 0
+honest-rule 2020-02-15: accepted status 1
+skips-evening-refill 2020-02-15: WaterDebt status 0
+honest-rule 2020-02-16: accepted status 1
+skips-evening-refill 2020-02-16: WaterDebt status 0
+honest-rule 2020-02-17: accepted status 1
+skips-evening-refill 2020-02-17: WaterDebt status 0
+honest-rule 2020-02-18: accepted status 1
+skips-evening-refill 2020-02-18: WaterDebt status 0
+honest-rule 2020-02-19: accepted status 1
+skips-evening-refill 2020-02-19: WaterDebt status 0
+honest-rule 2020-02-20: accepted status 1
+skips-evening-refill 2020-02-20: WaterDebt status 0
+honest-rule 2020-02-21: accepted status 1
+skips-evening-refill 2020-02-21: WaterDebt status 0
+honest-rule 2020-02-22: NoCarbonBenefit status 0
+skips-evening-refill 2020-02-22: WaterDebt status 0
+honest-rule 2020-02-23: accepted status 1
+skips-evening-refill 2020-02-23: WaterDebt status 0
+honest-rule 2020-02-24: NoCarbonBenefit status 0
+skips-evening-refill 2020-02-24: WaterDebt status 0
+honest-rule 2020-02-25: accepted status 1
+skips-evening-refill 2020-02-25: WaterDebt status 0
+honest-rule 2020-02-26: accepted status 1
+skips-evening-refill 2020-02-26: WaterDebt status 0
+honest-rule 2020-02-27: accepted status 1
+skips-evening-refill 2020-02-27: WaterDebt status 0
+honest-rule 2020-02-28: accepted status 1
+skips-evening-refill 2020-02-28: WaterDebt status 0

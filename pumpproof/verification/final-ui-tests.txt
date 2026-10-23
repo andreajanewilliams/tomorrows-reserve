@@ -1,0 +1,35 @@
+TAP version 13
+# Subtest: external edits invalidate preview/proof immediately; late previews and proof cannot return
+ok 1 - external edits invalidate preview/proof immediately; late previews and proof cannot return
+  ---
+  duration_ms: 43.875916
+  ...
+# Subtest: example selection and upload start remove proof before reading the file
+ok 2 - example selection and upload start remove proof before reading the file
+  ---
+  duration_ms: 6.020541
+  ...
+# Subtest: actual UI handlers clear proof/export on mode, slider and failed date/reserve changes
+ok 3 - actual UI handlers clear proof/export on mode, slider and failed date/reserve changes
+  ---
+  duration_ms: 241.82875
+  ...
+# Subtest: late proof cannot restore an export even after returning to original inputs
+ok 4 - late proof cannot restore an export even after returning to original inputs
+  ---
+  duration_ms: 38.256292
+  ...
+# Subtest: late simulation cannot authorise proving after an input change
+ok 5 - late simulation cannot authorise proving after an input change
+  ---
+  duration_ms: 22.687584
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 774.1195

@@ -6,13 +6,15 @@ import {fileURLToPath} from 'node:url';
 import {simulate,benchmark,availableDays,DEFAULT_POLICY} from './engine.mjs';
 import {modelReport} from './model.mjs';
 import {createChain,issue,digestOffline} from './chain.mjs';
+import {previewTrace,strictKeys,EXTERNAL_POLICY} from './external-trace.mjs';
+import {executeExternal,EXPERIMENTS} from './external-chain.mjs';
 import {loadHydraulics} from './hydraulics.mjs';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const port=Number(process.env.PORT||4317);
 const hydraulics=loadHydraulics();
 const chain=await createChain();
-const contracts=new Map(),receipts=new Map(),byDay=new Map();
+const contracts=new Map(),receipts=new Map(),byDay=new Map(),externalExperiments=new Map();
 let queue=Promise.resolve();
 const enqueue=fn=>{const next=queue.then(fn);queue=next.catch(()=>{});return next;};
 const evaluation=benchmark();
@@ -33,6 +35,24 @@ const server=http.createServer(async(req,res)=>{
   if(req.method==='GET'&&url.pathname==='/api/hydraulics/export'){
     res.setHeader('Content-Disposition','attachment; filename="pumpproof-hydraulic-results.json"');
     return send(res,200,hydraulics.results);
+  }
+  if(req.method==='GET'&&url.pathname==='/api/comparison')return send(res,200,JSON.parse(fs.readFileSync(path.join(root,'data/comparison-evaluation.json'))));
+  if(req.method==='GET'&&url.pathname==='/api/external/examples'){
+    return send(res,200,['honest-rule','skips-evening-refill'].map(experiment=>({experiment,trace:JSON.parse(fs.readFileSync(path.join(root,'examples/external',experiment+'-2020-02-04.json')))})));
+  }
+  if(req.method==='POST'&&url.pathname==='/api/external/preview')return send(res,200,previewTrace(await body(req)));
+  if(req.method==='POST'&&url.pathname==='/api/external/prove'){
+    const request=await body(req);strictKeys(request,['trace','inputDigest','experiment'],'external request');
+    if(!EXPERIMENTS.includes(request.experiment))throw new Error('Unknown external experiment');
+    const preview=previewTrace(request.trace),key=request.experiment+':'+preview.descriptor.trace.date;
+    if(request.inputDigest!==preview.inputDigest)throw new Error('Preview input digest mismatch');
+    const result=await enqueue(async()=>{
+      const previous=externalExperiments.get(key);
+      if(previous){if(previous.inputDigest!==preview.inputDigest)throw new Error('This experiment/day already binds different inputs. Changed traces cannot replace its commitment.');return {...previous,reused:true};}
+      const contract=await chain.deploy(EXTERNAL_POLICY);
+      const proof=await executeExternal(chain,contract,request.trace,{experiment:request.experiment});
+      externalExperiments.set(key,proof);receipts.set(proof.id,proof);return proof;
+    });return send(res,200,result);
   }
   if(req.method==='POST'&&url.pathname==='/api/simulate')return send(res,200,simulate(await body(req)));
   if(req.method==='POST'&&url.pathname==='/api/prove'){
@@ -70,12 +90,12 @@ const server=http.createServer(async(req,res)=>{
   if(req.method==='GET'&&url.pathname.startsWith('/api/export/')){
     const proof=receipts.get(url.pathname.split('/').at(-1));
     if(!proof)return send(res,404,{error:'Receipt not found in this local session'});
-    res.setHeader('Content-Disposition',`attachment; filename="pumpproof-${proof.simulation.date}-${proof.attack}.json"`);
+    res.setHeader('Content-Disposition',`attachment; filename="pumpproof-${proof.schema==='pumpproof-evidence-v3'?proof.preview.descriptor.trace.date+'-'+proof.experiment:proof.simulation.date+'-'+proof.attack}.json"`);
     return send(res,200,proof);
   }
   if(req.method==='GET'&&url.pathname==='/api/health')return send(res,200,{ok:true,localOnly:true});
   if(req.method!=='GET')return send(res,405,{error:'Method not allowed'});
-  const files={'/':'index.html','/app.js':'app.js','/hydraulics.js':'hydraulics.js','/style.css':'style.css','/favicon.svg':'favicon.svg'};
+  const files={'/':'index.html','/app.js':'app.js','/external.js':'external.js','/hydraulics.js':'hydraulics.js','/style.css':'style.css','/favicon.svg':'favicon.svg'};
   if(!files[url.pathname])return send(res,404,{error:'Not found'});
   const file=files[url.pathname],type=file.endsWith('.js')?'text/javascript':file.endsWith('.css')?'text/css':file.endsWith('.svg')?'image/svg+xml':'text/html';
   res.setHeader('Content-Security-Policy',"default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'");

@@ -1,0 +1,11 @@
+{
+  "evidenceValid": true,
+  "accountingAccepted": false,
+  "receiptIssued": false,
+  "reason": "WaterDebt",
+  "inputDigest": "0x3e53bd930c4bd58131b9484af0ba5edf5cb62d286551b8f16d47d6bc6fd69f51",
+  "freshEvmTransaction": "0x3a6fb77f3a44113bdd30daadcad0ca71afb66cda528dc6fb2c58a6f2d3e56b82",
+  "freshEvmStatus": 0,
+  "optimiserUsed": false,
+  "meaning": "Exact supplied trace, pinned sources, signed claims and fresh local EVM outcome reproduced. Original chain history and physical measurements are not authenticated."
+}

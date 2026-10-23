@@ -1,0 +1,27 @@
+{
+  "diagnosticOnly": true,
+  "differingHours": 137,
+  "totals": {
+    "model": {
+      "baselineKg": 124795.35700000003,
+      "savingKg": 11810.805777000005,
+      "reductionPercent": 9.46413877961822
+    },
+    "persistence": {
+      "baselineKg": 124795.35700000003,
+      "savingKg": 10835.619000000002,
+      "reductionPercent": 8.682710046656624
+    },
+    "honest-rule": {
+      "baselineKg": 124795.35700000003,
+      "savingKg": 6145.866000000006,
+      "reductionPercent": 4.92475533364595
+    },
+    "skips-evening-refill": {
+      "baselineKg": 124795.35700000003,
+      "savingKg": 24164.188500000004,
+      "reductionPercent": 19.363050902606897
+    }
+  },
+  "conclusion": "Rule discrepancies match ties-to-even grid rounding. Optimised-policy residual is not isolated; different LP solvers/replay numerical behaviour remain plausible. Product retains native Math.round."
+}

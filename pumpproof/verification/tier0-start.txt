@@ -1,0 +1,32 @@
+Source: current non-Git PumpProof folder copied intact (excluding node_modules) from
+/Users/chadsmith/Documents/Codex/2026-10-17/se/outputs/pumpproof.
+The older 20 October review snapshot is preserved at ../handoff-preserved/older-review.
+Current hydraulic additions preserved; no older files overlaid.
+Missing: new handoff archive, PRIORITY-ADDENDUM.txt, CODEX-IMPLEMENTATION-PROMPT.txt.
+Read attached consolidated implementation-plan text and older START-HERE in full.
+
+2026-10-23: Node v20.20.1, npm 10.8.2.
+Original clean Linux npm ci reproduced EBADPLATFORM for ganache/node_modules/fsevents@2.3.2.
+Regenerating lockfile from pinned package.json with npm 10.8.2 reproduced the faulty
+Ganache bundled metadata. Corrected that Darwin-only optional dependency's optional
+flag in the regenerated lockfile. No --force and no dependency version changes.
+Post-change Linux and macOS checks recorded separately when complete.
+
+Official rules rechecked 23 October: deadline 25 October 17:00 UTC+03 = 16:00 SAST.
+https://ieee-climatechain-hack.devpost.com/rules
+3–5 minute demo and source repository required. Overview still says students only;
+rules include independent developers and individual entries. Owner resolution pending.
+
+TIER 0 PASS (23 October, before Tier 1 implementation)
+macOS Node 20.20.1/npm 10.8.2: clean npm ci; npm run compile;
+npm test (34 passed, 0 failed); npm run verify -- examples/receipt-2020-02-05.json
+(valid true); npm run smoke (passed); node --check public/app.js;
+zsh -n 'Launch PumpProof.command' (passed).
+Linux official node:20.20.1-bookworm-slim, image digest
+sha256:17281e8d1dc4d671976c6b89a12f47a44c2f390b63a989e2e327631041f544fd:
+fresh temporary directory, npm ci --no-audit --no-fund; npm run compile;
+npm test (34 passed); original v2 verifier (valid true).
+Linux optional bigint native binding unavailable; tested pure-JS fallback used.
+UI verification is executable DOM-handler regression testing; visual browser not yet run.
+Self-reviewed changes: lockfile optional flag, synchronous UI invalidation/request guards,
+3 behavioural UI tests and removal of stale dependency-install wording.

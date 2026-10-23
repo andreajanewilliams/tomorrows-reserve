@@ -1,0 +1,1 @@
+export async function resolve(specifier,context,nextResolve){if(specifier.includes('engine.mjs')||specifier.includes('javascript-lp-solver'))throw new Error('Optimiser is forbidden in direct-trace verification');return nextResolve(specifier,context);}

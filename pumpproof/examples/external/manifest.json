@@ -1,0 +1,413 @@
+{
+  "schema": "pumpproof-fixture-manifest-v1",
+  "method": "E4 clock/tank rule; targets 22000/12000/5000/12000 m³; debt variant keeps 5000 after 19:00.",
+  "methods": {
+    "src/rules.mjs": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+    "src/calibration.mjs": "d1aaf641481c719cb85d4aaeb275d6459aebe277afbf29d900c507708a3395ef",
+    "src/engine.mjs": "44e611fdad2254e1bce107e70562ff4008b07b846a87acd229a12035bae259b4",
+    "src/accounting.mjs": "3ee124f09fc3eda9d250d62085839255bd86d45b018ac7ecc01623dc34fda044",
+    "scripts/evaluate-comparisons.mjs": "9251244f165b80c4516564ca6a1f21a769b55b9fd7ccd7b96be0bb9c4c3cda94"
+  },
+  "fixtures": [
+    {
+      "file": "examples/external/honest-rule-2020-02-04.json",
+      "sha256": "073b9da5d04c151c076e212ce55c21b6f77fcedf73030158b0a6b1269d2523be",
+      "policy": "honest-rule",
+      "date": "2020-02-04",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-04.json",
+      "sha256": "43bb3c749034059d461984bb5bccaf9b3d9607d4bc9758eb71003d618bedfcf7",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-04",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-05.json",
+      "sha256": "f71c691ae03edd6f5eabf08fdd3bd79ad1ba0c6e7ecf732eaa06d4e107f375f6",
+      "policy": "honest-rule",
+      "date": "2020-02-05",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-05.json",
+      "sha256": "2ba207625af319177f24ef83c65e8d53f6d79f5d1e0d3f4cbeeb42e4dcef93f0",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-05",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-06.json",
+      "sha256": "bb87b45519a57cd0d7f0e1a1e02ada7e5d97d84de53655029112d8d10ec03469",
+      "policy": "honest-rule",
+      "date": "2020-02-06",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-06.json",
+      "sha256": "abd285a126abff9f12d0a75068a2b53e234e99a054a3c73f3745b5ced9392086",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-06",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-07.json",
+      "sha256": "1fd914dd387336870e0ef43ecb348397bafefbbbcb008d780f2d3f8177b0ecc8",
+      "policy": "honest-rule",
+      "date": "2020-02-07",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-07.json",
+      "sha256": "048dfa637a0bb50cf3d20256506395bc6bd9c8caf03553c1b1f6269f5deddc0b",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-07",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-08.json",
+      "sha256": "61ff9711ba2802f7063980a8689e280198571a9410f46d0e7880e6ce91e7c2aa",
+      "policy": "honest-rule",
+      "date": "2020-02-08",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-08.json",
+      "sha256": "4646d6e33d94fd7fafc8f86e98fb11f78b6d570f9d8e8e137cea6782e27c7576",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-08",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-09.json",
+      "sha256": "ac87d1d5b5015258ba21ee5af7605553c1eef718a3d833b3c5a2057d4ca5c050",
+      "policy": "honest-rule",
+      "date": "2020-02-09",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-09.json",
+      "sha256": "253373a176e52908df6378f3b2101cc558a53a89853c0bd83f5ebbe6bf02db1b",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-09",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-10.json",
+      "sha256": "f968f0d4af9c19f160428eaef4104ff3e3fafd67905abfb7a3d238a1e2045e44",
+      "policy": "honest-rule",
+      "date": "2020-02-10",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-10.json",
+      "sha256": "a55e91280b55771bc67f39e441f0db36f08736714ce3508dda2a3e0bd3700c03",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-10",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-11.json",
+      "sha256": "c77050d8a1f2e45cd52691a335d5614b5801b524943f6d90caf77c13a6470f54",
+      "policy": "honest-rule",
+      "date": "2020-02-11",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-11.json",
+      "sha256": "1e496ff2e1895dafd486b0897f3ea50bebd0436f43bde0aa2250aa1b60bd235b",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-11",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-12.json",
+      "sha256": "0adf6bca12e081fec6d9a23557db29e51a3937affe19e4aad5e7f2d1df3a10ce",
+      "policy": "honest-rule",
+      "date": "2020-02-12",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-12.json",
+      "sha256": "d50bed889398071b75a81ec6b2c80b414ccfaeb21e2382d34aef67b8dbc8948f",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-12",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-13.json",
+      "sha256": "97f92662134f41b27ac9c6290eddea044ba39b019086c8690fb1d38c3a206b75",
+      "policy": "honest-rule",
+      "date": "2020-02-13",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-13.json",
+      "sha256": "58914059ce2309a702a5b70977e6cbec1b18febb38e80b01532c3866cfffadde",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-13",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-14.json",
+      "sha256": "60c9c211ebc83fab2cf171871b8a90d67b5a7cfa4cf2afca2957027888de8f91",
+      "policy": "honest-rule",
+      "date": "2020-02-14",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-14.json",
+      "sha256": "bf6d804b04ab3d49a0bd5122c84f07569343bcd4d55aba372475ca64a70761a6",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-14",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-15.json",
+      "sha256": "07e3950eac9fe357037644c0063aae0ceb33a67876e8a337c4ce15402354800a",
+      "policy": "honest-rule",
+      "date": "2020-02-15",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-15.json",
+      "sha256": "77608bc61794d53d48b795b80a554a48008ee4383fc1ff4d162db776212be25d",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-15",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-16.json",
+      "sha256": "01f71cdd5aaf345962a14096b20ee7404fde35a312e86cb1b12109e5d86fccc5",
+      "policy": "honest-rule",
+      "date": "2020-02-16",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-16.json",
+      "sha256": "21a0a55aeae273a6cdd090391a63dc22b80978e02865392f865b7e73e4bc0aeb",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-16",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-17.json",
+      "sha256": "c2eb17f4029063d56f1c5a6124e5532b378f6f0148399ffb63e5d7999ce8d7ea",
+      "policy": "honest-rule",
+      "date": "2020-02-17",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-17.json",
+      "sha256": "96cbc9642d37fd501b542734acaa85d5c9b763a054d853499d98985f4f9678bd",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-17",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-18.json",
+      "sha256": "7fbd7ec2c44c94689687123ffb4450e2f2ab335544948e96e570a9851ae560fd",
+      "policy": "honest-rule",
+      "date": "2020-02-18",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-18.json",
+      "sha256": "a3177628f40b95595041364e7c8ea2cc0490bbce0ba61a7ef9fad7a87d49b039",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-18",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-19.json",
+      "sha256": "4d9de3581a04c10f53b51b92dca9b4fddb9c5b89be9f5842c68d16b09750c357",
+      "policy": "honest-rule",
+      "date": "2020-02-19",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-19.json",
+      "sha256": "e1feef21ad3c8b28ae0f82d991c59dd7bcbf5ab0cc7a92456f1b2492f493e330",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-19",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-20.json",
+      "sha256": "cbafaf339904f69cf8a25fb4f0ced92f54450ca761df5b62c03de68b7ec2196f",
+      "policy": "honest-rule",
+      "date": "2020-02-20",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-20.json",
+      "sha256": "69d20ae228b1cde95a7def691ef21271c6f88a6db7fdd49918ef42b6a5a1f464",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-20",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-21.json",
+      "sha256": "3d87a176b07c42e5b6ba788971baa4e25fc668771268db9c507c95c5dabcf152",
+      "policy": "honest-rule",
+      "date": "2020-02-21",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-21.json",
+      "sha256": "b57b88f0d42d7bd7c88d62d2d4dc095c45a902eee7a9db3e7785383f2e6731d2",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-21",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-22.json",
+      "sha256": "3ab2eb94c251d592818c318a090e448f5dd0979fe8a86acb23beb3f3e78caaae",
+      "policy": "honest-rule",
+      "date": "2020-02-22",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-22.json",
+      "sha256": "b612933fecf8dede809f6efad2a0174645c061d16cde40f53ae77ae2e891cd9a",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-22",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-23.json",
+      "sha256": "8124cb6b7af2b031d116146d858bb8613e222c2b9e6bc6e695103b1f0f9c1417",
+      "policy": "honest-rule",
+      "date": "2020-02-23",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-23.json",
+      "sha256": "5ebf1e1742d796ae05f156c443a442f70340fcae87e40bedd34621fffbbb9dfe",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-23",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-24.json",
+      "sha256": "a335b9a796750c9793ead974f187cb13e936568e28cca7cf0e35580e3ca5836f",
+      "policy": "honest-rule",
+      "date": "2020-02-24",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-24.json",
+      "sha256": "f01306325638b1c23c6676dcf3e606287ba690f761d15f9dc32d67ebe204c626",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-24",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-25.json",
+      "sha256": "b55bd23799ed42c84bdd9d86ce7b87332c723773af5611fec3dffedd0f5dac12",
+      "policy": "honest-rule",
+      "date": "2020-02-25",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-25.json",
+      "sha256": "86b1f6238a338d567057c81fa1448b83ff86daad28c9bbba63e00d08d7058caa",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-25",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-26.json",
+      "sha256": "658e37a5d12ede15a075eb8ce26c6ab9b095b764fa6a2fa628429a4d0166b441",
+      "policy": "honest-rule",
+      "date": "2020-02-26",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-26.json",
+      "sha256": "541b24e6c5188fb26abf177514f81098b4a0123cf126c0999d1360bcb7a79c93",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-26",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-27.json",
+      "sha256": "62d6d7ac4dcce38cf39c3ec65aacadc6a3b256ca89f7abc01b45af01c990abd3",
+      "policy": "honest-rule",
+      "date": "2020-02-27",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-27.json",
+      "sha256": "32f0e881e10069286e00114bb293d257c9ba23a39a4f63e22f09996e0f6a9735",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-27",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/honest-rule-2020-02-28.json",
+      "sha256": "42c9a3709db4ad0b78d303dc09fa15694c3afd7a2e885aa1c6de363ee1e1432f",
+      "policy": "honest-rule",
+      "date": "2020-02-28",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    },
+    {
+      "file": "examples/external/skips-evening-refill-2020-02-28.json",
+      "sha256": "6182da5c02eeadefed4db005347747ca1c430e423c90378b83e3834ae6015917",
+      "policy": "skips-evening-refill",
+      "date": "2020-02-28",
+      "methodSha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+      "sourceHash": "21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
+    }
+  ]
+}

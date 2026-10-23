@@ -1,0 +1,11 @@
+TIER 1 PASS — 23 October 2026, before Saturday checkpoint.
+Commands: node scripts/evaluate-comparisons.mjs; node scripts/present-results.mjs;
+node --test tests/external.test.mjs tests/external-ui.test.mjs tests/comparison.test.mjs
+(9 passed); node --test tests/ui.test.mjs tests/external-ui.test.mjs (5 passed);
+node scripts/smoke-external.mjs; npm run smoke; node scripts/present-results.mjs --check.
+Actual default honest acceptance and WaterDebt status-0 refusal, separate labelled
+contracts. Exact transaction calldata checked against uploaded array. Tampered-after-
+attestation actual transaction refused EvidenceMismatch. All 50 fixtures generated
+and hash pinned. Full 50 EVM run not yet claimed. Tier1 external export disabled.
+Evidence: tier1-tests.txt, tier1-experiments.json, data/comparison-evaluation.json,
+data/baseline-calibration.json, examples/external/manifest.json.

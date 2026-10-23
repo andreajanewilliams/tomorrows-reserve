@@ -2,7 +2,11 @@ const $=id=>document.getElementById(id);
 const fmt=(x,d=0)=>Number(x).toLocaleString('en-GB',{minimumFractionDigits:d,maximumFractionDigits:d});
 const dateLabel=d=>new Date(d+'T12:00Z').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric',timeZone:'UTC'});
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-let meta,sim,mode='safe',busy=false;
+let meta,sim,mode='safe',busy=false,revision=0,simulationKey=null;
+const inputKey=()=>JSON.stringify({...options(),mode});
+function invalidateProof(){revision++;$('proof-result').hidden=true;$('proof-result').innerHTML='';$('attack-output').innerHTML='';}
+function invalidateInputs(){invalidateProof();simulationKey=null;$('prove').disabled=true;document.querySelector('.workspace').hidden=true;document.querySelector('.below-grid').hidden=true;}
+const current=(rev,key)=>revision===rev&&inputKey()===key;
 async function api(path,body){const r=await fetch(path,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:undefined);const result=await r.json();if(!r.ok)throw new Error(result.error);return result;}
 function notice(text){$('notice').hidden=!text;$('notice').textContent=text||'';}
 function view(name){document.querySelector('.hero').hidden=name==='hydraulics';for(const el of document.querySelectorAll('.view'))el.hidden=el.id!==name;for(const b of document.querySelectorAll('.nav'))b.classList.toggle('active',b.dataset.view===name);}
@@ -10,15 +14,16 @@ document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>view(b.dataset
 const options=()=>({date:$('day').value,shockPercent:Number($('shock').value),reserveM3:Number($('reserve').value)});
 function setBusy(value){busy=value;document.querySelectorAll('#prove,#recalculate,#day,#shock,#reserve,#safe-mode,#naive-mode,.attack-card').forEach(b=>b.disabled=value);}
 async function recalculate(){
- if(busy)return;setBusy(true);notice('');
- try{sim=await api('/api/simulate',options());$('proof-result').hidden=true;render();}
- catch(e){notice(e.message);}finally{setBusy(false);if(sim&&!sim.feasible)$('prove').disabled=true;}
+ invalidateInputs();if(busy)return;setBusy(true);notice('');
+ const rev=revision,key=inputKey(),request=options();
+ try{const result=await api('/api/simulate',request);if(!current(rev,key))return;sim=result;simulationKey=JSON.stringify(request);document.querySelector('.workspace').hidden=!result.feasible;document.querySelector('.below-grid').hidden=!result.feasible;render();}
+ catch(e){if(current(rev,key))notice(e.message);}finally{setBusy(false);$('prove').disabled=!sim?.feasible||simulationKey!==JSON.stringify(options());}
 }
 $('recalculate').onclick=recalculate;
 $('day').onchange=recalculate;$('reserve').onchange=recalculate;
-$('shock').oninput=()=>{$('shock-value').textContent=$('shock').value+'%';};
+$('shock').oninput=()=>{invalidateInputs();$('shock-value').textContent=$('shock').value+'%';};
 $('shock').onchange=recalculate;
-function setMode(name){if(busy)return;mode=name;$('safe-mode').classList.toggle('selected',name==='safe');$('naive-mode').classList.toggle('selected',name==='naive');$('safe-mode').setAttribute('aria-pressed',name==='safe');$('naive-mode').setAttribute('aria-pressed',name==='naive');render();}
+function setMode(name){invalidateProof();mode=name;$('safe-mode').classList.toggle('selected',name==='safe');$('naive-mode').classList.toggle('selected',name==='naive');$('safe-mode').setAttribute('aria-pressed',name==='safe');$('naive-mode').setAttribute('aria-pressed',name==='naive');render();}
 $('safe-mode').onclick=()=>setMode('safe');$('naive-mode').onclick=()=>setMode('naive');$('show-naive').onclick=()=>{setMode('naive');document.querySelector('.stage').scrollIntoView({behavior:'smooth',block:'center'});};
 const linePath=(values,width,height,min,max,left=42,top=10)=>values.map((v,i)=>`${i?'L':'M'}${(left+i*(width-left-15)/(values.length-1)).toFixed(2)},${(top+(height-top-25)*(1-(v-min)/(max-min))).toFixed(2)}`).join(' ');
 function storageChart(data){
@@ -65,24 +70,26 @@ function render(){
  $('verdict').innerHTML=d.eligible?'The whole day.<br> Accounted for.':'This claim<br> doesn’t add up.';
  $('verdict-copy').textContent=d.eligible?'The simulated operation passes every accounting gate. Send the evidence to Solidity for an independent recomputation.':'An attractive carbon number is insufficient. This schedule fails one or more operating or comparison requirements.';
  const codes=d.violations.map(v=>v.code);
- $('checks').innerHTML=check(!codes.some(v=>['PUMP_LIMIT','BASELINE_INFEASIBLE','RESERVE_BREACH','TANK_OVERFLOW'].includes(v)),'Water service preserved',`Minimum ${fmt(d.minStorageM3)} / required ${fmt(sim.policy.reserveM3)} m³`)+check(!codes.includes('TERMINAL_MISMATCH'),'No water borrowed from tomorrow',`End ${fmt(d.finalStorageM3)} / start ${fmt(sim.policy.initialM3)} m³`)+check(d.savingKg>0,'Complete-window carbon benefit',`All 24 hours at ${sim.policy.energyWhPerM3/1000} kWh/m³`)+check(true,'Source and model traceable','Raw data + model version bound to evidence');
+ $('checks').innerHTML=check(!codes.some(v=>['PUMP_LIMIT','BASELINE_INFEASIBLE','RESERVE_BREACH','TANK_OVERFLOW'].includes(v)),'Hourly model constraints met',`Minimum ${fmt(d.minStorageM3)} / required ${fmt(sim.policy.reserveM3)} m³`)+check(!codes.includes('TERMINAL_MISMATCH'),'No water borrowed from tomorrow',`End ${fmt(d.finalStorageM3)} / start ${fmt(sim.policy.initialM3)} m³`)+check(d.savingKg>0,'Complete-window carbon benefit',`All 24 hours at ${sim.policy.energyWhPerM3/1000} kWh/m³`)+check(true,'Source and model traceable','Raw data + model version bound to evidence');
  $('baseline').textContent=fmt(d.baselineKg)+' kg CO₂';$('operated').textContent=fmt(d.emissionsKg)+' kg CO₂';
  $('correction').textContent=fmt(sim.adjustmentsM3.reduce((a,b)=>a+Math.abs(b),0))+' m³ schedule adjustments';
  $('prove').textContent=mode==='naive'?'Test this invalid claim ↗':'Verify on local chain ↗';
 }
 function proofBox(proof){return `<div class="proof-box"><p><strong>${proof.accepted?'✓ Receipt issued':'× Contract rejected: '+escape(proof.reason)}</strong></p><p>${proof.reused?'Existing receipt for this day. Change the replay day to create another.':'Executed on local chain 31337.'}</p><div class="hash">${escape(proof.evidenceDigest)}</div><a href="/api/export/${encodeURIComponent(proof.id)}" download>Download evidence bundle ↓</a></div>`;}
 $('prove').onclick=async()=>{
- if(busy)return;setBusy(true);notice('');$('prove').textContent='Executing contract…';
- try{const p=await api('/api/prove',{...options(),attack:mode==='naive'?'naive':'none'});$('proof-result').innerHTML=proofBox(p);$('proof-result').hidden=false;}
- catch(e){notice(e.message);}finally{setBusy(false);render();}
+ if(busy||simulationKey!==JSON.stringify(options()))return;invalidateProof();setBusy(true);notice('');$('prove').textContent='Executing contract…';
+ const rev=revision,key=inputKey(),request={...options(),attack:mode==='naive'?'naive':'none'};
+ try{const p=await api('/api/prove',request);if(!current(rev,key))return;$('proof-result').innerHTML=proofBox(p);$('proof-result').hidden=false;}
+ catch(e){if(current(rev,key))notice(e.message);}finally{setBusy(false);render();$('prove').disabled=!sim?.feasible||simulationKey!==JSON.stringify(options());}
 };
 const messages={WaterDebt:'The terminal water balance is short. The attractive carbon figure cannot earn a receipt.',ReserveBreach:'A required hourly reserve was breached. Low electricity use does not establish a valid operation.',EvidenceMismatch:'The submitted measurements no longer match the auditor’s committed evidence.',AlreadySettled:'This asset and operating day already have a receipt. A second settlement is blocked.'};
 document.querySelectorAll('[data-attack]').forEach(button=>button.onclick=async()=>{
- if(busy)return;setBusy(true);notice('');$('attack-output').innerHTML='<h3>Executing the adversarial transaction…</h3><p>Deploy → commit → attest → attempt settlement.</p>';
+ if(busy)return;invalidateProof();const rev=revision,key=inputKey();setBusy(true);notice('');$('attack-output').innerHTML='<h3>Executing the adversarial transaction…</h3><p>Deploy → commit → attest → attempt settlement.</p>';
  try{
   const p=await api('/api/prove',{date:meta.benchmark.days.find(d=>d.eligible).date,attack:button.dataset.attack});
+  if(!current(rev,key))return;
   $('attack-output').innerHTML=`<span class="panel-number">REAL LOCAL EVM RESULT</span><h3 class="rejection">${escape(p.reason||'Unexpected acceptance')}</h3><p>${escape(messages[p.reason]||'The contract evaluated this evidence against its fixed policy.')}</p><ol class="trace">${p.steps.map((s,i)=>`<li><b>${i+1}</b><span>${escape(s.step)}<br><small>Block ${s.block}${s.status===0?' · status 0 (reverted)':''}</small></span><code>${s.tx}</code></li>`).join('')}</ol>${proofBox(p)}`;
- }catch(e){notice(e.message);$('attack-output').textContent=e.message;}finally{setBusy(false);}
+ }catch(e){if(current(rev,key)){notice(e.message);$('attack-output').textContent=e.message;}}finally{setBusy(false);$('prove').disabled=!sim?.feasible||simulationKey!==JSON.stringify(options());}
 });
 function renderEvidence(){
  const r=meta.model,t=r.metrics.test,improvement=(1-t.maeM3/t.weeklyBaselineMaeM3)*100,b=meta.benchmark,v=meta.replication;

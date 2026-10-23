@@ -1,0 +1,250 @@
+
+> pumpproof@0.1.0 test
+> node --test tests/*.test.mjs
+
+TAP version 13
+# Subtest: integer accounting preserves gram floor distinction and positive subgram benefits
+ok 1 - integer accounting preserves gram floor distinction and positive subgram benefits
+  ---
+  duration_ms: 93.159041
+  ...
+# Subtest: actual EVM honours litre/gram boundaries, overflow, missing commitments and duplicate settlement
+ok 2 - actual EVM honours litre/gram boundaries, overflow, missing commitments and duplicate settlement
+  ---
+  duration_ms: 26575.437709
+  ...
+# Subtest: constructor forbids one address controlling both declared roles
+ok 3 - constructor forbids one address controlling both declared roles
+  ---
+  duration_ms: 175.7625
+  ...
+# Subtest: export can be independently recomputed and altered receipts are rejected
+ok 4 - export can be independently recomputed and altered receipts are rejected
+  ---
+  duration_ms: 23894.315416
+  ...
+# Subtest: native calibration reproduces frozen model margins on historical cohort
+ok 5 - native calibration reproduces frozen model margins on historical cohort
+  ---
+  duration_ms: 9707.977083
+  ...
+# Subtest: all 50 generated traces are source/method pinned and accounting remains unaltered
+ok 6 - all 50 generated traces are source/method pinned and accounting remains unaltered
+  ---
+  duration_ms: 580.269917
+  ...
+# Subtest: report retains every policy/day and failed surplus and carbon-only cases
+ok 7 - report retains every policy/day and failed surplus and carbon-only cases
+  ---
+  duration_ms: 6.637209
+  ...
+# Subtest: contract state machine enforces source integrity, roles and accounting
+    # Subtest: valid evidence executes and matches the independent arithmetic
+    ok 1 - valid evidence executes and matches the independent arithmetic
+      ---
+      duration_ms: 11003.524666
+      ...
+    # Subtest: one asset/day cannot settle or commit twice
+    ok 2 - one asset/day cannot settle or commit twice
+      ---
+      duration_ms: 4474.738375
+      ...
+    # Subtest: overlapping non-aligned operating windows are forbidden
+    ok 3 - overlapping non-aligned operating windows are forbidden
+      ---
+      duration_ms: 330.708875
+      ...
+    # Subtest: only designated operator and auditor can make transitions
+    ok 4 - only designated operator and auditor can make transitions
+      ---
+      duration_ms: 526.894625
+      ...
+    # Subtest: unattested evidence cannot settle and attestations cannot be replaced
+    ok 5 - unattested evidence cannot settle and attestations cannot be replaced
+      ---
+      duration_ms: 652.240834
+      ...
+    # Subtest: changed evidence causes an actual status-0 transaction
+    ok 6 - changed evidence causes an actual status-0 transaction
+      ---
+      duration_ms: 617.244042
+      ...
+    # Subtest: terminal water debt is independently rejected
+    ok 7 - terminal water debt is independently rejected
+      ---
+      duration_ms: 1645.58775
+      ...
+    # Subtest: emptying the reserve is rejected
+    ok 8 - emptying the reserve is rejected
+      ---
+      duration_ms: 872.881958
+      ...
+    # Subtest: no improvement cannot earn a carbon receipt
+    ok 9 - no improvement cannot earn a carbon receipt
+      ---
+      duration_ms: 1286.479875
+      ...
+    # Subtest: terminal overfilling is rejected, keeping the comparison like-for-like
+    ok 10 - terminal overfilling is rejected, keeping the comparison like-for-like
+      ---
+      duration_ms: 999.188833
+      ...
+    # Subtest: pump capacity cannot be bypassed by otherwise signed data
+    ok 11 - pump capacity cannot be bypassed by otherwise signed data
+      ---
+      duration_ms: 295.652625
+      ...
+    # Subtest: evidence hash is bound to the specific contract
+    ok 12 - evidence hash is bound to the specific contract
+      ---
+      duration_ms: 363.003666
+      ...
+    # Subtest: all development and replication days agree between JavaScript and actual EVM execution
+    ok 13 - all development and replication days agree between JavaScript and actual EVM execution
+      ---
+      duration_ms: 43976.32325
+      ...
+    1..13
+ok 8 - contract state machine enforces source integrity, roles and accounting
+  ---
+  duration_ms: 74872.319125
+  ...
+# Subtest: exported runtime model matches Python reference predictions on every replay hour
+ok 9 - exported runtime model matches Python reference predictions on every replay hour
+  ---
+  duration_ms: 215.248792
+  ...
+# Subtest: model and raw measurement hashes match reproducibility manifest
+ok 10 - model and raw measurement hashes match reproducibility manifest
+  ---
+  duration_ms: 8.116333
+  ...
+# Subtest: every pinned source file matches its provenance hash
+ok 11 - every pinned source file matches its provenance hash
+  ---
+  duration_ms: 11.131208
+  ...
+# Subtest: replication includes the negative 24 February result and withholds its receipt
+ok 12 - replication includes the negative 24 February result and withholds its receipt
+  ---
+  duration_ms: 685.727708
+  ...
+# Subtest: forecaster improves over weekly persistence on chronological held-out test
+ok 13 - forecaster improves over weekly persistence on chronological held-out test
+  ---
+  duration_ms: 0.217167
+  ...
+# Subtest: default operation serves demand, restores storage and conserves every litre
+ok 14 - default operation serves demand, restores storage and conserves every litre
+  ---
+  duration_ms: 10.123458
+  ...
+# Subtest: short-sighted apparent saving is rejected for water debt
+ok 15 - short-sighted apparent saving is rejected for water debt
+  ---
+  duration_ms: 53.099208
+  ...
+# Subtest: severe demand shock cannot receive an accounting pass
+ok 16 - severe demand shock cannot receive an accounting pass
+  ---
+  duration_ms: 11.220333
+  ...
+# Subtest: causal replay never inspects future actual demand
+ok 17 - causal replay never inspects future actual demand
+  ---
+  duration_ms: 34.12825
+  ...
+# Subtest: infeasible forecast yields no schedule, not an invented feasible plan
+ok 18 - infeasible forecast yields no schedule, not an invented feasible plan
+  ---
+  duration_ms: 1.206375
+  ...
+# Subtest: linear schedule respects capacity and full-day equality
+ok 19 - linear schedule respects capacity and full-day equality
+  ---
+  duration_ms: 0.970917
+  ...
+# Subtest: invalid inputs are rejected before optimisation
+ok 20 - invalid inputs are rejected before optimisation
+  ---
+  duration_ms: 0.621
+  ...
+# Subtest: benchmark retains every eligible source date and records failures
+ok 21 - benchmark retains every eligible source date and records failures
+  ---
+  duration_ms: 390.879167
+  ...
+# Subtest: v3 accepted and refused bundles reproduce; every changed signed claim fails
+ok 22 - v3 accepted and refused bundles reproduce; every changed signed claim fails
+  ---
+  duration_ms: 28014.576333
+  ...
+# Subtest: external edits invalidate preview/proof immediately; late previews and proof cannot return
+ok 23 - external edits invalidate preview/proof immediately; late previews and proof cannot return
+  ---
+  duration_ms: 363.792292
+  ...
+# Subtest: example selection and upload start remove proof before reading the file
+ok 24 - example selection and upload start remove proof before reading the file
+  ---
+  duration_ms: 3.454917
+  ...
+# Subtest: external input rejects unknown fields, dates, units and malformed integer arrays
+ok 25 - external input rejects unknown fields, dates, units and malformed integer arrays
+  ---
+  duration_ms: 8.069917
+  ...
+# Subtest: preview retains exact integers, every violation, immutable caller input and no model claim
+ok 26 - preview retains exact integers, every violation, immutable caller input and no model claim
+  ---
+  duration_ms: 334.273708
+  ...
+# Subtest: exact imported evidence is committed and actual changed-after-attestation transaction refuses
+ok 27 - exact imported evidence is committed and actual changed-after-attestation transaction refuses
+  ---
+  duration_ms: 19135.633208
+  ...
+# Subtest: honest acceptance and WaterDebt refusal execute exact calldata in separate labelled contracts
+ok 28 - honest acceptance and WaterDebt refusal execute exact calldata in separate labelled contracts
+  ---
+  duration_ms: 4010.209958
+  ...
+# Subtest: hydraulic snapshot binds the data, network and executable replay
+ok 29 - hydraulic snapshot binds the data, network and executable replay
+  ---
+  duration_ms: 41.277083
+  ...
+# Subtest: changed results cannot be served with an unchanged evidence manifest
+ok 30 - changed results cannot be served with an unchanged evidence manifest
+  ---
+  duration_ms: 120.138042
+  ...
+# Subtest: runtime refuses changed model or source bytes under stale provenance
+ok 31 - runtime refuses changed model or source bytes under stale provenance
+  ---
+  duration_ms: 250.370167
+  ...
+# Subtest: actual UI handlers clear proof/export on mode, slider and failed date/reserve changes
+ok 32 - actual UI handlers clear proof/export on mode, slider and failed date/reserve changes
+  ---
+  duration_ms: 1212.213083
+  ...
+# Subtest: late proof cannot restore an export even after returning to original inputs
+ok 33 - late proof cannot restore an export even after returning to original inputs
+  ---
+  duration_ms: 310.213542
+  ...
+# Subtest: late simulation cannot authorise proving after an input change
+ok 34 - late simulation cannot authorise proving after an input change
+  ---
+  duration_ms: 19.270917
+  ...
+1..34
+# tests 47
+# suites 0
+# pass 47
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 77786.318584

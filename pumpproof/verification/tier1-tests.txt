@@ -1,0 +1,55 @@
+TAP version 13
+# Subtest: native calibration reproduces frozen model margins on historical cohort
+ok 1 - native calibration reproduces frozen model margins on historical cohort
+  ---
+  duration_ms: 5653.021166
+  ...
+# Subtest: all 50 generated traces are source/method pinned and accounting remains unaltered
+ok 2 - all 50 generated traces are source/method pinned and accounting remains unaltered
+  ---
+  duration_ms: 70.904791
+  ...
+# Subtest: report retains every policy/day and failed surplus and carbon-only cases
+ok 3 - report retains every policy/day and failed surplus and carbon-only cases
+  ---
+  duration_ms: 8.299791
+  ...
+# Subtest: external edits invalidate preview/proof immediately; late previews and proof cannot return
+ok 4 - external edits invalidate preview/proof immediately; late previews and proof cannot return
+  ---
+  duration_ms: 106.993416
+  ...
+# Subtest: example selection and upload start remove proof before reading the file
+ok 5 - example selection and upload start remove proof before reading the file
+  ---
+  duration_ms: 3.28725
+  ...
+# Subtest: external input rejects unknown fields, dates, units and malformed integer arrays
+ok 6 - external input rejects unknown fields, dates, units and malformed integer arrays
+  ---
+  duration_ms: 2.749
+  ...
+# Subtest: preview retains exact integers, every violation, immutable caller input and no model claim
+ok 7 - preview retains exact integers, every violation, immutable caller input and no model claim
+  ---
+  duration_ms: 66.840208
+  ...
+# Subtest: exact imported evidence is committed and actual changed-after-attestation transaction refuses
+ok 8 - exact imported evidence is committed and actual changed-after-attestation transaction refuses
+  ---
+  duration_ms: 2519.58075
+  ...
+# Subtest: honest acceptance and WaterDebt refusal execute exact calldata in separate labelled contracts
+ok 9 - honest acceptance and WaterDebt refusal execute exact calldata in separate labelled contracts
+  ---
+  duration_ms: 1185.589458
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10834.596

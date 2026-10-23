@@ -2,7 +2,9 @@ import fs from 'node:fs';
 import {randomUUID} from 'node:crypto';
 import ganache from 'ganache';
 import {BrowserProvider,ContractFactory,keccak256,toUtf8Bytes,AbiCoder,id,Wallet} from 'ethers';
-import {provenance} from './engine.mjs';
+import {inputs} from './inputs.mjs';
+const {provenance}=inputs;
+import {sealExternal} from './external-envelope.mjs';
 import {LIMITATIONS,sealBundle} from './envelope.mjs';
 
 const artifact=JSON.parse(fs.readFileSync(new URL('../data/contract.json',import.meta.url)));
@@ -28,7 +30,7 @@ export async function createChain(){
       litre(policy.initialM3),litre(policy.reserveM3),litre(policy.capacityM3),litre(policy.pumpMaxM3),Math.round(policy.energyWhPerM3));
     await contract.waitForDeployment();return contract;
   }
-  return {rpc,provider,operator,auditor,stranger,deploy,seal:bundle=>sealBundle(bundle,operatorEnvelope,auditorEnvelope),close:()=>rpc.disconnect()};
+  return {rpc,provider,operator,auditor,stranger,deploy,seal:bundle=>sealBundle(bundle,operatorEnvelope,auditorEnvelope),sealExternal:bundle=>sealExternal(bundle,operatorEnvelope,auditorEnvelope),close:()=>rpc.disconnect()};
 }
 
 export function digestOffline(bundle){

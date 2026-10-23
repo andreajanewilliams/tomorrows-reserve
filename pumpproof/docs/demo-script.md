@@ -1,3 +1,5 @@
+> Historical 18 October document. Current positioning, results and recording instructions are in `docs/submission/`; this document is preserved as context and is not the submission script.
+
 # Four-minute demo and pitch
 
 Working title: **PumpProof — Every litre. Less carbon.**
