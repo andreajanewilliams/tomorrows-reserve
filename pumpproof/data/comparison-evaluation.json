@@ -7,7 +7,7 @@
     "src/calibration.mjs": "d1aaf641481c719cb85d4aaeb275d6459aebe277afbf29d900c507708a3395ef",
     "src/engine.mjs": "44e611fdad2254e1bce107e70562ff4008b07b846a87acd229a12035bae259b4",
     "src/accounting.mjs": "3ee124f09fc3eda9d250d62085839255bd86d45b018ac7ecc01623dc34fda044",
-    "scripts/evaluate-comparisons.mjs": "9251244f165b80c4516564ca6a1f21a769b55b9fd7ccd7b96be0bb9c4c3cda94"
+    "scripts/evaluate-comparisons.mjs": "578d5dec5a7730370b39dbfbe19f78fd13b420d416ef3232e74807407d3ade77"
   },
   "cohort": [
     "2020-02-04",
@@ -544,7 +544,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x07172a322f476e1cfb6d443303cbb20e14137e19e9ee605df513c17375fc65a2",
+      "inputDigest": "0xdf8145cf08698c2fa1822075a03203b840dbcefb3e37e61ccabdadc1be312e35",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -669,7 +669,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xdcc879644aedfe18b0d12b0c6545fc9216f9f3d338017e39f62a5745e7d6cac4",
+      "inputDigest": "0xcdaa98caa54ee4ebbe6c73956df62d7b8d6e82b45cf0711628706e0a77cb8604",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -794,17 +794,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x268fe2fc274089f5d395ae7e0a3ac23e0e6630ff4c6deb6bbf85448bf41632ca",
+      "inputDigest": "0x8395cc3e4fa48257911481a83f6ab7e7c78bc9a45cd64f326b8d87a85891dbf7",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-04",
         "policy": "honest-rule",
-        "inputDigest": "0x268fe2fc274089f5d395ae7e0a3ac23e0e6630ff4c6deb6bbf85448bf41632ca",
-        "contract": "0x639942F2768e8C73c163E55f945Cf2c1A00033E8",
+        "inputDigest": "0x8395cc3e4fa48257911481a83f6ab7e7c78bc9a45cd64f326b8d87a85891dbf7",
+        "contract": "0xDf56EaE46fC0DDBF5AB8FD717988411f6d1716cc",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0xc36af5d0b44bdf370da01ce43e9d26fcf36d9692907ce04fca6beea81abaca2b",
+        "transaction": "0x851235c774e0769948d3714f2e76f6f3496fc32c737f40acd7df18d387f4e9e1",
         "bundle": "examples/evidence/honest-rule-2020-02-04.json"
       }
     },
@@ -931,17 +931,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x3e53bd930c4bd58131b9484af0ba5edf5cb62d286551b8f16d47d6bc6fd69f51",
+      "inputDigest": "0x88519e7f2ff525e2f7e2f8d8152c43045e27ba033e816ef36e2a9d827f49c75e",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-04",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x3e53bd930c4bd58131b9484af0ba5edf5cb62d286551b8f16d47d6bc6fd69f51",
-        "contract": "0x4b60A14dC3BA6559c06c9FcA093045C6fACeEeBB",
+        "inputDigest": "0x88519e7f2ff525e2f7e2f8d8152c43045e27ba033e816ef36e2a9d827f49c75e",
+        "contract": "0xFa37F4B93e08fA0A472d2A1e51DFE133C1392E40",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0x98abeebe1d14bf7b7d3f4f865f3efcd9e36a2235ade690a268494e087a1d90f3",
+        "transaction": "0x0a6e1a04444937144574086f2bbc13cf1217fbf7d33f2985df9b1776886fe725",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-04.json"
       }
     },
@@ -1063,7 +1063,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xa6881805b7c7067a97b1e06501e2ffe01f7cd0ae2856301834be47c7dd3a1ff4",
+      "inputDigest": "0x8357eb430d7d7f1c57aac3dc06fd2e7a4c2c627785377dbb3e31ab77f160de24",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -1188,7 +1188,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x85f33d93327ac64f91698f4933d183df16c885f16d2854400045c4c915d3a0a7",
+      "inputDigest": "0x8a7d3e1b180bebc97ec8afb9e4ae329c91d8489fb36c9e874a44e7de879b7d7c",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -1313,17 +1313,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x6e5068c78af2c2a61739915e732585edb3ec989f4eac9993c9722a76ce302e2e",
+      "inputDigest": "0xd60ede51c0dce736cbf606f54982fa767d3bda3ffc883efe828a428bd7d95ff3",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-05",
         "policy": "honest-rule",
-        "inputDigest": "0x6e5068c78af2c2a61739915e732585edb3ec989f4eac9993c9722a76ce302e2e",
-        "contract": "0xCA86F559dB43af28A0e038ABC6d4A0AD40AB2e6c",
+        "inputDigest": "0xd60ede51c0dce736cbf606f54982fa767d3bda3ffc883efe828a428bd7d95ff3",
+        "contract": "0xBA6650A95f80b83eE39DBD9226FBbd39C24dcDB6",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0x90794c7fcaf9880bd7c7febf20dd42d88fa5bf330e6fd403a6545a3350d9644b",
+        "transaction": "0xeddd710a315cb4b72742b5ece87006f153fed65bbbaa0b0c9f8be1d6dfbdd404",
         "bundle": "examples/evidence/honest-rule-2020-02-05.json"
       }
     },
@@ -1450,17 +1450,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x63107e352b9aa5ba56809b3e28b1ea5b32c52327b9eec7d518747c792786f692",
+      "inputDigest": "0xaa355306177ec097f1015b8295331cc7300c135ff16b8d7403acb889a6116f9d",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-05",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x63107e352b9aa5ba56809b3e28b1ea5b32c52327b9eec7d518747c792786f692",
-        "contract": "0x284a43E296A7071D00C2D724C63954706634D4cF",
+        "inputDigest": "0xaa355306177ec097f1015b8295331cc7300c135ff16b8d7403acb889a6116f9d",
+        "contract": "0xBb47CaA97f1F7bFe0Ff350D9a4F6C5F71Ea0b465",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0xd78bf5b6ba558dd08ec864f06dcc1788a96b4e6eb476ce644be7532fd17b6870",
+        "transaction": "0x2bcb41cb7611a5993cf2a92a418450fad132cb68c63d850ca0324ea2b4ae3d61",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-05.json"
       }
     },
@@ -1582,7 +1582,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x43aaee09bbf5de0358365cbd02d9acd2cd2b0294940464de68fc4d0b24382fc1",
+      "inputDigest": "0x9274765fb0f0471b7a4d3a20478a6cc7eabed990d29929fa37bfaedff98d884e",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -1707,7 +1707,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xf2a753aea86471219cd5b996db999d51904ec1f7b455eddf66e573ddca0c1725",
+      "inputDigest": "0x54a7fe3783a9cbe6d3ef239bbb0f157317f277fe94325ee6fa883894d03392f2",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -1832,17 +1832,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x802928f2490ac2b715ff2a13dd4a7311e5892b7aff767e43671ae65eaa82e8f5",
+      "inputDigest": "0xb3c3197d00a74b725fd5ba7ed571923faeecee9b235681660691717e1518ae17",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-06",
         "policy": "honest-rule",
-        "inputDigest": "0x802928f2490ac2b715ff2a13dd4a7311e5892b7aff767e43671ae65eaa82e8f5",
-        "contract": "0xfc024Cfd7988d21F5Ea2FB3d21f5533712D54897",
+        "inputDigest": "0xb3c3197d00a74b725fd5ba7ed571923faeecee9b235681660691717e1518ae17",
+        "contract": "0xd60d75b383201c2352400AE687Fd2Ec34615c449",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0xe3da015306a2cda681bc553d268b76c5a00b7d2e5d17185ea66f9ae22e72613a",
+        "transaction": "0xe329e5a4a39f74e76bc2b4f5e30338027d9c18b7c3866def163cb19c2fdde5b7",
         "bundle": "examples/evidence/honest-rule-2020-02-06.json"
       }
     },
@@ -1969,17 +1969,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x606e6c350ff974f4e662dcb2e886892b56a5040e28364389a7c65b8132729f5e",
+      "inputDigest": "0x155248bf3dbf72290d3dff916827dc3bb2d5fa29744bfbff270631b1cbab84be",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-06",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x606e6c350ff974f4e662dcb2e886892b56a5040e28364389a7c65b8132729f5e",
-        "contract": "0x61D92BC034D2C5637e111F0B138e8A1fb3a40cB1",
+        "inputDigest": "0x155248bf3dbf72290d3dff916827dc3bb2d5fa29744bfbff270631b1cbab84be",
+        "contract": "0x2Fb8323d69637F996c6F3a9e526e08Cd66e41d86",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0xde45a9c4cb92ba0cfb73632fab8f9367753c76e70dff70da4313a0a9bb9bdb1d",
+        "transaction": "0x8f8c8af73777ef316809c7c2cc714ecd76c2cd1801a4695ed48f6d88efca36f2",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-06.json"
       }
     },
@@ -2101,7 +2101,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xe3abac42b043282e36b0c72f300a2b48d5c810f694efb3b2a56bb6853d2c82e5",
+      "inputDigest": "0x5e73c657ceab870a022159ebab54ae97213a2ccf9e02e386cfbc9b592feea51d",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -2226,7 +2226,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xfa487109e39254fe2b86713ee7cfcb79e8dd02ea7dec11a1b31d24a7e1d0268c",
+      "inputDigest": "0x77ad277877fd81c01d27aa75267a0d396e73362423586ce0428e32729360c5d6",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -2351,17 +2351,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x08710c21b7f23921fb9bae1052bb1a4b9095ee51ec14e40934b55c4d9d2ea9f8",
+      "inputDigest": "0xba659110fd4f31629c8b2ef9ef2f7316c892f5b74665f1752df9263eb1312094",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-07",
         "policy": "honest-rule",
-        "inputDigest": "0x08710c21b7f23921fb9bae1052bb1a4b9095ee51ec14e40934b55c4d9d2ea9f8",
-        "contract": "0xF39CC4139632D5b2166f71f702Ce91174116B80f",
+        "inputDigest": "0xba659110fd4f31629c8b2ef9ef2f7316c892f5b74665f1752df9263eb1312094",
+        "contract": "0xEdF2F6BF902952F59515BaF6973af56cc5BEd28c",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0xa3029f74f86129b98a283817dd42fabd488ab96a2153c02e6d819b5fde0167ec",
+        "transaction": "0xc79a4e176064aa8e7298f2e6a032f5e24077a915293e6340ee7942fb79422cf5",
         "bundle": "examples/evidence/honest-rule-2020-02-07.json"
       }
     },
@@ -2488,17 +2488,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x8e1bb2e0e75f254f63a3a4d2d78c63919b94e91a1801c440ea3119640079d7a9",
+      "inputDigest": "0x9ffb0918993172196a1569173f87948775da483fe50b39588b7eb1c13f11ba32",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-07",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x8e1bb2e0e75f254f63a3a4d2d78c63919b94e91a1801c440ea3119640079d7a9",
-        "contract": "0x83212d0670156080a83b5DbA5528395da11c4005",
+        "inputDigest": "0x9ffb0918993172196a1569173f87948775da483fe50b39588b7eb1c13f11ba32",
+        "contract": "0xe7C5b5AcED3eB862AC9951DAAD4067c93A11f553",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0x584cfd4468c47797f2fd7842320b21b8d15d2a9c4e9906c42c706aa9db6cb599",
+        "transaction": "0x09dedcdc4219a463a0e044c2a58a60da4648269a252752b3d93d5e5858fdbe22",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-07.json"
       }
     },
@@ -2620,7 +2620,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x24b17f5de5d55f5efbc6a434378d2946e2ba24c938c17883e6d5ed04432bb8b8",
+      "inputDigest": "0x142fa942ce91febaf684c9e6f5aa03515446820fce3d0f871a00813252f333dc",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -2745,7 +2745,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xeb0b597e031f567f88afca0bc5debb0340fdaf7ba5e176fd91e3edd79a8c8bdb",
+      "inputDigest": "0x45fb9388bd32a1fab2612204edc63dd43804431d649242b1376f5835a6d69756",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -2870,17 +2870,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x93c8df990f4d1f9da4cffcad6ca855c6f888c075cfd009e97a1c364c3de6e177",
+      "inputDigest": "0xe8161b7512e099a007442983e0e27e158304c1dce2fa93d2e4340626d5c4c7c2",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-08",
         "policy": "honest-rule",
-        "inputDigest": "0x93c8df990f4d1f9da4cffcad6ca855c6f888c075cfd009e97a1c364c3de6e177",
-        "contract": "0x1776bf6d7a7B0E06e8fFe9Bef39a610B467B727B",
+        "inputDigest": "0xe8161b7512e099a007442983e0e27e158304c1dce2fa93d2e4340626d5c4c7c2",
+        "contract": "0xc749F5dD1856722cd9871FF0C7c39837904F66F9",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0xcf6a987a16f59e3dd6d6733ea36125143e356bb8adafec1098606a7d1315c3c6",
+        "transaction": "0x30c007cfebaf76cf544af9d60cfc266152f33a60ea9c68f5ae620ce8d1e7c392",
         "bundle": "examples/evidence/honest-rule-2020-02-08.json"
       }
     },
@@ -3007,17 +3007,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x5931be1f53c12fc3535c2ae8e56850ce331a050c7952246017eb108ba39141f1",
+      "inputDigest": "0xf2a98b82f27e08ff517058a902f8db18bbb6ba1d6730ee38f17008ae13eb80cf",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-08",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x5931be1f53c12fc3535c2ae8e56850ce331a050c7952246017eb108ba39141f1",
-        "contract": "0x2b7c430511C54AE8ae2453d04a4F289f7bCa9cFC",
+        "inputDigest": "0xf2a98b82f27e08ff517058a902f8db18bbb6ba1d6730ee38f17008ae13eb80cf",
+        "contract": "0xbFa45fcBe9DdEa2cfe76B19Ee60EA2dafa90Eef4",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0x46464f56576104c56fa54f1604f07dfccf482c2cbcf5eb9c7ed063352fbeffc1",
+        "transaction": "0xef530b5498c5b4abb409c8d01cd5e2d309da44218e7d8b6b9b2618d1f3007333",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-08.json"
       }
     },
@@ -3139,7 +3139,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xbfa0e52a91e01d65f87691ec18a297647dc9b4c3f79abd94ceaa5ce75a0f007d",
+      "inputDigest": "0x761ef40fee43293e53043f06f442ea8a00609f70cfc2056820b2367db7b90993",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -3264,7 +3264,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xa1aefbd999f2d933bdccb13e55b2e0ca6d4b229089d4b5464f96e2e13156219c",
+      "inputDigest": "0x6f12d969a3570dd76b0e288094598f34b4b29c392bc2f48ce53ba17b7005c4e8",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -3389,17 +3389,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x6dbef2ea2b211944b24d7adec728e3cf70f75181c809324907905486545fa47d",
+      "inputDigest": "0xdae822567c81764e50791f4bc324703529e6f820918438eab2f9d82f48911bef",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-09",
         "policy": "honest-rule",
-        "inputDigest": "0x6dbef2ea2b211944b24d7adec728e3cf70f75181c809324907905486545fa47d",
-        "contract": "0x614C286025ba0964210999105E3ad2E98Db1abc9",
+        "inputDigest": "0xdae822567c81764e50791f4bc324703529e6f820918438eab2f9d82f48911bef",
+        "contract": "0x0Df1e804981e63Bd10B52D4492e4BAB46813b308",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0x135950533026da8f26b16fcdc5838a07c3c079535bd14234017bb56c7603dffe",
+        "transaction": "0xc1da7ee415fd10b19b5a18280464fd4233786e37a3fb9527c4ef65185ecbf992",
         "bundle": "examples/evidence/honest-rule-2020-02-09.json"
       }
     },
@@ -3526,17 +3526,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x9cf4888408e2b9d561d3575a151bb3b2758873e1ab9d6949af28d14223e2c886",
+      "inputDigest": "0x8e072e379c50742f9e3d192ea621742d8bc6c3e4a350954c2d99b9ea365e9fa0",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-09",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x9cf4888408e2b9d561d3575a151bb3b2758873e1ab9d6949af28d14223e2c886",
-        "contract": "0x728db26177cf6AD67BE57d4f9D3c01DfbC1D5ca7",
+        "inputDigest": "0x8e072e379c50742f9e3d192ea621742d8bc6c3e4a350954c2d99b9ea365e9fa0",
+        "contract": "0xA1775F407b8c487CF4242CB7f81D4bA9BF8507dA",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0x08c438aa47a49a69879276489bc8eecfb1c627b826bbc060888585aa027476e5",
+        "transaction": "0xb559a1109ebcc9d6ef87849f879cf157266e8c9c1d871ad0e1965db5ce6d59a9",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-09.json"
       }
     },
@@ -3658,7 +3658,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x4b26b135363c0c4b7bb1901e649a4216c38afe343401b0ab295dfaea6f99026e",
+      "inputDigest": "0x9119c842012a17e67aafc3f36b6e236a14885054b7753a7d87e882570af89997",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -3783,7 +3783,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x19a610a7e778f441a03c778c7412c698bfa246f357c231e08f62b72faaa0d253",
+      "inputDigest": "0x1c6f776e55225c6b3fcc31a784502e4891534eb5b3fbe32e31833b4aeec985da",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -3908,17 +3908,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x4bb326a5c83c00802d9272892003ba71fd3882da7fe306edcbc2b9d87dcfdc21",
+      "inputDigest": "0x9c0991d6900b3a83d69675dd4f333f9f2edbd3fddf35fee0186923225fc6a57d",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-10",
         "policy": "honest-rule",
-        "inputDigest": "0x4bb326a5c83c00802d9272892003ba71fd3882da7fe306edcbc2b9d87dcfdc21",
-        "contract": "0x2cF118Aa935B8d39adF8cA6695DF300A1Ac8a9A5",
+        "inputDigest": "0x9c0991d6900b3a83d69675dd4f333f9f2edbd3fddf35fee0186923225fc6a57d",
+        "contract": "0xf19bC84e229eF68d0cfB520357C5Fba9a8Fc93CB",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0x00a01353706cfaa5bcde06ae9355256e9db0f0ab5b6685ef7b574e263e3f0bd7",
+        "transaction": "0x76ff4a39f406a5bb05b9d25593b180a63bca31bb94c02109aa5b7b246653819c",
         "bundle": "examples/evidence/honest-rule-2020-02-10.json"
       }
     },
@@ -4045,17 +4045,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x74d029a9a2f95f2edc15ce2426abe94542ef358cd5a41b92a1794bc30af77232",
+      "inputDigest": "0x758411a1b8e77268efb700518e1ed4c275b213c42889084aff50d53eebd9b89c",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-10",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x74d029a9a2f95f2edc15ce2426abe94542ef358cd5a41b92a1794bc30af77232",
-        "contract": "0xA1276Bac9228E5fB6939b46216D2bBc7460AdaFC",
+        "inputDigest": "0x758411a1b8e77268efb700518e1ed4c275b213c42889084aff50d53eebd9b89c",
+        "contract": "0xC2485fD749056fAe0a92Eb3df9b0D66eBd05AF1c",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0xa0f73464c938d15c06ebc87182cc532b844bae1d7efbc9d916ae24a931683a0f",
+        "transaction": "0x111d1f61d649c26bbee9d6157f8b7644c161fd71bb2e711aa1ce4895e042d253",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-10.json"
       }
     },
@@ -4177,7 +4177,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x9a091a4d8935a4ef77a271b866a6f276100ea419f6b0a41a7b9a6a2d575a467e",
+      "inputDigest": "0xd49ddce3a81574f9d242fece41f2070eb90bd72194d4374b6455b6e5a4c7b2da",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -4302,7 +4302,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x1cde95bed335352353fd0d1850abd684398310cb3ca67ba9bcbcc93a520891c8",
+      "inputDigest": "0xe4d459a67a64e07d1af7b932c5305170d56f2ec3f6e629ba247a54ae7ca746a2",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -4427,17 +4427,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xe5824aa6cf3358f3fd05e304b68050ae56ad32de93d23f5177f104d277235fb6",
+      "inputDigest": "0x95cd47382af785bb06b4f73849eaf628b74a36c42e4c85324d98437f090b243e",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-11",
         "policy": "honest-rule",
-        "inputDigest": "0xe5824aa6cf3358f3fd05e304b68050ae56ad32de93d23f5177f104d277235fb6",
-        "contract": "0xD5b26e1dcEA098770a0D38adF8110A0Be1adB421",
+        "inputDigest": "0x95cd47382af785bb06b4f73849eaf628b74a36c42e4c85324d98437f090b243e",
+        "contract": "0x0e297CB41575412b548c8EA64e6999501c055a05",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0xf42728456e2527f71d0338b87fe8d4466dac542935e9c6a7d6d3cde6138387cb",
+        "transaction": "0xd6c1a41f7ed5ec010bc4232329b08b2eae5c61956b7e4f02324f60964def59e7",
         "bundle": "examples/evidence/honest-rule-2020-02-11.json"
       }
     },
@@ -4564,17 +4564,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xb76fbc276f9c459206ed9fe0c6baddcdfda26cd998d39f856184706f66fc7953",
+      "inputDigest": "0x4e765c433b07fb616812dd8d406eb232d53717603ecbe63b57933e44c716574f",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-11",
         "policy": "skips-evening-refill",
-        "inputDigest": "0xb76fbc276f9c459206ed9fe0c6baddcdfda26cd998d39f856184706f66fc7953",
-        "contract": "0x836f81C8e5014Dc19870C1BCF2b99B05e586Abab",
+        "inputDigest": "0x4e765c433b07fb616812dd8d406eb232d53717603ecbe63b57933e44c716574f",
+        "contract": "0xe26A4177810b19e3cAD26E32fc7e539403bd2f26",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0xa69e64284e1133d4939ece470f69716d357e154c4e5a4a93d1405e66437d4b25",
+        "transaction": "0x9ad8c6219fd9bbf5e9b80bfbcf5fed3324a210918d1a57b03be4b5763684badf",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-11.json"
       }
     },
@@ -4696,7 +4696,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x568174608f35420931fe7b768776a0fe67d42bfdb22528c1705e7c52a2bed59d",
+      "inputDigest": "0x9a6d548b1bebce52123c7969e57ecafc8b2610b1df382250008ed9d296e6598b",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -4821,7 +4821,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x9b04d1998a7ced3dd40eabd385edad8edfa807fb8fd8ef1c6ca20e9f43e34aa1",
+      "inputDigest": "0xb8fe6e8ce7566decaf373b2d83fae75451861a329ae3d8fd8cc481fb6e2da9e8",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -4946,17 +4946,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x2598da7b38f9a703a13e553b43331f4140fe974930590ebca5d8104f9962a217",
+      "inputDigest": "0x3d0e5f4329df7d190a77667e396c6e4016953e47d920197247fcd38bdee57415",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-12",
         "policy": "honest-rule",
-        "inputDigest": "0x2598da7b38f9a703a13e553b43331f4140fe974930590ebca5d8104f9962a217",
-        "contract": "0x0e5E4b3b98419c37CC61E7E0c0a0cB480f21b64a",
+        "inputDigest": "0x3d0e5f4329df7d190a77667e396c6e4016953e47d920197247fcd38bdee57415",
+        "contract": "0xA00C8AEe0F4Af5B8466fD71c1a2F84481465Ed0C",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0xf667c04fc2e48c953db31b3674eb9c6449cda12c014fbf251fc72d7814e352f7",
+        "transaction": "0xe1adb973cfca4b627e1be56422d87b56b14702a9a519c9f1a73d7dab1abad146",
         "bundle": "examples/evidence/honest-rule-2020-02-12.json"
       }
     },
@@ -5083,17 +5083,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x0cadb1461d6ff9880b633b0bdb6222ab4f3f925ec80dbc1c22c8816abf442f1e",
+      "inputDigest": "0x548876e9a4a7245eb24354e937a05cd83f0e13d04c2ad9c71c5ffba4b168fb14",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-12",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x0cadb1461d6ff9880b633b0bdb6222ab4f3f925ec80dbc1c22c8816abf442f1e",
-        "contract": "0xD61ABD53fDF988D810167761c121CD3bEe7222B7",
+        "inputDigest": "0x548876e9a4a7245eb24354e937a05cd83f0e13d04c2ad9c71c5ffba4b168fb14",
+        "contract": "0xDA98769dE9412f8d481dBa76344f58a1ECA851C3",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0x4e01287e68900125893c1aa74cbba0169a9b58c10e243e727ab1a4e933111716",
+        "transaction": "0xa47e666d642ff7dec973b73cf056e6a19ab6242fdf96c34a96c874dd3aea1523",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-12.json"
       }
     },
@@ -5215,7 +5215,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x62a058bb27d8c5b00a25491f7a7b6769a904c5b6dfccc9996f2455719db7eb58",
+      "inputDigest": "0xa7ddda4c045a5d80f0c60c6f9cfee35af385423840527fea821ceb4e43f39207",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -5340,7 +5340,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x7b64962f5c5cfc26bd7930a12c8ada307d568e937b460f1d6564307c99758db6",
+      "inputDigest": "0x3e8b0b4b231a9a777ddcac8b970afc7bcf3c46428406581bed468cc181dd5166",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -5465,17 +5465,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x02139c0ad7fed57d34859478a163b41fc32fd97511d8313fa0ff29893d1da84c",
+      "inputDigest": "0x82722067f58c3576980ca87e2801e4d4853f6fb3b46647eaf7b417c7574d0f4b",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-13",
         "policy": "honest-rule",
-        "inputDigest": "0x02139c0ad7fed57d34859478a163b41fc32fd97511d8313fa0ff29893d1da84c",
-        "contract": "0x573152A1f2C64eb9cc43Ce8b7E9538b301862De2",
+        "inputDigest": "0x82722067f58c3576980ca87e2801e4d4853f6fb3b46647eaf7b417c7574d0f4b",
+        "contract": "0x3398c99E26A22A373D09E974A605E24B36DdC976",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0x9288a7beec73f7b18d5e9e0cd7315afba24eb32af471a683bbc27943a072077f",
+        "transaction": "0x533362e3ed0c9c3b4d99f63cbd53dc0823d042a2264445de27e9a6b82d216f00",
         "bundle": "examples/evidence/honest-rule-2020-02-13.json"
       }
     },
@@ -5602,17 +5602,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x14681f22937ff98706e7f4787394d585ded6e20499525fccd7a4ba5fafb2a5dd",
+      "inputDigest": "0xeb74b18c46663a7a5da990c1eece150dee7ac02d2731514158a7343398a1ac3f",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-13",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x14681f22937ff98706e7f4787394d585ded6e20499525fccd7a4ba5fafb2a5dd",
-        "contract": "0xeaF734d2f1bC38C5B42fC6638f117aC97c898eE6",
+        "inputDigest": "0xeb74b18c46663a7a5da990c1eece150dee7ac02d2731514158a7343398a1ac3f",
+        "contract": "0xB887806C5F6cDAfD1Ee2AB39225203784f86641b",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0x45a4a1e3b17fa19318509af63b311c085a7ebefcc5d6be570b28da0fc0d49293",
+        "transaction": "0xce08e5c747a021e8723e8f87ce23dc3a7353c249a489d4a9f2f16db96bb63c88",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-13.json"
       }
     },
@@ -5734,7 +5734,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x30c20d240e0f99fbf70352a7ec86d323d787f700f48fadb4b297be976ae265d8",
+      "inputDigest": "0xbecb529cc1607cdc88bc3026812638d7dafe2a63cfa372b1ccc46da55cf6cedc",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -5864,7 +5864,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x0745127f12735aa77399636838e0e1c21d29c33b9d9871dd7b6607c3e0a19d5f",
+      "inputDigest": "0x7c99ea2205d04d5b6984159b39daa77078f6570f3ce5d115f3300f2c51921001",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -5994,17 +5994,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x08dc3907e6aa7875a31a23b6074ab1c2d6a0c6cb9e623cd8d7f883031023baa1",
+      "inputDigest": "0x6d2fcf3902cb96e00a4138b35deb07cd5dfc791aa26ae2d8e28b460d8ee293b8",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-14",
         "policy": "honest-rule",
-        "inputDigest": "0x08dc3907e6aa7875a31a23b6074ab1c2d6a0c6cb9e623cd8d7f883031023baa1",
-        "contract": "0xA56a0E689Cce803A6aE072Bf34d37FE8E47F3B60",
+        "inputDigest": "0x6d2fcf3902cb96e00a4138b35deb07cd5dfc791aa26ae2d8e28b460d8ee293b8",
+        "contract": "0x1FCCA874C412B9173a459A07Ec04fF1f5a6d1f19",
         "accepted": false,
         "reason": "NoCarbonBenefit",
         "status": 0,
-        "transaction": "0x01d76afefc14b6605c0a6bf7d61d99d1e372b884e42cf3dd3d94fd7a993d6458",
+        "transaction": "0x0c0b81a1399473d71744fe7aac2e983b9fc0bb6919aa74f9d72d18d59f1632be",
         "bundle": "examples/evidence/honest-rule-2020-02-14.json"
       }
     },
@@ -6131,17 +6131,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x2371b5eb17c6fde922100e1f563165155b83abc9b05fd914acb63e34fd93247f",
+      "inputDigest": "0x3247a4ab81fdff9854f410b354a8282ab90975c0778dd4f75515d9c7a19886d6",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-14",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x2371b5eb17c6fde922100e1f563165155b83abc9b05fd914acb63e34fd93247f",
-        "contract": "0xFE990dEe64FB58026C38d77C0eb1850FC0934D40",
+        "inputDigest": "0x3247a4ab81fdff9854f410b354a8282ab90975c0778dd4f75515d9c7a19886d6",
+        "contract": "0x83c5A6305705e7b55399B05d94bEeF6c7eB8Fe87",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0xc5646f8d2587040eba3ac95f66a69d09d05a98ac9a71fe6f29f59a61d0ef4307",
+        "transaction": "0x5a45e923cf9a020f938b4eaf316ca3b0c408bda015450599f1de87df3023c753",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-14.json"
       }
     },
@@ -6263,7 +6263,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xe883dd587eb314f0f10067f6f80e82950aa008805d877fa3723cfcd746c1c74f",
+      "inputDigest": "0xe64fbe26c45f6995e468950a79ba67428285217a0a5e688594029b0d1e185395",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -6388,7 +6388,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x61ccb84007e9967e25198a8b7192851617212cdccf1bd98428ea5d369d024365",
+      "inputDigest": "0xd3a53acc0d179f0d32de95f556410ac15b8d6206870f19f8c9ee5a79f73eca3b",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -6513,17 +6513,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xb3c08abdfff00195eec92fefd67cab75903ef29da2fdf1e3d866b43845012b99",
+      "inputDigest": "0x85c9820e4c8d67016f48138a1800f796a628a73f9f1922d70b7a8d80a42bb703",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-15",
         "policy": "honest-rule",
-        "inputDigest": "0xb3c08abdfff00195eec92fefd67cab75903ef29da2fdf1e3d866b43845012b99",
-        "contract": "0x73e317A4BD083bD6415e71F5eA3ADe18980Afb2d",
+        "inputDigest": "0x85c9820e4c8d67016f48138a1800f796a628a73f9f1922d70b7a8d80a42bb703",
+        "contract": "0xDB12b45D9FdE7461D708b8d8F934282777160115",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0x8ff9db069ba6bb24b9c026c0cfb41881ea71409861e9479b094110d5efae8c6f",
+        "transaction": "0x8b0db592c2d923181cdc4cbf3be584e4cbcb897155baa1149307436a8de259ef",
         "bundle": "examples/evidence/honest-rule-2020-02-15.json"
       }
     },
@@ -6650,17 +6650,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xe79c5ce025f7fd29a0b739029630bd46728f6450dc9b1c9d242c94261375ca9d",
+      "inputDigest": "0x14e9eb9d7b4f9fe9b2d9da9d3376649060ea40efc03c71ad18c4d0d0c7ed572b",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-15",
         "policy": "skips-evening-refill",
-        "inputDigest": "0xe79c5ce025f7fd29a0b739029630bd46728f6450dc9b1c9d242c94261375ca9d",
-        "contract": "0x5F5744470C162cCB74eC446a818e52b86C144cfC",
+        "inputDigest": "0x14e9eb9d7b4f9fe9b2d9da9d3376649060ea40efc03c71ad18c4d0d0c7ed572b",
+        "contract": "0x756A98c615Be35f57248405FDE923fB320E67F40",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0x074dd4bc4f773bfb6f0973d346b11230c5bb2ae257f5187f7b1db76d961ded5f",
+        "transaction": "0x0d19ad176ac2a0c892df2f1682fae23f0ec12587787bfe34392d3b8363646f92",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-15.json"
       }
     },
@@ -6782,7 +6782,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x878780746191006d88ce175c32bbd9fd60e15b32a359aa7ef56e17695dce7399",
+      "inputDigest": "0xf0e201f7be75c7ae1645d354b4023719319c20f19a74aec68aa9ba65e09fc126",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -6907,7 +6907,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x7b9b12313378e4e7d43f63e1ca1dd4d83704633cd279ee0967b622b0a54449d4",
+      "inputDigest": "0x0d0fda1021b67f17fec5ad537f50ad3e6bbb0b430709214cfe8db8439084096f",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -7032,17 +7032,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x1ad3d6480829c36babadc8c2111a81351bad31eff5b62523262f280a96c870c1",
+      "inputDigest": "0x04b63ae220f9b2d77994b032e2c0402eef589ff1173cf49e3b91113a3b878e54",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-16",
         "policy": "honest-rule",
-        "inputDigest": "0x1ad3d6480829c36babadc8c2111a81351bad31eff5b62523262f280a96c870c1",
-        "contract": "0xc0d0775EB35F194b231d909B05dF35e5b840a675",
+        "inputDigest": "0x04b63ae220f9b2d77994b032e2c0402eef589ff1173cf49e3b91113a3b878e54",
+        "contract": "0x0A50feBD0FbBA612e7f977Ea1e151671EF347b38",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0xe5382322edcd6fe16ae03caec8280df6dd8ab03c1f370c05685d4bcb1b308eb6",
+        "transaction": "0x1b3d0ff5f9104c2b32b28ea30455cb62ca99abd6da1af47639b2e09e09f84ed0",
         "bundle": "examples/evidence/honest-rule-2020-02-16.json"
       }
     },
@@ -7169,17 +7169,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x74239cef1814ca848443f9c1354c60356a0c79190457e5e81f536349628b0a33",
+      "inputDigest": "0xb14c6c57bc323254286aa0517c262bda551c02d4d43db5344447598a9d4bcbb9",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-16",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x74239cef1814ca848443f9c1354c60356a0c79190457e5e81f536349628b0a33",
-        "contract": "0x9f67C8F4C10e3Cab596422ccAC01d66cD420d09c",
+        "inputDigest": "0xb14c6c57bc323254286aa0517c262bda551c02d4d43db5344447598a9d4bcbb9",
+        "contract": "0x74d1046A80ef3410B34296E205c6623C9fe21996",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0xd2aa3c065e63ad32a78cecf8462d0994114bc268171cdd14a3441a7f8a151e35",
+        "transaction": "0xaf35d0f9bf9781200306bae5b31559fccdaa76af62641c8183da3eef18fb28bb",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-16.json"
       }
     },
@@ -7301,7 +7301,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x6765b400e48070c059b240fccc75827b92bc1e7aed5c15fbd7a83b3de2f81150",
+      "inputDigest": "0xaaec809109b7c4daa9e36fd477b865e1c9fe1d9d3c8d7a060a2e6c7be50ac04a",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -7426,7 +7426,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x01c6a0d61f4c14c8dcf80b7295eb21ecf4a82fd1dd1793f5c755948b07657409",
+      "inputDigest": "0x690a412b06b19c48234718c859cfd79e222ee469241d518279f015fd02f8169f",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -7551,17 +7551,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xae41bad6bcd89d3bfa96d0a9957c8556d509fd5588c36026375969648132c2db",
+      "inputDigest": "0x0ce86649feeb1b5d2d5e40af7f4995d3d375958c8e0e827fe7ff874a5fb85aa7",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-17",
         "policy": "honest-rule",
-        "inputDigest": "0xae41bad6bcd89d3bfa96d0a9957c8556d509fd5588c36026375969648132c2db",
-        "contract": "0x05a1e85bb933C7472D550fe377Fbe26b5E9D0383",
+        "inputDigest": "0x0ce86649feeb1b5d2d5e40af7f4995d3d375958c8e0e827fe7ff874a5fb85aa7",
+        "contract": "0xEa34bB2138332d9e606b6068E415DdcD2687fD9a",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0x62bfda0c564a5d6517d9a7d79d09d7757ae12fc778b9dc3d251b02b42ef94cf0",
+        "transaction": "0x567307a20dccc7ccbc2f6ee83c1ee637a281695d997a90ec833c8fba6320beb6",
         "bundle": "examples/evidence/honest-rule-2020-02-17.json"
       }
     },
@@ -7688,17 +7688,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xaf31f8b41d455c57c0287c34bd732918437eaac5dd848f45a20b58849c03a75a",
+      "inputDigest": "0xb39d3c6bd91a64601c357c64c2d810ddf9c272db75382d3546354df8118c6670",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-17",
         "policy": "skips-evening-refill",
-        "inputDigest": "0xaf31f8b41d455c57c0287c34bd732918437eaac5dd848f45a20b58849c03a75a",
-        "contract": "0xA04Cf723287F72c11f66e9F0a7354f0d55471940",
+        "inputDigest": "0xb39d3c6bd91a64601c357c64c2d810ddf9c272db75382d3546354df8118c6670",
+        "contract": "0x0d5bDe8b0208dA9a283Ea29f0193F3aeA4Bb6cD2",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0xab7ae0a690d53213fca06f2f8f97e646d018f33f35c65deed181c507a2c7328e",
+        "transaction": "0x2d096e0d9aef95f78288312da180e04c3000297bd6a10f86d6af82f3ee44ddf2",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-17.json"
       }
     },
@@ -7820,7 +7820,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x4365fda2d195e4284d9c91fd91a0589360e225fb1341cdaf472729f58937c5c4",
+      "inputDigest": "0x86a73c96dde8ec605b1d2b8c4e02f9f193a4b0679366b0477eeb2b53885acd94",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -7945,7 +7945,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x0a6cdf3876921752642ffd04c5fcc927c84b0a340bc58df12d7d238552d52acf",
+      "inputDigest": "0xf572bd13e7c9712e81ae03ef58ec8efa8c66646cc82e5a3c17366881f91b3df6",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -8070,17 +8070,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x4aa9e2323bcfb98c1475bed1eabf0192f38d3176efc4e8e31ea8b12321394f45",
+      "inputDigest": "0x94527782b87365cbead2682708ff9bfabad01f4b8d2e03421a2acb16202ed940",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-18",
         "policy": "honest-rule",
-        "inputDigest": "0x4aa9e2323bcfb98c1475bed1eabf0192f38d3176efc4e8e31ea8b12321394f45",
-        "contract": "0x85Fc557bbD8F6b0BB284d6fcE6dFc58774fBbE21",
+        "inputDigest": "0x94527782b87365cbead2682708ff9bfabad01f4b8d2e03421a2acb16202ed940",
+        "contract": "0xfe38e49828aEA6fA12caAB7bC537B47c1109111C",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0xf56e29b1f248dd5dd99e99d96341be6ba51937307209fa866a2a57690cfce24e",
+        "transaction": "0xc089f10f710c08d1acb40f5fabe9d6a6c16f95ba5fb9d4a9747bc88a783c9e4d",
         "bundle": "examples/evidence/honest-rule-2020-02-18.json"
       }
     },
@@ -8207,17 +8207,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x8820a567e54ec1025d83e39be6e3d15b613fe7acab8dd7c1441ea3c0ba02a3e4",
+      "inputDigest": "0xbbea0a0f98f161accb724c468b47fa5771acd501a9b7acb37e6ebcb97a92a8e7",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-18",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x8820a567e54ec1025d83e39be6e3d15b613fe7acab8dd7c1441ea3c0ba02a3e4",
-        "contract": "0xEd27b5cA282316598c80e4cc50166502820dCA51",
+        "inputDigest": "0xbbea0a0f98f161accb724c468b47fa5771acd501a9b7acb37e6ebcb97a92a8e7",
+        "contract": "0xD4F82cbEeF8fCC61a7F13ddA457Dc7D231582830",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0xaba78ed63d66a84bf0a6f9469f974e62ce3c605254e32ffbf2c4e0b03fcc8b5c",
+        "transaction": "0x24f5645dd8c65191375922aaae7581ecd7c7f74fc4a3cafb27a77fd2e1ff7b8b",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-18.json"
       }
     },
@@ -8339,7 +8339,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x62b97ea5052f6d884265c4f4ffcd97d4d0b6aae681706caf27ab86d490c3c53e",
+      "inputDigest": "0x37342e57862eea7061b24e83c18892fac7f5762c9178ea44a60456146cdbdaf4",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -8464,7 +8464,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xc3ef57a5bc7df265b7a129b3cf940d2ea8bfce3151895674ecf1e1bdccbb4953",
+      "inputDigest": "0x716334a6a909efc00f5f9c6df12f7a49e11c44010c382ab97b787658a66064d7",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -8589,17 +8589,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xf16255316e089b3b33f769126ea46aba33cacbb4aeb5c8b4af5bfa1e36183be1",
+      "inputDigest": "0x6b6df4ba6b7568dd548046fcc76f3e25108569506bdd7ac2e6ca81fe34f999fd",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-19",
         "policy": "honest-rule",
-        "inputDigest": "0xf16255316e089b3b33f769126ea46aba33cacbb4aeb5c8b4af5bfa1e36183be1",
-        "contract": "0x9B1ff34d9efB39Af88125FB649F3bA688DC0C518",
+        "inputDigest": "0x6b6df4ba6b7568dd548046fcc76f3e25108569506bdd7ac2e6ca81fe34f999fd",
+        "contract": "0x37ad0c6f37fbFe68e0d439f50d25BF6872143f37",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0x2b47171ec1fc6c772e1d11d72a5b087fe78a1bc88668ccf4970a176e6cfd8e66",
+        "transaction": "0xade60198430b3599f0cd70f7b97c54b2cad5f789f25f3d75901a06d1761c9127",
         "bundle": "examples/evidence/honest-rule-2020-02-19.json"
       }
     },
@@ -8726,17 +8726,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x88a7039f7da6375a58bfd61a220507f4dfe76233ffc7d2a979cb3449c13f2c84",
+      "inputDigest": "0x4a820c9a9140a9a95750d45c951f601db5a12101ed5a03fa9653d850af1692ea",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-19",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x88a7039f7da6375a58bfd61a220507f4dfe76233ffc7d2a979cb3449c13f2c84",
-        "contract": "0xfB563551D830f12a5745441F2037504684e19e27",
+        "inputDigest": "0x4a820c9a9140a9a95750d45c951f601db5a12101ed5a03fa9653d850af1692ea",
+        "contract": "0x610D88E54c878CDd7849384cA942f541Ce1958Ab",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0x0c1dac5dc377043a2f66952782a6f379946e4ffe3c69b94f6a8cb6b71bc7c26e",
+        "transaction": "0xfacc76db84d43bf34b31b05af12586907ee4569fabeb216bf29f7c67133fbc08",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-19.json"
       }
     },
@@ -8858,7 +8858,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xc394fd494530fead408c65ad4e315d522cac24bb545ac586ecbec59f99aff0e9",
+      "inputDigest": "0xdc03023b672419b925d771dee92ad3147db9a9440ae9667ddec2d85de073a4b1",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -8983,7 +8983,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x7a6ced7f370df21c7f71e52348082f4fed71c2f07f1b9663aad9184bc1248798",
+      "inputDigest": "0x4d3d8fad99c858816f3c70bf2556641f70049386e8bfb412a84e26559a5489a1",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -9108,17 +9108,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xe22c9531486e7c95c8fc9298c66d8161e49e1771401316159bb6c5822369e212",
+      "inputDigest": "0x5dd4dd1fbb5187ee02263fbfc62485b2b85df9c2d257dcf8131090f5ffaedaae",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-20",
         "policy": "honest-rule",
-        "inputDigest": "0xe22c9531486e7c95c8fc9298c66d8161e49e1771401316159bb6c5822369e212",
-        "contract": "0x7d3CECd02A9875894357e0Ac77e2781Cb13B547e",
+        "inputDigest": "0x5dd4dd1fbb5187ee02263fbfc62485b2b85df9c2d257dcf8131090f5ffaedaae",
+        "contract": "0xdC31d43d30939D0a16c83ABaf75D40bDe616aD26",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0xa582177039db3968bac96b194d906cab9b2d86f339099bba79ca1ee134539b3e",
+        "transaction": "0x763d26f984bde8df498f485436a53b762a46d89c9663c74d58e805f8eef944ba",
         "bundle": "examples/evidence/honest-rule-2020-02-20.json"
       }
     },
@@ -9245,17 +9245,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x2a4424fb84b0725ac8108984cadaafb18eb5b9606d738ca339c95f2d27bd850e",
+      "inputDigest": "0x888fb284958352f7d985208a2f4d4d7884caaba6cc0acc522c42023f38d8d0e7",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-20",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x2a4424fb84b0725ac8108984cadaafb18eb5b9606d738ca339c95f2d27bd850e",
-        "contract": "0x5fb6Cfc9FB5C9132E5B06BD9D8a5821Ee7ba656b",
+        "inputDigest": "0x888fb284958352f7d985208a2f4d4d7884caaba6cc0acc522c42023f38d8d0e7",
+        "contract": "0xE7C733ba714A438aaE9DEDB6e6751906d46FE328",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0x8b9c851bb03adff879d9f8ddc920ba682614a38c96777be91c261c2691c1ebbd",
+        "transaction": "0x2e685c5a5ff0d6425c0a14e6bc2112328fd345215790f048a13f253c3de53b97",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-20.json"
       }
     },
@@ -9377,7 +9377,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xca6037a6decdd9028e06b46e37300ed3ba6e02221ac83be7ad422dcd0da5ec98",
+      "inputDigest": "0x0e3aafc9f3a1a1a896046dd2b33d4f60947463cc70bc717a02ecdaf8307a40bd",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -9502,7 +9502,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x8e9b5c83bf08b85b00bd6ffd30d56b202763fc76969689a671f76a2b22f134f6",
+      "inputDigest": "0x87c469a5283ada5a806755199492d396299fb62db84d4466562357c131bd84bf",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -9627,17 +9627,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x034fb3c497365c9dc3ed55757d897ff6863f1232eacb8199a448b89175e4ae33",
+      "inputDigest": "0x326ec72b1da603c546b64800013449dcbf957c9d53b2322b36c7188d813b98cd",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-21",
         "policy": "honest-rule",
-        "inputDigest": "0x034fb3c497365c9dc3ed55757d897ff6863f1232eacb8199a448b89175e4ae33",
-        "contract": "0x3c766f3f84c0da73FDDD36342d836B9eDfC2aF5B",
+        "inputDigest": "0x326ec72b1da603c546b64800013449dcbf957c9d53b2322b36c7188d813b98cd",
+        "contract": "0xc408F700Bbe1157900100D8E0f19ebd66CD58792",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0x647e9fcbc17a24d424f23ce995267a8f55ef4ae83001a573da2ea3e68039c823",
+        "transaction": "0xe6b8fba9b9105a7502212d78234682dedd00c468a50befdc3d32ef09f2383b22",
         "bundle": "examples/evidence/honest-rule-2020-02-21.json"
       }
     },
@@ -9764,17 +9764,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x579d50104728fc1641a0ce2d5dee771bbf3596f6a19449854db7c0227fd3cfd5",
+      "inputDigest": "0xe3298933bfaa1af901dc9b87b8aec79153bd5575eb06840bb4aea61e129fab39",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-21",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x579d50104728fc1641a0ce2d5dee771bbf3596f6a19449854db7c0227fd3cfd5",
-        "contract": "0x39a9a702EB58c219Ef03B393DCb67aE9cb1B77Ba",
+        "inputDigest": "0xe3298933bfaa1af901dc9b87b8aec79153bd5575eb06840bb4aea61e129fab39",
+        "contract": "0x583Ec9578B75049d5A737824DE4c903a15F3126F",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0xc4d24dbb7499643243c89307027172b3ebbc3b93b1a5d8dfedda75a0779dfebe",
+        "transaction": "0xff0fe7058d232a0ac3b2f7aed59c6cd32d8453a857a14ae7a90cf77304a30c01",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-21.json"
       }
     },
@@ -9896,7 +9896,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x20e6e67efc95ff74450e857ff130dcc7d711f0c72f55c83c484935827937ee85",
+      "inputDigest": "0x1a3cd013ec57033670c69fc6e6d828ff9cee1b15aabd4b1b39bac0846b2d3516",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -10021,7 +10021,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x3e0c0a81ada336e9253ab3cbfa2f1a01797f3813756d0845c196ba41b38c06a5",
+      "inputDigest": "0x318ac1fc8f1b641e26a3ac5ac57f66332155586de7d1e3c483a20176e6fafa25",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -10151,17 +10151,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x2e3fe1591ed7900c64056231917d70a7ba5d349f8d12f6b86a469fffcfb61f07",
+      "inputDigest": "0xc674d7aa3a92c7be81016b9436b4dfda176b323aeb15dc4fcd435e869ea6eb60",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-22",
         "policy": "honest-rule",
-        "inputDigest": "0x2e3fe1591ed7900c64056231917d70a7ba5d349f8d12f6b86a469fffcfb61f07",
-        "contract": "0x2776805840FA550a3bFFd6Ad2393c20ff40BbA5D",
+        "inputDigest": "0xc674d7aa3a92c7be81016b9436b4dfda176b323aeb15dc4fcd435e869ea6eb60",
+        "contract": "0x82137b4447aFb437CF70ec66d0437d17204dCA36",
         "accepted": false,
         "reason": "NoCarbonBenefit",
         "status": 0,
-        "transaction": "0x4b444815ae164c677efe52df335883a5ef83765fc70e0663d86d9728e02f3164",
+        "transaction": "0xd92a7afe9be5fa9cd79badf12c08916a1b2dd881d09c9ffd70e8a69ac5499339",
         "bundle": "examples/evidence/honest-rule-2020-02-22.json"
       }
     },
@@ -10288,17 +10288,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x382a5e22f11547dae818afd19c769aca76f22e30edc3d848e9fd344a1f996301",
+      "inputDigest": "0xb9e3d873dbf293c454bfea9ac23abe373ffe6105e4cf2a0caec8962e414dc04b",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-22",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x382a5e22f11547dae818afd19c769aca76f22e30edc3d848e9fd344a1f996301",
-        "contract": "0xb8f51696C4a300428cc23b5e403413710586838C",
+        "inputDigest": "0xb9e3d873dbf293c454bfea9ac23abe373ffe6105e4cf2a0caec8962e414dc04b",
+        "contract": "0xA292127f9738a8c2b4C461d13B286B16483F22e8",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0x7a052cb50ace46fbaa32123320a3cb4e415d7e14f435966056ae39e9eab68844",
+        "transaction": "0xdbd9fa5264bf00aba7b961e9c028730b59479e201d7094fc1a8cc914ffb0af2b",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-22.json"
       }
     },
@@ -10420,7 +10420,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x2d7905ee3914b954b67a89869ea4ea5faa92fa75640cb8ff38ec1a3e130cc39b",
+      "inputDigest": "0xf4d9227bf98c7f1f028b8868ff4bcaf823065de409fce25ed1c258ad4af09ecb",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -10545,7 +10545,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xc63a54e47f7226ed3ace6fc67dbf838afa737564b21c64b021ad24ed99304b3a",
+      "inputDigest": "0x0c2b253976857835ddc00edcdab7529db36d00fc84f46aea43ec5bfca7291ead",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -10670,17 +10670,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xb3c02b1eaa1e163fec6b533b2a3ad0a0c4fdc0038dbebb0aea528ce0f29e6ab1",
+      "inputDigest": "0xa1f858acb811f61bf9023a42796dc0d6aebbb065ad7772b0e75c66e130e18c3e",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-23",
         "policy": "honest-rule",
-        "inputDigest": "0xb3c02b1eaa1e163fec6b533b2a3ad0a0c4fdc0038dbebb0aea528ce0f29e6ab1",
-        "contract": "0x1A2290215A684249B1539AC3BB3a9D4357E90022",
+        "inputDigest": "0xa1f858acb811f61bf9023a42796dc0d6aebbb065ad7772b0e75c66e130e18c3e",
+        "contract": "0x4c875D3E6715d4c8b6c92986AE33F70F6aC61586",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0x213e70df5cda978a0553032c3ef938f206ac9fa236c5aca83d1067d3e8d1c396",
+        "transaction": "0x7bf8d453c70723e11508eb948fefd8f47e57473811e6b61ce661ae9af0a1a0ed",
         "bundle": "examples/evidence/honest-rule-2020-02-23.json"
       }
     },
@@ -10807,17 +10807,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x2ae46a8480172376fd97d55afa090b85d3a147d0f9f5ad71f29c45528a73181a",
+      "inputDigest": "0x351552a1cd9da6fc8fe9cd1cce6f39d607eb5f037a56a57df1d263250863d8ce",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-23",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x2ae46a8480172376fd97d55afa090b85d3a147d0f9f5ad71f29c45528a73181a",
-        "contract": "0xc9C698A06053fa5cfBE061243f7938B09Ff083d4",
+        "inputDigest": "0x351552a1cd9da6fc8fe9cd1cce6f39d607eb5f037a56a57df1d263250863d8ce",
+        "contract": "0x85f82adfb7Dfe23DA00f390Be99Dc01437E2bf1b",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0x9fcfff9b8e505d04b52764242e6151d62bf2466baa2a065d7799879dfa8423e7",
+        "transaction": "0x3bbe6b727d500bd9ca32a14d7bc207951935d47b2897d2f06ea15ee2dc8ff496",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-23.json"
       }
     },
@@ -10948,7 +10948,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xc07aa05833f3648ff437a3859790f107c8afc6a68a7fbdb4f30fd89b15b5bacb",
+      "inputDigest": "0xe8f5ff415529f6b1185f8d73aa776e34ae7e447ac4de3ab5e460170c92633579",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -11082,7 +11082,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xea84c8f33566d47291ee3025631f5436e61ccf4f98a2a003fc904276f25ce906",
+      "inputDigest": "0x84158946bdf33ff56ded300b104af1af91cb5c4077aed50f2b2037bc56625d89",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -11212,17 +11212,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xa24fbb8e8d2b8a5ae05ad9d4f592e6675b37b3081b04fa8ac68a9392eb462d24",
+      "inputDigest": "0x2f13930e0c2745fe8303ed86979524e7e5703afdf507ec406c108d8fee075090",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-24",
         "policy": "honest-rule",
-        "inputDigest": "0xa24fbb8e8d2b8a5ae05ad9d4f592e6675b37b3081b04fa8ac68a9392eb462d24",
-        "contract": "0x4fcb273b0c17d55eABdFd9aC32E2A1DBD9Ec31E7",
+        "inputDigest": "0x2f13930e0c2745fe8303ed86979524e7e5703afdf507ec406c108d8fee075090",
+        "contract": "0xc247C41E953B9c18EF342E6Da2b910c19651b66d",
         "accepted": false,
         "reason": "NoCarbonBenefit",
         "status": 0,
-        "transaction": "0x7a97c9a0bd28ba3c718593448d8ce8cddb4efa981026b26d1fc67d6c2398dbb0",
+        "transaction": "0xa217f69bf0c8d1d0cad9bcb678556ffa365fc9cf4a39b136829ae61c62ec5def",
         "bundle": "examples/evidence/honest-rule-2020-02-24.json"
       }
     },
@@ -11349,17 +11349,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x18cb8bf715fbdc54b4778e4221db3973cba1015320d0e223090f9694e5bbeedb",
+      "inputDigest": "0x154bef1cf2c90017cb52425dcf779b7946b9fe73da7fa4ae83c5c7a9358f0999",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-24",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x18cb8bf715fbdc54b4778e4221db3973cba1015320d0e223090f9694e5bbeedb",
-        "contract": "0x64aA23d375398F410aCCF00aB3Aa608D0080588D",
+        "inputDigest": "0x154bef1cf2c90017cb52425dcf779b7946b9fe73da7fa4ae83c5c7a9358f0999",
+        "contract": "0x2283ED0D18493C8328B817455eD570600bD23266",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0xf8cb39ea521ec340476ae5ae0f3adfabbb4354bf42ea05d8f1a78da1f80ca5d0",
+        "transaction": "0xa9922f3ebf0e2e00c12995df3b04a5787b645abb41aa26c269ad74cf10dd8825",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-24.json"
       }
     },
@@ -11481,7 +11481,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xcea29db27366a094cf27d7fd500a97b0397440c28f76c71785a53b39316ef1c7",
+      "inputDigest": "0x4e0dc44ff7c728c77ce996602069b4a346249bdf87b5a77bc3e0b99455ed634a",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -11606,7 +11606,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xb377c06968a334b3371686f08c32882c807a2c51e036066ca3a77c5696cf3c7b",
+      "inputDigest": "0xbe17d0c46f5f584fd90222f88e1393a6f1a88e850e5f60cb3d0032c72c47a882",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -11731,17 +11731,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xdf2248565428b32458aecbbc0d939ae018b50254def154819edba7f3f5f92d63",
+      "inputDigest": "0x60eab666accae04d43161beec60ad1609a86a013a0ca7f653689eca81f9914d0",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-25",
         "policy": "honest-rule",
-        "inputDigest": "0xdf2248565428b32458aecbbc0d939ae018b50254def154819edba7f3f5f92d63",
-        "contract": "0x24e5e9e15b71D5587b97EC40E5f8e3525B645Dd4",
+        "inputDigest": "0x60eab666accae04d43161beec60ad1609a86a013a0ca7f653689eca81f9914d0",
+        "contract": "0x39E4419E62688e08619d874d17F7246829D79767",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0xa9f2227ea2f086aaeade58eaa6b30410c50813648d180220f95f39fff88ccc38",
+        "transaction": "0xe48107ec547382ce45a60aa85271e045bb8d7e9c5f86d253071dc92f67d639ad",
         "bundle": "examples/evidence/honest-rule-2020-02-25.json"
       }
     },
@@ -11868,17 +11868,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x2f2238a9de55c9f28b63f380878a0e701c0ffb3cdc4e15d549675ea7da253f1a",
+      "inputDigest": "0x5f92838058daecb34ea9460f2a0451794699d4d71076122776221deac23d27be",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-25",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x2f2238a9de55c9f28b63f380878a0e701c0ffb3cdc4e15d549675ea7da253f1a",
-        "contract": "0x2af9894a5c124412C0325470072E3FA48986f4E9",
+        "inputDigest": "0x5f92838058daecb34ea9460f2a0451794699d4d71076122776221deac23d27be",
+        "contract": "0x1cDE2a6CC5fBd59b7bcB759046Fa5f009853f3a5",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0xf8cbede9d682408bae7e5d8b4a3a6c558db4285e48a910baac43bb8b637ece2e",
+        "transaction": "0x6e214acc6db03ba0939f524e8c1b6e7b6c8c49569f6c053d3d00978e21afbf51",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-25.json"
       }
     },
@@ -12000,7 +12000,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xac58d393cca193ccfe67d7af2c117d3626605151397192787deefb6cab7d026d",
+      "inputDigest": "0x9c78bfc2a62a1363ca193a92a4ac33b8928591f6f8ea921782edf7ef4647b715",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -12125,7 +12125,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xfd350f75ef00cad0c4f81795ec184cbd73c4f5c6391c4ee31e7ac6aea4eb5f18",
+      "inputDigest": "0x1ac38983b0806b53d9feccba0647291e41446f5226a731b1253c53affacb5646",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -12250,17 +12250,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x065cea18826d5c8c4e8539cf35f8563778c1c9b9924734841b3d668c73681aae",
+      "inputDigest": "0xd650eb8376cda3950426c6032c698606ccadd4ab196ceaff7cb510767fc19446",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-26",
         "policy": "honest-rule",
-        "inputDigest": "0x065cea18826d5c8c4e8539cf35f8563778c1c9b9924734841b3d668c73681aae",
-        "contract": "0xF2Eab9DaA634229D80977aee4e8a74987b6D925f",
+        "inputDigest": "0xd650eb8376cda3950426c6032c698606ccadd4ab196ceaff7cb510767fc19446",
+        "contract": "0x155A46F03C2Aca60DbDe0F5B623e1c614e5B4F1d",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0x5d38c6f640ab5e4aaf8e7ecf0f64037ab9c59259563a872972dfb6690427e932",
+        "transaction": "0x88578fdaf9f257234db2e09c83028c597651da1498a84d33b255078480c73272",
         "bundle": "examples/evidence/honest-rule-2020-02-26.json"
       }
     },
@@ -12387,17 +12387,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x37e8a600387cb4c78018ecdacdc7612dd7e04a94d5b52aa510e282f6f01b6dcf",
+      "inputDigest": "0x2d827b8856528785b4f3ea39ba2638755f081bbb019bca9e9da1d6f608d913dc",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-26",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x37e8a600387cb4c78018ecdacdc7612dd7e04a94d5b52aa510e282f6f01b6dcf",
-        "contract": "0x6Ad76Ea1dFf3db7fBe6F8A8538E8aAa307c9c310",
+        "inputDigest": "0x2d827b8856528785b4f3ea39ba2638755f081bbb019bca9e9da1d6f608d913dc",
+        "contract": "0x6e4CFdA0714127eAe185E0DC6f1963132072F645",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0xd9834ce3536356d61b5c1922d6545da6e2a5d909db9cf7e937ef4feb346ccd65",
+        "transaction": "0xac490aba6490b358c1635e1bc8774d595d587b730009aa380a65f81d0a8b21cc",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-26.json"
       }
     },
@@ -12519,7 +12519,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x305c773e87ef89d535c8660738f9c053553470858392125961c558c92c82dbeb",
+      "inputDigest": "0x1524fce896d8b2613fe3f8e16b823c15a2425886f2d22bcd6c171adc0609e53c",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -12644,7 +12644,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xba44030508716201623498ba99befecdbbe0bb08987b10606905c4c15fca7585",
+      "inputDigest": "0x2f4d37c3001f9981c2783f93e9cfcd53f839b0888b5ade50d670622e4e0e0a2c",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -12769,17 +12769,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x46b7a46dfa756d6e29b39fa7041226206fece35e7ca6597779ad1448e708350d",
+      "inputDigest": "0x5fb6515a4d327a3b5feebc9cb0a9872fd4c8d1de7084badc8c9bfceb71de2b14",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-27",
         "policy": "honest-rule",
-        "inputDigest": "0x46b7a46dfa756d6e29b39fa7041226206fece35e7ca6597779ad1448e708350d",
-        "contract": "0x0c31FFe3df1fb05f28617aD0EE5731b30cC3a1B5",
+        "inputDigest": "0x5fb6515a4d327a3b5feebc9cb0a9872fd4c8d1de7084badc8c9bfceb71de2b14",
+        "contract": "0x5A713439F8834267341Fe98F75686c01935B9160",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0x804214a77d6ac3509d63dd601f07d70030dfb039e65a14d0a939d39af024be69",
+        "transaction": "0x6fbe4899120a81177b5f0d36fc4b167d7326916808f6a9f7575f0f8f21f930c2",
         "bundle": "examples/evidence/honest-rule-2020-02-27.json"
       }
     },
@@ -12906,17 +12906,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x3d807ba86311c5394bda5cb052f754388204bc0cba01a26728304bf874089802",
+      "inputDigest": "0xe153c95f0199bef972398a7090ca41d338898e58bd0856375ebf70348cb6e08e",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-27",
         "policy": "skips-evening-refill",
-        "inputDigest": "0x3d807ba86311c5394bda5cb052f754388204bc0cba01a26728304bf874089802",
-        "contract": "0x191BCB28692752183dFa61CFd1089a4c5B534f0d",
+        "inputDigest": "0xe153c95f0199bef972398a7090ca41d338898e58bd0856375ebf70348cb6e08e",
+        "contract": "0x37BAe7baDE7C9753627e682aF94b147c75d5734e",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0xe31947a05ce60c857de80501991417d1b9864e733b9b8a8ad18362cf3cf0afca",
+        "transaction": "0x42f516af6112b1620b9a04d044a30ac19bf450269c3c2fff96f36108ce4b1b4a",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-27.json"
       }
     },
@@ -13038,7 +13038,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x67eaf6e3965ed2e8977ea50a5bf6face1d081bb297512a9c6bc9b0688df1c874",
+      "inputDigest": "0x4bbae3f9f8daf30f74574be1f3491374d1cefb0bf5fee5de07170802b1f3ad19",
       "margins": {
         "bufferM3": 2676.280580043891,
         "headroomM3": 420.1595340472509
@@ -13163,7 +13163,7 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0x1c5f5ec4c7d196ba772376022bbc062b4b96447e8c86b2c2ea5e45e5203a6b82",
+      "inputDigest": "0xf7238097256de48fd48b33e411fa694c3b828b1f7ca3497566602041c713936a",
       "margins": {
         "bufferM3": 4649,
         "headroomM3": 683
@@ -13288,17 +13288,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xca0816eb75c178f263e0e4c470f36b3c5d563fa58bb18e1c3c53f39ebc581393",
+      "inputDigest": "0x3d4186105df6adeb9ee0bb4240487c91d7f3844e2e1dc00489c173e1d3105048",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-28",
         "policy": "honest-rule",
-        "inputDigest": "0xca0816eb75c178f263e0e4c470f36b3c5d563fa58bb18e1c3c53f39ebc581393",
-        "contract": "0x5a5362e5bb7B015ae6b6e4Df3dc0e8a4c893aBC7",
+        "inputDigest": "0x3d4186105df6adeb9ee0bb4240487c91d7f3844e2e1dc00489c173e1d3105048",
+        "contract": "0x0E929C3aa472CEcCE80Faf937571F64B6f5d991F",
         "accepted": true,
         "reason": null,
         "status": 1,
-        "transaction": "0xa36c5e0c964cb969510951852cd7d678ae6b311e38e82d51c67821014f64f351",
+        "transaction": "0x87ec340680ffec14d09f2ad375c192dbc4232d767cf4e04186a6c2fb4a1d2154",
         "bundle": "examples/evidence/honest-rule-2020-02-28.json"
       }
     },
@@ -13425,17 +13425,17 @@
         },
         "rounding": "Authoritative integers are decimal strings; negative preview grams truncate towards zero. Display uses unrounded scores; event saving floors the positive score difference separately."
       },
-      "inputDigest": "0xb4ab81906a60655327d6ac9e963282cee203a577ac3ee2d5914c5c9701d65db6",
+      "inputDigest": "0x8a7a970413091c6cf0613cdad76f382b430043bcb00879fb40746d5ecb96ac49",
       "margins": null,
       "actualEvm": {
         "date": "2020-02-28",
         "policy": "skips-evening-refill",
-        "inputDigest": "0xb4ab81906a60655327d6ac9e963282cee203a577ac3ee2d5914c5c9701d65db6",
-        "contract": "0xca66cF29B59a2F8dA819244F20682bBfCb3148E6",
+        "inputDigest": "0x8a7a970413091c6cf0613cdad76f382b430043bcb00879fb40746d5ecb96ac49",
+        "contract": "0x4a72B2e42A8f7d6aF5e762da938086808c13Bc4A",
         "accepted": false,
         "reason": "WaterDebt",
         "status": 0,
-        "transaction": "0xf660a25e8b6c538a93cceb5e87a0ddcdf8c0e30b085c6babf04dcf9862f67583",
+        "transaction": "0xb09e255c18cb02b4a529a8a67da82b2b1eb963ee2a2fe3e258ecebd428b2ca3e",
         "bundle": "examples/evidence/skips-evening-refill-2020-02-28.json"
       }
     }

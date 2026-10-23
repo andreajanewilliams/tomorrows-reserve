@@ -14,7 +14,7 @@ export async function verifyExternal(bundle,{expect='accepted'}={}){
  equal(bundle.versions,externalVersions(),'Code/contract version differs from local snapshot');
  equal(bundle.provenance,inputs.provenance,'Provenance differs from pinned sources');
  equal(bundle.limitations,EXTERNAL_LIMITATIONS,'External limitations changed');
- const preview=previewTrace(bundle.preview?.descriptor?.trace);
+ const preview=previewTrace(bundle.preview?.descriptor?.trace,{experiment:bundle.experiment});
  equal(bundle.preview,preview,'Preview claims differ from direct exact-trace accounting');
  equal(bundle.policy,preview.descriptor.policy,'Unsupported policy');
  equal(bundle.evidence,preview.evidence,'Submitted trace/evidence differs from pinned external trace');

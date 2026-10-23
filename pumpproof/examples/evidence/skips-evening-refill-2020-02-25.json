@@ -1,11 +1,17 @@
 {
   "schema": "pumpproof-evidence-v3",
-  "id": "c5954609-a43a-4a7a-83a4-9ef76e377224",
-  "inputDigest": "0x2f2238a9de55c9f28b63f380878a0e701c0ffb3cdc4e15d549675ea7da253f1a",
+  "id": "5f627591-7747-45ae-bfd5-f8964874a568",
+  "inputDigest": "0x5f92838058daecb34ea9460f2a0451794699d4d71076122776221deac23d27be",
   "preview": {
     "schema": "pumpproof-external-preview-v1",
-    "inputDigest": "0x2f2238a9de55c9f28b63f380878a0e701c0ffb3cdc4e15d549675ea7da253f1a",
+    "inputDigest": "0x5f92838058daecb34ea9460f2a0451794699d4d71076122776221deac23d27be",
     "descriptor": {
+      "experiment": "skips-evening-refill",
+      "generation": {
+        "method": "e4-skips-evening-refill-v1",
+        "code": "src/rules.mjs",
+        "sha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9"
+      },
       "schema": "pumpproof-external-descriptor-v1",
       "mode": "external",
       "modelUsed": false,
@@ -243,7 +249,7 @@
     "receiptIssued": false,
     "execution": "calculated preview; no transaction has run"
   },
-  "planHash": "0x2f2238a9de55c9f28b63f380878a0e701c0ffb3cdc4e15d549675ea7da253f1a",
+  "planHash": "0x5f92838058daecb34ea9460f2a0451794699d4d71076122776221deac23d27be",
   "policy": {
     "initialM3": 12000,
     "reserveM3": 4000,
@@ -417,9 +423,9 @@
     "modelHash": "0x2ad1de3bd82ddfdf9eb9da0e0f3beedff61fd48b496057f1c7faa447ef6eea99",
     "sourceHash": "0x21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
   },
-  "evidenceDigest": "0xca2c90502d60856eb6a8000cb36c36ad404d8f986bc13eb6bae33099d62e9cb8",
+  "evidenceDigest": "0xe3a9ee4b64d5e2d9b59a7eca938e5982e2ebd27b6646122d13fd70efe31dd531",
   "chainId": 31337,
-  "contract": "0x2af9894a5c124412C0325470072E3FA48986f4E9",
+  "contract": "0x1cDE2a6CC5fBd59b7bcB759046Fa5f009853f3a5",
   "experiment": "skips-evening-refill",
   "scope": "Isolated labelled local experiment contract; duplicate protection is within this contract only.",
   "accepted": false,
@@ -428,19 +434,19 @@
   "steps": [
     {
       "step": "Exact trace committed",
-      "tx": "0xc1bc6f890b46f5bfb5d79014f5a8353bd5f1d0fb221d04447f5cb860ec053a0c",
+      "tx": "0x12d4116a4a85262f5443a50b391052ed1453687dccc150e7d338f003f397104e",
       "block": 174,
       "status": 1
     },
     {
       "step": "Evidence attested",
-      "tx": "0x62849e5fb26772d2ac5763f258e0d1652015c8fc2d3b102f823cbbd3284237e0",
+      "tx": "0x1b7b7a3613bbbb8af7cb1ab51f083d0fb77b78351e6cf2f61f0a255fd6288138",
       "block": 175,
       "status": 1
     },
     {
       "step": "Settlement refused",
-      "tx": "0xf8cbede9d682408bae7e5d8b4a3a6c558db4285e48a910baac43bb8b637ece2e",
+      "tx": "0x6e214acc6db03ba0939f524e8c1b6e7b6c8c49569f6c053d3d00978e21afbf51",
       "block": 176,
       "status": 0
     }
@@ -509,16 +515,17 @@
     "contracts/PumpProof.sol": "f3d7942867cc2e90c2e3e52a01981f0635eb973f3686a6b561261a50c30d8432",
     "data/contract.json": "bec6c41c95c3d75a05428a9dcbd5f81d37277e4a55370776c0ecde11f513eb9d",
     "src/accounting.mjs": "3ee124f09fc3eda9d250d62085839255bd86d45b018ac7ecc01623dc34fda044",
-    "src/external-trace.mjs": "007614b08267b0d59a7553012056349ebad88b82cb8350cec8357325037ee929",
-    "src/external-chain.mjs": "5d28b485cb96a0654e62bed7fbc2415790f7a9837183e88b2e583b823e2a3a62",
-    "src/external-envelope.mjs": "db60d803750d19ccfcc4a9bc959c840231c8d4fe25b5e127f66b78ed48702568"
+    "src/rules.mjs": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+    "src/external-trace.mjs": "df0632943ac6eb47507cfafb0fa01362c7ca7509e3d8de8d57fe35959650e011",
+    "src/external-chain.mjs": "238d29830de0e7f1823e18022c7ec84ec0e854bed781eb5989277fb4400944fc",
+    "src/external-envelope.mjs": "4b8858da1617d5e857019b64197401e370986ba0d8f697567e353b5a9ce1f3a7"
   },
   "signers": {
-    "operator": "0x90268d107d7A3e1E5Ae59F40A7A8c9a89F4A48a9",
-    "auditor": "0xF6511B2F3317ADD7807c60C9f0a4440EA3E1Af1C"
+    "operator": "0xCc212CB95ba74Ba9cB44D51E08bB14f288C53fBB",
+    "auditor": "0x1B59Fa9dDACe4Ae558623F8552de032c985f483b"
   },
   "signatures": {
-    "operator": "0x514949c6bf79cfbefb9cbf12c617ae03745642d30ac43684dfefe4dca739ded64a2ada4e0b2d293245025994b2a23339d6354089376f63313e18c93a93b5f80a1b",
-    "auditor": "0x0d8b2694510b916bdacf3c6ac910175150be632f1ad4c043225286a288d75180525f13edd8d149f5e1265b6a9530ea7838e078e2b04bec8d39d08cc8da07443f1b"
+    "operator": "0x4d7a9f041b165b90e2b358cd66709ef705845e734404c2049f18e9ce7b3cf97b4de65fe2fec956874e47ebdd4c6f090838a4621bb074fb95b0d9cd66d52d37511b",
+    "auditor": "0x689155bb2108e848dcb5770b448325d1673709ddd95f422057a7bf2be17cac0b4e75aeda47bcdf19459f07af1eb088d64a71cb9ec6fb52d8c88d4140c30c921c1c"
   }
 }

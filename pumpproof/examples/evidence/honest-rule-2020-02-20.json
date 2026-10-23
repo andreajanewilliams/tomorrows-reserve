@@ -1,11 +1,17 @@
 {
   "schema": "pumpproof-evidence-v3",
-  "id": "19db3a6e-bfe4-49dc-a3a0-46d32ae64a94",
-  "inputDigest": "0xe22c9531486e7c95c8fc9298c66d8161e49e1771401316159bb6c5822369e212",
+  "id": "61fe7f44-d673-4710-a68e-0999a94ed209",
+  "inputDigest": "0x5dd4dd1fbb5187ee02263fbfc62485b2b85df9c2d257dcf8131090f5ffaedaae",
   "preview": {
     "schema": "pumpproof-external-preview-v1",
-    "inputDigest": "0xe22c9531486e7c95c8fc9298c66d8161e49e1771401316159bb6c5822369e212",
+    "inputDigest": "0x5dd4dd1fbb5187ee02263fbfc62485b2b85df9c2d257dcf8131090f5ffaedaae",
     "descriptor": {
+      "experiment": "honest-rule",
+      "generation": {
+        "method": "e4-clock-tank-rule-v1",
+        "code": "src/rules.mjs",
+        "sha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9"
+      },
       "schema": "pumpproof-external-descriptor-v1",
       "mode": "external",
       "modelUsed": false,
@@ -238,7 +244,7 @@
     "receiptIssued": false,
     "execution": "calculated preview; no transaction has run"
   },
-  "planHash": "0xe22c9531486e7c95c8fc9298c66d8161e49e1771401316159bb6c5822369e212",
+  "planHash": "0x5dd4dd1fbb5187ee02263fbfc62485b2b85df9c2d257dcf8131090f5ffaedaae",
   "policy": {
     "initialM3": 12000,
     "reserveM3": 4000,
@@ -412,9 +418,9 @@
     "modelHash": "0x2ad1de3bd82ddfdf9eb9da0e0f3beedff61fd48b496057f1c7faa447ef6eea99",
     "sourceHash": "0x21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
   },
-  "evidenceDigest": "0xbd86f9cd9f17424bba249a6dfa2a68c9d88569bb52bd6be56574e539c21823c1",
+  "evidenceDigest": "0xb7150dc1ddc2889c3f12a6f4968de87f9ddf2e7a86efe364d3fecbc9c24a0da4",
   "chainId": 31337,
-  "contract": "0x7d3CECd02A9875894357e0Ac77e2781Cb13B547e",
+  "contract": "0xdC31d43d30939D0a16c83ABaf75D40bDe616aD26",
   "experiment": "honest-rule",
   "scope": "Isolated labelled local experiment contract; duplicate protection is within this contract only.",
   "accepted": true,
@@ -423,19 +429,19 @@
   "steps": [
     {
       "step": "Exact trace committed",
-      "tx": "0x550c14001841920c6e4eab3a2f1d07551d82918a2984ec0fe9d97d2ed68f6c1d",
+      "tx": "0x106ef1645f0da30de70cae9697e5d803eddf0776a302400df0d1d6b373c95528",
       "block": 130,
       "status": 1
     },
     {
       "step": "Evidence attested",
-      "tx": "0xa083e97dc03e387879ce1fe67618c2a9d64eef8194aef9ce6708df40f8ef01df",
+      "tx": "0x6be8ccbd576dfcab92f71501bfe238f82316d8add04521a75af6be9cc7e12300",
       "block": 131,
       "status": 1
     },
     {
       "step": "Accounting accepted",
-      "tx": "0xa582177039db3968bac96b194d906cab9b2d86f339099bba79ca1ee134539b3e",
+      "tx": "0x763d26f984bde8df498f485436a53b762a46d89c9663c74d58e805f8eef944ba",
       "block": 132,
       "status": 1
     }
@@ -508,16 +514,17 @@
     "contracts/PumpProof.sol": "f3d7942867cc2e90c2e3e52a01981f0635eb973f3686a6b561261a50c30d8432",
     "data/contract.json": "bec6c41c95c3d75a05428a9dcbd5f81d37277e4a55370776c0ecde11f513eb9d",
     "src/accounting.mjs": "3ee124f09fc3eda9d250d62085839255bd86d45b018ac7ecc01623dc34fda044",
-    "src/external-trace.mjs": "007614b08267b0d59a7553012056349ebad88b82cb8350cec8357325037ee929",
-    "src/external-chain.mjs": "5d28b485cb96a0654e62bed7fbc2415790f7a9837183e88b2e583b823e2a3a62",
-    "src/external-envelope.mjs": "db60d803750d19ccfcc4a9bc959c840231c8d4fe25b5e127f66b78ed48702568"
+    "src/rules.mjs": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+    "src/external-trace.mjs": "df0632943ac6eb47507cfafb0fa01362c7ca7509e3d8de8d57fe35959650e011",
+    "src/external-chain.mjs": "238d29830de0e7f1823e18022c7ec84ec0e854bed781eb5989277fb4400944fc",
+    "src/external-envelope.mjs": "4b8858da1617d5e857019b64197401e370986ba0d8f697567e353b5a9ce1f3a7"
   },
   "signers": {
-    "operator": "0x90268d107d7A3e1E5Ae59F40A7A8c9a89F4A48a9",
-    "auditor": "0xF6511B2F3317ADD7807c60C9f0a4440EA3E1Af1C"
+    "operator": "0xCc212CB95ba74Ba9cB44D51E08bB14f288C53fBB",
+    "auditor": "0x1B59Fa9dDACe4Ae558623F8552de032c985f483b"
   },
   "signatures": {
-    "operator": "0xe170c809b5e019696bd40d4ccfb90a277fa03290bd0ab4612d74351561757da70a634f6febc177bc19400c7636e3f32fba2edcf437680a3a835c757672678bf81c",
-    "auditor": "0x90e94e0585b562367159def443308543aef5c0a2306187e2e1f43b7d9bcb58a665a508b22c3c3652431a80785b348bb4e46b9e26728c4ba2f22b598198f876d61c"
+    "operator": "0x66721f66d43b6d7511cd21719956292baeac1912e5546897d9625ef0b9449cc169f67c2ed054b45d044d4b575ce9aba75a6dd570530d1c2a4eb6e71f821114221b",
+    "auditor": "0x9d16e18346dabe2198430ba23f1a48ff3c0340381773c55f54b3d8f97b611c487a407f0dfeb65af533d45eee122dc08c89a88a837075e2e07b26a53d34d255081b"
   }
 }

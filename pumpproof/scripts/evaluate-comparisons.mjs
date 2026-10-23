@@ -22,7 +22,7 @@ for(const day of externalDays){
    if(plan){const operation=replay(plan,demand,EXTERNAL_POLICY,forecast,signal,margins.bufferM3,margins.headroomM3);trace={schema:'pumpproof-external-trace-v1',date:day.date,pumpedLitres:operation.pumping.map(v=>Math.round(v*1000))};}
   }else{trace=ruleTrace(day.date,demandLitres,{omitEveningRefill:policy==='skips-evening-refill'});const file=`examples/external/${policy}-${day.date}.json`;write(file,trace);fixtures.push({file,sha256:sha(file),policy,date:day.date,methodSha256:methods['src/rules.mjs'],sourceHash:inputs.sourceHash});}
   if(!trace){rows.push({date:day.date,policy,planningFeasible:false,accounting:null,actualEvm:null});continue;}
-  const p=previewTrace(trace);rows.push({date:day.date,policy,planningFeasible:true,trace,demandLitres,initialLitres:p.accounting.initialLitres,accounting:p.accounting,inputDigest:p.inputDigest,margins:margins?{bufferM3:margins.bufferM3,headroomM3:margins.headroomM3}:null,actualEvm:null});
+  const p=previewTrace(trace,{experiment:policy==='model'||policy==='persistence'?'uploaded-trace':policy});rows.push({date:day.date,policy,planningFeasible:true,trace,demandLitres,initialLitres:p.accounting.initialLitres,accounting:p.accounting,inputDigest:p.inputDigest,margins:margins?{bufferM3:margins.bufferM3,headroomM3:margins.headroomM3}:null,actualEvm:null});
  }
 }
 function aggregate(rows){const included=rows.filter(r=>r.planningFeasible),baselineKg=included.reduce((a,r)=>a+r.accounting.display.baselineKg,0),operatedKg=included.reduce((a,r)=>a+r.accounting.display.operatedKg,0);return {dates:included.map(r=>r.date),days:included.length,baselineKg,operatedKg,savingKg:baselineKg-operatedKg,reductionPercent:100*(baselineKg-operatedKg)/baselineKg};}

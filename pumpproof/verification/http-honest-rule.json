@@ -1,11 +1,17 @@
 {
   "schema": "pumpproof-evidence-v3",
-  "id": "b3c2b950-c2d7-4811-a88e-04b71664abcf",
-  "inputDigest": "0x268fe2fc274089f5d395ae7e0a3ac23e0e6630ff4c6deb6bbf85448bf41632ca",
+  "id": "a2b69977-b067-45f7-b7bb-9a9baad982c3",
+  "inputDigest": "0x8395cc3e4fa48257911481a83f6ab7e7c78bc9a45cd64f326b8d87a85891dbf7",
   "preview": {
     "schema": "pumpproof-external-preview-v1",
-    "inputDigest": "0x268fe2fc274089f5d395ae7e0a3ac23e0e6630ff4c6deb6bbf85448bf41632ca",
+    "inputDigest": "0x8395cc3e4fa48257911481a83f6ab7e7c78bc9a45cd64f326b8d87a85891dbf7",
     "descriptor": {
+      "experiment": "honest-rule",
+      "generation": {
+        "method": "e4-clock-tank-rule-v1",
+        "code": "src/rules.mjs",
+        "sha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9"
+      },
       "schema": "pumpproof-external-descriptor-v1",
       "mode": "external",
       "modelUsed": false,
@@ -238,7 +244,7 @@
     "receiptIssued": false,
     "execution": "calculated preview; no transaction has run"
   },
-  "planHash": "0x268fe2fc274089f5d395ae7e0a3ac23e0e6630ff4c6deb6bbf85448bf41632ca",
+  "planHash": "0x8395cc3e4fa48257911481a83f6ab7e7c78bc9a45cd64f326b8d87a85891dbf7",
   "policy": {
     "initialM3": 12000,
     "reserveM3": 4000,
@@ -412,9 +418,9 @@
     "modelHash": "0x2ad1de3bd82ddfdf9eb9da0e0f3beedff61fd48b496057f1c7faa447ef6eea99",
     "sourceHash": "0x21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
   },
-  "evidenceDigest": "0x4fbcde000f5013577deed6f5e86607974c8707390daa32e14a3bfb824c301e6d",
+  "evidenceDigest": "0x6b3df638c4ac789cb4ca84c6999d833d7c3f4319cf0e773455193ab7e4da00d1",
   "chainId": 31337,
-  "contract": "0x2307B9fF9E4D1cE58E7f2de0A059F613541f3c0b",
+  "contract": "0xe85D919799809b64E26b2D4D33dAf2dABa448814",
   "experiment": "honest-rule",
   "scope": "Isolated labelled local experiment contract; duplicate protection is within this contract only.",
   "accepted": true,
@@ -423,19 +429,19 @@
   "steps": [
     {
       "step": "Exact trace committed",
-      "tx": "0x312d4cb0ba5a0f2b1f31b58ee31e2d885e35ba8371160c38e47c6461e89a6f99",
+      "tx": "0x87a00f696ca76b0e4ad39c3c2f70585b5470913c1c216cde77054c0a6cb3eb77",
       "block": 6,
       "status": 1
     },
     {
       "step": "Evidence attested",
-      "tx": "0xdee5242474445211b4c507d4705376353b701c0f9a45a3911a0ffec4eb009697",
+      "tx": "0xafb3fb708a9eed2e035c541c5c39d551e67e37bfc817e06c4910d71f415542c7",
       "block": 7,
       "status": 1
     },
     {
       "step": "Accounting accepted",
-      "tx": "0xf8a40a1740819bbc8004478d75a2412412c096560d61ea2bd718f19131d557ee",
+      "tx": "0xdc9113a3b8a108c4f89d6cd3541cae0bd40fad75d0a094f6e8d63f958d094762",
       "block": 8,
       "status": 1
     }
@@ -508,16 +514,17 @@
     "contracts/PumpProof.sol": "f3d7942867cc2e90c2e3e52a01981f0635eb973f3686a6b561261a50c30d8432",
     "data/contract.json": "bec6c41c95c3d75a05428a9dcbd5f81d37277e4a55370776c0ecde11f513eb9d",
     "src/accounting.mjs": "3ee124f09fc3eda9d250d62085839255bd86d45b018ac7ecc01623dc34fda044",
-    "src/external-trace.mjs": "007614b08267b0d59a7553012056349ebad88b82cb8350cec8357325037ee929",
-    "src/external-chain.mjs": "5d28b485cb96a0654e62bed7fbc2415790f7a9837183e88b2e583b823e2a3a62",
-    "src/external-envelope.mjs": "db60d803750d19ccfcc4a9bc959c840231c8d4fe25b5e127f66b78ed48702568"
+    "src/rules.mjs": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+    "src/external-trace.mjs": "df0632943ac6eb47507cfafb0fa01362c7ca7509e3d8de8d57fe35959650e011",
+    "src/external-chain.mjs": "238d29830de0e7f1823e18022c7ec84ec0e854bed781eb5989277fb4400944fc",
+    "src/external-envelope.mjs": "4b8858da1617d5e857019b64197401e370986ba0d8f697567e353b5a9ce1f3a7"
   },
   "signers": {
-    "operator": "0x7Cea51B3193c00387cFac7A7D5246AB17f2885bf",
-    "auditor": "0x927Aa3c4Fc6c4669e67A596D9d8A9Dd5e940e352"
+    "operator": "0xE5Ed1dEf66092d7C18aFB1b1556a743f6e9D1978",
+    "auditor": "0xcd2eb54D45D7D180B39c597A90ff8422Ee412b5B"
   },
   "signatures": {
-    "operator": "0xf09e22506e802ddf81831aef9a25674b99b6d3fcdc33687caabd07df2bfe1c87136fb41d8c56a0ae598469226bd9e23b59efdb892aacb85accff0e5bfdb522731b",
-    "auditor": "0x2b31ff16d186ac309f534df24be0134c497135c0f23ca1a81c977019cb6b65174af9abd186de1bbd40446e8404b9b41924271d79e7fe3559a51e29bba065d8fb1c"
+    "operator": "0x379b4a58a84dfad7ac9a3afeba4841b03ba827c8df16bd47587831497f383cd4039818a4c76bac4ef48b0b95ca94c6f1b9e21f6452cff150c4ba245722ce613c1b",
+    "auditor": "0x213858249c506d5b23386117cac301843baaa00d479498f1e3a07dfdc2d5a9530c74594075ff89313f5c28d32b89a1f6da78862543c9bcb706843db770a6311f1b"
   }
 }

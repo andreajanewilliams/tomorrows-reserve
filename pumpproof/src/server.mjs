@@ -40,11 +40,14 @@ const server=http.createServer(async(req,res)=>{
   if(req.method==='GET'&&url.pathname==='/api/external/examples'){
     return send(res,200,['honest-rule','skips-evening-refill'].map(experiment=>({experiment,trace:JSON.parse(fs.readFileSync(path.join(root,'examples/external',experiment+'-2020-02-04.json')))})));
   }
-  if(req.method==='POST'&&url.pathname==='/api/external/preview')return send(res,200,previewTrace(await body(req)));
+  if(req.method==='POST'&&url.pathname==='/api/external/preview'){
+    const request=await body(req);strictKeys(request,['trace','experiment'],'external preview request');
+    return send(res,200,previewTrace(request.trace,{experiment:request.experiment}));
+  }
   if(req.method==='POST'&&url.pathname==='/api/external/prove'){
     const request=await body(req);strictKeys(request,['trace','inputDigest','experiment'],'external request');
     if(!EXPERIMENTS.includes(request.experiment))throw new Error('Unknown external experiment');
-    const preview=previewTrace(request.trace),key=request.experiment+':'+preview.descriptor.trace.date;
+    const preview=previewTrace(request.trace,{experiment:request.experiment}),key=request.experiment+':'+preview.descriptor.trace.date;
     if(request.inputDigest!==preview.inputDigest)throw new Error('Preview input digest mismatch');
     const result=await enqueue(async()=>{
       const previous=externalExperiments.get(key);

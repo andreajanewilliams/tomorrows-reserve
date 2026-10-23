@@ -6,7 +6,7 @@
     "src/calibration.mjs": "d1aaf641481c719cb85d4aaeb275d6459aebe277afbf29d900c507708a3395ef",
     "src/engine.mjs": "44e611fdad2254e1bce107e70562ff4008b07b846a87acd229a12035bae259b4",
     "src/accounting.mjs": "3ee124f09fc3eda9d250d62085839255bd86d45b018ac7ecc01623dc34fda044",
-    "scripts/evaluate-comparisons.mjs": "9251244f165b80c4516564ca6a1f21a769b55b9fd7ccd7b96be0bb9c4c3cda94"
+    "scripts/evaluate-comparisons.mjs": "578d5dec5a7730370b39dbfbe19f78fd13b420d416ef3232e74807407d3ade77"
   },
   "fixtures": [
     {

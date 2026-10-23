@@ -3,8 +3,8 @@
   "accountingAccepted": true,
   "receiptIssued": true,
   "reason": null,
-  "inputDigest": "0x268fe2fc274089f5d395ae7e0a3ac23e0e6630ff4c6deb6bbf85448bf41632ca",
-  "freshEvmTransaction": "0xb8cf538111ade6e83945a72a3a81f56480656ae0718b20cfdcb3b47d09f4bdec",
+  "inputDigest": "0x8395cc3e4fa48257911481a83f6ab7e7c78bc9a45cd64f326b8d87a85891dbf7",
+  "freshEvmTransaction": "0xaff0c15ee7d8d73b59a6ee67cdb863288567ae4354ef74905b82b2bea5a4bf72",
   "freshEvmStatus": 1,
   "optimiserUsed": false,
   "meaning": "Exact supplied trace, pinned sources, signed claims and fresh local EVM outcome reproduced. Original chain history and physical measurements are not authenticated."

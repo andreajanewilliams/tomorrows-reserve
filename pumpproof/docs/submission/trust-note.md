@@ -16,3 +16,5 @@ PumpProof checks a declared accounting claim. It does not establish that uploade
 | Late commitment or collusion | Commit precedes attestation and settlement in the demonstration | Historical replay commitment is retrospective; dishonest attesters can collude |
 
 Production requires co-located calibrated measurements, independently governed identities, a shared asset registry, corrections/disputes and operational validation. A signed database is a credible alternative for the current single-operator demonstration. The local server must not simply be bound publicly: keys, state, abuse controls and host policy require a separate design. No deployment is authorised or performed.
+
+Built-in experiment names are checked against the exact pinned clock/tank rule during preview, issuance and verification. The committed descriptor includes the experiment and rule-method hash. Manual JSON edits switch to `uploaded-trace`; they cannot claim a built-in policy identity. The trace values themselves remain unchanged.

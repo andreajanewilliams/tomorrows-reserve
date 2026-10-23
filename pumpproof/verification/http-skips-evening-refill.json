@@ -1,11 +1,17 @@
 {
   "schema": "pumpproof-evidence-v3",
-  "id": "65cc7ad6-327c-44b1-bb8b-5fa46499004a",
-  "inputDigest": "0x3e53bd930c4bd58131b9484af0ba5edf5cb62d286551b8f16d47d6bc6fd69f51",
+  "id": "1c6df6f1-8432-4667-8e11-5b6dca05d650",
+  "inputDigest": "0x88519e7f2ff525e2f7e2f8d8152c43045e27ba033e816ef36e2a9d827f49c75e",
   "preview": {
     "schema": "pumpproof-external-preview-v1",
-    "inputDigest": "0x3e53bd930c4bd58131b9484af0ba5edf5cb62d286551b8f16d47d6bc6fd69f51",
+    "inputDigest": "0x88519e7f2ff525e2f7e2f8d8152c43045e27ba033e816ef36e2a9d827f49c75e",
     "descriptor": {
+      "experiment": "skips-evening-refill",
+      "generation": {
+        "method": "e4-skips-evening-refill-v1",
+        "code": "src/rules.mjs",
+        "sha256": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9"
+      },
       "schema": "pumpproof-external-descriptor-v1",
       "mode": "external",
       "modelUsed": false,
@@ -243,7 +249,7 @@
     "receiptIssued": false,
     "execution": "calculated preview; no transaction has run"
   },
-  "planHash": "0x3e53bd930c4bd58131b9484af0ba5edf5cb62d286551b8f16d47d6bc6fd69f51",
+  "planHash": "0x88519e7f2ff525e2f7e2f8d8152c43045e27ba033e816ef36e2a9d827f49c75e",
   "policy": {
     "initialM3": 12000,
     "reserveM3": 4000,
@@ -417,9 +423,9 @@
     "modelHash": "0x2ad1de3bd82ddfdf9eb9da0e0f3beedff61fd48b496057f1c7faa447ef6eea99",
     "sourceHash": "0x21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
   },
-  "evidenceDigest": "0xff973f52aca96974fe7f8f33f88f8b180e1b5a867c4e96d4db1705eb861f80b1",
+  "evidenceDigest": "0x9573f0bc983aceb8cde81035e711ce97b05d0d8d74fd194ef18d6527b9ce35b7",
   "chainId": 31337,
-  "contract": "0x47165f2b0Aa98cf86Fd92ac39DbA1301C3A08FC8",
+  "contract": "0xF02B7D1BA58bEd5e126e8125c2624F24b77B27eA",
   "experiment": "skips-evening-refill",
   "scope": "Isolated labelled local experiment contract; duplicate protection is within this contract only.",
   "accepted": false,
@@ -428,19 +434,19 @@
   "steps": [
     {
       "step": "Exact trace committed",
-      "tx": "0xed8fbcaa1f009f434170caf9d0ecbaa2b8e32d415757dc1fddbb15910e204f1a",
+      "tx": "0xcdbfb4685dfe01be93a95c0e77ab203a2e32e64a2f7f5ef32285df7c0c446e68",
       "block": 2,
       "status": 1
     },
     {
       "step": "Evidence attested",
-      "tx": "0x6ca6589ec3908d13930c71f8c1c8630f164e0f40d2195db54f0f3bdf95f96e0b",
+      "tx": "0xff6f4fc64a960a66d973492d7a6bd07abb7d75a0768401f147360bf5cc57a604",
       "block": 3,
       "status": 1
     },
     {
       "step": "Settlement refused",
-      "tx": "0xc66fff02d94ae64cc6a6de9673808316e51b3d4b8a4a04e9aed153d3efe92e23",
+      "tx": "0xa776ed493356ae80489a3f8984e93d837c35a6b34d8adedba70fe3ee972f5501",
       "block": 4,
       "status": 0
     }
@@ -509,16 +515,17 @@
     "contracts/PumpProof.sol": "f3d7942867cc2e90c2e3e52a01981f0635eb973f3686a6b561261a50c30d8432",
     "data/contract.json": "bec6c41c95c3d75a05428a9dcbd5f81d37277e4a55370776c0ecde11f513eb9d",
     "src/accounting.mjs": "3ee124f09fc3eda9d250d62085839255bd86d45b018ac7ecc01623dc34fda044",
-    "src/external-trace.mjs": "007614b08267b0d59a7553012056349ebad88b82cb8350cec8357325037ee929",
-    "src/external-chain.mjs": "5d28b485cb96a0654e62bed7fbc2415790f7a9837183e88b2e583b823e2a3a62",
-    "src/external-envelope.mjs": "db60d803750d19ccfcc4a9bc959c840231c8d4fe25b5e127f66b78ed48702568"
+    "src/rules.mjs": "813e147856759c9b67fa1c3e668c437e20d54cdd08d667289a9ec9b78927a9d9",
+    "src/external-trace.mjs": "df0632943ac6eb47507cfafb0fa01362c7ca7509e3d8de8d57fe35959650e011",
+    "src/external-chain.mjs": "238d29830de0e7f1823e18022c7ec84ec0e854bed781eb5989277fb4400944fc",
+    "src/external-envelope.mjs": "4b8858da1617d5e857019b64197401e370986ba0d8f697567e353b5a9ce1f3a7"
   },
   "signers": {
-    "operator": "0x7Cea51B3193c00387cFac7A7D5246AB17f2885bf",
-    "auditor": "0x927Aa3c4Fc6c4669e67A596D9d8A9Dd5e940e352"
+    "operator": "0xE5Ed1dEf66092d7C18aFB1b1556a743f6e9D1978",
+    "auditor": "0xcd2eb54D45D7D180B39c597A90ff8422Ee412b5B"
   },
   "signatures": {
-    "operator": "0xd957d50d8a90d62762daa4eb922d5697fc00d29ff34d1b753b12b1e311d160b8616c538b4e3e09e4599ab44fb2d8c7e2a6c04a7131a28c01830e64637b4f51c41c",
-    "auditor": "0xf105fd1c0ca951f337c22f5802382f3aabfcb503e498365d2a601bc965ff9bf47cd4801e4e0fc8a8396895a827370d001f1cb311f913d424a8498c240f9d4faa1c"
+    "operator": "0xe96f2b67e8c9a9edbd64da22e7591d594f6d67df018c2eb79f3bedd48918d7810a9ec64417a31e0bc7fb7274ac37f1b49a7686e0e1a414ddb0efe196f13e80f71b",
+    "auditor": "0x82f8c9c0a6b3844a846732504c659365cb0ae17bd225f58706ac217b637e29bf53ed2a5a768a793c4223542c60470c3e7d6a49a9ba17a47f893300cf6f2a937b1c"
   }
 }

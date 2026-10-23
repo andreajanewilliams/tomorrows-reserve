@@ -4,6 +4,8 @@ import {id,keccak256,toUtf8Bytes} from 'ethers';
 import {inputs} from './inputs.mjs';
 import {canonical} from './envelope.mjs';
 import {account} from './accounting.mjs';
+import {ruleTrace} from './rules.mjs';
+export const EXPERIMENTS=['honest-rule','skips-evening-refill','uploaded-trace'];
 export const EXTERNAL_POLICY=Object.freeze({initialM3:12000,reserveM3:4000,capacityM3:24000,pumpMaxM3:6000,energyWhPerM3:500});
 export const NO_MODEL=id('PumpProof:external-trace:no-model:v1');
 const carbon=new Map(['2020-01','2020-02','2020-02-validation'].flatMap(m=>inputs.sources[`carbon-${m}.json`].data).filter(r=>Number.isFinite(r.intensity.actual)).map(r=>[r.from,r.intensity.actual]));
@@ -22,9 +24,17 @@ export function parseTrace(value){
 }
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 export const contractSha256=sha(fs.readFileSync(new URL('../contracts/PumpProof.sol',import.meta.url)));
-export function previewTrace(value){
+const ruleSha256=sha(fs.readFileSync(new URL('./rules.mjs',import.meta.url)));
+export function previewTrace(value,{experiment='uploaded-trace'}={}){
  const trace=parseTrace(value),day=externalDays.find(d=>d.date===trace.date),policy={...EXTERNAL_POLICY};
- const descriptor={schema:'pumpproof-external-descriptor-v1',mode:'external',modelUsed:false,trace,policy,sourceHash:inputs.sourceHash,sourceIdentities:inputs.provenance.sources,baseline:'demand-following-v1',contractSha256,units:'litres',hourSlots:'24 UTC hours'};
+ if(!EXPERIMENTS.includes(experiment))throw new Error('Unknown external experiment');
+ let generation=null;
+ if(experiment!=='uploaded-trace'){
+  const expected=ruleTrace(trace.date,day.demandM3.map(v=>Math.round(v*1000)),{omitEveningRefill:experiment==='skips-evening-refill'});
+  if(canonical(trace)!==canonical(expected))throw new Error('Named experiment trace differs from pinned rule; use uploaded-trace for edited inputs');
+  generation={method:experiment==='honest-rule'?'e4-clock-tank-rule-v1':'e4-skips-evening-refill-v1',code:'src/rules.mjs',sha256:ruleSha256};
+ }
+ const descriptor={experiment,generation,schema:'pumpproof-external-descriptor-v1',mode:'external',modelUsed:false,trace,policy,sourceHash:inputs.sourceHash,sourceIdentities:inputs.provenance.sources,baseline:'demand-following-v1',contractSha256,units:'litres',hourSlots:'24 UTC hours'};
  const inputDigest=keccak256(toUtf8Bytes('PumpProof external descriptor v1\n'+canonical(descriptor)));
  const evidence={start:Date.parse(trace.date+'T00:00Z')/1000,demand:day.demandM3.map(v=>Math.round(v*1000)),pumped:[...trace.pumpedLitres],intensity:carbonDay(trace.date),modelHash:NO_MODEL,sourceHash:'0x'+inputs.sourceHash};
  return {schema:'pumpproof-external-preview-v1',inputDigest,descriptor,evidence,accounting:account(evidence,policy),formatValid:true,receiptIssued:false,execution:'calculated preview; no transaction has run'};

@@ -1,15 +1,11 @@
-
-> pumpproof@0.1.0 verify
-> node scripts/verify-bundle.mjs /Users/chadsmith/Downloads/pumpproof-2020-02-04-honest-rule.json
-
 {
   "evidenceValid": true,
-  "accountingAccepted": true,
-  "receiptIssued": true,
-  "reason": null,
-  "inputDigest": "0x268fe2fc274089f5d395ae7e0a3ac23e0e6630ff4c6deb6bbf85448bf41632ca",
-  "freshEvmTransaction": "0x37a6a508ba681916d93fc9198ca8fbf7d7853cf685c3ca5e5186485504a1772f",
-  "freshEvmStatus": 1,
+  "accountingAccepted": false,
+  "receiptIssued": false,
+  "reason": "WaterDebt",
+  "inputDigest": "0x88519e7f2ff525e2f7e2f8d8152c43045e27ba033e816ef36e2a9d827f49c75e",
+  "freshEvmTransaction": "0x2ebc64f6aa75fa9e4771209fa49d3ee62c06934dcc16e2b10f971fbc3256aca5",
+  "freshEvmStatus": 0,
   "optimiserUsed": false,
   "meaning": "Exact supplied trace, pinned sources, signed claims and fresh local EVM outcome reproduced. Original chain history and physical measurements are not authenticated."
 }

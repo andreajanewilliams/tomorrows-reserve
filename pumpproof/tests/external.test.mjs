@@ -23,3 +23,11 @@ test('honest acceptance and WaterDebt refusal execute exact calldata in separate
  assert.notEqual(results[0].contract,results[1].contract);
  }finally{await chain.close();}
 });
+
+test('named experiments bind the exact rule and method while uploaded traces remain unchanged',async()=>{
+ const fs=await import('node:fs'),t=JSON.parse(fs.readFileSync(new URL('../examples/external/honest-rule-2020-02-04.json',import.meta.url)));
+ const named=previewTrace(t,{experiment:'honest-rule'}),uploaded=previewTrace(t);
+ assert.equal(named.descriptor.generation.method,'e4-clock-tank-rule-v1');assert.match(named.descriptor.generation.sha256,/^[0-9a-f]{64}$/);
+ assert.equal(uploaded.descriptor.generation,null);assert.notEqual(named.inputDigest,uploaded.inputDigest);
+ t.pumpedLitres[0]++;assert.throws(()=>previewTrace(t,{experiment:'honest-rule'}),/Named experiment trace differs/);assert.deepEqual(previewTrace(t).evidence.pumped,t.pumpedLitres);
+});

@@ -5,7 +5,7 @@ const key=()=>JSON.stringify({text:$('external-json').value,experiment:$('extern
 function invalidate(){revision++;preview=null;$('external-preview').innerHTML='';$('external-result').innerHTML='';$('external-prove').disabled=true;}
 async function api(path,body){const response=await fetch(path,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:undefined),data=await response.json();if(!response.ok)throw new Error(data.error);return data;}
 const matches=(rev,input)=>revision===rev&&key()===input;
-$('external-json').oninput=invalidate;
+$('external-json').oninput=()=>{$('external-example').value='uploaded-trace';invalidate();};
 $('external-example').onchange=()=>{invalidate();const sample=samples.find(s=>s.experiment===$('external-example').value);if(sample)$('external-json').value=JSON.stringify(sample.trace,null,2);};
 $('external-upload').onchange=async()=>{
  invalidate();const rev=revision,file=$('external-upload').files[0];$('external-example').value='uploaded-trace';$('external-json').value='';
@@ -14,7 +14,7 @@ $('external-upload').onchange=async()=>{
 };
 $('external-preview-button').onclick=async()=>{
  invalidate();const rev=revision,input=key();$('external-preview').textContent='Calculating the exact uploaded trace…';
- try{const result=await api('/api/external/preview',JSON.parse($('external-json').value));if(!matches(rev,input))return;preview=result;const a=result.accounting;
+ try{const result=await api('/api/external/preview',{trace:JSON.parse($('external-json').value),experiment:$('external-example').value});if(!matches(rev,input))return;preview=result;const a=result.accounting;
  $('external-preview').innerHTML=`<span class="panel-number">CALCULATED PREVIEW · NO TRANSACTION YET</span><h3>${fmt(a.display.reductionPercent,2)}% ${a.display.rawDifferenceKg>=0?'apparent reduction':'increase'}</h3><p>Start ${fmt(Number(a.initialLitres)/1000)} m³ → close ${fmt(Number(a.finalLitres)/1000,3)} m³. Water debt: <strong>${fmt(Number(a.waterDebtLitres)/1000,3)} m³</strong>. Surplus: ${fmt(Number(a.terminalSurplusLitres)/1000,3)} m³.</p><p>Hourly model constraints: ${a.hourlyModelConstraintsMet?'met':'failed'} · starting storage restored: ${a.startingStorageRestored?'yes':'no'} · positive attributed carbon difference: ${a.positiveCarbonDifference?'yes':'no'}.</p><p>${a.violations.length?a.violations.map(v=>esc(v.code)+' (hour '+v.hour+')').join(' · '):'Numerically eligible; contract execution pending.'}</p><p class="hash">Input digest: ${esc(result.inputDigest)}</p><details><summary>Exact uploaded litres, 24 UTC hours</summary><pre>${esc(JSON.stringify(result.descriptor.trace.pumpedLitres))}</pre></details>`;
  $('external-prove').disabled=false;
  }catch(e){if(matches(rev,input)){$('external-preview').textContent=e.message;$('external-prove').disabled=true;}}

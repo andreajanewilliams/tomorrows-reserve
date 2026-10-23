@@ -1,0 +1,45 @@
+TAP version 13
+# Subtest: v3 accepted and refused bundles reproduce; every changed signed claim fails
+ok 1 - v3 accepted and refused bundles reproduce; every changed signed claim fails
+  ---
+  duration_ms: 6227.671292
+  ...
+# Subtest: external edits invalidate preview/proof immediately; late previews and proof cannot return
+ok 2 - external edits invalidate preview/proof immediately; late previews and proof cannot return
+  ---
+  duration_ms: 25.573666
+  ...
+# Subtest: example selection and upload start remove proof before reading the file
+ok 3 - example selection and upload start remove proof before reading the file
+  ---
+  duration_ms: 2.068959
+  ...
+# Subtest: external input rejects unknown fields, dates, units and malformed integer arrays
+ok 4 - external input rejects unknown fields, dates, units and malformed integer arrays
+  ---
+  duration_ms: 1.437083
+  ...
+# Subtest: preview retains exact integers, every violation, immutable caller input and no model claim
+ok 5 - preview retains exact integers, every violation, immutable caller input and no model claim
+  ---
+  duration_ms: 9.314917
+  ...
+# Subtest: exact imported evidence is committed and actual changed-after-attestation transaction refuses
+ok 6 - exact imported evidence is committed and actual changed-after-attestation transaction refuses
+  ---
+  duration_ms: 1669.501292
+  ...
+# Subtest: honest acceptance and WaterDebt refusal execute exact calldata in separate labelled contracts
+ok 7 - honest acceptance and WaterDebt refusal execute exact calldata in separate labelled contracts
+  ---
+  duration_ms: 4130.150958
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 6812.43825

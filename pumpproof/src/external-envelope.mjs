@@ -13,7 +13,7 @@ export const EXTERNAL_LIMITATIONS=[
  'Signatures establish integrity under declared keys, not real-world identity or original chain history.',
  'Local ephemeral EVM; no public deployment, money, tokens or carbon credits.'
 ];
-function readVersions(){return Object.fromEntries(['contracts/PumpProof.sol','data/contract.json','src/accounting.mjs','src/external-trace.mjs','src/external-chain.mjs','src/external-envelope.mjs'].map(file=>[file,createHash('sha256').update(fs.readFileSync(new URL('../'+file,import.meta.url))).digest('hex')]));}
+function readVersions(){return Object.fromEntries(['contracts/PumpProof.sol','data/contract.json','src/accounting.mjs','src/rules.mjs','src/external-trace.mjs','src/external-chain.mjs','src/external-envelope.mjs'].map(file=>[file,createHash('sha256').update(fs.readFileSync(new URL('../'+file,import.meta.url))).digest('hex')]));}
 const loadedVersions=readVersions();
 export function externalVersions(){if(canonical(readVersions())!==canonical(loadedVersions))throw new Error('Executable snapshot changed; restart before issuing or verifying evidence');return structuredClone(loadedVersions);}
 export function externalEnvelopeDigest(bundle){const {signatures,...payload}=bundle;return keccak256(toUtf8Bytes('PumpProof evidence envelope v3\n'+canonical(payload)));}

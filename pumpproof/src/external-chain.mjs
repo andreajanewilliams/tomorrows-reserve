@@ -2,11 +2,11 @@ import {randomUUID} from 'node:crypto';
 import {args} from './chain.mjs';
 import {EXTERNAL_LIMITATIONS,externalVersions} from './external-envelope.mjs';
 import {inputs} from './inputs.mjs';
-import {previewTrace} from './external-trace.mjs';
-export const EXPERIMENTS=['honest-rule','skips-evening-refill','uploaded-trace'];
+import {previewTrace,EXPERIMENTS} from './external-trace.mjs';
+export {EXPERIMENTS} from './external-trace.mjs';
 export async function executeExternal(chain,contract,trace,{experiment='uploaded-trace',tamper=false}={}){
  if(!EXPERIMENTS.includes(experiment))throw new Error('Unknown external experiment');
- const preview=previewTrace(trace),evidence=structuredClone(preview.evidence),steps=[];
+ const preview=previewTrace(trace,{experiment}),evidence=structuredClone(preview.evidence),steps=[];
  const commit=await(await contract.commit(evidence.start,preview.inputDigest)).wait();
  steps.push({step:'Exact trace committed',tx:commit.hash,block:commit.blockNumber,status:commit.status});
  const digest=await contract.evidenceHash(...args(evidence));
