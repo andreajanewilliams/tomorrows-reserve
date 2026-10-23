@@ -35,12 +35,12 @@ Each experiment label/date binds one trace in the running session. Identical req
 
 JSON accepts only `schema`, `date` and `pumpedLitres`: schema `pumpproof-external-trace-v1`, a source-complete February date, and exactly 24 non-negative safe integers in litres. See `examples/external/`. No unknown fields, inferred units, paths, URLs, policy overrides or altered measured inputs. A well-formed trace outside the accounting limits is retained unchanged for a legitimate negative experiment.
 
-- `POST /api/external/preview`: the trace object; returns inputDigest and exact accounting.
+- `POST /api/external/preview`: `{trace, experiment}`; labels are `honest-rule`, `skips-evening-refill`, `uploaded-trace`. Returns inputDigest and exact accounting.
 - `POST /api/external/prove`: `{trace, inputDigest, experiment}`; labels are `honest-rule`, `skips-evening-refill`, `uploaded-trace`.
 - `GET /api/export/:id`: signed evidence from this session.
 - `GET /api/comparison`: the native report, including actual EVM annotations where executed.
 
-The descriptor commits trace, date, fixed policy, source identities, baseline, units and contract source. External evidence declares modelUsed false and uses a documented no-model hash sentinel. Authoritative accounting uses BigInt litres/scores and decimal-string JSON integers. Display kilograms derive from unrounded scores. Solidity separately floors baseline, operated and positive difference grams; a positive score difference can accept with zero saving grams.
+The descriptor commits trace, date, experiment, fixed policy, source identities, baseline, units and contract source. Built-in experiment labels require the exact pinned rule output and bind its method/code hash; edited JSON switches to `uploaded-trace`. External evidence declares modelUsed false and uses a documented no-model hash sentinel. Authoritative accounting uses BigInt litres/scores and decimal-string JSON integers. Display kilograms derive from unrounded scores. Solidity separately floors baseline, operated and positive difference grams; a positive score difference can accept with zero saving grams.
 
 ## Native results
 
