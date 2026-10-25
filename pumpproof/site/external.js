@@ -14,7 +14,7 @@ function verdictLine(a,codes,pct,debt,surplus){if(codes.includes('WATER_DEBT'))r
 let revision=0,preview=null,samples=[],testnet=null,lastResult=null,aiJson=null;
 const recordedDemo=()=>globalThis.document?.documentElement?.dataset?.demo==='recorded';
 const EXPLORERS=['https://sepolia.etherscan.io/','https://eth-sepolia.blockscout.com/'],safeLink=u=>typeof u==='string'&&EXPLORERS.some(e=>u.startsWith(e));
-const friendly=m=>/already binds different inputs/.test(m)?'A different uploaded plan has already been settled for this day, and the contract will not replace it. That is the duplicate protection working. Use another date, or restart the local server to start fresh.':m;
+const friendly=m=>/already binds different inputs/.test(m)?'This local demo session already has a committed attempt for this experiment and day, whether accepted or refused. The session will not replace it with different inputs. Use another date, or restart the local server to begin a new demo session.':m;
 // CSV uploads become the exact JSON trace shown before preview. Strict: anything ambiguous is rejected, never repaired.
 // Header date,hour,pumped_litres (whole litres) or date,hour,pumped_m3 (at most 3 decimals, converted exactly to litres).
 function planText(text){

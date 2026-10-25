@@ -111,7 +111,7 @@ function contractOutcome(){const r=$('external-result'),h=r.querySelector('.deci
  const text=r.textContent.trim();return text&&!/settling|Loading the recorded/.test(text)?{state:'error',message:text}:{state:'pending'};}
 const planFacts=()=>{let date='';try{date=dateLabel(JSON.parse($('external-json').value).date);}catch{}return{date,carbon:document.querySelector('#external-preview .kpi strong')?.textContent||'',verdict:document.querySelector('#external-preview .verdict-tag')?.textContent||''};};
 const proveNow=async live=>{await until(()=>!live()||!$('external-prove').disabled);if(!live()||$('external-prove').disabled)return false;$('external-prove').click();await until(()=>!live()||contractOutcome().state!=='pending',9000);return true;};
-const how=o=>o.recorded?' This is a recorded run, replayed in the public demo.':o.reused?' This server had already settled the same plan, so the earlier result is shown.':'';
+const how=o=>o.recorded?' This is a recorded run, replayed in the public demo.':o.reused?' This local demo session had already checked the same plan, so the earlier result is shown.':'';
 const tour=[
  {target:'.compare',title:'The trick',copy:'A pumping plan can look 20% greener just by not refilling the tank. Tomorrow then starts 7,000 m³ short.'},
  {target:'#external-preview',title:'Check the whole day',copy:'Following the tank hour by hour until midnight…',run:async live=>({picked:await pickPlan('skips-evening-refill',live)}),
