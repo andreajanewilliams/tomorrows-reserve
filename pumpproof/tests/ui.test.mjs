@@ -11,7 +11,7 @@ function ui(){
  const requests=[];
  const context=vm.createContext({document:{getElementById:node,querySelector:selector=>node(selector),querySelectorAll:()=>[]},fetch:(url,options)=>new Promise((resolve,reject)=>requests.push({url,options,resolve:body=>resolve({ok:true,json:async()=>body}),reject}))});
  vm.runInContext(source+'\nglobalThis.testApi={setMode,recalculate};',context);
- return {node,requests,api:context.testApi};
+ return {node,requests,api:context.testApi,context};
 }
 const proof={accepted:true,id:'receipt',evidenceDigest:'digest'};
 async function ready(u){const pending=u.api.recalculate();u.requests.shift().resolve(simulate());await pending;}
@@ -28,4 +28,18 @@ test('late proof cannot restore an export even after returning to original input
 test('late simulation cannot authorise proving after an input change',async()=>{
  const u=ui();const p=u.api.recalculate();u.node('shock').value='20';u.node('shock').oninput();u.requests.shift().resolve(simulate());await p;assert.equal(u.node('prove').disabled,true);cleared(u);
  const count=u.requests.length;await u.node('prove').onclick();assert.equal(u.requests.length,count);
+});
+test('AI replay link restores its day and policy after exploring other settings and clears the old proof',async()=>{
+ const u=ui();await ready(u);u.api.setMode('naive');await accepted(u);
+ vm.runInContext('meta={policy:{reserveM3:4000}}',u.context);
+ u.node('external-json').value=JSON.stringify({date:'2020-02-04'});
+ u.node('day').value='2020-02-05';u.node('shock').value='50';u.node('reserve').value='8000';
+ const pending=u.node('.ai-link').onclick();
+ cleared(u);assert.equal(u.node('prove').disabled,true);
+ const request=u.requests.shift();
+ assert.deepEqual(JSON.parse(request.options.body),{date:'2020-02-04',shockPercent:0,reserveM3:4000});
+ assert.equal(u.node('shock-value').textContent,'0%');
+ request.resolve(simulate());await pending;
+ assert.equal(u.node('prove').disabled,false);cleared(u);
+ assert.equal(vm.runInContext('mode',u.context),'safe');
 });

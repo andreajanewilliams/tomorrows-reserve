@@ -14,7 +14,7 @@ function notice(text){$('notice').hidden=!text;$('notice').textContent=text||'';
 function view(name){document.getElementById('explore-toggle')?.classList.toggle('active',name!=='external');document.querySelector('.hero').hidden=name!=='external';if(name!=='external')globalThis.scrollTo?.({top:0});for(const el of document.querySelectorAll('.view'))el.hidden=el.id!==name;for(const b of document.querySelectorAll('.nav'))b.classList.toggle('active',b.dataset.view===name);}
 document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>view(b.dataset.view));
 const options=()=>({date:$('day').value,shockPercent:Number($('shock').value),reserveM3:Number($('reserve').value)});
-function setBusy(value){busy=value;document.querySelectorAll('#prove,#recalculate,#day,#shock,#reserve,#safe-mode,#naive-mode,.attack-card').forEach(b=>b.disabled=value);}
+function setBusy(value){busy=value;document.querySelectorAll('#prove,#recalculate,#day,#shock,#reserve,#safe-mode,#naive-mode,.attack-card,.ai-link').forEach(b=>b.disabled=value);}
 async function recalculate(){
  invalidateInputs();if(busy)return;setBusy(true);notice('');
  const rev=revision,key=inputKey(),request=options();
@@ -27,6 +27,12 @@ $('shock').oninput=()=>{invalidateInputs();$('shock-value').textContent=$('shock
 $('shock').onchange=recalculate;
 function setMode(name){invalidateProof();mode=name;$('safe-mode').classList.toggle('selected',name==='safe');$('naive-mode').classList.toggle('selected',name==='naive');$('safe-mode').setAttribute('aria-pressed',name==='safe');$('naive-mode').setAttribute('aria-pressed',name==='naive');render();}
 $('safe-mode').onclick=()=>setMode('safe');$('naive-mode').onclick=()=>setMode('naive');$('show-naive').onclick=()=>{setMode('naive');document.querySelector('.stage').scrollIntoView({behavior:'smooth',block:'center'});};
+document.querySelector('.ai-link').onclick=async()=>{
+ if(!meta||busy)return;
+ const trace=JSON.parse($('external-json').value);
+ $('day').value=trace.date;$('shock').value='0';$('shock-value').textContent='0%';$('reserve').value=String(meta.policy.reserveM3);
+ setMode('safe');view('operation');await recalculate();
+};
 const linePath=(values,width,height,min,max,left=42,top=10)=>values.map((v,i)=>`${i?'L':'M'}${(left+i*(width-left-15)/(values.length-1)).toFixed(2)},${(top+(height-top-25)*(1-(v-min)/(max-min))).toFixed(2)}`).join(' ');
 function storageChart(data){
  const w=850,h=230,left=42,top=10,plotH=h-top-25,min=Math.min(0,...data.storageM3),max=sim.policy.capacityM3;
