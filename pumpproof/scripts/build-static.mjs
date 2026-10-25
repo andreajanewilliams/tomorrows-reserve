@@ -19,6 +19,7 @@ fs.copyFileSync(path.join(root,'static/static-api.js'),path.join(out,'static-api
 const meta=await get('/api/meta');
 write('api/meta.json',meta);
 write('api/comparison.json',await get('/api/comparison'));
+if(fs.existsSync(path.join(root,'data/testnet-runs.json')))fs.copyFileSync(path.join(root,'data/testnet-runs.json'),path.join(out,'api/testnet.json'));
 write('api/hydraulics.json',await get('/api/hydraulics'));
 write('api/hydraulics-export.json',await (await fetch(origin+'/api/hydraulics/export')).text());
 write('api/days.json',Object.fromEntries(externalDays.map(d=>[d.date,{demand:d.demandM3.map(v=>Math.round(v*1000)),intensity:carbonDay(d.date)}])));

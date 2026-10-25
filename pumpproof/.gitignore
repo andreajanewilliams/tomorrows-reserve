@@ -3,3 +3,4 @@ node_modules/
 *.log
 .DS_Store
 verification/package-lock.before.json
+.env

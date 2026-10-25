@@ -17,7 +17,8 @@
     "check:results": "node scripts/present-results.mjs --check",
     "smoke:external": "node scripts/smoke-external.mjs",
     "fixtures:evm": "node scripts/execute-fixtures.mjs",
-    "build:static": "node scripts/build-static.mjs"
+    "build:static": "node scripts/build-static.mjs",
+    "testnet": "node --env-file=.env scripts/testnet-run.mjs"
   },
   "dependencies": {
     "ethers": "6.15.0",

@@ -36,6 +36,7 @@ const server=http.createServer(async(req,res)=>{
     res.setHeader('Content-Disposition','attachment; filename="pumpproof-hydraulic-results.json"');
     return send(res,200,hydraulics.results);
   }
+  if(req.method==='GET'&&url.pathname==='/api/testnet'){const file=path.join(root,'data/testnet-runs.json');if(!fs.existsSync(file))return send(res,404,{error:'No public testnet run recorded yet'});return send(res,200,JSON.parse(fs.readFileSync(file)));}
   if(req.method==='GET'&&url.pathname==='/api/comparison')return send(res,200,JSON.parse(fs.readFileSync(path.join(root,'data/comparison-evaluation.json'))));
   if(req.method==='GET'&&url.pathname==='/api/external/examples'){
     return send(res,200,['honest-rule','skips-evening-refill'].map(experiment=>({experiment,trace:JSON.parse(fs.readFileSync(path.join(root,'examples/external',experiment+'-2020-02-04.json')))})));

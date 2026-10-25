@@ -25,7 +25,7 @@ async function preview(body){
 }
 
 async function route(path,body){
-  if(['meta','comparison','external/examples','hydraulics'].includes(path))return data(`api/${path}.json`);
+  if(['meta','comparison','external/examples','hydraulics','testnet'].includes(path))return data(`api/${path}.json`);
   if(path==='external/preview')return preview(body);
   if(path==='external/prove'){
     const run=(await data('api/external/proofs.json'))[body?.experiment],previews=await data('api/external/previews.json');

@@ -474,3 +474,5 @@ header{background:#06181c}
 .hero-stats{grid-template-columns:repeat(4,auto)}
 .hero-stats dt{white-space:normal;max-width:150px}
 .hero-stats dt{max-width:190px}
+.testnet{margin:0 0 16px!important;padding:12px 14px;border:1px solid var(--line);border-radius:9px;background:#f4f8fb;font-size:13.5px!important;color:var(--ink-2)!important}
+.testnet a{color:var(--accent);font-weight:550}
