@@ -712,3 +712,13 @@ details.hydro-boundary[open] summary{margin-bottom:6px}
 .method-card code{font-size:12.5px;background:var(--soft);padding:1px 5px;border-radius:4px}
 .method-limits{background:var(--soft)}
 @media(max-width:760px){.workflow-steps,.method-grid{grid-template-columns:1fr}}
+/* Contract result, one more step simpler: one chain line, one line of links, one verify line. */
+.chain-line{margin:10px 0 12px;font-size:13px;line-height:1.6;color:var(--ink-2)}
+.chain-line .chain-label{color:var(--muted)}
+.chain-line .ok{color:var(--good);font-weight:600}
+.chain-line .no{color:var(--bad);font-weight:600}
+.chain-line small{color:var(--faint);font-size:11.5px;white-space:nowrap}
+.animate .chain-line{animation:fade .5s .3s both}
+.contract-card .result-actions{flex-direction:row;flex-wrap:wrap;gap:4px 16px}
+.contract-card .result-actions .button::before{display:none}
+.contract-card .verify-line code{display:block;margin-top:4px;padding:5px 8px;font-size:11.5px;white-space:normal}
