@@ -15,7 +15,7 @@ For a water-utility energy/operations analyst and an auditor, the question is wh
 - **Public demo:** [tomorrows-reserve.vercel.app](https://tomorrows-reserve.vercel.app/). The whole-day check runs live in your browser (paste or upload your own 24-hour plan); contract results are replayed from real recorded local runs. Built with `npm run build:static` into `site/`.
 - **Source:** [andreajanewilliams/tomorrows-reserve](https://github.com/andreajanewilliams/tomorrows-reserve).
 - **Locally, with live contract checks:** `npm ci` then `npm start`, and open http://127.0.0.1:4317/.
-- **Public testnet:** `npm run testnet` deploys the same contract to Sepolia with separate operator and auditor wallets and runs one refused and one accepted plan (copy `.env.example` to `.env`; test wallets only). Links appear in the app once `data/testnet-runs.json` exists.
+- **Completed public testnet runs:** the same contract ran on Sepolia with separate operator and auditor keys: [WaterDebt refusal](https://sepolia.etherscan.io/address/0xF839720718187039Afa75ceA1A09a7d57786BC84) and [honest acceptance](https://sepolia.etherscan.io/address/0xFf4489bd9f9d12658151B6b7d7222A99e4d3cA30). Matching transaction links appear in the demo. These are demonstration-controlled keys, not independent organisations. `npm run testnet` can create new experiments using faucet-funded test wallets configured in `.env`; it is not needed to inspect the completed runs.
 
 ## One-minute local setup
 
@@ -30,9 +30,9 @@ Open **http://127.0.0.1:4317/** in your browser. The server binds to loopback. N
 
 ## Demonstrate the external trust boundary
 
-1. Select **Skips evening refill**, then **Preview exact trace**. It ends at 5,000 m³, leaving 7,000 m³ debt.
-2. Select **Run contract check**. Inspect the real status-0 WaterDebt transaction.
-3. Choose **Honest clock/tank rule**. The previous preview/proof/export immediately disappears. Preview and run its separate labelled experiment; it restores 12,000 m³ and accepts.
+1. Pick **Skips the evening refill**. The whole day previews automatically: it ends at 5,000 m³, leaving 7,000 m³ debt.
+2. Select **Run the contract check**. Inspect the real status-0 WaterDebt transaction.
+3. Choose **Honest plan**. The previous proof/export immediately disappears and the new plan previews automatically. Select **Run the contract check** for its separate labelled experiment; it restores 12,000 m³ and accepts.
 4. Download a signed v3 bundle. Independently verify the actual downloaded file, or use these supplied examples:
 
 ```sh
@@ -100,7 +100,7 @@ The existing Hydraulic lab and its sources are preserved as a separate historica
 
 [Devpost draft](docs/submission/devpost-draft.md) · [Architecture](docs/submission/architecture.svg) · [Trust note](docs/submission/trust-note.md) · [Verification report](docs/submission/verification.md) · [Recording script and shot list](docs/submission/recording.md) · [Owner checklist](docs/submission/checklist.md).
 
-Selected track: Carbon Markets & Emissions Transparency. The [source repository](https://github.com/andreajanewilliams/tomorrows-reserve) and [recorded static demo](https://tomorrows-reserve.vercel.app/) were published under Andrea’s accounts on 25 October with owner authorisation. Video publication, eligibility confirmation and competition submission remain owner actions.
+Selected track: Carbon Markets & Emissions Transparency. The [source repository](https://github.com/andreajanewilliams/tomorrows-reserve) and [recorded static demo](https://tomorrows-reserve.vercel.app/) were published under Andrea’s accounts on 25 October with owner authorisation. Eligibility answers, competition terms and final submission require the entrant’s confirmation. The repository records technical evidence; submission status is confirmed in Devpost.
 
 Two matching 4 February rule experiments also completed on public Sepolia (chain 11155111), using separate operator and auditor keys controlled for this demonstration: [WaterDebt refusal](https://sepolia.etherscan.io/address/0xF839720718187039Afa75ceA1A09a7d57786BC84) and [honest acceptance](https://sepolia.etherscan.io/address/0xFf4489bd9f9d12658151B6b7d7222A99e4d3cA30). These are separate keys on a public test network, not independent organisations. A public chain does not prove a pump ran. The downloadable signed v3 bundles still describe the local EVM; the Sepolia records provide public transaction links.
 
