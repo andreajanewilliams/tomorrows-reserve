@@ -87,7 +87,7 @@ The existing Hydraulic lab and its sources are preserved as a separate historica
 
 [Devpost draft](docs/submission/devpost-draft.md) · [Architecture](docs/submission/architecture.svg) · [Trust note](docs/submission/trust-note.md) · [Verification report](docs/submission/verification.md) · [Recording script and shot list](docs/submission/recording.md) · [Owner checklist](docs/submission/checklist.md).
 
-Selected track: Carbon Markets & Emissions Transparency. Public repository, video and submission are **pending owner action**. No public demo/testnet deployment exists. Eligibility wording remains inconsistent. Code freeze is Saturday 24 October at 18:00 SAST; readiness target Sunday 25 October at 14:00; official deadline 16:00. No publication, remote push, contact, account creation, spending or submission is authorised by the local build task.
+Selected track: Carbon Markets & Emissions Transparency. Public repository, video and submission are **pending owner action**. No public demo/testnet deployment exists. Eligibility wording remains inconsistent. Code freeze was Saturday 24 October at 18:00 SAST. Readiness target is Sunday 25 October at 14:00 SAST. Devpost currently shows the deadline as 26 October 00:00 (UTC+3), which is 23:00 SAST on 25 October; it showed 16:00 SAST on 23 October, so 16:00 SAST remains the working deadline. No publication, remote push, contact, account creation, spending or submission is authorised by the local build task.
 
 ## Data attribution
 

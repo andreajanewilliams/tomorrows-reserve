@@ -1,7 +1,7 @@
 [
   {
     "schema": "pumpproof-evidence-v3",
-    "id": "1c6df6f1-8432-4667-8e11-5b6dca05d650",
+    "id": "42df4973-cd37-4780-b5ec-661e99c91e83",
     "inputDigest": "0x88519e7f2ff525e2f7e2f8d8152c43045e27ba033e816ef36e2a9d827f49c75e",
     "preview": {
       "schema": "pumpproof-external-preview-v1",
@@ -424,9 +424,9 @@
       "modelHash": "0x2ad1de3bd82ddfdf9eb9da0e0f3beedff61fd48b496057f1c7faa447ef6eea99",
       "sourceHash": "0x21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
     },
-    "evidenceDigest": "0x9573f0bc983aceb8cde81035e711ce97b05d0d8d74fd194ef18d6527b9ce35b7",
+    "evidenceDigest": "0xf8a79c6e390af5916cf708ae1d4d01e41738790b0aec9cec77e6974b59f73d9d",
     "chainId": 31337,
-    "contract": "0xF02B7D1BA58bEd5e126e8125c2624F24b77B27eA",
+    "contract": "0x080994542312aE4ca505A00d38472E9Ac7B53332",
     "experiment": "skips-evening-refill",
     "scope": "Isolated labelled local experiment contract; duplicate protection is within this contract only.",
     "accepted": false,
@@ -435,20 +435,20 @@
     "steps": [
       {
         "step": "Exact trace committed",
-        "tx": "0xcdbfb4685dfe01be93a95c0e77ab203a2e32e64a2f7f5ef32285df7c0c446e68",
-        "block": 2,
+        "tx": "0xb761c54a0ea7c910807efdc4f5354259b62490eb1e5b7727fdf017a2a050efdf",
+        "block": 6,
         "status": 1
       },
       {
         "step": "Evidence attested",
-        "tx": "0xff6f4fc64a960a66d973492d7a6bd07abb7d75a0768401f147360bf5cc57a604",
-        "block": 3,
+        "tx": "0xb0881ea8218c96c7d493a3b89781718f0f471c294034d31f9fa59740dd1173c0",
+        "block": 7,
         "status": 1
       },
       {
         "step": "Settlement refused",
-        "tx": "0xa776ed493356ae80489a3f8984e93d837c35a6b34d8adedba70fe3ee972f5501",
-        "block": 4,
+        "tx": "0xb309637c9d1cce728ed360698fe6871885ec627d749e2bf9ca321294dcb6bf57",
+        "block": 8,
         "status": 0
       }
     ],
@@ -522,17 +522,18 @@
       "src/external-envelope.mjs": "4b8858da1617d5e857019b64197401e370986ba0d8f697567e353b5a9ce1f3a7"
     },
     "signers": {
-      "operator": "0xE5Ed1dEf66092d7C18aFB1b1556a743f6e9D1978",
-      "auditor": "0xcd2eb54D45D7D180B39c597A90ff8422Ee412b5B"
+      "operator": "0x5fb652409718caEEf1BfA1A759fFa24064f17252",
+      "auditor": "0x7e862F899dfFE25095bCd4Ef3C61f55912d442e5"
     },
     "signatures": {
-      "operator": "0xe96f2b67e8c9a9edbd64da22e7591d594f6d67df018c2eb79f3bedd48918d7810a9ec64417a31e0bc7fb7274ac37f1b49a7686e0e1a414ddb0efe196f13e80f71b",
-      "auditor": "0x82f8c9c0a6b3844a846732504c659365cb0ae17bd225f58706ac217b637e29bf53ed2a5a768a793c4223542c60470c3e7d6a49a9ba17a47f893300cf6f2a937b1c"
-    }
+      "operator": "0x7d274c3a41cac7c1b492e558cdc8d13b7157b2552d50867ef1b4715c5138926d1596f2288aae5fb697fcaa9d245565e8cf54fc46d568a81ba4699b773b340c921b",
+      "auditor": "0x6518c62a3bbafb263217445e88decd53a63226ebef98cd1b105410cb2022256941f12799156c2fdd9560f6e3e5bbea08805937305de45b216fa556991aa9d0cc1c"
+    },
+    "reused": true
   },
   {
     "schema": "pumpproof-evidence-v3",
-    "id": "a2b69977-b067-45f7-b7bb-9a9baad982c3",
+    "id": "bb8b0217-fcf7-4d8c-a52f-f4cae87676d0",
     "inputDigest": "0x8395cc3e4fa48257911481a83f6ab7e7c78bc9a45cd64f326b8d87a85891dbf7",
     "preview": {
       "schema": "pumpproof-external-preview-v1",
@@ -950,9 +951,9 @@
       "modelHash": "0x2ad1de3bd82ddfdf9eb9da0e0f3beedff61fd48b496057f1c7faa447ef6eea99",
       "sourceHash": "0x21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
     },
-    "evidenceDigest": "0x6b3df638c4ac789cb4ca84c6999d833d7c3f4319cf0e773455193ab7e4da00d1",
+    "evidenceDigest": "0x1c2bfa2360ad44ce55341d1d2ca2168aa29fb908d9e6db08ce8a3c4f2e53a8a8",
     "chainId": 31337,
-    "contract": "0xe85D919799809b64E26b2D4D33dAf2dABa448814",
+    "contract": "0xE369D4119c0F40a953F87b44f923dd2cEb113567",
     "experiment": "honest-rule",
     "scope": "Isolated labelled local experiment contract; duplicate protection is within this contract only.",
     "accepted": true,
@@ -961,20 +962,20 @@
     "steps": [
       {
         "step": "Exact trace committed",
-        "tx": "0x87a00f696ca76b0e4ad39c3c2f70585b5470913c1c216cde77054c0a6cb3eb77",
-        "block": 6,
+        "tx": "0xda47209fea87443b956bf692bde553368c43486e541e1d588701c6f84103881d",
+        "block": 10,
         "status": 1
       },
       {
         "step": "Evidence attested",
-        "tx": "0xafb3fb708a9eed2e035c541c5c39d551e67e37bfc817e06c4910d71f415542c7",
-        "block": 7,
+        "tx": "0x84a91de5157ca3f5457e7f0609eb30e2d918a2a9a9454b4e1e4af83621656f3e",
+        "block": 11,
         "status": 1
       },
       {
         "step": "Accounting accepted",
-        "tx": "0xdc9113a3b8a108c4f89d6cd3541cae0bd40fad75d0a094f6e8d63f958d094762",
-        "block": 8,
+        "tx": "0xd4e13cd77a8837729a8d2651cb5c8bd901f2778746efca8b7f10f02101c2fca3",
+        "block": 12,
         "status": 1
       }
     ],
@@ -1052,12 +1053,13 @@
       "src/external-envelope.mjs": "4b8858da1617d5e857019b64197401e370986ba0d8f697567e353b5a9ce1f3a7"
     },
     "signers": {
-      "operator": "0xE5Ed1dEf66092d7C18aFB1b1556a743f6e9D1978",
-      "auditor": "0xcd2eb54D45D7D180B39c597A90ff8422Ee412b5B"
+      "operator": "0x5fb652409718caEEf1BfA1A759fFa24064f17252",
+      "auditor": "0x7e862F899dfFE25095bCd4Ef3C61f55912d442e5"
     },
     "signatures": {
-      "operator": "0x379b4a58a84dfad7ac9a3afeba4841b03ba827c8df16bd47587831497f383cd4039818a4c76bac4ef48b0b95ca94c6f1b9e21f6452cff150c4ba245722ce613c1b",
-      "auditor": "0x213858249c506d5b23386117cac301843baaa00d479498f1e3a07dfdc2d5a9530c74594075ff89313f5c28d32b89a1f6da78862543c9bcb706843db770a6311f1b"
-    }
+      "operator": "0x41b5f50d8cec30dda1442cf04b41a5c1afac16611a8898f95e314f8bfd92550342f3d9646fdd77c6284d9be92f9059b881dd069ed59be5840f5da7f27aef7a961c",
+      "auditor": "0x2fee67bebfa9d660ef149c4a1de3a5eb0df75f379d8e3a76ba816c1e0f793d426d07e9a6e448ea3c9f2006f63229d53033284b1e432c9db28fa6ed35eccc7a841b"
+    },
+    "reused": true
   }
 ]

@@ -1,6 +1,6 @@
 {
   "schema": "pumpproof-evidence-v3",
-  "id": "1c6df6f1-8432-4667-8e11-5b6dca05d650",
+  "id": "42df4973-cd37-4780-b5ec-661e99c91e83",
   "inputDigest": "0x88519e7f2ff525e2f7e2f8d8152c43045e27ba033e816ef36e2a9d827f49c75e",
   "preview": {
     "schema": "pumpproof-external-preview-v1",
@@ -423,9 +423,9 @@
     "modelHash": "0x2ad1de3bd82ddfdf9eb9da0e0f3beedff61fd48b496057f1c7faa447ef6eea99",
     "sourceHash": "0x21208e036b9f1fa14aec6d32887956c4b9a0fcad8c0356a9cf2303c679f79cc3"
   },
-  "evidenceDigest": "0x9573f0bc983aceb8cde81035e711ce97b05d0d8d74fd194ef18d6527b9ce35b7",
+  "evidenceDigest": "0xf8a79c6e390af5916cf708ae1d4d01e41738790b0aec9cec77e6974b59f73d9d",
   "chainId": 31337,
-  "contract": "0xF02B7D1BA58bEd5e126e8125c2624F24b77B27eA",
+  "contract": "0x080994542312aE4ca505A00d38472E9Ac7B53332",
   "experiment": "skips-evening-refill",
   "scope": "Isolated labelled local experiment contract; duplicate protection is within this contract only.",
   "accepted": false,
@@ -434,20 +434,20 @@
   "steps": [
     {
       "step": "Exact trace committed",
-      "tx": "0xcdbfb4685dfe01be93a95c0e77ab203a2e32e64a2f7f5ef32285df7c0c446e68",
-      "block": 2,
+      "tx": "0xb761c54a0ea7c910807efdc4f5354259b62490eb1e5b7727fdf017a2a050efdf",
+      "block": 6,
       "status": 1
     },
     {
       "step": "Evidence attested",
-      "tx": "0xff6f4fc64a960a66d973492d7a6bd07abb7d75a0768401f147360bf5cc57a604",
-      "block": 3,
+      "tx": "0xb0881ea8218c96c7d493a3b89781718f0f471c294034d31f9fa59740dd1173c0",
+      "block": 7,
       "status": 1
     },
     {
       "step": "Settlement refused",
-      "tx": "0xa776ed493356ae80489a3f8984e93d837c35a6b34d8adedba70fe3ee972f5501",
-      "block": 4,
+      "tx": "0xb309637c9d1cce728ed360698fe6871885ec627d749e2bf9ca321294dcb6bf57",
+      "block": 8,
       "status": 0
     }
   ],
@@ -521,11 +521,11 @@
     "src/external-envelope.mjs": "4b8858da1617d5e857019b64197401e370986ba0d8f697567e353b5a9ce1f3a7"
   },
   "signers": {
-    "operator": "0xE5Ed1dEf66092d7C18aFB1b1556a743f6e9D1978",
-    "auditor": "0xcd2eb54D45D7D180B39c597A90ff8422Ee412b5B"
+    "operator": "0x5fb652409718caEEf1BfA1A759fFa24064f17252",
+    "auditor": "0x7e862F899dfFE25095bCd4Ef3C61f55912d442e5"
   },
   "signatures": {
-    "operator": "0xe96f2b67e8c9a9edbd64da22e7591d594f6d67df018c2eb79f3bedd48918d7810a9ec64417a31e0bc7fb7274ac37f1b49a7686e0e1a414ddb0efe196f13e80f71b",
-    "auditor": "0x82f8c9c0a6b3844a846732504c659365cb0ae17bd225f58706ac217b637e29bf53ed2a5a768a793c4223542c60470c3e7d6a49a9ba17a47f893300cf6f2a937b1c"
+    "operator": "0x7d274c3a41cac7c1b492e558cdc8d13b7157b2552d50867ef1b4715c5138926d1596f2288aae5fb697fcaa9d245565e8cf54fc46d568a81ba4699b773b340c921b",
+    "auditor": "0x6518c62a3bbafb263217445e88decd53a63226ebef98cd1b105410cb2022256941f12799156c2fdd9560f6e3e5bbea08805937305de45b216fa556991aa9d0cc1c"
   }
 }

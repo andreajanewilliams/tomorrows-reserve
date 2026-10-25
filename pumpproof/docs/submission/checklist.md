@@ -1,6 +1,6 @@
 # Submission and freeze checklist
 
-Official Devpost rules checked on 23 October 2026: <https://ieee-climatechain-hack.devpost.com/rules>. The official deadline is **Sunday 25 October, 16:00 SAST**. The readiness target is **14:00 SAST**, not the deadline.
+Official Devpost pages rechecked on 25 October 2026 at 09:57 SAST: <https://ieee-climatechain-hack.devpost.com/details/dates>. Devpost now shows the deadline as **26 October, 00:00 (UTC+3)**, which is **Sunday 25 October, 23:00 SAST**. On 23 October it showed 16:00 SAST, and no update announced the change. Treat **16:00 SAST** as the working deadline and 23:00 SAST only as a margin. The readiness target stays **14:00 SAST**.
 
 - [x] Local prototype and native evidence prepared.
 - [x] Carbon Markets & Emissions Transparency track explained in draft.
@@ -11,7 +11,7 @@ Official Devpost rules checked on 23 October 2026: <https://ieee-climatechain-ha
 - [ ] Required public source repository link: PENDING. No remote push authorised.
 - [ ] Required playable 3–5 minute video: PENDING recording and duration/playback inspection. A script is not a video.
 - [ ] Required video link: PENDING owner publication.
-- [ ] Owner checks final entry text and submits before 16:00 SAST Sunday.
+- [ ] Owner checks final entry text and submits before 16:00 SAST Sunday (working deadline; Devpost currently shows 23:00 SAST).
 
 ## Timed gates and release control
 
