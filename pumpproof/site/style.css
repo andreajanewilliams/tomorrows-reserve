@@ -694,3 +694,21 @@ details.hydro-boundary[open] summary{margin-bottom:6px}
 .toolbar .stress-fields{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;margin-top:12px}
 .toolbar .stress-fields .shock-field{min-width:240px}
 .receipt-panel .impact-pair{display:none}
+/* "How it's used": three roles in order, and the Method page. */
+.workflow{margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.workflow .eyebrow{margin:0 0 10px}
+.workflow-steps{list-style:none;counter-reset:wf;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.workflow-steps li{counter-increment:wf;display:flex;flex-direction:column;gap:4px;padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:var(--surface);font-size:14px;color:var(--ink-2);line-height:1.5}
+.workflow-steps b{color:var(--ink);font-size:15px}
+.workflow-steps b::before{content:counter(wf);display:inline-grid;place-items:center;width:20px;height:20px;margin-right:8px;border-radius:50%;background:var(--accent);color:#fff;font-size:11.5px}
+.workflow-foot{margin:12px 0 0;font-size:13.5px;color:var(--muted)}
+.workflow-foot .text-button{margin-left:6px}
+.method-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.method-card{padding:22px 24px}
+.method-card h3{margin:0 0 8px;font-size:19px}
+.method-card p,.method-card li{font-size:14.5px;line-height:1.55;color:var(--ink-2)}
+.method-card ul,.method-card ol{margin:8px 0 0;padding-left:20px}
+.method-card li{margin:4px 0}
+.method-card code{font-size:12.5px;background:var(--soft);padding:1px 5px;border-radius:4px}
+.method-limits{background:var(--soft)}
+@media(max-width:760px){.workflow-steps,.method-grid{grid-template-columns:1fr}}
