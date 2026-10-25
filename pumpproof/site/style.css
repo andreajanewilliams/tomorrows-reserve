@@ -486,3 +486,6 @@ header{background:#06181c}
 .limits-link:hover{color:#fff}
 .limits{margin:18px 0 10px;padding-left:18px;display:grid;gap:10px;font-size:15px;line-height:1.55;color:var(--ink-2)}
 #limits{max-width:560px}
+.result-actions{display:flex;gap:10px;flex-wrap:wrap}
+.result-actions .button{width:auto}
+@media(prefers-reduced-motion:no-preference){.animate .result-actions{animation:fade .4s 1.6s both}}
