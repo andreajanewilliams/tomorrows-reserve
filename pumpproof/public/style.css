@@ -631,3 +631,16 @@ footer .footer-note{margin-right:auto}
 .hero{padding-bottom:88px}
 #external{margin-top:40px}
 @media(max-width:900px){.hero{padding-bottom:64px}#external{margin-top:28px}}
+
+/* Friendlier secondary views */
+.visually-hidden{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;padding:0;margin:-1px}
+#external .policy{grid-template-columns:repeat(2,1fr);margin-top:14px}
+#attack-output:empty{display:none}
+details.hydro-boundary{border-left:3px solid var(--accent);padding:10px 16px;background:var(--surface);border-radius:0 10px 10px 0;margin-bottom:20px;font-size:13.5px;color:var(--muted)}
+details.hydro-boundary summary{margin-bottom:0}
+details.hydro-boundary[open] summary{margin-bottom:6px}
+#operation .section-heading{margin-bottom:22px}
+#external .policy{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin:14px 0 0;background:var(--line);border:1px solid var(--line);border-radius:9px;overflow:hidden}
+#external .policy div{padding:8px 10px;background:var(--surface)}
+#external .policy dt{font-size:11.5px;color:var(--muted)}
+#external .policy dd{margin:2px 0 0;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}

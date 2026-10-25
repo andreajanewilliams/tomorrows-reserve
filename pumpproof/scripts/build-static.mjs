@@ -67,7 +67,7 @@ swap('class="brand" href="/"','class="brand" href="./"');
 swap('href="/api/hydraulics/export"','href="api/hydraulics-export.json"');
 swap('<script type="module" src="/app.js"></script>','<script type="module" src="static-api.js"></script><script type="module" src="app.js"></script>');
 swap('src="/external.js"','src="external.js"');
-swap('id="prove" class="button primary">Verify on local chain<','id="prove" class="button primary">Show recorded contract run<');
+swap('id="prove" class="button primary">Run the contract check<','id="prove" class="button primary">Show recorded contract run<');
 swap('src="/hydraulics.js"','src="hydraulics.js"');
 swap('<span class="mono">Local EVM, chain 31337</span>','<span class="mono">Recorded runs from a local EVM</span>');
 swap('<span class="footer-note">Simulated tank and pumps;','<span class="footer-note">Public demo: the whole-day check runs in your browser; contract results are replayed from real local runs. Simulated tank and pumps;');
