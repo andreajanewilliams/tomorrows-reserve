@@ -1,0 +1,12 @@
+Tomorrow’s Reserve: third-party data notices
+
+The code in this repository is MIT licensed (see LICENSE). Data keeps its own licence:
+
+- Measured hourly water demand: Weyrauch et al. (2024), "Hourly Water Demand of a Mixed
+  District Recorded by Supplier", Zenodo, DOI 10.5281/zenodo.11045013, CC BY 4.0.
+- GB grid carbon intensity: National Energy System Operator (NESO), Carbon Intensity API,
+  CC BY 4.0.
+- EPA Net3 network model: see pumpproof/data/hydraulics/LICENCE-WNTR.txt.
+
+Details and transformations: pumpproof/README.md (Data attribution) and
+pumpproof/data/provenance.json.
