@@ -2,21 +2,21 @@
 
 # Four-minute demo and pitch
 
-Working title: **PumpProof — Every litre. Less carbon.**
+Working title: **Tomorrow’s Reserve — Every litre. Less carbon.**
 
-One sentence: **PumpProof helps water utilities shift pumping into cleaner hours, then proves that the entire operating day preserved the water reserve and did not leave a debt for tomorrow.**
+One sentence: **Tomorrow’s Reserve helps water utilities shift pumping into cleaner hours, then proves that the entire operating day preserved the water reserve and did not leave a debt for tomorrow.**
 
 ## 0:00–0:35 — A concrete problem
 
 Show Operation on 4 February 2020, zero shock and a 4,000 m³ minimum reserve.
 
-“Water needs electricity. A reservoir lets a utility choose when some pumping happens. But a green-looking schedule can cheat: switch the pumps off, show lower electricity use, and leave tomorrow to replace the missing water. We built PumpProof to make the whole day accountable.”
+“Water needs electricity. A reservoir lets a utility choose when some pumping happens. But a green-looking schedule can cheat: switch the pumps off, show lower electricity use, and leave tomorrow to replace the missing water. We built Tomorrow’s Reserve to make the whole day accountable.”
 
 Click **Short-sighted plan**. Point to the low ending reservoir and failed accounting gate. Do not describe the apparent carbon difference as a real saving.
 
 ## 0:35–1:20 — The useful AI and control
 
-Click **PumpProof**.
+Click **Tomorrow’s Reserve**.
 
 “The model predicts tomorrow's hourly demand from earlier consumption. The optimiser schedules pumping with a minimum reserve, tank capacity, pump limit and the same final water volume. It keeps headroom for forecast error. During this hourly simulation, measured flow updates the remaining schedule.”
 

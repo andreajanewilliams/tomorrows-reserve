@@ -6,7 +6,7 @@ Research date: **18 October 2026 (Africa/Johannesburg)**. This is a reasoned ent
 
 ## Competition constraints
 
-The [official overview](https://ieee-climatechain-hack.devpost.com/) lists five judging dimensions: climate impact, innovation, technical execution, usefulness and presentation. PumpProof targets **Renewable Energy & Energy Trading**, with environmental-data accountability as a supporting theme. The requested submission includes a working prototype, source repository and 3–5 minute demo.
+The [official overview](https://ieee-climatechain-hack.devpost.com/) lists five judging dimensions: climate impact, innovation, technical execution, usefulness and presentation. Tomorrow’s Reserve targets **Renewable Energy & Energy Trading**, with environmental-data accountability as a supporting theme. The requested submission includes a working prototype, source repository and 3–5 minute demo.
 
 The displayed deadline is **25 October 2026, 17:00 UTC+3 = 16:00 SAST**. The [submission update](https://ieee-climatechain-hack.devpost.com/updates/46814-climatechain-hackathon-submissions-open-tomorrow-get-ready-to-submit) confirms an October submission period.
 
@@ -40,10 +40,10 @@ Three read-only research agents challenged the idea space. The final decision wa
 
 | Candidate | Main strength | Main weakness | Decision |
 |---|---|---|---|
-| PumpProof | Real demand forecasting, intuitive water balance, executable rejection demo | Physical control and geography must remain clearly simulated | Selected |
+| Tomorrow’s Reserve | Real demand forecasting, intuitive water balance, executable rejection demo | Physical control and geography must remain clearly simulated | Selected |
 | MixProof: scarce supplementary-material allocation | Real concrete laboratory dataset and finite-inventory coordination | Existing low-carbon mix systems; material factors and strength do not establish construction suitability | Strong alternative |
 | Refrigerant recovery mass balance | High climate relevance and a clear double-allocation problem | Public operational custody data is scarce; OCR would carry most of the AI contribution | Future candidate with a reclaimer partner |
-| Rebound-aware generic demand response | Useful complete-window accounting | Less memorable user story; authentic matched meter/grid data takes longer | Incorporated as PumpProof's terminal-water invariant |
+| Rebound-aware generic demand response | Useful complete-window accounting | Less memorable user story; authentic matched meter/grid data takes longer | Incorporated as Tomorrow’s Reserve’s terminal-water invariant |
 | Methane repair bounty | Strong climate action story | Direct overlap with PLUME | Rejected |
 | Carbon duplicate / forest guard | Easy blockchain connection | Several directly overlapping entrants | Rejected |
 
@@ -53,7 +53,7 @@ Existing [Energy Web Green Proofs](https://energyweb.org/green-proofs/) and its 
 
 ## Why this problem matters
 
-The [IEA's energy-and-water overview](https://www.iea.org/topics/energy-and-water) describes how pumping, treatment and delivery depend on energy. Its [2026 flexibility analysis](https://www.iea.org/reports/electricity-2026/flexibility) identifies unused demand-side opportunities and the role of incentives and aggregators. PumpProof asks whether water storage can make some pumping flexible while preserving a measurable service constraint. This is a plausible climate opportunity, not evidence that this prototype has reduced any real emissions.
+The [IEA's energy-and-water overview](https://www.iea.org/topics/energy-and-water) describes how pumping, treatment and delivery depend on energy. Its [2026 flexibility analysis](https://www.iea.org/reports/electricity-2026/flexibility) identifies unused demand-side opportunities and the role of incentives and aggregators. Tomorrow’s Reserve asks whether water storage can make some pumping flexible while preserving a measurable service constraint. This is a plausible climate opportunity, not evidence that this prototype has reduced any real emissions.
 
 The chosen [supplier-demand dataset](https://zenodo.org/records/11045013) directly supports studying pump scheduling. [NESO's API](https://carbon-intensity.github.io/api-definitions/) supplies a reproducible grid scenario. The deliberately separate geographies are disclosed in the product and evidence bundle. Pumping power and hydraulic behaviour remain assumptions.
 

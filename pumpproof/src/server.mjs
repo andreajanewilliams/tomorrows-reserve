@@ -105,6 +105,6 @@ const server=http.createServer(async(req,res)=>{
   return send(res,200,fs.readFileSync(path.join(root,'public',file)),type);
  }catch(e){send(res,400,{error:e.shortMessage||e.message||'Request failed'});}
 });
-server.listen(port,'127.0.0.1',()=>console.log(`PumpProof local demo: http://127.0.0.1:${port}`));
+server.listen(port,'127.0.0.1',()=>console.log(`Tomorrow’s Reserve local demo: http://127.0.0.1:${port}`));
 async function shutdown(){server.close();await chain.close();process.exit(0);}
 process.on('SIGINT',shutdown);process.on('SIGTERM',shutdown);

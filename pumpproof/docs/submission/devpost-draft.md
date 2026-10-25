@@ -1,12 +1,12 @@
-# PumpProof — does the carbon claim hold water?
+# Tomorrow’s Reserve — carbon savings without borrowing tomorrow’s water
 
-**20% greener on paper. 7,000 m³ short by midnight.** PumpProof checks pumping plans against whole-day water and carbon accounting, and refuses a saving claim that leaves tomorrow short of water.
+**20% greener on paper. 7,000 m³ short by midnight.** Tomorrow’s Reserve checks pumping plans against whole-day water and carbon accounting, and refuses a saving claim that leaves tomorrow short of water.
 
 ## Track alignment
 
 Track: **Carbon Markets & Emissions Transparency**.
 
-This track names a lack of transparency, double counting and complex verification as the problems. PumpProof tackles one specific form of a misleading claim: a carbon saving reported today but paid for tomorrow, because the tank was not refilled. A Solidity contract applies the same written rule to every trace, and a signed record lets anyone recheck the result. No carbon credits, tokens or payments are issued.
+This track names a lack of transparency, double counting and complex verification as the problems. Tomorrow’s Reserve tackles one specific form of a misleading claim: a carbon saving reported today but paid for tomorrow, because the tank was not refilled. A Solidity contract applies the same written rule to every trace, and a signed record lets anyone recheck the result. No carbon credits, tokens or payments are issued.
 
 ## The problem
 
@@ -14,7 +14,7 @@ Water utilities can cut the carbon of pumping by moving it into hours when the g
 
 ## What it does
 
-PumpProof takes a 24-hour pumping trace (hourly litres, as JSON) and checks it against pinned demand and grid data and a declared tank and pump policy. It does not repair, optimise or replace the trace.
+Tomorrow’s Reserve takes a 24-hour pumping trace (hourly litres, as JSON) and checks it against pinned demand and grid data and a declared tank and pump policy. It does not repair, optimise or replace the trace.
 
 1. **Preview:** shows the exact uploaded litres, the hourly tank level and the attributed CO₂.
 2. **Commit, attest, settle:** the trace is committed, its evidence is attested, and a Solidity contract settles it on a local EVM. The contract checks hourly reserve, capacity and pump limits, that the tank ends where it started, and that there is a real carbon benefit.
@@ -39,7 +39,7 @@ Data: measured German water demand, paired by hour with a GB grid carbon-intensi
 
 None of the ideas underneath is new. Restoring tank levels at the end of a pumping cycle is established practice, so that one day's schedule can be compared fairly with the next ([Behandish and Wu, 2014](https://arxiv.org/abs/1711.04988)). Carbon-aware pump scheduling has been studied too ([Menke et al., 2017](https://research.tudelft.nl/en/publications/investigating-trade-offs-between-the-operating-cost-and-green-hou/)), and platforms such as [Hedera Guardian](https://github.com/hashgraph/guardian) already run environmental policy workflows on a ledger.
 
-PumpProof's contribution is putting these together into one inspectable check: an unchanged external trace, explicit whole-day water and carbon accounting, a real acceptance or refusal, and an evidence bundle that another reviewer can reproduce.
+Tomorrow’s Reserve’s contribution is putting these together into one inspectable check: an unchanged external trace, explicit whole-day water and carbon accounting, a real acceptance or refusal, and an evidence bundle that another reviewer can reproduce.
 
 ## Results
 
@@ -58,7 +58,7 @@ The model and persistence rows are numerical evaluations. Separately, all 50 rul
 
 ## Security and data integrity
 
-The trust note in the repository lists each threat, the check that handles it and what remains open. In short: tampered files and changed traces are detected; the uploaded trace is kept exactly as supplied; changing the input clears old proofs. PumpProof cannot prove that a pump actually ran or that a meter is honest.
+The trust note in the repository lists each threat, the check that handles it and what remains open. In short: tampered files and changed traces are detected; the uploaded trace is kept exactly as supplied; changing the input clears old proofs. Tomorrow’s Reserve cannot prove that a pump actually ran or that a meter is honest.
 
 ## Scale and adoption
 

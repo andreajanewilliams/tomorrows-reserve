@@ -15,5 +15,5 @@ if [ ! -d node_modules ]; then
   exit 1
 fi
 echo 'Open http://127.0.0.1:4317 in your chosen personal browser.'
-echo 'Keep this window open. Press Ctrl-C to stop PumpProof.'
+echo 'Keep this window open. Press Ctrl-C to stop Tomorrow’s Reserve.'
 node src/server.mjs

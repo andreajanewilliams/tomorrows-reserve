@@ -1,6 +1,8 @@
-# PumpProof
+# Tomorrow’s Reserve
 
-**PumpProof checks pumping plans against whole-day water and carbon accounting, and refuses a saving claim that leaves tomorrow short of water.**
+**Tomorrow’s Reserve checks pumping plans against whole-day water and carbon accounting, and refuses a saving claim that leaves tomorrow short of water.**
+
+*Carbon savings without borrowing tomorrow’s water.* Built under the codename PumpProof; the Solidity contract, evidence formats, package and file names keep that name.
 
 For a water-utility energy/operations analyst and an auditor, the question is whether an externally supplied 24-hour trace reduces attributed operational CO₂ while meeting declared hourly tank/pump limits and restoring starting storage. This historical demonstration treats uploads as simulated operating traces; an uploaded plan does not prove a pump actually ran.
 
@@ -13,7 +15,7 @@ npm ci
 npm start
 ```
 
-Open **http://127.0.0.1:4317/** in the My Hero personal browser/profile. The server binds to loopback. No wallet, account or API key is required. Stop with Ctrl-C. The local EVM and keys are ephemeral; exported bundles remain verifiable against this source snapshot. The Mac launcher is `Launch PumpProof.command`.
+Open **http://127.0.0.1:4317/** in your browser. The server binds to loopback. No wallet, account or API key is required. Stop with Ctrl-C. The local EVM and keys are ephemeral; exported bundles remain verifiable against this source snapshot. The Mac launcher is `Launch PumpProof.command`.
 
 ## Demonstrate the external trust boundary
 

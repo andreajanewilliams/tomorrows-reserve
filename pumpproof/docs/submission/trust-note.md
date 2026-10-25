@@ -1,6 +1,6 @@
 # Trust and security assessment
 
-PumpProof checks a declared accounting claim. It does not establish that uploaded pumping occurred or that a meter is truthful. The trusted inputs are the pinned demand/grid snapshot, fixed policy and the local auditor's attestation. Both demo role keys are generated locally on one machine; no secrets are exported.
+Tomorrow’s Reserve checks a declared accounting claim. It does not establish that uploaded pumping occurred or that a meter is truthful. The trusted inputs are the pinned demand/grid snapshot, fixed policy and the local auditor's attestation. Both demo role keys are generated locally on one machine; no secrets are exported.
 
 | Threat | Implemented check and demonstrated evidence | Remaining boundary |
 |---|---|---|

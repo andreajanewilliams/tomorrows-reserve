@@ -449,3 +449,5 @@ header{background:#06181c}
 @keyframes drain{from{width:100%}}
 @media(prefers-reduced-motion:no-preference){.compare.reveal{animation-delay:.3s}.compare .fill.carbon{animation:grow 1.1s .7s cubic-bezier(.3,.7,.2,1) both}.compare .fill.water{animation:drain 1.6s 1.1s cubic-bezier(.5,0,.2,1) both}.compare-foot{animation:fade .5s 2.6s both}.compare-foot .x{animation:pop .5s 2.7s both}}
 @media(max-width:1100px){.hero{grid-template-columns:1fr;row-gap:40px}.compare{max-width:520px}}
+.hero[hidden]~.view:not([hidden]){padding-top:44px}
+.hero[hidden]~.view:not([hidden])>:first-child{margin-top:0}
