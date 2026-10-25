@@ -54,6 +54,16 @@ None of the ideas underneath is new. Restoring tank levels at the end of a pumpi
 
 Tomorrow’s Reserve’s contribution is putting these together into one inspectable check: an unchanged external trace, explicit whole-day water and carbon accounting, a real acceptance or refusal, and an evidence bundle that another reviewer can reproduce.
 
+## Accounting concepts we follow
+
+The check uses building blocks auditors already know, applied to one pumping day. It maps to these concepts; it is not a certified methodology or an accredited verification.
+
+- **Carbon:** hourly grid-average carbon intensity multiplied by pumping energy, as in the GHG Protocol Scope 2 location-based method, applied hour by hour.
+- **Baseline:** normal pumping, which pumps what the town uses each hour, is the baseline scenario.
+- **Boundary:** one tank and one day; the tank must end the day where it started.
+- **Leakage:** a saving created by shifting pumping into tomorrow (water debt) is refused, not counted.
+- **Verification:** a receipt needs the auditor's signature first. The contract only settles against evidence recorded by the separate auditor key, so the operator cannot issue a receipt alone, and anyone can replay the evidence afterwards.
+
 ## Results
 
 Across 25 retrospective simulated days in February 2020 (gross attributed CO₂ reduction against the baseline, including failed and negative days):
