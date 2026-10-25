@@ -1,0 +1,76 @@
+{
+  "schema": "pumpproof-testnet-runs-v1",
+  "network": "sepolia",
+  "chainId": 11155111,
+  "explorer": "https://sepolia.etherscan.io",
+  "operator": "0x2a142751dFe8b8e3c7C2f1628B3BfF5cC8c10f0c",
+  "auditor": "0x3B5c957D9b603C4035FB41a781816aF9c987bfD1",
+  "recordedAt": "2026-10-25T16:18:40.142Z",
+  "note": "Same contract and policy as the local demo, with separate operator and auditor wallets. Inputs remain attested claims; a public chain does not make them true.",
+  "runs": [
+    {
+      "experiment": "skips-evening-refill",
+      "date": "2020-02-04",
+      "accepted": false,
+      "reason": "WaterDebt",
+      "contract": "0xF839720718187039Afa75ceA1A09a7d57786BC84",
+      "contractUrl": "https://sepolia.etherscan.io/address/0xF839720718187039Afa75ceA1A09a7d57786BC84",
+      "inputDigest": "0x88519e7f2ff525e2f7e2f8d8152c43045e27ba033e816ef36e2a9d827f49c75e",
+      "steps": [
+        {
+          "step": "Exact trace committed",
+          "status": 1,
+          "block": 11991994,
+          "tx": "0xf397339222cae187a4dd4498e1e87225133d44cc45621c1cb24fb368950b69a3",
+          "url": "https://sepolia.etherscan.io/tx/0xf397339222cae187a4dd4498e1e87225133d44cc45621c1cb24fb368950b69a3"
+        },
+        {
+          "step": "Evidence attested",
+          "status": 1,
+          "block": 11991995,
+          "tx": "0x4c4144c8c73c01f824f2cabd22821deeb35b2f26c2135683154d0ff68e27ec3f",
+          "url": "https://sepolia.etherscan.io/tx/0x4c4144c8c73c01f824f2cabd22821deeb35b2f26c2135683154d0ff68e27ec3f"
+        },
+        {
+          "step": "Settlement refused",
+          "status": 0,
+          "block": 11991996,
+          "tx": "0x3b4b5e327a23e8c14c50912389fc93506a0407b56338d2bd731b01279b3280e4",
+          "url": "https://sepolia.etherscan.io/tx/0x3b4b5e327a23e8c14c50912389fc93506a0407b56338d2bd731b01279b3280e4"
+        }
+      ]
+    },
+    {
+      "experiment": "honest-rule",
+      "date": "2020-02-04",
+      "accepted": true,
+      "reason": null,
+      "contract": "0xFf4489bd9f9d12658151B6b7d7222A99e4d3cA30",
+      "contractUrl": "https://sepolia.etherscan.io/address/0xFf4489bd9f9d12658151B6b7d7222A99e4d3cA30",
+      "inputDigest": "0x8395cc3e4fa48257911481a83f6ab7e7c78bc9a45cd64f326b8d87a85891dbf7",
+      "steps": [
+        {
+          "step": "Exact trace committed",
+          "status": 1,
+          "block": 11991998,
+          "tx": "0x5f33e67b9f953c0182110d3124487d85efbe44b9e073f7b8467bd8368aa24222",
+          "url": "https://sepolia.etherscan.io/tx/0x5f33e67b9f953c0182110d3124487d85efbe44b9e073f7b8467bd8368aa24222"
+        },
+        {
+          "step": "Evidence attested",
+          "status": 1,
+          "block": 11991999,
+          "tx": "0x95719a2a1c85292b4e99457448729db10858ebeb360ce754502de71ea5f18a69",
+          "url": "https://sepolia.etherscan.io/tx/0x95719a2a1c85292b4e99457448729db10858ebeb360ce754502de71ea5f18a69"
+        },
+        {
+          "step": "Accounting accepted",
+          "status": 1,
+          "block": 11992001,
+          "tx": "0x1894eab72fc1f5a274220f406c8b9a2b12a9c1b11a5c6bf51fe9af3bf6903c74",
+          "url": "https://sepolia.etherscan.io/tx/0x1894eab72fc1f5a274220f406c8b9a2b12a9c1b11a5c6bf51fe9af3bf6903c74"
+        }
+      ]
+    }
+  ]
+}

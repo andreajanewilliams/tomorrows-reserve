@@ -100,7 +100,11 @@ The existing Hydraulic lab and its sources are preserved as a separate historica
 
 [Devpost draft](docs/submission/devpost-draft.md) · [Architecture](docs/submission/architecture.svg) · [Trust note](docs/submission/trust-note.md) · [Verification report](docs/submission/verification.md) · [Recording script and shot list](docs/submission/recording.md) · [Owner checklist](docs/submission/checklist.md).
 
-Selected track: Carbon Markets & Emissions Transparency. The [source repository](https://github.com/andreajanewilliams/tomorrows-reserve) and [recorded static demo](https://tomorrows-reserve.vercel.app/) were published under Andrea’s accounts on 25 October with owner authorisation. Video publication, eligibility confirmation and competition submission remain owner actions. No public testnet run has been performed. The original code freeze was Saturday 24 October at 18:00 SAST; subsequent verified fixes and publication are recorded in the release note. The checklist retains the dated deadline checks and remaining owner actions.
+Selected track: Carbon Markets & Emissions Transparency. The [source repository](https://github.com/andreajanewilliams/tomorrows-reserve) and [recorded static demo](https://tomorrows-reserve.vercel.app/) were published under Andrea’s accounts on 25 October with owner authorisation. Video publication, eligibility confirmation and competition submission remain owner actions.
+
+Two matching 4 February rule experiments also completed on public Sepolia (chain 11155111), using separate operator and auditor keys controlled for this demonstration: [WaterDebt refusal](https://sepolia.etherscan.io/address/0xF839720718187039Afa75ceA1A09a7d57786BC84) and [honest acceptance](https://sepolia.etherscan.io/address/0xFf4489bd9f9d12658151B6b7d7222A99e4d3cA30). These are separate keys on a public test network, not independent organisations. A public chain does not prove a pump ran. The downloadable signed v3 bundles still describe the local EVM; the Sepolia records provide public transaction links.
+
+The original code freeze was Saturday 24 October at 18:00 SAST; subsequent verified fixes and publication are recorded in the release note. The checklist retains the dated deadline checks and remaining owner actions.
 
 ## Data attribution
 

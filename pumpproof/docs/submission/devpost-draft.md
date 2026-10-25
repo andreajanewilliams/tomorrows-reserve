@@ -2,11 +2,18 @@
 
 **20% greener on paper. 7,000 m³ short by midnight.** Tomorrow’s Reserve checks pumping plans against whole-day water and carbon accounting, and refuses a saving claim that leaves tomorrow short of water.
 
-## Try the evidence first
+## Who it is for, and a five-minute evidence route
 
-Open the [public demo](https://tomorrows-reserve.vercel.app/): check the plan that skips the evening refill, then the honest plan. Download each evidence file. From the installed repository, run `npm run verify -- accepted.json` or `npm run verify -- refused.json --expect rejected` with the downloaded filename. The hosted outcomes are recorded local contract runs; the separate verifier executes a fresh local replay.
+An auditor or lender could use this to check a water utility’s pumping-carbon claim before relying on it in an emissions report or a sustainability-linked loan target. A utility analyst supplies yesterday’s hourly pumping; the contract checks the whole day and issues a receipt or refuses with a reason. This is a proposed workflow, not customer validation, a field trial or a lending approval.
 
-Open **Explore more → Method** for the rule, carbon calculation, data, roles and limitations. Across all 50 external rule traces, the actual local EVM recorded **22 accepted, 3 NoCarbonBenefit refusals and 25 WaterDebt refusals**.
+1. **See a refusal.** Open https://tomorrows-reserve.vercel.app/ and run “Skips the evening refill”. It appears 20.3% greener but leaves tomorrow 7,000 m³ short; the recorded local contract refuses with WaterDebt.
+2. **See an acceptance.** Select “Honest plan” and run its check. It restores storage and receives a receipt. Optionally select “AI-optimised plan”: the 4 February example shows 13.2% lower attributed CO₂ with the tank refilled. That is one day, not the 25-day aggregate.
+3. **Download and verify.** In the repository’s `pumpproof/` directory, run `npm ci` once, then `npm run verify -- accepted.json`. For the refused file use `npm run verify -- refused.json --expect rejected`, substituting the actual downloaded filenames. This replays the exact plan on a fresh local EVM. Change a pumping value in a copy and signature verification fails. A verified refusal stays a refusal. Allow extra time for first-time installation.
+4. **Read the method.** Open **Explore more → Method** for the rule, carbon calculation, data, roles, reviewer checklist and limits.
+
+All 50 external rule traces actually ran through the local contract: **22 accepted, 3 NoCarbonBenefit refusals and 25 WaterDebt refusals**. The public website replays recorded local outcomes; run the repository locally for fresh contract execution. The 25-day aggregate results, including failed days, appear below; operating margins differ, so equal safety is not established.
+
+Two matching 4 February rule experiments also completed on public Sepolia (chain 11155111), using separate operator and auditor keys controlled for this demonstration: [WaterDebt refusal](https://sepolia.etherscan.io/address/0xF839720718187039Afa75ceA1A09a7d57786BC84) and [honest acceptance](https://sepolia.etherscan.io/address/0xFf4489bd9f9d12658151B6b7d7222A99e4d3cA30). These are separate keys on a public test network, not independent organisations. A public chain does not prove a pump ran. The downloadable signed v3 bundles still describe the local EVM; the Sepolia records provide public transaction links.
 
 ## Track alignment
 
@@ -85,4 +92,4 @@ The hard part was keeping the uploaded trace bound to every step — preview, co
 
 ## Links
 
-Repository: [GitHub](https://github.com/andreajanewilliams/tomorrows-reserve). Public demo: [Tomorrow’s Reserve](https://tomorrows-reserve.vercel.app/) (browser accounting with clearly labelled recorded local contract runs). Video: **PENDING RECORDING AND OWNER PUBLICATION**. No public testnet run has been performed; run `npm ci` and `npm start` locally to execute new contract checks.
+Repository: [GitHub](https://github.com/andreajanewilliams/tomorrows-reserve). Public demo: [Tomorrow’s Reserve](https://tomorrows-reserve.vercel.app/) (browser accounting with clearly labelled recorded local contract runs). Video: **PENDING RECORDING AND OWNER PUBLICATION**. Two rule experiments have also run on Sepolia, as linked above. Run `npm ci` and `npm start` locally to execute new contract checks.
