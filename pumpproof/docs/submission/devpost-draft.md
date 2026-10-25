@@ -18,7 +18,7 @@ Tomorrow’s Reserve takes a 24-hour pumping trace (hourly litres, as JSON) and 
 
 1. **Preview:** shows the exact uploaded litres, the hourly tank level and the attributed CO₂.
 2. **Commit, attest, settle:** the trace is committed, its evidence is attested, and a Solidity contract settles it on a local EVM. The contract checks hourly reserve, capacity and pump limits, that the tank ends where it started, and that there is a real carbon benefit.
-3. **Verify:** the result is exported as a signed bundle. A separate verifier replays it on a fresh EVM without using the optimiser.
+3. **Verify:** the result is exported as a signed bundle, plus a one-page claim report an auditor could file. A separate verifier replays the bundle on a fresh EVM without using the optimiser.
 
 In the demo (4 February 2020), a plan that skips the evening refill looks about 20% greener but ends 7,000 m³ short. The contract refuses it with a real failed transaction (WaterDebt). An honest plan that restores storage is accepted. Verifying the refused bundle confirms the refusal; it never turns it into a receipt.
 
