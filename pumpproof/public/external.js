@@ -12,20 +12,28 @@ const STEPS={'Exact trace committed':'Plan locked on the chain','Evidence attest
 function verdictLine(a,codes,pct,debt,surplus){if(codes.includes('WATER_DEBT'))return `Looks ${pct}% greener, but leaves tomorrow ${fmt(debt,3)} m³ short.`;if(codes.includes('NO_CARBON_BENEFIT')&&a.startingStorageRestored)return 'The tank is refilled, but there is no carbon saving to claim.';if(!a.hourlyModelConstraintsMet)return 'Breaks an hourly tank or pump limit, so the saving can’t be counted.';if(surplus>0)return `Ends ${fmt(surplus,3)} m³ above the starting level, so the day isn’t comparable.`;if(codes.length)return 'Doesn’t pass: '+esc(codes.map(label).join(', '))+'.';return `${pct}% less carbon, and the tank is back where it started by midnight.`;}
 
 let revision=0,preview=null,samples=[],testnet=null,lastResult=null,aiJson=null;
+const recordedDemo=()=>globalThis.document?.documentElement?.dataset?.demo==='recorded';
+const EXPLORERS=['https://sepolia.etherscan.io/','https://eth-sepolia.blockscout.com/'],safeLink=u=>typeof u==='string'&&EXPLORERS.some(e=>u.startsWith(e));
 const friendly=m=>/already binds different inputs/.test(m)?'A different uploaded plan has already been settled for this day, and the contract will not replace it. That is the duplicate protection working. Use another date, or restart the local server to start fresh.':m;
-// CSV uploads (date,hour,pumped_litres or pumped_m3; 24 rows) become the exact JSON trace shown before preview.
+// CSV uploads become the exact JSON trace shown before preview. Strict: anything ambiguous is rejected, never repaired.
+// Header date,hour,pumped_litres (whole litres) or date,hour,pumped_m3 (at most 3 decimals, converted exactly to litres).
 function planText(text){
  const s=text.trim();if(!s||s[0]==='{')return text;
- const rows=s.split(/\r?\n/).map(l=>l.split(',').map(c=>c.trim())).filter(r=>r.length>1),head=rows[0].map(h=>h.toLowerCase()),named=head.includes('hour'),data=named?rows.slice(1):rows;
- const at=(name,fallback)=>named?head.indexOf(name):fallback,di=at('date',0),hi=at('hour',1),li=at('pumped_litres',2),mi=at('pumped_m3',-1);
- if(data.length!==24)throw new Error('CSV needs 24 hourly rows: date,hour,pumped_litres');
- const date=data[0][di],litres=Array(24).fill(null);
- if(!data.every(r=>r[di]===date))throw new Error('All 24 CSV rows must have the same date');
- for(const r of data){const h=Number(r[hi]),v=li>=0&&r[li]!==undefined&&r[li]!==''?Number(r[li]):Number(r[mi])*1000;if(!Number.isInteger(h)||h<0||h>23||litres[h]!==null)throw new Error('CSV hours must be 0 to 23, once each');litres[h]=Math.round(v);}
+ const lines=s.split(/\r?\n/).map(l=>l.trim()).filter(l=>l!==''),head=lines[0].toLowerCase().split(',').map(c=>c.trim()),named=head[0]==='date',unit=named?head[2]:'pumped_litres';
+ if(named&&(head.length!==3||head[1]!=='hour'||!['pumped_litres','pumped_m3'].includes(unit)))throw new Error('CSV header must be date,hour,pumped_litres or date,hour,pumped_m3');
+ const rows=(named?lines.slice(1):lines).map(l=>l.split(',').map(c=>c.trim()));
+ if(rows.length!==24||rows.some(r=>r.length!==3))throw new Error('CSV needs exactly 24 rows of date,hour,value');
+ const date=rows[0][0],litres=Array(24).fill(null);
+ for(const [d,h,v] of rows){
+  if(d!==date)throw new Error('All 24 CSV rows must have the same date');
+  if(!/^\d{1,2}$/.test(h)||Number(h)>23||litres[Number(h)]!==null)throw new Error('CSV hours must be whole numbers 0 to 23, once each');
+  if(unit==='pumped_m3'){const m=/^(\d+)(?:\.(\d{1,3}))?$/.exec(v);if(!m)throw new Error(`Hour ${h}: pumped_m3 must be a non-negative number with at most 3 decimals`);litres[Number(h)]=Number(m[1])*1000+Number((m[2]||'').padEnd(3,'0'));}
+  else{if(!/^\d+$/.test(v))throw new Error(`Hour ${h}: pumped_litres must be a non-negative whole number`);litres[Number(h)]=Number(v);}
+ }
  return JSON.stringify({schema:'pumpproof-external-trace-v1',date,pumpedLitres:litres},null,2);
 }
 // A public-chain record is shown only for the same claim (input digest) with the same outcome, on Sepolia.
-const sameClaim=(run,result)=>testnet?.chainId===11155111&&run.inputDigest===result.inputDigest&&run.accepted===result.accepted&&(run.reason??null)===(result.reason??null);
+const sameClaim=(run,result)=>testnet?.chainId===11155111&&safeLink(run.contractUrl)&&run.steps.every(s=>safeLink(s.url))&&run.inputDigest===result.inputDigest&&run.accepted===result.accepted&&(run.reason??null)===(result.reason??null);
 const testnetLinks=result=>{const r=testnet?.runs?.find(run=>sameClaim(run,result));return r?`<p class="testnet"><b>Also run on the public ${esc(testnet.network.replace(/^./,c=>c.toUpperCase()))} testnet</b> with separate operator and auditor wallets: <a href="${esc(r.contractUrl)}" target="_blank" rel="noreferrer">contract</a>${r.steps.map(s=>` · <a href="${esc(s.url)}" target="_blank" rel="noreferrer">${esc(STEPS[s.step]||s.step)}</a>`).join('')}</p>`:'';};
 const key=()=>JSON.stringify({text:$('external-json').value,experiment:$('external-example').value});
 function invalidate(){revision++;preview=null;$('external-preview').innerHTML='';$('external-result').innerHTML='';$('external-prove').disabled=true;}
@@ -47,7 +55,7 @@ $('external-preview-button').onclick=async()=>{
  }catch(e){if(matches(rev,input)){$('external-preview').textContent=e.message;$('external-prove').disabled=true;}}
 };
 $('external-prove').onclick=async()=>{
- if(!preview)return;const rev=revision,input=key(),expected=preview.inputDigest,trace=structuredClone(preview.descriptor.trace);$('external-prove').disabled=true;$('external-result').textContent='Committing → attesting → settling on the local EVM…';
+ if(!preview)return;const rev=revision,input=key(),expected=preview.inputDigest,trace=structuredClone(preview.descriptor.trace);$('external-prove').disabled=true;$('external-result').textContent=recordedDemo()?'Loading the recorded contract run…':'Committing → attesting → settling on the local EVM…';
  try{const result=await api('/api/external/prove',{trace,inputDigest:expected,experiment:$('external-example').value});if(!matches(rev,input)||result.inputDigest!==expected)return;
  lastResult=result;$('external-result').innerHTML=`${result.recorded?'<p class="recorded-note">Recorded run from a real local contract, replayed in this public demo.</p>':''}<div class="decision ${result.accepted?'good':'bad'}"><span class="decision-icon">${result.accepted?'✓':'✕'}</span><div><h3>${result.accepted?'Accepted · receipt issued':'Refused'}</h3><p>${result.accepted?'The claim passes every check on the chain.':esc(reasonText(result))}</p>${result.accepted?'':`<code class="revert">Refused: ${esc(result.reason)}</code>`}</div></div><ol class="steps-plain">${result.steps.map(s=>`<li class="${Number(s.status)===1?'ok':'no'}"><b>${Number(s.status)===1?'✓':'✕'}</b><span>${esc(STEPS[s.step]||s.step)}</span><small>Block ${s.block} · status ${s.status}</small></li>`).join('')}</ol>${(()=>{const n=NEXT[isAi()?'ai-plan':result.experiment];return n?`<button type="button" class="next-step" data-next="${n[0]}">${n[1]}</button>`:'<p class="next-done">Next: download the report, or verify the evidence file yourself.</p>';})()}${testnetLinks(result)}<div class="result-actions"><button type="button" id="report-download" class="button primary">Download report</button><a class="button secondary download" href="/api/export/${encodeURIComponent(result.id)}" download>Download evidence file</a></div><details class="tech"><summary>Technical details</summary><p>Experiment: ${esc(result.experiment)}. ${esc(result.scope)} ${result.reused?'Identical request: existing result reused.':''}</p><dl class="hashes"><dt>Chain</dt><dd>Local EVM 31337</dd><dt>Contract</dt><dd>${esc(result.contract)}</dd><dt>Input</dt><dd>${esc(result.inputDigest)}</dd>${result.steps.map(s=>`<dt>${esc(s.step)}</dt><dd>${esc(s.tx)}</dd>`).join('')}</dl><p>Signed v3 bundle. Verify independently: <code>npm run verify -- path/to/bundle.json${result.accepted?'':' --expect rejected'}</code>. Verifying a refusal does not issue a receipt.</p></details>`;
  }catch(e){if(matches(rev,input))$('external-result').textContent=friendly(e.message);}finally{if(matches(rev,input))$('external-prove').disabled=false;}
@@ -102,3 +110,15 @@ $('see-results')?.addEventListener('click',()=>document.querySelector('.nav[data
 // Guided journey: the next-step prompt selects the next plan in place.
 document.addEventListener('click',e=>{const next=e.target.closest?.('.next-step')?.dataset.next;if(next)document.querySelector(`.plan-card[data-plan="${next}"]`)?.click();});
 $('upload-own')?.addEventListener('click',()=>{$('external-example').value='uploaded-trace';$('external-example').onchange();syncPlans();$('external-json').closest('details').open=true;$('external-upload').click();});
+
+// "Explore more": one collapsed menu for the advanced views (keyboard: Enter/Space opens, arrows move, Escape closes).
+{const toggle=$('explore-toggle'),menu=$('explore-menu'),items=()=>[...menu.querySelectorAll('[role="menuitem"]')];
+ const setOpen=(open,focus)=>{menu.hidden=!open;toggle.setAttribute('aria-expanded',String(open));if(open&&focus)items()[0]?.focus();};
+ toggle.addEventListener('click',()=>setOpen(menu.hidden,true));
+ menu.addEventListener('click',e=>{if(e.target.closest('[role="menuitem"]'))setOpen(false);});
+ menu.addEventListener('keydown',e=>{const list=items(),i=list.indexOf(document.activeElement);
+  if(e.key==='Escape'){setOpen(false);toggle.focus();}
+  else if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();list[(i+(e.key==='ArrowDown'?1:list.length-1))%list.length]?.focus();}
+  else if(e.key==='Tab')setOpen(false);});
+ document.addEventListener('click',e=>{if(!menu.hidden&&!e.target.closest('.explore'))setOpen(false);});
+ document.addEventListener('click',e=>{if(e.target.closest('[data-view]'))setTimeout(()=>toggle.classList.toggle('active',!!menu.querySelector('.nav.active')));});}

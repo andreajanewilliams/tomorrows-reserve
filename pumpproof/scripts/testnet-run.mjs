@@ -7,6 +7,7 @@ import {executeExternal} from '../src/external-chain.mjs';
 import {EXTERNAL_POLICY} from '../src/external-trace.mjs';
 
 const {RPC_URL,OPERATOR_KEY,AUDITOR_KEY}=process.env,EXPLORER=(process.env.EXPLORER||'https://sepolia.etherscan.io').replace(/\/$/,'');
+if(!['https://sepolia.etherscan.io','https://eth-sepolia.blockscout.com'].includes(EXPLORER))throw new Error('EXPLORER must be https://sepolia.etherscan.io or https://eth-sepolia.blockscout.com');
 if(!RPC_URL||!OPERATOR_KEY||!AUDITOR_KEY)throw new Error('Set RPC_URL, OPERATOR_KEY and AUDITOR_KEY (test wallets only), for example in .env');
 const provider=new JsonRpcProvider(RPC_URL),network=await provider.getNetwork();
 if(network.chainId!==11155111n)throw new Error(`Sepolia only (chain 11155111); this RPC is chain ${network.chainId}`);

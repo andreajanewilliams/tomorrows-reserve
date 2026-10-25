@@ -5,11 +5,11 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {externalDays,carbonDay} from '../src/external-trace.mjs';
 
-const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),out=path.join(root,'site'),origin=process.env.ORIGIN||'http://127.0.0.1:4317';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..'),site=path.join(root,'site'),out=path.join(root,'site.tmp'),origin=process.env.ORIGIN||'http://127.0.0.1:4317';
 const get=async p=>{const r=await fetch(origin+p);if(!r.ok)throw new Error(`${p}: HTTP ${r.status}`);return r.json();};
 const post=async(p,body)=>{const r=await fetch(origin+p,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}),d=await r.json();if(!r.ok)throw new Error(d.error||`${p}: HTTP ${r.status}`);return d;};
 const write=(rel,value)=>{const file=path.join(out,rel);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,typeof value==='string'?value:JSON.stringify(value));};
-const exportIds=new Set(),keep=p=>{if(p?.id&&p.exportSupported!==false)exportIds.add(p.id);return p;};
+const exportIds=new Set(),keep=p=>{if(p?.reused)throw new Error('This server has already settled these runs; restart it (npm start) so every recorded run is fresh');if(p?.id&&p.exportSupported!==false)exportIds.add(p.id);return p;};
 
 fs.rmSync(out,{recursive:true,force:true});
 fs.cpSync(path.join(root,'public'),out,{recursive:true});
@@ -53,6 +53,7 @@ for(const date of dates)for(const reserveM3 of [4000,6000,8000]){
 }
 const attackDate=meta.benchmark.days.find(d=>d.eligible).date;
 for(const attack of ['debt','reserve','tamper','duplicate'])replay.prove[`attack|${attack}`]=keep(await post('/api/prove',{date:attackDate,attack}));
+replay.attackDate=attackDate;
 write('api/replay.json',replay);
 console.log('replay',Object.keys(replay.simulate).length,'simulations,',Object.keys(replay.prove).length,'contract runs');
 
@@ -67,9 +68,12 @@ swap('class="brand" href="/"','class="brand" href="./"');
 swap('href="/api/hydraulics/export"','href="api/hydraulics-export.json"');
 swap('<script type="module" src="/app.js"></script>','<script type="module" src="static-api.js"></script><script type="module" src="app.js"></script>');
 swap('src="/external.js"','src="external.js"');
+swap('id="prove" class="button primary">Verify on local chain<','id="prove" class="button primary">Show recorded contract run<');
 swap('src="/hydraulics.js"','src="hydraulics.js"');
 swap('<span class="mono">Local EVM, chain 31337</span>','<span class="mono">Recorded runs from a local EVM</span>');
 swap('<p class="hero-note reveal">The tank is simulated; the water demand and grid carbon data are real.</p>','<p class="hero-note reveal">Public demo: the whole-day check runs live in your browser, and contract results are replayed from real local runs. The tank is simulated; the water demand and grid carbon data are real.</p>');
 fs.writeFileSync(path.join(out,'index.html'),html);
 fs.writeFileSync(path.join(out,'.nojekyll'),'');
+// Swap in only after every recording succeeded, so a refused build never leaves site/ half-built.
+fs.rmSync(site,{recursive:true,force:true});fs.renameSync(out,site);
 console.log('site/ ready:',exportIds.size,'evidence bundles');

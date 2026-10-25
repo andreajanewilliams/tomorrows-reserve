@@ -2,6 +2,7 @@
 // and runs the whole-day accounting for uploaded plans in the browser with the project's own code.
 import {account} from './accounting.mjs';
 
+document.documentElement.dataset.demo='recorded';
 const realFetch=window.fetch.bind(window),base=new URL('./',location.href);
 const load=path=>realFetch(new URL(path,base)).then(r=>{if(!r.ok)throw new Error('Missing recorded data: '+path);return r.json();});
 const cache=new Map(),data=path=>{if(!cache.has(path))cache.set(path,load(path));return cache.get(path);};
@@ -19,7 +20,7 @@ async function preview(body){
   const trace=body.trace,policy={initialM3:12000,reserveM3:4000,capacityM3:24000,pumpMaxM3:6000,energyWhPerM3:500};
   exactKeys(trace,['schema','date','pumpedLitres'],'external trace');
   if(trace.schema!=='pumpproof-external-trace-v1')throw new Error('Unsupported external trace schema');
-  const days=await data('api/days.json'),day=days[trace.date];
+  const days=await data('api/days.json'),day=typeof trace.date==='string'&&Object.hasOwn(days,trace.date)?days[trace.date]:null;
   if(!day)throw new Error('Date must be one of the source-complete days in February 2020');
   if(!Array.isArray(trace.pumpedLitres)||trace.pumpedLitres.length!==24||!trace.pumpedLitres.every(v=>Number.isSafeInteger(v)&&v>=0))throw new Error('pumpedLitres must be 24 non-negative whole numbers of litres');
   const recorded=(await data('api/external/previews.json'))[body.experiment];
@@ -46,12 +47,17 @@ async function route(path,body){
     return recorded(run);
   }
   if(path==='simulate'){
-    const hit=(await data('api/replay.json')).simulate[`${body.date}|${body.shockPercent}|${body.reserveM3}`];
+    exactKeys(body,['date','shockPercent','reserveM3'],'simulation request');
+    if(typeof body.date!=='string'||!Number.isFinite(body.shockPercent)||!Number.isFinite(body.reserveM3))throw new Error('Invalid simulation request');
+    const all=(await data('api/replay.json')).simulate,k=`${body.date}|${body.shockPercent}|${body.reserveM3}`,hit=Object.hasOwn(all,k)?all[k]:null;
     if(!hit)throw new Error('The public demo includes recorded replays with no demand shock. '+LOCAL);
     return hit;
   }
   if(path==='prove'){
-    const replay=await data('api/replay.json'),key=body.shockPercent===undefined?`attack|${body.attack}`:`${body.date}|${body.shockPercent}|${body.reserveM3}|${body.attack}`,hit=replay.prove[key];
+    const replay=await data('api/replay.json'),attackOnly=body&&Object.keys(body).sort().join(',')==='attack,date';
+    if(attackOnly){if(body.date!==replay.attackDate)throw new Error('This contract run was not recorded for the public demo. '+LOCAL);}
+    else{exactKeys(body,['date','shockPercent','reserveM3','attack'],'proof request');if(typeof body.date!=='string'||!Number.isFinite(body.shockPercent)||!Number.isFinite(body.reserveM3))throw new Error('Invalid proof request');}
+    const key=attackOnly?`attack|${body.attack}`:`${body.date}|${body.shockPercent}|${body.reserveM3}|${body.attack}`,hit=Object.hasOwn(replay.prove,key)?replay.prove[key]:null;
     if(!hit)throw new Error('This contract run was not recorded for the public demo. '+LOCAL);
     if(hit.error)throw new Error(hit.error);
     return recorded(hit);
