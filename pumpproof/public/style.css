@@ -671,3 +671,20 @@ details.hydro-boundary[open] summary{margin-bottom:6px}
 .flow-left .raw #external-preview-button{width:100%;margin-top:12px}
 .contract-card .ctx-link{display:none}
 .contract-card:has(#external-result:not(:empty)) .ctx-link{display:block}
+/* Compact contract result: a plain step list, link-style downloads and a wrapped verify command. */
+.contract-card .decision{padding:12px 14px}
+.contract-card .decision h3{font-size:18px!important}
+.contract-card .decision p{font-size:13.5px!important;line-height:1.45}
+.contract-card .revert{margin-top:6px;font-size:11.5px;padding:2px 6px}
+.contract-card .steps-plain{gap:0;margin:10px 0 12px}
+.contract-card .steps-plain li{grid-template-columns:18px 1fr;gap:0 9px;padding:6px 2px;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;font-size:13px;line-height:1.35}
+.contract-card .steps-plain li:last-child{border-bottom:0}
+.contract-card .steps-plain small{grid-column:2;font-size:11.5px}
+.contract-card .steps-plain b{grid-row:span 2}
+.contract-card .steps-plain .no{background:none;color:var(--bad)}
+.contract-card .next-step{padding:8px 10px;font-size:13.5px;margin-bottom:10px}
+.contract-card .result-actions{flex-direction:row;flex-wrap:wrap;gap:6px 18px}
+.contract-card .result-actions .button{width:auto;flex:none;padding:0;border:0;background:none;box-shadow:none;color:var(--accent);font-size:13.5px;font-weight:600;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(20,82,74,.35)}
+.contract-card .result-actions .button:hover{background:none;color:var(--accent-2)}
+.verify-line{margin-top:8px!important}
+.verify-line code{white-space:normal;overflow-wrap:normal;overflow-x:visible;padding:6px 8px}
