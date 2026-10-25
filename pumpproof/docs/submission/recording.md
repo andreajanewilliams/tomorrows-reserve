@@ -4,14 +4,14 @@ Status: script, fixtures, screenshots and commands prepared. **No video has been
 
 ## Before capture
 
-The page uses the restyled UI from 25 October; the two `.jpg` stills show the older layout. Use a clean browser profile. Close unrelated windows from the recording area. Start `npm start` in the project and open http://127.0.0.1:4317/. Restart once before recording so the visible transactions are newly executed rather than labelled reused. Keep a second terminal ready in the same project. Use large readable text and captions. Do not show secrets, unrelated tabs or personal accounts.
+Use a clean browser profile. Close unrelated windows from the recording area. Start `npm start` in the project and open http://127.0.0.1:4317/. Restart once before recording so the visible transactions are newly executed rather than labelled reused. Keep a second terminal ready in the same project. Use large readable text and captions. Do not show secrets, unrelated tabs or personal accounts.
 
 Prepared assets:
 
 - `examples/external/skips-evening-refill-2020-02-04.json`
 - `examples/external/honest-rule-2020-02-04.json`
 - `examples/evidence/` contains genuine signed accepted/refused bundles for every fixture.
-- `water-debt-browser.jpg` and `honest-browser.jpg` capture the actual final local workflow; they are supporting stills, not a video.
+- `screenshot-hero.jpg`, `screenshot-whole-day.jpg` and `screenshot-refused.jpg` capture the current UI; they are supporting stills, not a video.
 - `architecture.svg` and editable `architecture.mmd` explain the trust boundary.
 
 ## Shot list and narration

@@ -1,7 +1,7 @@
 # Local verification report
 
 Working directory: the `pumpproof/` project folder.
-Baseline: local Git commit `84f5c3c`, preserving the earlier non-Git source snapshot. Existing hydraulic additions were preserved. No older snapshot files were overlaid. The older review archive and attached consolidated plan are preserved outside the publishable project in `../handoff-preserved/`.
+Baseline: local Git commit `62ce499`, preserving the earlier non-Git source snapshot. Existing hydraulic additions were preserved. No older snapshot files were overlaid. The older review archive and attached consolidated plan are preserved outside the publishable project in `../handoff-preserved/`.
 
 The requested newer handoff archive could not be located. Its `PRIORITY-ADDENDUM.txt` and named `CODEX-IMPLEMENTATION-PROMPT.txt` were unavailable. The attached consolidated implementation plan was read, along with the older `START-HERE.txt`, review instructions, source/tests and reports. The later E4 scripts were recovered from the local fable-experiments archive and preserved unchanged. Historical research-only instructions did not override the user's explicit implementation request.
 

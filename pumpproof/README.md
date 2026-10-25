@@ -6,6 +6,16 @@
 
 For a water-utility energy/operations analyst and an auditor, the question is whether an externally supplied 24-hour trace reduces attributed operational CO₂ while meeting declared hourly tank/pump limits and restoring starting storage. This historical demonstration treats uploads as simulated operating traces; an uploaded plan does not prove a pump actually ran.
 
+![Tomorrow’s Reserve: the same day counted two ways](docs/submission/screenshot-hero.jpg)
+
+**Key finding (25 retrospective simulated days, February 2020):** skipping the evening refill makes the apparent carbon saving look 3.9× bigger (19.36% against 4.92% for the honest rule), and every one of those plans leaves tomorrow 7,000 m³ short. The contract refuses all 25.
+
+## Try it
+
+- **Public demo:** PENDING LINK. The whole-day check runs live in your browser (paste or upload your own 24-hour plan); contract results are replayed from real recorded local runs. Built with `npm run build:static` into `site/`.
+- **Locally, with live contract checks:** `npm ci` then `npm start`, and open http://127.0.0.1:4317/.
+- **Public testnet:** `npm run testnet` deploys the same contract to Sepolia with separate operator and auditor wallets and runs one refused and one accepted plan (copy `.env.example` to `.env`; test wallets only). Links appear in the app once `data/testnet-runs.json` exists.
+
 ## One-minute local setup
 
 Node.js 20 or later; verified with Node 20.20.1 and npm 10.8.2 on macOS and a clean Linux container.
@@ -97,3 +107,7 @@ Selected track: Carbon Markets & Emissions Transparency. Public repository, vide
 - **National Energy System Operator (NESO), Carbon Intensity API**, [official documentation](https://carbon-intensity.github.io/api-definitions/), CC BY 4.0. Half-hourly actual estimates are averaged into hourly values and rounded to integer g CO₂/kWh. Source snapshots and transformations are identified in [data/provenance.json](data/provenance.json).
 
 No external data is fetched during normal application use. No project was published, pushed, entered or submitted.
+
+## Licence
+
+Code is MIT licensed (see the repository [LICENSE](../LICENSE)). Data keeps its own licence: the measured water demand and NESO carbon-intensity data are CC BY 4.0, and the Net3 network model is covered by `data/hydraulics/LICENCE-WNTR.txt`.

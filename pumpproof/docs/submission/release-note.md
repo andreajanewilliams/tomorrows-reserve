@@ -2,7 +2,7 @@
 
 The authorised local implementation has passed Tiers 0, 1 and 2 in order. The selected build retains the external trace route. Fallback was not required; optional Tier 3 was not started.
 
-Reviewed snapshot: `1cceb55` (executable implementation `88fdcbfe02e6dbd6d7e45ac02f68e3852c44ee90`), branch `codex/external-trace-verification`, original baseline `84f5c3c`. The local recording-candidate tag identifies the final implementation plus this handoff and final Linux log. No remote push, publication, deployment, contact, account creation, spending or submission occurred.
+Reviewed snapshot: `c01bb1a` (executable implementation `725a65bf7e93394fbe7adc9892cf3600c6690833`), branch `codex/external-trace-verification`, original baseline `62ce499`. The local recording-candidate tag identifies the final implementation plus this handoff and final Linux log. No remote push, publication, deployment, contact, account creation, spending or submission occurred.
 
 ## Checks actually completed
 
@@ -12,8 +12,8 @@ Reviewed snapshot: `1cceb55` (executable implementation `88fdcbfe02e6dbd6d7e45ac
 - `npm run smoke:external` and `npm run smoke` passed against the loopback server: validation, named-policy mismatch rejection, genuine labelled execution, arbitrary unchanged uploaded trace, per-experiment idempotence/changed-input rejection, export, origin checks and separate-process evidence verification.
 - Accepted and refused v3 verification passed with optimiser imports explicitly forbidden by `tests/no-optimiser-loader.mjs`. The final browser-downloaded refusal independently reproduced `evidenceValid: true`, `accountingAccepted: false`, `receiptIssued: false`, `WaterDebt`, fresh transaction status 0.
 - All 50 final stored bundle signatures, version identities, exact preview claims, report commitments and all 22 accepted EVM gram totals reconcile. Separate flooring and positive subgram score tests prevent numerical misreporting.
-- Browser: actual honest/debt preview and settlement, editing clears proof/export and changes label to Uploaded trace, export/download, and native comparison table inspected. Final stills are `water-debt-browser.jpg` and `honest-browser.jpg`.
-- Required clean-context, read-only gpt-5.6-sol high review completed. The initial named-policy integrity finding was fixed and regressed; a follow-up README request-shape finding was corrected. The final targeted review at `1cceb55` is clean, with no unresolved actionable in-scope findings. One initial review and two bounded fix/review rounds were used.
+- Browser: actual honest/debt preview and settlement, editing clears proof/export and changes label to Uploaded trace, export/download, and native comparison table inspected. Current stills are `screenshot-hero.jpg`, `screenshot-whole-day.jpg` and `screenshot-refused.jpg`.
+- Required clean-context, read-only gpt-5.6-sol high review completed. The initial named-policy integrity finding was fixed and regressed; a follow-up README request-shape finding was corrected. The final targeted review at `c01bb1a` is clean, with no unresolved actionable in-scope findings. One initial review and two bounded fix/review rounds were used.
 
 Final logs: `verification/review-fix-macos-tests.txt`, `verification/final-linux-tests.txt`, `verification/review-fix-fixtures.txt`, `verification/tier2-http-experiments.json`, `verification/browser-download-verification.json`, `verification/accepted-verification.json` and `verification/refused-verification.json`. Earlier gate logs are retained as historical evidence, not current signed exports.
 
