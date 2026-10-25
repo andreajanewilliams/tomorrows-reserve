@@ -688,3 +688,9 @@ details.hydro-boundary[open] summary{margin-bottom:6px}
 .contract-card .result-actions .button:hover{background:none;color:var(--accent-2)}
 .verify-line{margin-top:8px!important}
 .verify-line code{white-space:normal;overflow-wrap:normal;overflow-x:visible;padding:6px 8px}
+/* Forecast replay: stress-test controls folded away; the side panel drops the duplicated kg pair. */
+.toolbar .stress{flex:1;align-self:center}
+.toolbar .stress>summary{cursor:pointer;font-size:13.5px;font-weight:600;color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(20,82,74,.35)}
+.toolbar .stress-fields{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;margin-top:12px}
+.toolbar .stress-fields .shock-field{min-width:240px}
+.receipt-panel .impact-pair{display:none}

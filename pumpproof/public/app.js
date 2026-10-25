@@ -63,7 +63,7 @@ function render(){
  if(!sim.feasible){notice(sim.message);$('prove').disabled=true;return;}
  const d=sim[mode];
  $('stage-date').textContent=dateLabel(sim.date);
- $('savings').textContent=fmt(d.savingKg);$('saving-percent').textContent=`${fmt(Math.abs(d.savingPercent),1)}% ${d.savingKg>=0?'lower':'higher'} attributed CO₂${d.eligible?'':' · invalid claim'}`;
+ $('savings').textContent=fmt(d.savingKg);$('saving-percent').textContent=`${fmt(Math.abs(d.savingPercent),1)}% ${d.savingKg>=0?'lower':'higher'} attributed CO₂${d.eligible?'':d.violations?.some(v=>v.code==='BASELINE_INFEASIBLE')?' · normal pumping can’t meet this demand, so no fair comparison':' · invalid claim'}`;
  $('minimum').textContent=fmt(d.minStorageM3);$('reserve-state').textContent=d.minStorageM3>=sim.policy.reserveM3?'Reserve maintained':'Reserve breached';
  const level=Math.max(0,Math.min(1,d.finalStorageM3/sim.policy.capacityM3)),fill=70*level;
  $('tank').innerHTML=`<path d="M18 20v62q0 13 52 13t52-13V20" stroke="#729795" fill="#1b414a"/><path d="M19 ${88-fill}q51 12 102 0v${fill-6}q0 12-51 12T19 82Z" fill="${d.eligible?'#92cdbb':'#d39e78'}" opacity=".9"/><ellipse cx="70" cy="20" rx="52" ry="11" fill="#214a50" stroke="#729795"/><ellipse cx="70" cy="${88-fill}" rx="51" ry="10" fill="${d.eligible?'#b6eed8':'#e8ba94'}"/><text x="70" y="109" text-anchor="middle" font-size="8" fill="#a8c1bf">${fmt(d.finalStorageM3)} m³ AT CLOSE</text>`;

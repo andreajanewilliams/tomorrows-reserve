@@ -5,7 +5,7 @@ let data;
 const names={CANDIDATE_PRESSURE:'Pressure below 20 m',BASELINE_PRESSURE:'Comparator pressure below 20 m',CANDIDATE_UNMET_DEMAND:'Demand was not fully delivered',BASELINE_UNMET_DEMAND:'Comparator did not deliver all demand',NO_CARBON_BENEFIT:'No positive carbon difference',SCENARIO_COST_INCREASE:'Illustrative electricity bill increased'};
 function reason(s){return names[s]||(s.startsWith('TANK_')?`Tank ${s.split('_')[1]} ends below its required volume`:s);}
 function label(c){if(c.kind==='historical-grid')return `${c.date} · ${c.billProtected?'bill protected':'carbon first'} · ${c.eligible?'qualifies':c.run==='native'?'keep native controls':'withheld'}`;return {'stress-1.25':'Stress test · 25% extra demand','stress-2.0':'Stress test · double demand','source-off':'Adversarial · source pump off','zero-carbon':'Control · zero-carbon grid'}[c.id]||c.id;}
-function schedule(r){const s=r.schedule;return s.start===null?'Native time and tank-level controls':s.duration===0?'Source pump 10 off; other controls retained':`Pump 10: ${String(s.start).padStart(2,'0')}:00–${String(s.start+s.duration).padStart(2,'0')}:00; pump 335 retains level controls`;}
+function schedule(r){const s=r.schedule;return s.start===null?'Native time and tank-level controls':s.duration===0?'Source pump 10 off; other controls retained':`Pump 10 runs ${String(s.start).padStart(2,'0')}:00–${String(s.start+s.duration).padStart(2,'0')}:00; pump 335 keeps its usual level controls`;}
 function network(run){
  const nodes=data.topology.nodes, lookup=new Map(nodes.map(v=>[v.id,v]));
  const xs=nodes.map(v=>v.xy[0]),ys=nodes.map(v=>v.xy[1]);
@@ -29,11 +29,11 @@ function render(){
  $('hydro-status').className='hydro-verdict '+(c.eligible?'pass':'withheld');
  $('hydro-title').textContent=c.eligible?'Lower carbon. Water protected. A visible trade-off.':c.run==='native'?'Keep the existing controls under this policy.':'A lower number must pass every check.';
  $('hydro-schedule').textContent=schedule(r);
- $('hydro-reasons').textContent=(c.eligible?'Declared service, storage and carbon gates pass. ':c.failures.map(reason).join(' · ')+'. ')+(c.billIncreases?`The illustrative bill increases by £${n(-c.costSavingGBP,2)}. ${c.billProtected?'This policy refuses it.':'Carbon-first policy permits higher costs; service and carbon gates still apply.'}`:c.billProtected?'The bill-protected policy permits no scenario cost increase.':'The illustrative bill does not increase.');
+ $('hydro-reasons').textContent=(c.eligible?'Water, pressure and carbon checks all pass. ':c.failures.map(reason).join(' · ')+'. ')+(c.billIncreases?`The illustrative bill increases by £${n(-c.costSavingGBP,2)}. ${c.billProtected?'This policy refuses it.':'This policy allows that, as long as every water check passes.'}`:c.billProtected?'The bill-protected policy permits no scenario cost increase.':'The illustrative bill does not increase.');
  $('hydro-metrics').innerHTML=[['Carbon difference',`${n(c.savingKg)} kg`,c.eligible?'Qualifies in this benchmark':'Not a claimable saving'],['Lowest pressure anywhere',`${n(r.minPressureM)} m`,'20 m declared scenario threshold'],['Water not delivered',`${n(r.unmetM3,2)} m³`,`Of ${n(r.requestedM3,0)} m³ requested`],['Electricity bill (illustrative)',`£${n(c.operationCostGBP,2)}`,`Existing controls £${n(c.baselineCostGBP,2)}`]].map(([a,v,d])=>`<div class="stat"><span>${a}</span><strong>${v}</strong><p>${d}</p></div>`).join('');
  $('hydro-tanks').innerHTML=Object.keys(r.finalTankM3).map(id=>{const target=Math.max(r.initialTankM3[id],b.finalTankM3[id]),end=r.finalTankM3[id];return `<tr><td>Tank ${esc(id)}</td><td>${n(r.initialTankM3[id])}</td><td>${n(b.finalTankM3[id])}</td><td>${n(end)}</td><td class="${end>=target-.001?'positive':'negative'}">${end>=target-.001?'✓':'×'} ${n(end-target)} m³</td></tr>`;}).join('');
  $('hydro-energy').textContent=`${n(r.energyKWh)} kWh selected / ${n(b.energyKWh)} kWh native · peak ${n(r.peakKW)} kW · ${r.switches} pump status changes`;
- $('hydro-detail').textContent=`${Object.keys(r.pressureByNodeM).length} demand-bearing junctions checked across ${r.solverSteps} solver states. Hourly chart is illustrative; admission uses every recorded solver state. Demand multiplier ${n(r.multiplier,2)}×.`;
+ $('hydro-detail').textContent=`Pressure checked at all ${Object.keys(r.pressureByNodeM).length} junctions, at every one of ${r.solverSteps} solver steps.${r.multiplier===1?'':` Demand ×${n(r.multiplier,2)}.`}`;
  network(r);pressureChart(r,b);
 }
 try{
