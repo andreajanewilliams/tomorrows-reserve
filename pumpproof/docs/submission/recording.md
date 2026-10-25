@@ -11,7 +11,7 @@ Prepared assets:
 - `examples/external/skips-evening-refill-2020-02-04.json`
 - `examples/external/honest-rule-2020-02-04.json`
 - `examples/evidence/` contains genuine signed accepted/refused bundles for every fixture.
-- `screenshot-hero.jpg`, `screenshot-whole-day.jpg` and `screenshot-refused.jpg` capture the current UI; they are supporting stills, not a video.
+- `screenshot-hero.jpg`, `screenshot-ai-accepted.jpg` and `screenshot-refused.jpg` capture the current UI; they are supporting stills, not a video.
 - `architecture.svg` and editable `architecture.mmd` explain the trust boundary.
 
 ## Shot list and narration

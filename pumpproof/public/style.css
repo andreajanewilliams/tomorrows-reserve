@@ -500,3 +500,46 @@ details.more[open] summary{margin-bottom:6px}
 .plan-card:disabled{opacity:.5;cursor:wait}
 .csv-template{display:block;margin-top:8px;font-size:13px}
 .table-more summary{font-size:14px;color:var(--accent)}
+
+/* Fewer scrolls: compact hero, contract beside the chart, results at a glance */
+.hero{padding-top:56px;padding-bottom:150px}
+.hero h1{font-size:clamp(38px,4vw,58px)}
+.hero .intro{font-size:17.5px;margin-top:16px}
+.hero-actions{margin-top:24px}
+.hero-stats{margin-top:32px}
+.hero-stats dd{font-size:38px;margin-top:6px}
+.hero-note{margin-top:18px}
+.limits-link{margin-top:12px}
+.compare{padding:22px 22px 18px}
+.compare-head{margin-bottom:14px}
+.compare-row{padding:12px 0}
+#external{margin-top:-118px}
+.flow-left{position:static}
+.contract-card .step-copy{margin:-6px 0 14px!important}
+.contract-card .button{width:100%}
+.contract-card #external-result:not(:empty){margin-top:16px;padding-top:16px}
+.contract-card .decision{padding:14px;gap:12px}
+.contract-card .decision-icon{width:34px;height:34px;font-size:17px}
+.contract-card .decision h3{font-size:20px!important}
+.contract-card .decision p{font-size:14px!important}
+.contract-card .steps-plain{grid-template-columns:1fr;gap:6px;margin:12px 0}
+.contract-card .steps-plain li{padding:8px 10px}
+.contract-card .result-actions .button{flex:1;width:auto}
+.contract-card .testnet{font-size:12.5px!important}
+.glance{margin:22px 0 0;padding:26px 28px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.glance-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+.glance h2{font-size:clamp(22px,2.2vw,30px);font-weight:500;letter-spacing:-.025em;line-height:1.15;margin:4px 0 0;max-width:780px}
+.glance .eyebrow{margin:0}
+.glance .policy-bars{margin:20px 0 0}
+@media(max-width:760px){.glance-head{flex-direction:column;align-items:flex-start}.glance{padding:20px}}
+.flow{grid-template-columns:270px minmax(0,1fr) 320px}
+.flow-contract{min-width:0;position:sticky;top:84px}
+.flow-left .step{padding:20px}
+.plan-card{padding:12px 14px}
+.plan-card span{font-size:13px}
+#external-preview{padding:22px}
+.verdict-line{font-size:24px!important}
+.hero{padding-bottom:128px}
+#external{margin-top:-100px}
+@media(max-width:1250px){.flow{grid-template-columns:300px minmax(0,1fr)}.flow-contract{grid-column:1/-1;position:static}}
+@media(max-width:1050px){.flow{grid-template-columns:1fr}}
