@@ -94,7 +94,7 @@ const calm=matchMedia('(prefers-reduced-motion: reduce)').matches;
 function countUp(el,ms=900){const m=el.textContent.match(/^(\D*)([\d,]+(?:\.\d+)?)(.*)$/s);if(!m||calm)return;const target=Number(m[2].replace(/,/g,'')),dp=(m[2].split('.')[1]||'').length,t0=performance.now();const step=now=>{const k=Math.min(1,(now-t0)/ms),e=1-Math.pow(1-k,3);el.textContent=m[1]+(target*e).toLocaleString('en-GB',{minimumFractionDigits:dp,maximumFractionDigits:dp})+m[3];if(k<1)requestAnimationFrame(step);};requestAnimationFrame(step);}
 for(const id of ['external-preview','external-result','attack-output'])new MutationObserver(()=>{const box=$(id);if(!box.firstElementChild)return;box.classList.remove('animate');void box.offsetWidth;box.classList.add('animate');if(id==='external-result'&&!document.getElementById('tour')?.open)box.scrollIntoView({behavior:calm?'auto':'smooth',block:'nearest'});}).observe($(id),{childList:true});
 document.querySelectorAll('[data-count]').forEach(el=>countUp(el,1200));
-document.querySelector('.cta')?.addEventListener('click',()=>document.querySelector('.nav[data-view="external"]').click());
+document.querySelector('.cta')?.addEventListener('click',e=>{e.preventDefault();document.querySelector('.nav[data-view="external"]').click();requestAnimationFrame(()=>$('external').scrollIntoView({behavior:calm?'auto':'smooth',block:'start'}));});
 $('open-limits')?.addEventListener('click',()=>$('limits').showModal());$('close-limits')?.addEventListener('click',()=>$('limits').close());
 
 // Human-readable claim report: a one-page summary of the signed result an auditor could file.
