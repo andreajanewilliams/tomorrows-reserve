@@ -5,7 +5,8 @@ const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&g
 let meta,sim,mode='safe',busy=false,revision=0,simulationKey=null;
 const inputKey=()=>JSON.stringify({...options(),mode});
 function invalidateProof(){revision++;$('proof-result').hidden=true;$('proof-result').innerHTML='';$('attack-output').innerHTML='';}
-function invalidateInputs(){invalidateProof();simulationKey=null;$('prove').disabled=true;document.querySelector('.workspace').hidden=true;document.querySelector('.below-grid').hidden=true;}
+function stale(value){for(const s of ['.workspace','.below-grid'])document.querySelector(s).classList.toggle('stale',value);}
+function invalidateInputs(){invalidateProof();simulationKey=null;$('prove').disabled=true;document.querySelector('.workspace').hidden=true;document.querySelector('.below-grid').hidden=true;stale(true);}
 const current=(rev,key)=>revision===rev&&inputKey()===key;
 async function api(path,body){const r=await fetch(path,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:undefined);const result=await r.json();if(!r.ok)throw new Error(result.error);return result;}
 function notice(text){$('notice').hidden=!text;$('notice').textContent=text||'';}
@@ -16,8 +17,8 @@ function setBusy(value){busy=value;document.querySelectorAll('#prove,#recalculat
 async function recalculate(){
  invalidateInputs();if(busy)return;setBusy(true);notice('');
  const rev=revision,key=inputKey(),request=options();
- try{const result=await api('/api/simulate',request);if(!current(rev,key))return;sim=result;simulationKey=JSON.stringify(request);document.querySelector('.workspace').hidden=!result.feasible;document.querySelector('.below-grid').hidden=!result.feasible;render();}
- catch(e){if(current(rev,key))notice(e.message);}finally{setBusy(false);$('prove').disabled=!sim?.feasible||simulationKey!==JSON.stringify(options());}
+ try{const result=await api('/api/simulate',request);if(!current(rev,key))return;stale(false);sim=result;simulationKey=JSON.stringify(request);document.querySelector('.workspace').hidden=!result.feasible;document.querySelector('.below-grid').hidden=!result.feasible;render();}
+ catch(e){if(current(rev,key)){stale(false);notice(e.message);}}finally{setBusy(false);$('prove').disabled=!sim?.feasible||simulationKey!==JSON.stringify(options());}
 }
 $('recalculate').onclick=recalculate;
 $('day').onchange=recalculate;$('reserve').onchange=recalculate;

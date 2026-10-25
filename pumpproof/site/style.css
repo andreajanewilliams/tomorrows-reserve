@@ -543,3 +543,7 @@ details.more[open] summary{margin-bottom:6px}
 #external{margin-top:-100px}
 @media(max-width:1250px){.flow{grid-template-columns:300px minmax(0,1fr)}.flow-contract{grid-column:1/-1;position:static}}
 @media(max-width:1050px){.flow{grid-template-columns:1fr}}
+/* While a replay recalculates, keep the old chart in place but dimmed and inert (no flash). */
+.workspace[hidden].stale{display:grid!important;opacity:.35;pointer-events:none;filter:saturate(.6)}
+.below-grid[hidden].stale{display:grid!important;opacity:.35;pointer-events:none}
+.workspace,.below-grid{transition:opacity .25s,filter .25s}
