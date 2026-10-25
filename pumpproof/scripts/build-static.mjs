@@ -32,6 +32,12 @@ for(const sample of examples){
   proofs[sample.experiment]=keep(await post('/api/external/prove',{trace:preview.descriptor.trace,inputDigest:preview.inputDigest,experiment:sample.experiment}));
   console.log('external',sample.experiment,proofs[sample.experiment].accepted?'accepted':'refused');
 }
+const comparison=await get('/api/comparison'),aiRow=comparison.rows.find(row=>row.policy==='model'&&row.date===examples[0].trace.date&&row.accounting?.eligible);
+if(aiRow){
+  const preview=await post('/api/external/preview',{trace:aiRow.trace,experiment:'uploaded-trace'});
+  proofs['ai-plan']=keep(await post('/api/external/prove',{trace:preview.descriptor.trace,inputDigest:preview.inputDigest,experiment:'uploaded-trace'}));
+  console.log('external ai-plan',proofs['ai-plan'].accepted?'accepted':'refused');
+}
 write('api/external/previews.json',previews);
 write('api/external/proofs.json',proofs);
 

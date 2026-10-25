@@ -20,6 +20,8 @@ async function preview(body){
     if(!recorded||!same(recorded.descriptor.trace,trace))throw new Error('Named experiment trace differs from pinned rule; use uploaded-trace for edited inputs');
     return recorded;
   }
+  const ai=(await data('api/external/proofs.json'))['ai-plan'];
+  if(ai&&same(ai.preview.descriptor.trace,trace))return ai.preview;
   const evidence={demand:day.demand,pumped:[...trace.pumpedLitres],intensity:day.intensity};
   return {schema:'pumpproof-external-preview-v1',inputDigest:'computed by the local server only',descriptor:{experiment:'uploaded-trace',trace,policy},evidence,accounting:account(evidence,policy),formatValid:true,receiptIssued:false,execution:'calculated in your browser; no transaction has run'};
 }
@@ -28,8 +30,9 @@ async function route(path,body){
   if(['meta','comparison','external/examples','hydraulics','testnet'].includes(path))return data(`api/${path}.json`);
   if(path==='external/preview')return preview(body);
   if(path==='external/prove'){
-    const run=(await data('api/external/proofs.json'))[body?.experiment],previews=await data('api/external/previews.json');
-    if(!run||!same(previews[body.experiment].descriptor.trace,body.trace))throw new Error('This public demo replays the two recorded contract runs. '+LOCAL);
+    const proofs=await data('api/external/proofs.json'),previews=await data('api/external/previews.json');
+    const ai=proofs['ai-plan'],run=body?.experiment==='uploaded-trace'&&ai&&same(ai.preview.descriptor.trace,body.trace)?ai:proofs[body?.experiment];
+    if(!run||!same(run.preview.descriptor.trace,body.trace))throw new Error('This public demo replays the recorded contract runs (the two rule plans and the AI plan). '+LOCAL);
     return {...run,scope:'Recorded from a real run on a local EVM. '+run.scope};
   }
   if(path==='simulate'){

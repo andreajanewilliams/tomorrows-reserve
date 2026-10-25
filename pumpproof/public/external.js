@@ -9,7 +9,18 @@ const REASONS={WaterDebt:'The tank ends the day short of water, so tomorrow pays
 const STEPS={'Exact trace committed':'Plan locked on the chain','Evidence attested':'Auditor signed the evidence','Accounting accepted':'Contract accepted the claim','Settlement refused':'Contract refused the claim'};
 function verdictLine(a,codes,pct,debt,surplus){if(codes.includes('WATER_DEBT'))return `Looks ${pct}% greener, but leaves tomorrow ${fmt(debt,3)} m³ short.`;if(codes.includes('NO_CARBON_BENEFIT')&&a.startingStorageRestored)return 'The tank is refilled, but there is no carbon saving to claim.';if(!a.hourlyModelConstraintsMet)return 'Breaks an hourly tank or pump limit, so the saving can’t be counted.';if(surplus>0)return `Ends ${fmt(surplus,3)} m³ above the starting level, so the day isn’t comparable.`;if(codes.length)return 'Doesn’t pass: '+esc(codes.map(label).join(', '))+'.';return `${pct}% less carbon, and the tank is back where it started by midnight.`;}
 
-let revision=0,preview=null,samples=[],testnet=null,lastResult=null;
+let revision=0,preview=null,samples=[],testnet=null,lastResult=null,aiJson=null;
+// CSV uploads (date,hour,pumped_litres or pumped_m3; 24 rows) become the exact JSON trace shown before preview.
+function planText(text){
+ const s=text.trim();if(!s||s[0]==='{')return text;
+ const rows=s.split(/\r?\n/).map(l=>l.split(',').map(c=>c.trim())).filter(r=>r.length>1),head=rows[0].map(h=>h.toLowerCase()),named=head.includes('hour'),data=named?rows.slice(1):rows;
+ const at=(name,fallback)=>named?head.indexOf(name):fallback,di=at('date',0),hi=at('hour',1),li=at('pumped_litres',2),mi=at('pumped_m3',-1);
+ if(data.length!==24)throw new Error('CSV needs 24 hourly rows: date,hour,pumped_litres');
+ const date=data[0][di],litres=Array(24).fill(null);
+ if(!data.every(r=>r[di]===date))throw new Error('All 24 CSV rows must have the same date');
+ for(const r of data){const h=Number(r[hi]),v=li>=0&&r[li]!==undefined&&r[li]!==''?Number(r[li]):Number(r[mi])*1000;if(!Number.isInteger(h)||h<0||h>23||litres[h]!==null)throw new Error('CSV hours must be 0 to 23, once each');litres[h]=Math.round(v);}
+ return JSON.stringify({schema:'pumpproof-external-trace-v1',date,pumpedLitres:litres},null,2);
+}
 const testnetLinks=x=>{const r=testnet?.runs?.find(run=>run.experiment===x);return r?`<p class="testnet"><b>Also run on the public ${esc(testnet.network.replace(/^./,c=>c.toUpperCase()))} testnet</b> with separate operator and auditor wallets: <a href="${esc(r.contractUrl)}" target="_blank" rel="noreferrer">contract</a>${r.steps.map(s=>` · <a href="${esc(s.url)}" target="_blank" rel="noreferrer">${esc(STEPS[s.step]||s.step)}</a>`).join('')}</p>`:'';};
 const key=()=>JSON.stringify({text:$('external-json').value,experiment:$('external-example').value});
 function invalidate(){revision++;preview=null;$('external-preview').innerHTML='';$('external-result').innerHTML='';$('external-prove').disabled=true;}
@@ -19,8 +30,8 @@ $('external-json').oninput=()=>{$('external-example').value='uploaded-trace';inv
 $('external-example').onchange=()=>{invalidate();const sample=samples.find(s=>s.experiment===$('external-example').value);if(sample)$('external-json').value=JSON.stringify(sample.trace,null,2);};
 $('external-upload').onchange=async()=>{
  invalidate();const rev=revision,file=$('external-upload').files[0];$('external-example').value='uploaded-trace';$('external-json').value='';
- if(!file)return;if(file.size>50000){$('external-result').textContent='JSON file is too large.';return;}
- try{const text=await file.text();if(revision!==rev)return;$('external-json').value=text;}catch(e){if(revision===rev)$('external-result').textContent=e.message;}
+ if(!file)return;if(file.size>50000){$('external-result').textContent='File is too large.';return;}
+ try{const text=await file.text();if(revision!==rev)return;$('external-json').value=planText(text);}catch(e){if(revision===rev)$('external-result').textContent=e.message;}
 };
 $('external-preview-button').onclick=async()=>{
  invalidate();const rev=revision,input=key();$('external-preview').textContent='Calculating the exact uploaded trace…';
@@ -38,12 +49,13 @@ $('external-prove').onclick=async()=>{
 };
 try{samples=await api('/api/external/examples');$('external-example').value='skips-evening-refill';$('external-example').onchange();syncPlans();$('external-preview-button').click();}catch(e){$('external-result').textContent=e.message;}
 try{testnet=await api('/api/testnet');}catch{}
-function syncPlans(){for(const c of document.querySelectorAll('.plan-card'))c.classList.toggle('active',c.dataset.plan===$('external-example').value);}
-for(const c of document.querySelectorAll('.plan-card'))c.onclick=()=>{$('external-example').value=c.dataset.plan;$('external-example').onchange();syncPlans();if(c.dataset.plan==='uploaded-trace'){$('external-json').closest('details').open=true;$('external-upload').click();}else $('external-preview-button').click();};
+function isAi(){return Boolean(aiJson)&&$('external-example').value==='uploaded-trace'&&$('external-json').value===aiJson;}
+function syncPlans(){for(const c of document.querySelectorAll('.plan-card'))c.classList.toggle('active',c.dataset.plan==='ai-plan'?isAi():c.dataset.plan===$('external-example').value&&!isAi());}
+for(const c of document.querySelectorAll('.plan-card'))c.onclick=()=>{if(c.dataset.plan==='ai-plan'){if(!aiJson)return;$('external-example').value='uploaded-trace';$('external-example').onchange();$('external-json').value=aiJson;syncPlans();$('external-preview-button').click();return;}$('external-example').value=c.dataset.plan;$('external-example').onchange();syncPlans();if(c.dataset.plan==='uploaded-trace'){$('external-json').closest('details').open=true;$('external-upload').click();}else $('external-preview-button').click();};
 for(const id of ['external-example','external-json','external-upload'])$(id).addEventListener(id==='external-json'?'input':'change',syncPlans);
 
 const POLICY={model:'Forecast model',persistence:'Weekly persistence','honest-rule':'Honest clock/tank rule','skips-evening-refill':'Skips evening refill'},WHY={NO_CARBON_BENEFIT:'No carbon saving',TERMINAL_SURPLUS:'Ends above its starting level',WATER_DEBT:'Water debt',RESERVE_BREACH:'Below the minimum level',PUMP_LIMIT:'Over the pump limit',TANK_OVERFLOW:'Tank overflow'};
-try{const r=await api('/api/comparison'),S=r.summary,n=r.cohort.length,pct=k=>S[k].allDaysGross.reductionPercent,ratio=pct('skips-evening-refill')/pct('honest-rule');
+try{const r=await api('/api/comparison'),S=r.summary,ai=r.rows.find(row=>row.policy==='model'&&row.date===samples[0]?.trace?.date&&row.accounting?.eligible);if(ai){aiJson=JSON.stringify(ai.trace,null,2);const card=document.querySelector('[data-plan="ai-plan"]');if(card){card.disabled=false;card.querySelector(':scope > span').textContent=`Our trained forecaster plans around cleaner hours: ${fmt(ai.accounting.display.reductionPercent,1)}% lower and the tank refilled.`;}}const n=r.cohort.length,pct=k=>S[k].allDaysGross.reductionPercent,ratio=pct('skips-evening-refill')/pct('honest-rule');
  for(const id of ['overstate','overstate-inline'])$(id).textContent=ratio.toFixed(1);
  $('overstate-copy').textContent=`Skipping it appears to cut attributed CO₂ by ${fmt(pct('skips-evening-refill'),1)}%, against ${fmt(pct('honest-rule'),1)}% for the honest rule. The only difference between the two plans is the evening refill, and every plan that skips it leaves tomorrow 7,000 m³ short, so none can be accepted.`;
  const max=Math.max(...Object.values(S).map(s=>s.allDaysGross.reductionPercent));
@@ -62,12 +74,12 @@ document.querySelector('.cta')?.addEventListener('click',()=>document.querySelec
 $('open-limits')?.addEventListener('click',()=>$('limits').showModal());$('close-limits')?.addEventListener('click',()=>$('limits').close());
 
 // Human-readable claim report: a one-page summary of the signed result an auditor could file.
-const LABEL={'skips-evening-refill':'Skips the evening refill','honest-rule':'Honest plan','uploaded-trace':'Uploaded plan'};
+const LABEL={'skips-evening-refill':'Skips the evening refill','honest-rule':'Honest plan','uploaded-trace':'Uploaded plan'},planLabel=r=>r.experiment==='uploaded-trace'&&aiJson&&JSON.stringify(r.preview.descriptor.trace,null,2)===aiJson?'AI-optimised plan (submitted as an uploaded plan)':LABEL[r.experiment]||r.experiment;
 function reportHtml(r){
  const a=r.preview.accounting,p=r.policy,m3=v=>fmt(Number(v)/1000,3),pct=a.display.reductionPercent,run=testnet?.runs?.find(x=>x.experiment===r.experiment);
  const row=(k,v)=>`<tr><th>${k}</th><td>${v}</td></tr>`,check=(ok,text)=>`<li class="${ok?'ok':'no'}">${ok?'✓':'✕'} ${text}</li>`;
  return `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><title>Claim check report — ${esc(r.preview.descriptor.trace.date)}</title><style>body{font:15px/1.55 -apple-system,system-ui,"Segoe UI",Roboto,Arial,sans-serif;color:#0f1c21;max-width:760px;margin:40px auto;padding:0 24px}h1{font-size:26px;margin:0 0 4px;letter-spacing:-.02em}h2{font-size:16px;margin:28px 0 8px}.sub{color:#5f6f75;margin:0 0 22px}.verdict{padding:16px 18px;border-radius:10px;margin:18px 0;background:${r.accepted?'#e6f3eb':'#fbebe6'}}.verdict b{font-size:20px;color:${r.accepted?'#1b7a4c':'#b3361e'}}table{border-collapse:collapse;width:100%}th,td{text-align:left;padding:7px 0;border-bottom:1px solid #e3e5df;vertical-align:top}th{width:42%;color:#5f6f75;font-weight:500}ul{padding-left:20px}li.ok{color:#1b7a4c}li.no{color:#b3361e}code{font:12px ui-monospace,Menlo,monospace;word-break:break-all}.small{font-size:13px;color:#5f6f75}@media print{body{margin:0}}</style></head><body>
-<h1>Claim check report</h1><p class="sub">Tomorrow’s Reserve · pumping day ${esc(r.preview.descriptor.trace.date)} · ${esc(LABEL[r.experiment]||r.experiment)}</p>
+<h1>Claim check report</h1><p class="sub">Tomorrow’s Reserve · pumping day ${esc(r.preview.descriptor.trace.date)} · ${esc(planLabel(r))}</p>
 <div class="verdict"><b>${r.accepted?'Accepted — receipt issued':'Refused — no receipt'}</b><br>${r.accepted?'The carbon claim passes every whole-day check.':esc(REASONS[r.reason]||'The contract refused settlement.')+(r.reason?` (contract error <code>${esc(r.reason)}</code>)`:'')}</div>
 <h2>The claim</h2><table>${row('Attributed CO₂ against normal pumping',`${pct>=0?'−':'+'}${fmt(Math.abs(pct),2)}% (${fmt(a.display.rawDifferenceKg,1)} kg of ${fmt(a.display.baselineKg,1)} kg)`)}${row('Tank at start of day',`${m3(a.initialLitres)} m³`)}${row('Tank at midnight',`${m3(a.finalLitres)} m³`)}${row('Water owed to tomorrow',`${m3(a.waterDebtLitres)} m³`)}${row('Policy',`start ${fmt(p.initialM3)} m³ · minimum ${fmt(p.reserveM3)} m³ · capacity ${fmt(p.capacityM3)} m³ · pump ${fmt(p.pumpMaxM3)} m³/h · ${fmt(p.energyWhPerM3/1000,1)} kWh/m³`)}</table>
 <h2>Checks</h2><ul>${check(a.hourlyModelConstraintsMet,'Hourly minimum level, capacity and pump limits')}${check(a.startingStorageRestored,'Tank back to its starting level by midnight')}${check(a.positiveCarbonDifference,'Less attributed carbon than normal pumping')}</ul>
@@ -77,3 +89,6 @@ function reportHtml(r){
 <p class="small">Generated ${esc(new Date().toISOString())} from the signed result shown in the app.</p></body></html>`;
 }
 document.addEventListener('click',e=>{if(e.target.id!=='report-download'||!lastResult)return;const url=URL.createObjectURL(new Blob([reportHtml(lastResult)],{type:'text/html'})),link=Object.assign(document.createElement('a'),{href:url,download:`claim-report-${lastResult.preview.descriptor.trace.date}-${lastResult.experiment}.html`});document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);});
+
+// CSV template built from the plan currently shown.
+$('csv-template')?.addEventListener('click',()=>{let trace;try{trace=JSON.parse($('external-json').value);}catch{trace=samples[0]?.trace;}if(!trace?.pumpedLitres)return;const csv='date,hour,pumped_litres\n'+trace.pumpedLitres.map((v,h)=>`${trace.date},${h},${v}`).join('\n')+'\n',url=URL.createObjectURL(new Blob([csv],{type:'text/csv'})),link=Object.assign(document.createElement('a'),{href:url,download:`plan-${trace.date}.csv`});document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);});

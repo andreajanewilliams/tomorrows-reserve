@@ -489,3 +489,14 @@ header{background:#06181c}
 .result-actions{display:flex;gap:10px;flex-wrap:wrap}
 .result-actions .button{width:auto}
 @media(prefers-reduced-motion:no-preference){.animate .result-actions{animation:fade .4s 1.6s both}}
+.lead-line{font-size:15px!important;color:var(--ink-2)!important;margin:6px 0 10px!important}
+details.more{margin:6px 0 12px}
+details.more summary{cursor:pointer;font-size:13px;font-weight:550;color:var(--muted)}
+details.more[open] summary{margin-bottom:6px}
+.stage details.more summary{color:#9fb7b9}
+.plan-card.ai strong{display:flex;align-items:center;gap:8px}
+.tag{font:600 10.5px var(--mono);letter-spacing:.04em;color:#0b5c78;background:#e3f2f8;border:1px solid #c7e3ee;border-radius:5px;padding:1px 6px}
+.plan-card.ai.active{background:#f1f8fb;border-color:#2a7fa0;box-shadow:0 0 0 1px #2a7fa0}
+.plan-card:disabled{opacity:.5;cursor:wait}
+.csv-template{display:block;margin-top:8px;font-size:13px}
+.table-more summary{font-size:14px;color:var(--accent)}
