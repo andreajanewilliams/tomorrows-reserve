@@ -650,3 +650,8 @@ details.hydro-boundary[open] summary{margin-bottom:6px}
 .verify-line{margin:10px 0 0!important;font-size:12.5px!important;color:var(--muted)!important}
 .verify-line code{font-size:12px;background:var(--soft);padding:2px 6px;border-radius:5px;color:var(--ink-2)}
 @media(max-width:760px){.usecase{grid-template-columns:1fr}}
+/* The hero fills the first screen, so nothing below peeks in half-cut. */
+.hero{min-height:calc(100svh - 68px);align-content:center;padding-top:48px;padding-bottom:48px}
+#external{margin-top:0;padding-top:24px}
+@media(max-width:900px){.hero{min-height:auto;padding-bottom:56px}#external{padding-top:20px}}
+#external{scroll-margin-top:68px}
