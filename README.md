@@ -2,7 +2,7 @@
 
 **Carbon savings without borrowing tomorrow’s water.**
 
-[Live demo](https://tomorrows-reserve.vercel.app/) · [Public Sepolia refusal](https://sepolia.etherscan.io/address/0xF839720718187039Afa75ceA1A09a7d57786BC84) · [Public Sepolia acceptance](https://sepolia.etherscan.io/address/0xFf4489bd9f9d12658151B6b7d7222A99e4d3cA30) · [Full project README](pumpproof/README.md)
+[Live demo](https://tomorrows-reserve.vercel.app/) · [Demo video](https://youtu.be/upXa5j0Y3yI) · [Devpost entry](https://devpost.com/software/tomorrow-s-reserve) · [Public Sepolia refusal](https://sepolia.etherscan.io/address/0xF839720718187039Afa75ceA1A09a7d57786BC84) · [Public Sepolia acceptance](https://sepolia.etherscan.io/address/0xFf4489bd9f9d12658151B6b7d7222A99e4d3cA30) · [Full project README](pumpproof/README.md)
 
 ![The same pumping day counted two ways: 20% greener on paper, 7,000 m³ short by midnight](pumpproof/docs/submission/screenshot-hero.jpg)
 
@@ -36,13 +36,13 @@ Tomorrow’s Reserve checks a pumping-carbon claim against the whole day’s wat
    npm run verify -- refused.json --expect rejected
    ```
 
-   The verifier replays the exact plan on a fresh local chain. Change one number in a copy and verification fails. A verified refusal stays a refusal.
+   Replace `accepted.json` and `refused.json` with the paths to your downloaded files. The verifier replays the exact plan on a fresh local chain. Change one number in a copy and verification fails. A verified refusal stays a refusal. Allow extra time for first-time installation.
 
 The public demo replays recorded runs from a local chain. For fresh contract runs, run it locally: `cd pumpproof && npm ci && npm start`, then open http://127.0.0.1:4317/.
 
 ## Results (25 simulated February 2020 days)
 
-| Plan | Attributed CO₂ reduction, including failed days | Eligible days |
+| Plan | Attributed CO₂ reduction, including failed days | Numerically eligible days |
 |---|---|---|
 | Skips the evening refill | 19.36% (apparent) | 0 / 25 |
 | AI forecast model | 9.44% | 24 / 25 |
