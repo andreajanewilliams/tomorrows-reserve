@@ -105,13 +105,32 @@ let tourStep=0,tourMark=null,tourRun=0;
 const until=async(test,ms=4000)=>{const t0=Date.now();while(!test()&&Date.now()-t0<ms)await new Promise(r=>setTimeout(r,100));};
 // Each tour action runs only while its own tour run is still live (not closed or restarted).
 const pickPlan=async(plan,live)=>{const card=document.querySelector(`.plan-card[data-plan="${plan}"]`);if(!live()||!card||card.disabled)return false;card.click();await until(()=>!live()||(card.classList.contains('active')&&document.querySelector('#external-preview .verdict')));return live()&&card.classList.contains('active');};
-const proveNow=async live=>{await until(()=>!live()||!$('external-prove').disabled);if(!live()||$('external-prove').disabled)return;$('external-prove').click();await until(()=>!live()||document.querySelector('#external-result .decision'),9000);};
+// What the contract panel actually shows: accepted, refused, an error message, or still pending.
+function contractOutcome(){const r=$('external-result'),h=r.querySelector('.decision h3');
+ if(h)return{state:h.textContent.startsWith('Accepted')?'accepted':'refused',reason:r.querySelector('.decision p')?.textContent||'',recorded:!!r.querySelector('.recorded-note'),reused:/existing result reused/i.test(r.textContent)};
+ const text=r.textContent.trim();return text&&!/settling|Loading the recorded/.test(text)?{state:'error',message:text}:{state:'pending'};}
+const planFacts=()=>{let date='';try{date=dateLabel(JSON.parse($('external-json').value).date);}catch{}return{date,carbon:document.querySelector('#external-preview .kpi strong')?.textContent||'',verdict:document.querySelector('#external-preview .verdict-tag')?.textContent||''};};
+const proveNow=async live=>{await until(()=>!live()||!$('external-prove').disabled);if(!live()||$('external-prove').disabled)return false;$('external-prove').click();await until(()=>!live()||contractOutcome().state!=='pending',9000);return true;};
+const how=o=>o.recorded?' This is a recorded run, replayed in the public demo.':o.reused?' This server had already settled the same plan, so the earlier result is shown.':'';
 const tour=[
  {target:'.compare',title:'The trick',copy:'A pumping plan can look 20% greener just by not refilling the tank. Tomorrow then starts 7,000 m³ short.'},
- {target:'#external-preview',title:'Check the whole day',copy:'Tomorrow’s Reserve follows the tank hour by hour until midnight. This plan doesn’t hold water.',run:live=>pickPlan('skips-evening-refill',live)},
- {target:'.flow-contract',title:'The contract decides',copy:'A smart contract re-checks every hour and refuses the claim. The refusal is a real transaction.',run:async live=>{if(await pickPlan('skips-evening-refill',live))await proveNow(live);}},
- {target:'.flow-contract',title:'A plan that passes',copy:'Our AI forecaster moves pumping to cleaner hours and still refills the tank: 13.2% lower. The contract accepts it.',run:async live=>{if(await pickPlan('ai-plan',live))await proveNow(live);}},
- {target:'.glance',title:'Across 25 days',copy:'Skipping the refill makes the saving look 3.9× bigger, and every one of those plans is refused.'},
+ {target:'#external-preview',title:'Check the whole day',copy:'Following the tank hour by hour until midnight…',run:async live=>({picked:await pickPlan('skips-evening-refill',live)}),
+  describe:({picked})=>{const f=planFacts();return picked?`Tomorrow’s Reserve follows the tank hour by hour until midnight. On ${f.date} this plan claims ${f.carbon.replace('−','')} less carbon, but it ${f.verdict.toLowerCase()==='holds water'?'holds water':'doesn’t hold water'}.`:'The plan couldn’t be selected just now. Close the tour and pick it on the left.';}},
+ {target:'.flow-contract',title:'The contract decides',copy:'Running the contract check…',run:async live=>({ran:await pickPlan('skips-evening-refill',live)&&await proveNow(live)}),
+  describe:({ran})=>{const o=contractOutcome();if(!ran)return'The contract check didn’t start. Close the tour and press “Run the contract check”.';
+   if(o.state==='refused')return`The smart contract re-checked every hour and refused the claim: ${o.reason}${how(o)}`;
+   if(o.state==='accepted')return`The contract accepted this plan.${how(o)}`;
+   if(o.state==='error')return`The contract check didn’t complete: ${o.message.replace(/[.\s]*$/,".")} Nothing was accepted.`;
+   return'The contract hasn’t answered yet; its result will appear in this panel.';}},
+ {target:'.flow-contract',title:'A plan that passes?',copy:'Checking the AI-optimised plan…',run:async live=>{const picked=await pickPlan('ai-plan',live);return{picked,ran:picked&&await proveNow(live)};},
+  describe:({picked,ran})=>{const o=contractOutcome(),f=planFacts();
+   if(!picked)return'The AI-optimised plan isn’t available yet (its results are still loading). Try this step again in a moment.';
+   if(!ran)return'The contract check for the AI plan didn’t start. Press “Run the contract check” to try it.';
+   if(o.state==='accepted')return`Our AI forecaster’s plan for ${f.date}: ${f.carbon.replace('−','')} less carbon, the tank refilled, and the contract accepts it.${how(o)} This is one day; across all 25 days the model’s gain over a simple baseline is smaller.`;
+   if(o.state==='refused')return`The contract refused the AI plan: ${o.reason}${how(o)}`;
+   if(o.state==='error')return`The contract didn’t accept the AI plan this time: ${o.message}`;
+   return'The contract hasn’t answered yet; its result will appear in this panel.';}},
+ {target:'.glance',title:'Across 25 days',copy:'',describe:()=>`Across 25 simulated days, skipping the refill makes the saving look ${$('overstate-glance')?.textContent||'3.9'}× bigger than the honest rule, and no depleted plan qualifies.`},
  {target:'.flow-contract',title:'Check it yourself',copy:'Download the one-page report or the signed evidence file. Anyone can replay it on a fresh chain.'}
 ];
 async function showTour(){
@@ -121,8 +140,8 @@ async function showTour(){
  $('tour-dots').innerHTML=tour.map((_,i)=>`<i class="${i===tourStep?'on':i<tourStep?'done':''}"></i>`).join('');
  if(!$('tour').open)$('tour').show();
  $('tour-next').disabled=true;$('tour-back').disabled=true;
- try{await step.run?.(live);}finally{if(run===tourRun){$('tour-next').disabled=false;$('tour-back').disabled=false;}}
- if(!live())return;$('tour-next').focus();
+ let result={};try{result=await step.run?.(live)||{};}finally{if(run===tourRun){$('tour-next').disabled=false;$('tour-back').disabled=false;}}
+ if(!live())return;if(step.describe)$('tour-copy').textContent=step.describe(result);$('tour-next').focus();
  tourMark=document.querySelector(step.target);tourMark?.classList.add('tour-focus');tourMark?.scrollIntoView({behavior:'smooth',block:tourMark.offsetHeight>innerHeight*.6?'start':'center'});
 }
 function clearTourMarks(){tourMark=null;for(const el of document.querySelectorAll('.tour-focus'))el.classList.remove('tour-focus');}
