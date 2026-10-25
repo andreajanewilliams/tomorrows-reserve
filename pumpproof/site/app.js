@@ -101,29 +101,32 @@ function renderEvidence(){
  $('benchmark-body').innerHTML=[...b.days,...v.days].map(d=>`<tr><td>${dateLabel(d.date)}<br><small>${d.date<'2020-02-15'?'Development':'Replication'}</small></td><td>${fmt(d.savingKg,1)} kg CO₂${d.eligible?'':' (not claimable)'}</td><td class="${d.savingPercent>=0?'positive':'negative'}">${fmt(d.savingPercent,1)}%</td><td>${fmt(d.naiveDebtM3)} m³</td><td>${d.eligible?'✓ PASS':'× WITHHELD'}</td></tr>`).join('');
 }
 // Guided walkthrough of the main journey: a floating card, a highlight on each part, and real actions.
-let tourStep=0,tourMark=null;
+let tourStep=0,tourMark=null,tourRun=0;
 const until=async(test,ms=4000)=>{const t0=Date.now();while(!test()&&Date.now()-t0<ms)await new Promise(r=>setTimeout(r,100));};
-const pickPlan=async plan=>{document.querySelector(`.plan-card[data-plan="${plan}"]`)?.click();await until(()=>document.querySelector('#external-preview .verdict'));};
-const proveNow=async()=>{await until(()=>!$('external-prove').disabled);$('external-prove').click();await until(()=>document.querySelector('#external-result .decision'),9000);};
+// Each tour action runs only while its own tour run is still live (not closed or restarted).
+const pickPlan=async(plan,live)=>{const card=document.querySelector(`.plan-card[data-plan="${plan}"]`);if(!live()||!card||card.disabled)return false;card.click();await until(()=>!live()||(card.classList.contains('active')&&document.querySelector('#external-preview .verdict')));return live()&&card.classList.contains('active');};
+const proveNow=async live=>{await until(()=>!live()||!$('external-prove').disabled);if(!live()||$('external-prove').disabled)return;$('external-prove').click();await until(()=>!live()||document.querySelector('#external-result .decision'),9000);};
 const tour=[
  {target:'.compare',title:'The trick',copy:'A pumping plan can look 20% greener just by not refilling the tank. Tomorrow then starts 7,000 m³ short.'},
- {target:'#external-preview',title:'Check the whole day',copy:'Tomorrow’s Reserve follows the tank hour by hour until midnight. This plan doesn’t hold water.',run:()=>pickPlan('skips-evening-refill')},
- {target:'.flow-contract',title:'The contract decides',copy:'A smart contract re-checks every hour and refuses the claim. The refusal is a real transaction.',run:async()=>{await pickPlan('skips-evening-refill');await proveNow();}},
- {target:'.flow-contract',title:'A plan that passes',copy:'Our AI forecaster moves pumping to cleaner hours and still refills the tank: 13.2% lower. The contract accepts it.',run:async()=>{await pickPlan('ai-plan');await proveNow();}},
+ {target:'#external-preview',title:'Check the whole day',copy:'Tomorrow’s Reserve follows the tank hour by hour until midnight. This plan doesn’t hold water.',run:live=>pickPlan('skips-evening-refill',live)},
+ {target:'.flow-contract',title:'The contract decides',copy:'A smart contract re-checks every hour and refuses the claim. The refusal is a real transaction.',run:async live=>{if(await pickPlan('skips-evening-refill',live))await proveNow(live);}},
+ {target:'.flow-contract',title:'A plan that passes',copy:'Our AI forecaster moves pumping to cleaner hours and still refills the tank: 13.2% lower. The contract accepts it.',run:async live=>{if(await pickPlan('ai-plan',live))await proveNow(live);}},
  {target:'.glance',title:'Across 25 days',copy:'Skipping the refill makes the saving look 3.9× bigger, and every one of those plans is refused.'},
  {target:'.flow-contract',title:'Check it yourself',copy:'Download the one-page report or the signed evidence file. Anyone can replay it on a fresh chain.'}
 ];
 async function showTour(){
- const step=tour[tourStep];view('external');tourMark?.classList.remove('tour-focus');
+ const step=tour[tourStep],run=++tourRun,live=()=>run===tourRun&&$('tour').open;view('external');clearTourMarks();
  $('tour-step').textContent=`${tourStep+1} of ${tour.length}`;$('tour-title').textContent=step.title;$('tour-copy').textContent=step.copy;
  $('tour-next').textContent=tourStep===tour.length-1?'Finish':'Next';$('tour-back').hidden=tourStep===0;
  $('tour-dots').innerHTML=tour.map((_,i)=>`<i class="${i===tourStep?'on':i<tourStep?'done':''}"></i>`).join('');
  if(!$('tour').open)$('tour').show();
  $('tour-next').disabled=true;$('tour-back').disabled=true;
- try{await step.run?.();}finally{$('tour-next').disabled=false;$('tour-back').disabled=false;$('tour-next').focus();}
+ try{await step.run?.(live);}finally{if(run===tourRun){$('tour-next').disabled=false;$('tour-back').disabled=false;}}
+ if(!live())return;$('tour-next').focus();
  tourMark=document.querySelector(step.target);tourMark?.classList.add('tour-focus');tourMark?.scrollIntoView({behavior:'smooth',block:tourMark.offsetHeight>innerHeight*.6?'start':'center'});
 }
-function endTour(){$('tour').close();tourMark?.classList.remove('tour-focus');tourMark=null;}
+function clearTourMarks(){tourMark=null;for(const el of document.querySelectorAll('.tour-focus'))el.classList.remove('tour-focus');}
+function endTour(){tourRun++;$('tour').close();clearTourMarks();$('tour-next').disabled=false;$('tour-back').disabled=false;}
 $('walkthrough').onclick=()=>{tourStep=0;showTour();};$('close-tour').onclick=endTour;
 $('tour-next').onclick=()=>{if(++tourStep>=tour.length)endTour();else showTour();};
 $('tour-back').onclick=()=>{if(tourStep>0){tourStep--;showTour();}};
