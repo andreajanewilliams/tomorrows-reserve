@@ -2,6 +2,12 @@
 
 **20% greener on paper. 7,000 m³ short by midnight.** Tomorrow’s Reserve checks pumping plans against whole-day water and carbon accounting, and refuses a saving claim that leaves tomorrow short of water.
 
+## Try the evidence first
+
+Open the [public demo](https://tomorrows-reserve.vercel.app/): check the plan that skips the evening refill, then the honest plan. Download each evidence file. From the installed repository, run `npm run verify -- accepted.json` or `npm run verify -- refused.json --expect rejected` with the downloaded filename. The hosted outcomes are recorded local contract runs; the separate verifier executes a fresh local replay.
+
+Open **Explore more → Method** for the rule, carbon calculation, data, roles and limitations. Across all 50 external rule traces, the actual local EVM recorded **22 accepted, 3 NoCarbonBenefit refusals and 25 WaterDebt refusals**.
+
 ## Track alignment
 
 Track: **Carbon Markets & Emissions Transparency**.
@@ -24,7 +30,7 @@ In the demo (4 February 2020), a plan that skips the evening refill looks about 
 
 ## Who it is for
 
-A water-utility energy or operations analyst who wants to check a schedule, and an auditor who reviews an operating trace before a carbon claim is accepted.
+A utility analyst supplies an hourly pumping trace; the contract checks the claim; an auditor or lender replays the evidence before deciding whether to rely on it in an emissions report or a loan target. This is a proposed workflow, not evidence of a customer, field trial or lending approval.
 
 ## How we built it
 
