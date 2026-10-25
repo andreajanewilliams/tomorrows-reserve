@@ -7,7 +7,11 @@ Official Devpost pages rechecked on 25 October 2026 at 09:57 SAST: <https://ieee
 - [x] Source, attribution, limitations and local setup prepared.
 - [x] Local Devpost draft, architecture, trust note and recording script prepared.
 - [ ] Owner confirms eligibility: overview says students only; detailed rules include independent developers and individual submissions. No organiser has been contacted.
-- [ ] Owner chooses/approves project-wide licence before publication; existing data attribution and contract SPDX are retained, but do not decide the whole project's licence.
+- [x] Project licence chosen: MIT for code (repository `LICENSE`); data keeps CC BY 4.0 and the WNTR licence.
+- [x] Display name Tomorrow’s Reserve; PumpProof kept as the internal codename in the contract, evidence formats, package and file names.
+- [x] Public static demo built (`npm run build:static` → `site/`): whole-day check runs in the browser; contract results are recorded local runs and labelled as recorded.
+- [ ] Public static demo link: PENDING owner hosting approval (GitHub Pages or Vercel).
+- [ ] Optional Sepolia run (`npm run testnet`, Sepolia only): PENDING owner test wallets and faucet ETH; no `data/testnet-runs.json` exists yet.
 - [ ] Required public source repository link: PENDING. No remote push authorised.
 - [ ] Required playable 3–5 minute video: PENDING recording and duration/playback inspection. A script is not a video.
 - [ ] Required video link: PENDING owner publication.
@@ -23,4 +27,4 @@ If an essential external-path gate regresses before freeze, hide the Check a tra
 
 ## External actions requiring separate authorisation
 
-Publishing the source repository, uploading the video and submitting the entry remain owner actions. Public hosting/testnet deployment is optional Tier 3, unstarted and not required for the local engineering scope. Do not create accounts, contact anyone, spend money or deploy as part of this handoff.
+Publishing the source repository, uploading the video and submitting the entry remain owner actions. Public hosting and the Sepolia run are optional; both are prepared locally but neither has been performed. Do not create accounts, contact anyone, spend money or deploy as part of this handoff.

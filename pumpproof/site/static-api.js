@@ -7,10 +7,17 @@ const load=path=>realFetch(new URL(path,base)).then(r=>{if(!r.ok)throw new Error
 const cache=new Map(),data=path=>{if(!cache.has(path))cache.set(path,load(path));return cache.get(path);};
 const LOCAL='Run the project locally (npm ci, npm start) for live contract checks.';
 const same=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+// Mirror the local server's strict key checks so the static demo accepts nothing the server would reject.
+const exactKeys=(value,keys,label)=>{if(!value||typeof value!=='object'||Array.isArray(value)||Object.keys(value).sort().join(',')!==[...keys].sort().join(','))throw new Error(`Invalid ${label}`);};
+const EXPERIMENTS=['honest-rule','skips-evening-refill','uploaded-trace'];
+// Recorded results carry an unsigned `recorded` flag; signed fields are returned unchanged.
+const recorded=run=>({...run,recorded:true});
 
 async function preview(body){
-  const trace=body?.trace,policy={initialM3:12000,reserveM3:4000,capacityM3:24000,pumpMaxM3:6000,energyWhPerM3:500};
-  if(!trace||typeof trace!=='object'||Array.isArray(trace))throw new Error('Invalid external trace');
+  exactKeys(body,['trace','experiment'],'external preview request');
+  if(!EXPERIMENTS.includes(body.experiment))throw new Error('Unknown external experiment');
+  const trace=body.trace,policy={initialM3:12000,reserveM3:4000,capacityM3:24000,pumpMaxM3:6000,energyWhPerM3:500};
+  exactKeys(trace,['schema','date','pumpedLitres'],'external trace');
   if(trace.schema!=='pumpproof-external-trace-v1')throw new Error('Unsupported external trace schema');
   const days=await data('api/days.json'),day=days[trace.date];
   if(!day)throw new Error('Date must be one of the source-complete days in February 2020');
@@ -30,10 +37,13 @@ async function route(path,body){
   if(['meta','comparison','external/examples','hydraulics','testnet'].includes(path))return data(`api/${path}.json`);
   if(path==='external/preview')return preview(body);
   if(path==='external/prove'){
-    const proofs=await data('api/external/proofs.json'),previews=await data('api/external/previews.json');
+    exactKeys(body,['trace','inputDigest','experiment'],'external request');
+    if(!EXPERIMENTS.includes(body.experiment))throw new Error('Unknown external experiment');
+    const proofs=await data('api/external/proofs.json');
     const ai=proofs['ai-plan'],run=body?.experiment==='uploaded-trace'&&ai&&same(ai.preview.descriptor.trace,body.trace)?ai:proofs[body?.experiment];
     if(!run||!same(run.preview.descriptor.trace,body.trace))throw new Error('This public demo replays the recorded contract runs (the two rule plans and the AI plan). '+LOCAL);
-    return {...run,scope:'Recorded from a real run on a local EVM. '+run.scope};
+    if(body.inputDigest!==run.inputDigest)throw new Error('Preview input digest mismatch');
+    return recorded(run);
   }
   if(path==='simulate'){
     const hit=(await data('api/replay.json')).simulate[`${body.date}|${body.shockPercent}|${body.reserveM3}`];
@@ -44,7 +54,7 @@ async function route(path,body){
     const replay=await data('api/replay.json'),key=body.shockPercent===undefined?`attack|${body.attack}`:`${body.date}|${body.shockPercent}|${body.reserveM3}|${body.attack}`,hit=replay.prove[key];
     if(!hit)throw new Error('This contract run was not recorded for the public demo. '+LOCAL);
     if(hit.error)throw new Error(hit.error);
-    return hit;
+    return recorded(hit);
   }
   throw new Error('Not available in the public demo. '+LOCAL);
 }

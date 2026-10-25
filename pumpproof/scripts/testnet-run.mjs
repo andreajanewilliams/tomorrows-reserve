@@ -9,7 +9,7 @@ import {EXTERNAL_POLICY} from '../src/external-trace.mjs';
 const {RPC_URL,OPERATOR_KEY,AUDITOR_KEY}=process.env,EXPLORER=(process.env.EXPLORER||'https://sepolia.etherscan.io').replace(/\/$/,'');
 if(!RPC_URL||!OPERATOR_KEY||!AUDITOR_KEY)throw new Error('Set RPC_URL, OPERATOR_KEY and AUDITOR_KEY (test wallets only), for example in .env');
 const provider=new JsonRpcProvider(RPC_URL),network=await provider.getNetwork();
-if(network.chainId===1n)throw new Error('Refusing to run on Ethereum mainnet; use a testnet');
+if(network.chainId!==11155111n)throw new Error(`Sepolia only (chain 11155111); this RPC is chain ${network.chainId}`);
 const operatorWallet=new Wallet(OPERATOR_KEY,provider),auditorWallet=new Wallet(AUDITOR_KEY,provider);
 if(operatorWallet.address===auditorWallet.address)throw new Error('Operator and auditor must be different wallets');
 const operator=new NonceManager(operatorWallet),auditor=new NonceManager(auditorWallet);
