@@ -584,3 +584,50 @@ details.more[open] summary{margin-bottom:6px}
 @media(max-width:860px){nav{overflow:visible;width:auto}}
 @media(max-width:860px){.explore{position:static}.explore-menu{top:100%;left:16px;right:16px;width:auto;margin-top:6px}}
 @media(max-width:760px){.hero-stats{grid-template-columns:1fr 1fr;row-gap:18px;margin-top:28px}.hero-stats div{border-right:0;padding:0 12px 0 0}.hero-stats dt{max-width:none}}
+
+/* Guided walkthrough */
+dialog#tour{position:fixed;inset:auto 24px 24px auto;margin:0;width:min(370px,calc(100vw - 32px));padding:20px 22px 18px;background:#0d2329;color:#fff;border:1px solid rgba(255,255,255,.12);border-radius:16px;box-shadow:0 30px 80px -20px rgba(4,20,24,.7);z-index:50}
+.tour-top{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.tour-count{font:12px var(--mono);color:rgba(255,255,255,.55)}
+.tour-dots{display:flex;gap:5px;flex:1}
+.tour-dots i{width:18px;height:3px;border-radius:2px;background:rgba(255,255,255,.18)}
+.tour-dots i.done{background:rgba(127,227,196,.5)}
+.tour-dots i.on{background:#7fe3c4}
+.tour-close{background:none;border:0;color:rgba(255,255,255,.6);font-size:22px;line-height:1;padding:0 2px}
+.tour-close:hover{color:#fff}
+dialog#tour h2{font-size:21px;font-weight:600;letter-spacing:-.02em;margin:0 0 6px;color:#fff}
+dialog#tour p{font-size:14.5px!important;line-height:1.55;color:rgba(255,255,255,.75)!important;margin:0 0 16px}
+.tour-actions{display:flex;justify-content:flex-end;gap:8px}
+.tour-actions .button{width:auto;margin:0;padding:10px 18px}
+dialog#tour .primary{background:#e9f7f1;color:#06181c}
+dialog#tour .primary:disabled{opacity:.55}
+.tour-back{background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.2)}
+.tour-focus{outline:3px solid #2fbf95!important;outline-offset:6px;border-radius:12px;transition:outline-offset .25s}
+@media(prefers-reduced-motion:no-preference){dialog#tour[open]{animation:rise .35s var(--ease) both}.tour-focus{animation:tourpulse 1.6s ease-in-out 2}}
+@keyframes tourpulse{50%{outline-offset:10px}}
+@media(max-width:760px){dialog#tour{inset:auto 16px 16px 16px;width:auto}}
+dialog#tour{inset:auto auto 24px 24px}
+.tour-focus{scroll-margin-top:96px}
+@media(max-width:760px){dialog#tour{inset:auto 16px 16px 16px}}
+
+/* Calmer hero and a clean edge into the page */
+.hero{padding:72px max(24px,calc((100vw - 1272px)/2)) 128px;column-gap:72px}
+.hero h1{font-size:clamp(40px,4.4vw,64px)}
+.hero .intro{font-size:18px;max-width:520px;margin-top:20px}
+.hero-actions{margin-top:30px}
+.hero-glow{background:radial-gradient(60% 80% at 30% -10%,rgba(56,178,152,.30),transparent 70%),radial-gradient(40% 60% at 90% 20%,rgba(70,130,200,.16),transparent 70%)}
+.waves{display:none}
+#external{margin-top:-72px}
+.app-frame{box-shadow:0 1px 2px rgba(15,28,33,.06),0 24px 48px -28px rgba(4,20,24,.35)}
+footer{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+footer .brand-text{margin-right:auto}
+.footer-note{font-size:13px;color:var(--muted)}
+.footer-link{font-size:13px}
+@media(max-width:1100px){.hero{grid-template-columns:minmax(0,1fr) 360px;column-gap:40px}.compare{max-width:none}}
+@media(max-width:900px){.hero{grid-template-columns:1fr;row-gap:36px;padding-bottom:110px}.compare{max-width:520px}}
+.cta{box-shadow:none}
+footer .footer-note{margin-right:auto}
+/* No overlap: the hero ends, then the app window starts on the page */
+.hero{padding-bottom:88px}
+#external{margin-top:40px}
+@media(max-width:900px){.hero{padding-bottom:64px}#external{margin-top:28px}}

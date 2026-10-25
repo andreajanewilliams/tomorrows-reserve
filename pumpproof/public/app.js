@@ -11,7 +11,7 @@ function invalidateInputs(){invalidateProof();simulationKey=null;$('prove').disa
 const current=(rev,key)=>revision===rev&&inputKey()===key;
 async function api(path,body){const r=await fetch(path,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:undefined);const result=await r.json();if(!r.ok)throw new Error(result.error);return result;}
 function notice(text){$('notice').hidden=!text;$('notice').textContent=text||'';}
-function view(name){document.querySelector('.hero').hidden=name!=='external';if(name!=='external')globalThis.scrollTo?.({top:0});for(const el of document.querySelectorAll('.view'))el.hidden=el.id!==name;for(const b of document.querySelectorAll('.nav'))b.classList.toggle('active',b.dataset.view===name);}
+function view(name){document.getElementById('explore-toggle')?.classList.toggle('active',name!=='external');document.querySelector('.hero').hidden=name!=='external';if(name!=='external')globalThis.scrollTo?.({top:0});for(const el of document.querySelectorAll('.view'))el.hidden=el.id!==name;for(const b of document.querySelectorAll('.nav'))b.classList.toggle('active',b.dataset.view===name);}
 document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>view(b.dataset.view));
 const options=()=>({date:$('day').value,shockPercent:Number($('shock').value),reserveM3:Number($('reserve').value)});
 function setBusy(value){busy=value;document.querySelectorAll('#prove,#recalculate,#day,#shock,#reserve,#safe-mode,#naive-mode,.attack-card').forEach(b=>b.disabled=value);}
@@ -19,7 +19,7 @@ async function recalculate(){
  invalidateInputs();if(busy)return;setBusy(true);notice('');
  const rev=revision,key=inputKey(),request=options();
  try{const result=await api('/api/simulate',request);if(!current(rev,key)){stale(false);return;}stale(false);sim=result;simulationKey=JSON.stringify(request);document.querySelector('.workspace').hidden=!result.feasible;document.querySelector('.below-grid').hidden=!result.feasible;render();}
- catch(e){if(current(rev,key)){stale(false);notice(e.message);}}finally{setBusy(false);$('prove').disabled=!sim?.feasible||simulationKey!==JSON.stringify(options());}
+ catch(e){stale(false);if(current(rev,key))notice(e.message);}finally{setBusy(false);$('prove').disabled=!sim?.feasible||simulationKey!==JSON.stringify(options());}
 }
 $('recalculate').onclick=recalculate;
 $('day').onchange=recalculate;$('reserve').onchange=recalculate;
@@ -100,8 +100,32 @@ function renderEvidence(){
  $('benchmark-summary').textContent=`${b.eligibleDays+v.eligibleDays}/${b.totalDays+v.totalDays} eligible · default policy`;
  $('benchmark-body').innerHTML=[...b.days,...v.days].map(d=>`<tr><td>${dateLabel(d.date)}<br><small>${d.date<'2020-02-15'?'Development':'Replication'}</small></td><td>${fmt(d.savingKg,1)} kg CO₂${d.eligible?'':' (not claimable)'}</td><td class="${d.savingPercent>=0?'positive':'negative'}">${fmt(d.savingPercent,1)}%</td><td>${fmt(d.naiveDebtM3)} m³</td><td>${d.eligible?'✓ PASS':'× WITHHELD'}</td></tr>`).join('');
 }
-let tourStep=0;
-const tour=[['The hidden shortcut','Switch to the short-sighted plan. Its carbon number looks better because it stops pumping early and leaves less water for tomorrow.'],['Restore the whole promise','Tomorrow’s Reserve uses the demand forecast, retains pump headroom for uncertainty and applies ideal flow feedback. It must restore the starting water level.'],['Try the contract','Verify the valid day on the local chain. Separate demo addresses commit the plan and attest evidence; Solidity recomputes every hourly balance.'],['Break it, then inspect it','In the Attack lab, try water debt, an empty reserve, changed evidence and a duplicate receipt. Download the bundle, then inspect Model & evidence for the assumptions and all replay results.']];
-function showTour(){const [title,copy]=tour[tourStep];$('tour-step').textContent=`WALKTHROUGH / ${tourStep+1} OF ${tour.length}`;$('tour-title').textContent=title;$('tour-copy').textContent=copy;$('tour-next').textContent=tourStep===tour.length-1?'Explore the attack lab':'Next →';if(tourStep===0){view('operation');setMode('naive');}if(tourStep===1)setMode('safe');if(!$('tour').open)$('tour').showModal();}
-$('walkthrough').onclick=()=>{tourStep=0;showTour();};$('close-tour').onclick=()=>$('tour').close();$('tour-next').onclick=()=>{if(++tourStep>=tour.length){$('tour').close();view('attacks');}else showTour();};
+// Guided walkthrough of the main journey: a floating card, a highlight on each part, and real actions.
+let tourStep=0,tourMark=null;
+const until=async(test,ms=4000)=>{const t0=Date.now();while(!test()&&Date.now()-t0<ms)await new Promise(r=>setTimeout(r,100));};
+const pickPlan=async plan=>{document.querySelector(`.plan-card[data-plan="${plan}"]`)?.click();await until(()=>document.querySelector('#external-preview .verdict'));};
+const proveNow=async()=>{await until(()=>!$('external-prove').disabled);$('external-prove').click();await until(()=>document.querySelector('#external-result .decision'),9000);};
+const tour=[
+ {target:'.compare',title:'The trick',copy:'A pumping plan can look 20% greener just by not refilling the tank. Tomorrow then starts 7,000 m³ short.'},
+ {target:'#external-preview',title:'Check the whole day',copy:'Tomorrow’s Reserve follows the tank hour by hour until midnight. This plan doesn’t hold water.',run:()=>pickPlan('skips-evening-refill')},
+ {target:'.flow-contract',title:'The contract decides',copy:'A smart contract re-checks every hour and refuses the claim. The refusal is a real transaction.',run:async()=>{await pickPlan('skips-evening-refill');await proveNow();}},
+ {target:'.flow-contract',title:'A plan that passes',copy:'Our AI forecaster moves pumping to cleaner hours and still refills the tank: 13.2% lower. The contract accepts it.',run:async()=>{await pickPlan('ai-plan');await proveNow();}},
+ {target:'.glance',title:'Across 25 days',copy:'Skipping the refill makes the saving look 3.9× bigger, and every one of those plans is refused.'},
+ {target:'.flow-contract',title:'Check it yourself',copy:'Download the one-page report or the signed evidence file. Anyone can replay it on a fresh chain.'}
+];
+async function showTour(){
+ const step=tour[tourStep];view('external');tourMark?.classList.remove('tour-focus');
+ $('tour-step').textContent=`${tourStep+1} of ${tour.length}`;$('tour-title').textContent=step.title;$('tour-copy').textContent=step.copy;
+ $('tour-next').textContent=tourStep===tour.length-1?'Finish':'Next';$('tour-back').hidden=tourStep===0;
+ $('tour-dots').innerHTML=tour.map((_,i)=>`<i class="${i===tourStep?'on':i<tourStep?'done':''}"></i>`).join('');
+ if(!$('tour').open)$('tour').show();
+ $('tour-next').disabled=true;$('tour-back').disabled=true;
+ try{await step.run?.();}finally{$('tour-next').disabled=false;$('tour-back').disabled=false;$('tour-next').focus();}
+ tourMark=document.querySelector(step.target);tourMark?.classList.add('tour-focus');tourMark?.scrollIntoView({behavior:'smooth',block:tourMark.offsetHeight>innerHeight*.6?'start':'center'});
+}
+function endTour(){$('tour').close();tourMark?.classList.remove('tour-focus');tourMark=null;}
+$('walkthrough').onclick=()=>{tourStep=0;showTour();};$('close-tour').onclick=endTour;
+$('tour-next').onclick=()=>{if(++tourStep>=tour.length)endTour();else showTour();};
+$('tour-back').onclick=()=>{if(tourStep>0){tourStep--;showTour();}};
+$('tour').onkeydown=e=>{if(e.key==='Escape'){e.preventDefault();endTour();$('walkthrough').focus();}};
 try{meta=await api('/api/meta');$('day').innerHTML=meta.days.map(d=>`<option value="${d}">${dateLabel(d)}</option>`).join('');renderEvidence();await recalculate();}catch(e){notice('Could not load the local service: '+e.message);}

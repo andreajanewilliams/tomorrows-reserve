@@ -47,8 +47,7 @@ for(const date of dates)for(const reserveM3 of [4000,6000,8000]){
   replay.simulate[`${date}|0|${reserveM3}`]=sim;
   if(reserveM3!==4000||!sim.feasible)continue;
   for(const attack of ['none','naive']){
-    try{replay.prove[`${date}|0|${reserveM3}|${attack}`]=keep(await post('/api/prove',{...request,attack}));}
-    catch(e){replay.prove[`${date}|0|${reserveM3}|${attack}`]={error:e.message};}
+    replay.prove[`${date}|0|${reserveM3}|${attack}`]=keep(await post('/api/prove',{...request,attack}));
   }
 }
 const attackDate=meta.benchmark.days.find(d=>d.eligible).date;
@@ -71,7 +70,7 @@ swap('src="/external.js"','src="external.js"');
 swap('id="prove" class="button primary">Verify on local chain<','id="prove" class="button primary">Show recorded contract run<');
 swap('src="/hydraulics.js"','src="hydraulics.js"');
 swap('<span class="mono">Local EVM, chain 31337</span>','<span class="mono">Recorded runs from a local EVM</span>');
-swap('<p class="hero-note reveal">The tank is simulated; the water demand and grid carbon data are real.</p>','<p class="hero-note reveal">Public demo: the whole-day check runs live in your browser, and contract results are replayed from real local runs. The tank is simulated; the water demand and grid carbon data are real.</p>');
+swap('<span class="footer-note">Simulated tank and pumps;','<span class="footer-note">Public demo: the whole-day check runs in your browser; contract results are replayed from real local runs. Simulated tank and pumps;');
 fs.writeFileSync(path.join(out,'index.html'),html);
 fs.writeFileSync(path.join(out,'.nojekyll'),'');
 // Swap in only after every recording succeeded, so a refused build never leaves site/ half-built.

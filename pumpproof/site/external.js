@@ -60,6 +60,17 @@ $('external-prove').onclick=async()=>{
  lastResult=result;$('external-result').innerHTML=`${result.recorded?'<p class="recorded-note">Recorded run from a real local contract, replayed in this public demo.</p>':''}<div class="decision ${result.accepted?'good':'bad'}"><span class="decision-icon">${result.accepted?'✓':'✕'}</span><div><h3>${result.accepted?'Accepted · receipt issued':'Refused'}</h3><p>${result.accepted?'The claim passes every check on the chain.':esc(reasonText(result))}</p>${result.accepted?'':`<code class="revert">Refused: ${esc(result.reason)}</code>`}</div></div><ol class="steps-plain">${result.steps.map(s=>`<li class="${Number(s.status)===1?'ok':'no'}"><b>${Number(s.status)===1?'✓':'✕'}</b><span>${esc(STEPS[s.step]||s.step)}</span><small>Block ${s.block} · status ${s.status}</small></li>`).join('')}</ol>${(()=>{const n=NEXT[isAi()?'ai-plan':result.experiment];return n?`<button type="button" class="next-step" data-next="${n[0]}">${n[1]}</button>`:'<p class="next-done">Next: download the report, or verify the evidence file yourself.</p>';})()}${testnetLinks(result)}<div class="result-actions"><button type="button" id="report-download" class="button primary">Download report</button><a class="button secondary download" href="/api/export/${encodeURIComponent(result.id)}" download>Download evidence file</a></div><details class="tech"><summary>Technical details</summary><p>Experiment: ${esc(result.experiment)}. ${esc(result.scope)} ${result.reused?'Identical request: existing result reused.':''}</p><dl class="hashes"><dt>Chain</dt><dd>Local EVM 31337</dd><dt>Contract</dt><dd>${esc(result.contract)}</dd><dt>Input</dt><dd>${esc(result.inputDigest)}</dd>${result.steps.map(s=>`<dt>${esc(s.step)}</dt><dd>${esc(s.tx)}</dd>`).join('')}</dl><p>Signed v3 bundle. Verify independently: <code>npm run verify -- path/to/bundle.json${result.accepted?'':' --expect rejected'}</code>. Verifying a refusal does not issue a receipt.</p></details>`;
  }catch(e){if(matches(rev,input))$('external-result').textContent=friendly(e.message);}finally{if(matches(rev,input))$('external-prove').disabled=false;}
 };
+// "Explore more": one collapsed menu for the advanced views (keyboard: Enter/Space opens, arrows move, Escape closes).
+if(typeof globalThis.document?.addEventListener==='function'&&$('explore-toggle')){const toggle=$('explore-toggle'),menu=$('explore-menu'),items=()=>[...menu.querySelectorAll('[role="menuitem"]')];
+ const setOpen=(open,focus)=>{menu.hidden=!open;toggle.setAttribute('aria-expanded',String(open));if(open&&focus)items()[0]?.focus();};
+ toggle.addEventListener('click',()=>setOpen(menu.hidden,true));
+ menu.addEventListener('click',e=>{if(e.target.closest('[role="menuitem"]'))setOpen(false);});
+ menu.addEventListener('keydown',e=>{const list=items(),i=list.indexOf(document.activeElement);
+  if(e.key==='Escape'){setOpen(false);toggle.focus();}
+  else if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();list[(i+(e.key==='ArrowDown'?1:list.length-1))%list.length]?.focus();}
+  else if(e.key==='Tab')setOpen(false);});
+ document.addEventListener('click',e=>{if(!menu.hidden&&!e.target.closest('.explore'))setOpen(false);});
+ document.addEventListener('click',e=>{if(e.target.closest('[data-view]'))setTimeout(()=>toggle.classList.toggle('active',!!menu.querySelector('.nav.active')));});}
 try{samples=await api('/api/external/examples');$('external-example').value='skips-evening-refill';$('external-example').onchange();syncPlans();$('external-preview-button').click();}catch(e){$('external-result').textContent=e.message;}
 try{testnet=await api('/api/testnet');}catch{}
 function isAi(){return Boolean(aiJson)&&$('external-example').value==='uploaded-trace'&&$('external-json').value===aiJson;}
@@ -111,14 +122,3 @@ $('see-results')?.addEventListener('click',()=>document.querySelector('.nav[data
 document.addEventListener('click',e=>{const next=e.target.closest?.('.next-step')?.dataset.next;if(next)document.querySelector(`.plan-card[data-plan="${next}"]`)?.click();});
 $('upload-own')?.addEventListener('click',()=>{$('external-example').value='uploaded-trace';$('external-example').onchange();syncPlans();$('external-json').closest('details').open=true;$('external-upload').click();});
 
-// "Explore more": one collapsed menu for the advanced views (keyboard: Enter/Space opens, arrows move, Escape closes).
-{const toggle=$('explore-toggle'),menu=$('explore-menu'),items=()=>[...menu.querySelectorAll('[role="menuitem"]')];
- const setOpen=(open,focus)=>{menu.hidden=!open;toggle.setAttribute('aria-expanded',String(open));if(open&&focus)items()[0]?.focus();};
- toggle.addEventListener('click',()=>setOpen(menu.hidden,true));
- menu.addEventListener('click',e=>{if(e.target.closest('[role="menuitem"]'))setOpen(false);});
- menu.addEventListener('keydown',e=>{const list=items(),i=list.indexOf(document.activeElement);
-  if(e.key==='Escape'){setOpen(false);toggle.focus();}
-  else if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();list[(i+(e.key==='ArrowDown'?1:list.length-1))%list.length]?.focus();}
-  else if(e.key==='Tab')setOpen(false);});
- document.addEventListener('click',e=>{if(!menu.hidden&&!e.target.closest('.explore'))setOpen(false);});
- document.addEventListener('click',e=>{if(e.target.closest('[data-view]'))setTimeout(()=>toggle.classList.toggle('active',!!menu.querySelector('.nav.active')));});}

@@ -54,6 +54,7 @@ async function route(path,body){
     return hit;
   }
   if(path==='prove'){
+    if(typeof body?.attack!=='string'||!['none','naive','debt','reserve','tamper','duplicate'].includes(body.attack))throw new Error('Unknown experiment');
     const replay=await data('api/replay.json'),attackOnly=body&&Object.keys(body).sort().join(',')==='attack,date';
     if(attackOnly){if(body.date!==replay.attackDate)throw new Error('This contract run was not recorded for the public demo. '+LOCAL);}
     else{exactKeys(body,['date','shockPercent','reserveM3','attack'],'proof request');if(typeof body.date!=='string'||!Number.isFinite(body.shockPercent)||!Number.isFinite(body.reserveM3))throw new Error('Invalid proof request');}
