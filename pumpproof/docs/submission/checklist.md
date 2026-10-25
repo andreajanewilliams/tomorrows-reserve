@@ -10,9 +10,9 @@ Official Devpost pages rechecked on 25 October 2026 at 09:57 SAST: <https://ieee
 - [x] Project licence chosen: MIT for code (repository `LICENSE`); data keeps CC BY 4.0 and the WNTR licence.
 - [x] Display name Tomorrow’s Reserve; PumpProof kept as the internal codename in the contract, evidence formats, package and file names.
 - [x] Public static demo built (`npm run build:static` → `site/`): whole-day check runs in the browser; contract results are recorded local runs and labelled as recorded.
-- [ ] Public static demo link: PENDING owner hosting approval (GitHub Pages or Vercel).
+- [x] Public static demo: [tomorrows-reserve.vercel.app](https://tomorrows-reserve.vercel.app/), deployed to Andrea’s Vercel Hobby workspace with owner authorisation. Contract results remain labelled recorded runs.
 - [ ] Optional Sepolia run (`npm run testnet`, Sepolia only): PENDING owner test wallets and faucet ETH; no `data/testnet-runs.json` exists yet.
-- [ ] Required public source repository link: PENDING. No remote push authorised.
+- [x] Public source repository: [andreajanewilliams/tomorrows-reserve](https://github.com/andreajanewilliams/tomorrows-reserve), published with owner authorisation; only the selected project branch was pushed to `main`.
 - [ ] Required playable 3–5 minute video: PENDING recording and duration/playback inspection. A script is not a video.
 - [ ] Required video link: PENDING owner publication.
 - [ ] Owner checks final entry text and submits before 16:00 SAST Sunday (working deadline; Devpost currently shows 23:00 SAST).
@@ -27,4 +27,4 @@ If an essential external-path gate regresses before freeze, hide the Check a tra
 
 ## External actions requiring separate authorisation
 
-Publishing the source repository, uploading the video and submitting the entry remain owner actions. Public hosting and the Sepolia run are optional; both are prepared locally but neither has been performed. Do not create accounts, contact anyone, spend money or deploy as part of this handoff.
+The owner separately authorised publication of the source repository and the recorded static demo, and both are complete. Uploading the video, submitting the entry and any public Sepolia transaction still require separate authorisation. No account creation, organiser contact or expenditure is authorised by this publication task.

@@ -12,7 +12,8 @@ For a water-utility energy/operations analyst and an auditor, the question is wh
 
 ## Try it
 
-- **Public demo:** PENDING LINK. The whole-day check runs live in your browser (paste or upload your own 24-hour plan); contract results are replayed from real recorded local runs. Built with `npm run build:static` into `site/`.
+- **Public demo:** [tomorrows-reserve.vercel.app](https://tomorrows-reserve.vercel.app/). The whole-day check runs live in your browser (paste or upload your own 24-hour plan); contract results are replayed from real recorded local runs. Built with `npm run build:static` into `site/`.
+- **Source:** [andreajanewilliams/tomorrows-reserve](https://github.com/andreajanewilliams/tomorrows-reserve).
 - **Locally, with live contract checks:** `npm ci` then `npm start`, and open http://127.0.0.1:4317/.
 - **Public testnet:** `npm run testnet` deploys the same contract to Sepolia with separate operator and auditor wallets and runs one refused and one accepted plan (copy `.env.example` to `.env`; test wallets only). Links appear in the app once `data/testnet-runs.json` exists.
 
@@ -99,14 +100,14 @@ The existing Hydraulic lab and its sources are preserved as a separate historica
 
 [Devpost draft](docs/submission/devpost-draft.md) · [Architecture](docs/submission/architecture.svg) · [Trust note](docs/submission/trust-note.md) · [Verification report](docs/submission/verification.md) · [Recording script and shot list](docs/submission/recording.md) · [Owner checklist](docs/submission/checklist.md).
 
-Selected track: Carbon Markets & Emissions Transparency. Public repository, video and submission are **pending owner action**. No public demo/testnet deployment exists. Eligibility wording remains inconsistent. Code freeze was Saturday 24 October at 18:00 SAST. Readiness target is Sunday 25 October at 14:00 SAST. Devpost currently shows the deadline as 26 October 00:00 (UTC+3), which is 23:00 SAST on 25 October; it showed 16:00 SAST on 23 October, so 16:00 SAST remains the working deadline. No publication, remote push, contact, account creation, spending or submission is authorised by the local build task.
+Selected track: Carbon Markets & Emissions Transparency. The [source repository](https://github.com/andreajanewilliams/tomorrows-reserve) and [recorded static demo](https://tomorrows-reserve.vercel.app/) were published under Andrea’s accounts on 25 October with owner authorisation. Video publication, eligibility confirmation and competition submission remain owner actions. No public testnet run has been performed. The original code freeze was Saturday 24 October at 18:00 SAST; subsequent verified fixes and publication are recorded in the release note. The checklist retains the dated deadline checks and remaining owner actions.
 
 ## Data attribution
 
 - **Weyrauch et al. (2024), Hourly Water Demand of a Mixed District Recorded by Supplier**, supplied by Siemens AG and hosted on [Zenodo, DOI 10.5281/zenodo.11045013](https://zenodo.org/records/11045013), CC BY 4.0. We use the raw CSV; incomplete days, duplicated hours, missing and non-positive measurements are excluded. Derived feature rows and forecasts are our transformations. The raw file extends through 1 April 2021, although the source description states March.
 - **National Energy System Operator (NESO), Carbon Intensity API**, [official documentation](https://carbon-intensity.github.io/api-definitions/), CC BY 4.0. Half-hourly actual estimates are averaged into hourly values and rounded to integer g CO₂/kWh. Source snapshots and transformations are identified in [data/provenance.json](data/provenance.json).
 
-No external data is fetched during normal application use. No project was published, pushed, entered or submitted.
+The application uses pinned data rather than fetching new environmental observations during normal use. The source and static demo are public; the competition entry has not been submitted by this publication task.
 
 ## Licence
 

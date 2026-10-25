@@ -79,4 +79,4 @@ The hard part was keeping the uploaded trace bound to every step — preview, co
 
 ## Links
 
-Repository: **PENDING OWNER PUBLICATION**. Video: **PENDING RECORDING AND OWNER PUBLICATION**. Public demo/testnet: **not deployed** (local prototype; run with `npm ci` and `npm start`).
+Repository: [GitHub](https://github.com/andreajanewilliams/tomorrows-reserve). Public demo: [Tomorrow’s Reserve](https://tomorrows-reserve.vercel.app/) (browser accounting with clearly labelled recorded local contract runs). Video: **PENDING RECORDING AND OWNER PUBLICATION**. No public testnet run has been performed; run `npm ci` and `npm start` locally to execute new contract checks.
