@@ -10,7 +10,7 @@ The [official overview](https://ieee-climatechain-hack.devpost.com/) lists five 
 
 The displayed deadline is **25 October 2026, 17:00 UTC+3 = 16:00 SAST**. The [submission update](https://ieee-climatechain-hack.devpost.com/updates/46814-climatechain-hackathon-submissions-open-tomorrow-get-ready-to-submit) confirms an October submission period.
 
-**Eligibility needs organiser clarification before entering:** the overview's participation box says students only and excludes companies, while the [detailed rules](https://ieee-climatechain-hack.devpost.com/rules) explicitly include independent developers, startups, academics and environmental professionals. The rules allow individual entries or 2–5 members and mention country restrictions without a complete list in the retrieved text. We have not assumed Chad's eligibility, contacted organisers or registered him. Local development is independent of that unresolved submission question.
+**Eligibility needs organiser clarification before entering:** the overview's participation box says students only and excludes companies, while the [detailed rules](https://ieee-climatechain-hack.devpost.com/rules) explicitly include independent developers, startups, academics and environmental professionals. The rules allow individual entries or 2–5 members and mention country restrictions without a complete list in the retrieved text. We have not assumed the entrant's eligibility, contacted organisers or registered anyone. Local development is independent of that unresolved submission question.
 
 ## Observed public competition
 

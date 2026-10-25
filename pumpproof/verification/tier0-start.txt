@@ -1,5 +1,5 @@
 Source: current non-Git PumpProof folder copied intact (excluding node_modules) from
-/Users/chadsmith/Documents/Codex/2026-10-17/se/outputs/pumpproof.
+pumpproof.
 The older 20 October review snapshot is preserved at ../handoff-preserved/older-review.
 Current hydraulic additions preserved; no older files overlaid.
 Missing: new handoff archive, PRIORITY-ADDENDUM.txt, CODEX-IMPLEMENTATION-PROMPT.txt.
