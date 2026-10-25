@@ -554,7 +554,6 @@ details.more[open] summary{margin-bottom:6px}
 .nav-sep{align-self:center;font:11.5px var(--mono);color:rgba(255,255,255,.38);padding:0 6px 0 12px;border-left:1px solid rgba(255,255,255,.12);margin-left:4px}
 .nav-sep~.nav{font-size:12.5px;color:rgba(255,255,255,.5)}
 .nav-sep~.nav.active{color:#fff}
-.upload-own{display:block;margin:12px 2px 4px;font-size:13.5px}
 .next-step{display:block;width:100%;margin:2px 0 12px;padding:10px 12px;border:1px dashed var(--accent);border-radius:9px;background:#f2f7f4;color:var(--accent);font-weight:600;font-size:14px;text-align:left}
 .next-step:hover{background:#e7f1ec}
 .next-done{margin:2px 0 12px!important;font-size:13px!important;color:var(--muted)!important}
@@ -665,3 +664,10 @@ details.hydro-boundary[open] summary{margin-bottom:6px}
 .contract-card .hashes dd{font-size:11.5px;line-height:1.5;color:var(--ink-2);overflow-wrap:anywhere;word-break:normal}
 .contract-card .tech p{font-size:13px!important;line-height:1.55}
 .verify-line code{display:block;margin-top:6px;padding:8px 10px;white-space:nowrap;overflow-x:auto}
+/* Calmer checker: two numbers, one "Upload or edit" option, and the cheating link only once there is a result. */
+.kpis{grid-template-columns:repeat(2,1fr)}
+.flow-left .raw{margin-top:14px}
+.flow-left .raw>summary{color:var(--accent);text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(20,82,74,.35)}
+.flow-left .raw #external-preview-button{width:100%;margin-top:12px}
+.contract-card .ctx-link{display:none}
+.contract-card:has(#external-result:not(:empty)) .ctx-link{display:block}
