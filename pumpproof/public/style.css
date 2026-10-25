@@ -655,3 +655,13 @@ details.hydro-boundary[open] summary{margin-bottom:6px}
 #external{margin-top:0;padding-top:24px}
 @media(max-width:900px){.hero{min-height:auto;padding-bottom:56px}#external{padding-top:20px}}
 #external{scroll-margin-top:68px}
+/* Report and evidence downloads: stacked, one line each, quieter than the main action */
+.contract-card .result-actions{flex-direction:column;gap:8px}
+.contract-card .result-actions .button{width:100%;flex:none;padding:10px 14px;font-size:14px;white-space:nowrap;justify-content:center}
+.contract-card .result-actions .button::before{content:"";width:14px;height:14px;margin-right:2px;background:currentColor;opacity:.75;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 1v9M4 6l4 4 4-4M2 14h12' stroke='black' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 1v9M4 6l4 4 4-4M2 14h12' stroke='black' stroke-width='1.6' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+/* Technical details and the verify command inside the narrow contract column */
+.contract-card .hashes{grid-template-columns:1fr;gap:0}
+.contract-card .hashes dt{margin-top:10px;font-size:12px}
+.contract-card .hashes dd{font-size:11.5px;line-height:1.5;color:var(--ink-2);overflow-wrap:anywhere;word-break:normal}
+.contract-card .tech p{font-size:13px!important;line-height:1.55}
+.verify-line code{display:block;margin-top:6px;padding:8px 10px;white-space:nowrap;overflow-x:auto}
