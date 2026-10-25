@@ -88,7 +88,7 @@ document.querySelectorAll('[data-attack]').forEach(button=>button.onclick=async(
  try{
   const p=await api('/api/prove',{date:meta.benchmark.days.find(d=>d.eligible).date,attack:button.dataset.attack});
   if(!current(rev,key))return;
-  $('attack-output').innerHTML=`<span class="panel-number">REAL LOCAL EVM RESULT</span><h3 class="rejection">${escape(p.reason||'Unexpected acceptance')}</h3><p>${escape(messages[p.reason]||'The contract evaluated this evidence against its fixed policy.')}</p><ol class="trace">${p.steps.map((s,i)=>`<li><b>${i+1}</b><span>${escape(s.step)}<br><small>Block ${s.block}${s.status===0?' · status 0 (reverted)':''}</small></span><code>${s.tx}</code></li>`).join('')}</ol>${proofBox(p)}`;
+  $('attack-output').innerHTML=`<div class="decision ${p.accepted?'good':'bad'}"><span class="decision-icon">${p.accepted?'✓':'✕'}</span><div><h3>${p.accepted?'Unexpectedly accepted':'Refused by the contract'}</h3><p>${escape(messages[p.reason]||'The contract evaluated this evidence against its fixed policy.')}</p>${p.reason?`<code class="revert">Refused: ${escape(p.reason)}</code>`:''}</div></div><ol class="steps-plain">${p.steps.map(s=>`<li class="${s.status===0?'no':'ok'}"><b>${s.status===0?'✕':'✓'}</b><span>${escape(s.step)}</span><small>Block ${s.block}${s.status===0?' · status 0 (reverted)':''}</small></li>`).join('')}</ol><details class="tech"><summary>Technical details</summary><dl class="hashes">${p.steps.map(s=>`<dt>${escape(s.step)}</dt><dd>${escape(s.tx)}</dd>`).join('')}</dl>${proofBox(p)}</details>`;
  }catch(e){if(current(rev,key)){notice(e.message);$('attack-output').textContent=e.message;}}finally{setBusy(false);$('prove').disabled=!sim?.feasible||simulationKey!==JSON.stringify(options());}
 });
 function renderEvidence(){
