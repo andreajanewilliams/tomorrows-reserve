@@ -722,3 +722,6 @@ details.hydro-boundary[open] summary{margin-bottom:6px}
 .contract-card .result-actions{flex-direction:row;flex-wrap:wrap;gap:4px 16px}
 .contract-card .result-actions .button::before{display:none}
 .contract-card .verify-line code{display:block;margin-top:4px;padding:5px 8px;font-size:11.5px;white-space:normal}
+/* Shown only while the AI plan is selected: jump to the Forecast replay (opens on 4 February). */
+.flow-left .ai-link{display:none;margin:12px 2px 0;font-size:13.5px}
+.flow-left:has(.plan-card.ai.active) .ai-link{display:block}
