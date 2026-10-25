@@ -12,6 +12,7 @@ For a water-utility energy/operations analyst and an auditor, the question is wh
 
 ## Try it
 
+- **Demo video:** [Watch the 3:07 walkthrough](https://youtu.be/upXa5j0Y3yI), with English subtitles.
 - **Public demo:** [tomorrows-reserve.vercel.app](https://tomorrows-reserve.vercel.app/). The whole-day check runs live in your browser (paste or upload your own 24-hour plan); contract results are replayed from real recorded local runs. Built with `npm run build:static` into `site/`.
 - **Source:** [andreajanewilliams/tomorrows-reserve](https://github.com/andreajanewilliams/tomorrows-reserve).
 - **Locally, with live contract checks:** `npm ci` then `npm start`, and open http://127.0.0.1:4317/.
@@ -111,7 +112,7 @@ The original code freeze was Saturday 24 October at 18:00 SAST; subsequent verif
 - **Weyrauch et al. (2024), Hourly Water Demand of a Mixed District Recorded by Supplier**, supplied by Siemens AG and hosted on [Zenodo, DOI 10.5281/zenodo.11045013](https://zenodo.org/records/11045013), CC BY 4.0. We use the raw CSV; incomplete days, duplicated hours, missing and non-positive measurements are excluded. Derived feature rows and forecasts are our transformations. The raw file extends through 1 April 2021, although the source description states March.
 - **National Energy System Operator (NESO), Carbon Intensity API**, [official documentation](https://carbon-intensity.github.io/api-definitions/), CC BY 4.0. Half-hourly actual estimates are averaged into hourly values and rounded to integer g CO₂/kWh. Source snapshots and transformations are identified in [data/provenance.json](data/provenance.json).
 
-The application uses pinned data rather than fetching new environmental observations during normal use. The source and static demo are public; the competition entry has not been submitted by this publication task.
+The application uses pinned data rather than fetching new environmental observations during normal use. The source, static demo and unlisted video are available through the links above; Devpost is the source of truth for the entry’s submission status.
 
 ## Licence
 

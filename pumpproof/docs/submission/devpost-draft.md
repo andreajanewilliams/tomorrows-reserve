@@ -102,4 +102,4 @@ The hard part was keeping the uploaded trace bound to every step — preview, co
 
 ## Links
 
-Repository: [GitHub](https://github.com/andreajanewilliams/tomorrows-reserve). Public demo: [Tomorrow’s Reserve](https://tomorrows-reserve.vercel.app/) (browser accounting with clearly labelled recorded local contract runs). Video: **PENDING RECORDING AND OWNER PUBLICATION**. Two rule experiments have also run on Sepolia, as linked above. Run `npm ci` and `npm start` locally to execute new contract checks.
+Repository: [GitHub](https://github.com/andreajanewilliams/tomorrows-reserve). Public demo: [Tomorrow’s Reserve](https://tomorrows-reserve.vercel.app/) (browser accounting with clearly labelled recorded local contract runs). Video: [3:07 walkthrough with English subtitles](https://youtu.be/upXa5j0Y3yI). Two rule experiments have also run on Sepolia, as linked above. Run `npm ci` and `npm start` locally to execute new contract checks.
