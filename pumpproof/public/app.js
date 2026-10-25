@@ -104,7 +104,7 @@ function renderEvidence(){
 let tourStep=0,tourMark=null,tourRun=0;
 const until=async(test,ms=4000)=>{const t0=Date.now();while(!test()&&Date.now()-t0<ms)await new Promise(r=>setTimeout(r,100));};
 // Each tour action runs only while its own tour run is still live (not closed or restarted).
-const pickPlan=async(plan,live)=>{const card=document.querySelector(`.plan-card[data-plan="${plan}"]`);if(!live()||!card||card.disabled)return false;card.click();await until(()=>!live()||(card.classList.contains('active')&&document.querySelector('#external-preview .verdict')));return live()&&card.classList.contains('active');};
+const pickPlan=async(plan,live)=>{const card=document.querySelector(`.plan-card[data-plan="${plan}"]`);if(!live()||!card||card.disabled)return false;if(card.classList.contains('active')&&document.querySelector('#external-preview .verdict'))return true;card.click();await until(()=>!live()||(card.classList.contains('active')&&document.querySelector('#external-preview .verdict')));return live()&&card.classList.contains('active');};
 // What the contract panel actually shows: accepted, refused, an error message, or still pending.
 function contractOutcome(){const r=$('external-result'),h=r.querySelector('.decision h3');
  if(h)return{state:h.textContent.startsWith('Accepted')?'accepted':'refused',reason:r.querySelector('.decision p')?.textContent||'',recorded:!!r.querySelector('.recorded-note'),reused:/existing result reused/i.test(r.textContent)};
@@ -142,7 +142,9 @@ async function showTour(){
  $('tour-next').disabled=true;$('tour-back').disabled=true;
  let result={};try{result=await step.run?.(live)||{};}finally{if(run===tourRun){$('tour-next').disabled=false;$('tour-back').disabled=false;}}
  if(!live())return;if(step.describe)$('tour-copy').textContent=step.describe(result);$('tour-next').focus();
- tourMark=document.querySelector(step.target);tourMark?.classList.add('tour-focus');tourMark?.scrollIntoView({behavior:'smooth',block:tourMark.offsetHeight>innerHeight*.6?'start':'center'});
+ tourMark=document.querySelector(step.target);tourMark?.classList.add('tour-focus');
+ const box=tourMark?.getBoundingClientRect(),inView=box&&box.top>=0&&box.top<innerHeight*.45;
+ if(tourMark&&!inView)tourMark.scrollIntoView({behavior:'smooth',block:tourMark.offsetHeight>innerHeight*.6?'start':'center'});
 }
 function clearTourMarks(){tourMark=null;for(const el of document.querySelectorAll('.tour-focus'))el.classList.remove('tour-focus');}
 function endTour(){tourRun++;$('tour').close();clearTourMarks();$('tour-next').disabled=false;$('tour-back').disabled=false;}
