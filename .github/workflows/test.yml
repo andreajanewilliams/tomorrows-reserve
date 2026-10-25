@@ -1,0 +1,22 @@
+name: tests
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: pumpproof
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: pumpproof/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - run: npm test
+      - run: npm run check:results
+      - run: npm run verify -- examples/evidence/honest-rule-2020-02-04.json
+      - run: npm run verify -- examples/evidence/skips-evening-refill-2020-02-04.json --expect rejected

@@ -4,7 +4,7 @@ Status: script, fixtures, screenshots and commands prepared. **No video has been
 
 ## Before capture
 
-The page uses the restyled UI from 25 October; the two `.jpg` stills show the older layout. Use the My Hero browser/profile. Close unrelated windows from the recording area. Start `npm start` in the project and open http://127.0.0.1:4317/. Restart once before recording so the visible transactions are newly executed rather than labelled reused. Keep a second terminal ready in the same project. Use large readable text and captions. Do not show secrets, unrelated tabs or personal accounts.
+The page uses the restyled UI from 25 October; the two `.jpg` stills show the older layout. Use a clean browser profile. Close unrelated windows from the recording area. Start `npm start` in the project and open http://127.0.0.1:4317/. Restart once before recording so the visible transactions are newly executed rather than labelled reused. Keep a second terminal ready in the same project. Use large readable text and captions. Do not show secrets, unrelated tabs or personal accounts.
 
 Prepared assets:
 

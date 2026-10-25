@@ -1,7 +1,7 @@
 # Local verification report
 
-Working directory: `/Users/chadsmith/Documents/ChatGPT/IEEE Hackathon/pumpproof`.
-Baseline: local Git commit `84f5c3c`, preserving the current non-Git source from `/Users/chadsmith/Documents/Codex/2026-10-17/se/outputs/pumpproof`. Existing hydraulic additions were preserved. No older snapshot files were overlaid. The older review archive and attached consolidated plan are preserved outside the publishable project in `../handoff-preserved/`.
+Working directory: the `pumpproof/` project folder.
+Baseline: local Git commit `84f5c3c`, preserving the earlier non-Git source snapshot. Existing hydraulic additions were preserved. No older snapshot files were overlaid. The older review archive and attached consolidated plan are preserved outside the publishable project in `../handoff-preserved/`.
 
 The requested newer handoff archive could not be located. Its `PRIORITY-ADDENDUM.txt` and named `CODEX-IMPLEMENTATION-PROMPT.txt` were unavailable. The attached consolidated implementation plan was read, along with the older `START-HERE.txt`, review instructions, source/tests and reports. The later E4 scripts were recovered from the local fable-experiments archive and preserved unchanged. Historical research-only instructions did not override the user's explicit implementation request.
 
@@ -36,7 +36,7 @@ Current logs: `verification/review-fix-macos-tests.txt`, `final-linux-tests.txt`
 
 ## Browser and release gaps
 
-Browser discovery positively identified My Hero as `myherostudio.com`; no employer or Andrea session was used. Actual browser preview, refusal, honest acceptance, selection invalidation, download and result-table inspection were exercised. Screenshots are in this folder. Final browser checks and downloaded-file verification are recorded in the release note.
+Actual browser preview, refusal, honest acceptance, selection invalidation, download and result-table inspection were exercised. Screenshots are in this folder. Final browser checks and downloaded-file verification are recorded in the release note.
 
 The existing hydraulic Python solver was not rerun: unchanged, outside the authorised new implementation scope. Its existing integrity tests pass. No new model training, public testnet, remote CI, public hosting, video recording or publication was performed. Recorded video, public repository, licence decision, eligibility resolution and actual submission remain owner actions. Optional Tier 3 was not started.
 

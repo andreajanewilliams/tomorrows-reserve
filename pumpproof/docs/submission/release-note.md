@@ -12,7 +12,7 @@ Reviewed snapshot: `1cceb55` (executable implementation `88fdcbfe02e6dbd6d7e45ac
 - `npm run smoke:external` and `npm run smoke` passed against the loopback server: validation, named-policy mismatch rejection, genuine labelled execution, arbitrary unchanged uploaded trace, per-experiment idempotence/changed-input rejection, export, origin checks and separate-process evidence verification.
 - Accepted and refused v3 verification passed with optimiser imports explicitly forbidden by `tests/no-optimiser-loader.mjs`. The final browser-downloaded refusal independently reproduced `evidenceValid: true`, `accountingAccepted: false`, `receiptIssued: false`, `WaterDebt`, fresh transaction status 0.
 - All 50 final stored bundle signatures, version identities, exact preview claims, report commitments and all 22 accepted EVM gram totals reconcile. Separate flooring and positive subgram score tests prevent numerical misreporting.
-- My Hero (`myherostudio.com`) browser: actual honest/debt preview and settlement, editing clears proof/export and changes label to Uploaded trace, export/download, and native comparison table inspected. Final stills are `water-debt-browser.jpg` and `honest-browser.jpg`.
+- Browser: actual honest/debt preview and settlement, editing clears proof/export and changes label to Uploaded trace, export/download, and native comparison table inspected. Final stills are `water-debt-browser.jpg` and `honest-browser.jpg`.
 - Required clean-context, read-only gpt-5.6-sol high review completed. The initial named-policy integrity finding was fixed and regressed; a follow-up README request-shape finding was corrected. The final targeted review at `1cceb55` is clean, with no unresolved actionable in-scope findings. One initial review and two bounded fix/review rounds were used.
 
 Final logs: `verification/review-fix-macos-tests.txt`, `verification/final-linux-tests.txt`, `verification/review-fix-fixtures.txt`, `verification/tier2-http-experiments.json`, `verification/browser-download-verification.json`, `verification/accepted-verification.json` and `verification/refused-verification.json`. Earlier gate logs are retained as historical evidence, not current signed exports.
@@ -39,7 +39,7 @@ npm ci --no-audit --no-fund
 npm start
 ```
 
-Open http://127.0.0.1:4317/ in My Hero. Restart before recording to show new transactions instead of reused results. The signed examples remain independently usable after a restart:
+Open http://127.0.0.1:4317/ in a browser. Restart before recording to show new transactions instead of reused results. The signed examples remain independently usable after a restart:
 
 ```sh
 npm run verify -- examples/evidence/honest-rule-2020-02-04.json

@@ -16,13 +16,14 @@
     "compare": "node scripts/evaluate-comparisons.mjs && node scripts/present-results.mjs",
     "check:results": "node scripts/present-results.mjs --check",
     "smoke:external": "node scripts/smoke-external.mjs",
-    "fixtures:evm": "node scripts/execute-fixtures.mjs"
+    "fixtures:evm": "node scripts/execute-fixtures.mjs",
+    "build:static": "node scripts/build-static.mjs"
   },
   "dependencies": {
     "ethers": "6.15.0",
     "ganache": "7.9.2",
-    "solc": "0.8.30",
-    "javascript-lp-solver": "0.4.24"
+    "javascript-lp-solver": "0.4.24",
+    "solc": "0.8.30"
   },
   "engines": {
     "node": ">=20"
